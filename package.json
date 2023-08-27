@@ -8,13 +8,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "echarts": "^5.4.3",
     "pinia": "^2.0.36",
+    "v-charts": "^1.19.0",
     "vue": "^3.3.2",
     "vue-router": "^4.2.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
+    "sass": "^1.66.1",
     "vite": "^4.3.5"
   }
 }
