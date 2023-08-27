@@ -1,13 +1,10 @@
 {
-  "name": "tyyhgl",
+  "name": "qianniu",
   "version": "1.0.0",
-  "description": "统一用户管理项目",
-  "author": "liuhuitao",
+  "description": "牵牛",
+  "author": "Hadas",
   "private": true,
-  "repository": {
-    "type": "gitlab",
-    "url": "http://10.168.4.24:8099/mti-product/mti-uum/web.git"
-  },
+  "repository": {},
   "scripts": {
     "commit": "git-cz",
     "release": "release-it",
@@ -25,12 +22,7 @@
     "new:comp": "node ./scripts/generateComponent",
     "new:view": "node ./scripts/generateView"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
-      "pre-commit": "eslint \"src/**/*.{js,ts,vue}\""
-    }
-  },
+  "husky": {},
   "config": {
     "commitizen": {
       "path": "cz-conventional"
@@ -44,7 +36,6 @@
     "element-china-area-data": "^4.1.2",
     "element-ui": "^2.8.2",
     "js-cookie": "^2.2.0",
-    "lodash": "^4.17.15",
     "mavon-editor": "^2.7.5",
     "qs": "^6.6.0",
     "tree-table-vue": "^1.1.0",
@@ -52,7 +43,6 @@
     "vue": "^2.5.21",
     "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.0.1",
-    "vuedraggable": "^2.19.1",
     "vuex": "^3.0.1",
     "vuex-persistedstate": "^2.5.4"
   },

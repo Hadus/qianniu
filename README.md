@@ -1,4 +1,4 @@
-# 统一用户管理系统
+# 牵牛
 
 ![](https://img.shields.io/badge/license-MIT-0.svg)
 ![](https://img.shields.io/badge/download-40M-0.svg)
@@ -72,8 +72,7 @@ npm run new:view
 
 ## 代码提交须知
 
-1.  强制提交代码：git add . && git commit --no-verify -m "代码规范强制提交测试"（**不推荐使用**）;
-2.  提交代码 `git add .` && `git commit -m "上传代码"`，如果不按照规范书写 commit 的日志会提示报错:
+1. 提交代码 `git add .` && `git commit -m "上传代码"`，如果不按照规范书写 commit 的日志会提示报错:
 
         	I: message may not be empty [subject-empty]
         	II: type may not be empty [type-empty]
