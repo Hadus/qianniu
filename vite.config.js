@@ -4,9 +4,17 @@ import VueSetupExtend from 'vite-plugin-vue-setup-extend';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+import path from 'path';
 
 export default defineConfig({
 	base: './',
+	resolve: {
+		alias: {
+			"~": path.resolve(__dirname, "./"),
+			"@": path.resolve(__dirname, "./src"),
+		},
+		extensions: ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json', '.vue']
+	},
 	plugins: [
 		vue(),
 		VueSetupExtend(),
