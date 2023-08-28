@@ -1,12 +1,6 @@
 export const first = [
     {
       icon: 'Odometer',
-      index: '/test',
-      title: '测试',
-      permiss: '2',
-    },
-    {
-      icon: 'Odometer',
       index: '/qnworkbenchHome',
       title: '首页',
       permiss: '1',

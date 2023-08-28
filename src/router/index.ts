@@ -13,15 +13,6 @@ const routes: RouteRecordRaw[] = [
     component: Index,
     children: [
       {
-        path: '/test',
-        name: 'test',
-        meta: {
-          title: 'test',
-          permiss: '2',
-        },
-        component: () => import(/* webpackChunkName: "import" */ '../views/test.vue'),
-      },
-      {
         path: '/qnworkbenchHome',
         name: 'qnworkbenchHome',
         meta: {
