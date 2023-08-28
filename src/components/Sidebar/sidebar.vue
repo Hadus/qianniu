@@ -61,6 +61,7 @@ const sidebar = useSidebarStore();
 	overflow-y: scroll;
 	color: #111;
 	font-size: 14px;
+	user-select: none
 }
 
 .sidebar::-webkit-scrollbar {

@@ -57,7 +57,7 @@
 .header {
 	position: relative;
 	width: 100%;
-	min-width: 1000px;
+	min-width: 1800px;
 	height: 76px;
 	font-size: 22px;
 	color: #333;
