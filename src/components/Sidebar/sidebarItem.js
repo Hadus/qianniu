@@ -8,7 +8,7 @@ export const first = [
     { // test
       icon: 'Odometer',
       index: '',
-      title: '商品11',
+      title: '商品--',
       permiss: '2',
     },
     {
@@ -44,19 +44,19 @@ export const first = [
     { // test
       icon: 'Odometer',
       index: '',
-      title: '推广11',
+      title: '推广--',
       permiss: '8',
     },
     { // test
       icon: 'Odometer',
       index: '',
-      title: '客服11',
+      title: '客服--',
       permiss: '9',
     },
     { // test
       icon: 'Odometer',
       index: '',
-      title: '财务11',
+      title: '财务--',
       permiss: '10',
     },
     {
@@ -68,13 +68,13 @@ export const first = [
     { // test
       icon: 'Odometer',
       index: '',
-      title: '服务11',
+      title: '服务--',
       permiss: '12',
     },
     { // test
       icon: 'Odometer',
       index: '',
-      title: '应用11',
+      title: '应用--',
       permiss: '13',
     },
   ];
