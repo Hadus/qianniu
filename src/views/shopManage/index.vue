@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<div class="plugins-tips">
-			wangEditor：轻量级 web 富文本编辑器，配置方便，使用简单。 访问地址：
+			shopManage
 			<a href="https://www.wangeditor.com/doc/" target="_blank">wangEditor</a>
 		</div>
 		<div class="mgb20" ref="editor"></div>
@@ -9,7 +9,7 @@
 	</div>
 </template>
 
-<script setup lang="ts" name="editor">
+<script setup lang="ts" name="shopManage">
 import WangEditor from 'wangeditor';
 import { ref, reactive, onMounted, onBeforeUnmount } from 'vue';
 
