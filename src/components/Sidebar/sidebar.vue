@@ -1,7 +1,7 @@
 <template>
 	<div class="sidebar">
-		<el-menu class="sidebar-el-menu" :default-active="onRoutes" :collapse="sidebar.collapse" background-color="#324157"
-			text-color="#bfcbd9" active-text-color="#20a0ff" unique-opened router>
+		<el-menu class="sidebar-el-menu" :default-active="onRoutes" :collapse="sidebar.collapse" background-color="#eff1f8"
+			text-color="#7a8599" active-text-color="#111" unique-opened router>
 			<template v-for="item in items">
 				<template v-if="item.subs">
 					<el-sub-menu :index="item.index" :key="item.index" v-permiss="item.permiss">
@@ -56,9 +56,11 @@ const sidebar = useSidebarStore();
 	display: block;
 	position: absolute;
 	left: 0;
-	top: 70px;
+	top: 76px;
 	bottom: 0;
 	overflow-y: scroll;
+	color: #111;
+	font-size: 14px;
 }
 
 .sidebar::-webkit-scrollbar {
@@ -66,10 +68,18 @@ const sidebar = useSidebarStore();
 }
 
 .sidebar-el-menu:not(.el-menu--collapse) {
-	width: 250px;
+	width: 108px;
 }
 
 .sidebar>ul {
 	height: 100%;
+}
+
+.el-menu-item {
+	font-weight: normal;
+}
+
+.el-menu-item.is-active {
+	font-weight: 500;
 }
 </style>

@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html,
@@ -23,20 +24,20 @@ a {
 
 .content-box {
     position: absolute;
-    left: 250px;
+    left: 108px;
     right: 0;
-    top: 70px;
+    top: 76px;
     bottom: 0;
     padding-bottom: 30px;
     -webkit-transition: left .3s ease-in-out;
     transition: left .3s ease-in-out;
-    background: #f0f0f0;
+    background: fff;
 }
 
 .content {
     width: auto;
     height: 100%;
-    padding: 10px;
+    padding: 28px 60px 36px;
     overflow-y: scroll;
     box-sizing: border-box;
 }
@@ -46,9 +47,6 @@ a {
 }
 
 .container {
-    padding: 30px;
-    background: #fff;
-    border: 1px solid #ddd;
     border-radius: 5px;
 }
 
@@ -112,7 +110,8 @@ a {
 }
 
 
-[class*=" el-icon-"], [class^=el-icon-] {
+[class*=" el-icon-"],
+[class^=el-icon-] {
     speak: none;
     font-style: normal;
     font-weight: 400;
@@ -124,6 +123,7 @@ a {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
 .el-sub-menu [class^=el-icon-] {
     vertical-align: middle;
     margin-right: 5px;
@@ -132,6 +132,6 @@ a {
     font-size: 18px;
 }
 
-[hidden]{
+[hidden] {
     display: none !important;
 }
