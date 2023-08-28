@@ -2,11 +2,8 @@
 	<div class="header">
 		<!-- 折叠按钮 -->
 		<div class="collapse-btn" @click="collapseChage">
-			<el-icon v-if="sidebar.collapse">
+			<el-icon>
 				<Expand />
-			</el-icon>
-			<el-icon v-else>
-				<Fold />
 			</el-icon>
 		</div>
 		<div class="logo">后台管理系统</div>
