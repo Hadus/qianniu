@@ -17,9 +17,9 @@
 <script setup lang="ts">
 import { useSidebarStore } from '../store/sidebar';
 import { useTagsStore } from '../store/tags';
-import vHeader from '../components/header.vue';
-import vSidebar from '../components/sidebar.vue';
-import vTags from '../components/tags.vue';
+import vHeader from '@/components/Header/header.vue';
+import vSidebar from '@/components/Sidebar/sidebar.vue';
+import vTags from '@/components/Tags/tags.vue';
 
 const sidebar = useSidebarStore();
 const tags = useTagsStore();
