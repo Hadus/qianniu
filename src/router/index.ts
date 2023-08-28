@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import { usePermissStore } from '../store/permiss';
-import Home from '../views/home.vue';
+import Index from '../views/Index.vue';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -10,7 +10,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'Home',
-    component: Home,
+    component: Index,
     children: [
       {
         path: '/dashboard',
