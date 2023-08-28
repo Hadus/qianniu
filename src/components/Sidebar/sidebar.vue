@@ -34,6 +34,13 @@
 				</template>
 			</template>
 		</el-menu>
+		<div class="about">
+			<p class="title">关于千牛</p>
+			<div class="copyright">
+				<p class="">Copyright</p>
+				<p>© Alibaba Group</p>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -82,5 +89,27 @@ const sidebar = useSidebarStore();
 
 .el-menu-item.is-active {
 	font-weight: 500;
+}
+
+.about {
+	width: 100%;
+	height: 74px;
+	position: absolute;
+	left: 0;
+	bottom: 15px;
+	background-color: skyblue;
+	text-align: center;
+}
+
+.about>.title {
+	color: #7a8599;
+	font-size: 13px;
+	margin-bottom: 15px;
+}
+
+.about>.copyright {
+	color: #a1b1cd;
+	font-size: 12px;
+	transform: scale(.9);
 }
 </style>
