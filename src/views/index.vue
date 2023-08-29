@@ -1,7 +1,13 @@
 <template>
 	<v-header />
 	<v-sidebar />
-	<div class="content-box" :class="{ 'content-collapse': sidebar.collapse }">
+	<div class="content-box">
+		<div class="blank">
+			<div class="sub-sidebar">
+				<p>交易</p>
+				<div>subsidebar</div>
+			</div>
+		</div>
 		<div class="content">
 			<router-view v-slot="{ Component }">
 				<transition name="move" mode="out-in">
