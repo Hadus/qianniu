@@ -26,7 +26,7 @@ const routes: RouteRecordRaw[] = [
         name: 'tradePlatform',
         meta: {
           title: '交易',
-          permiss: '2',
+          permiss: '1',
         },
         component: () => import(/* webpackChunkName: "import" */ '../views/tradePlatform/index.vue'),
       },
@@ -35,7 +35,7 @@ const routes: RouteRecordRaw[] = [
         name: 'privateDomainWorkbench',
         meta: {
           title: '私域',
-          permiss: '3',
+          permiss: '1',
         },
         component: () => import(/* webpackChunkName: "import" */ '../views/privateDomainWorkbench/index.vue'),
       },
@@ -44,7 +44,7 @@ const routes: RouteRecordRaw[] = [
         name: 'contentCenter',
         meta: {
           title: '内容',
-          permiss: '4',
+          permiss: '1',
         },
         component: () => import(/* webpackChunkName: "import" */ '../views/contentCenter/index.vue'),
       },
@@ -53,7 +53,7 @@ const routes: RouteRecordRaw[] = [
         name: 'shopManage',
         meta: {
           title: '店铺',
-          permiss: '5',
+          permiss: '1',
         },
         component: () => import(/* webpackChunkName: "import" */ '../views/shopManage/index.vue'),
       },
@@ -62,7 +62,7 @@ const routes: RouteRecordRaw[] = [
         name: 'qnTmcSeller',
         meta: {
           title: '营销',
-          permiss: '6',
+          permiss: '1',
         },
         component: () => import(/* webpackChunkName: "import" */ '../views/qnTmcSeller/index.vue'),
       },
@@ -71,7 +71,7 @@ const routes: RouteRecordRaw[] = [
         name: 'data',
         meta: {
           title: '数据',
-          permiss: '7',
+          permiss: '1',
         },
         component: () => import(/* webpackChunkName: "import" */ '../views/data/index.vue'),
       },
