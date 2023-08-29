@@ -2,11 +2,7 @@
 	<v-header />
 	<v-sidebar />
 	<div class="content-box">
-		<div class="blank" v-show="sidebar.hasSub">
-			<div class="sub-sidebar">
-			</div>
-		</div>
-		<div class="content">
+		<div class="content" :class="sidebar.hasSub ? 'has-sub' : ''">
 			<router-view v-slot="{ Component }">
 				<transition name="move" mode="out-in">
 					<keep-alive>

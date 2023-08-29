@@ -33,13 +33,6 @@ a {
   transition: left .3s ease-in-out;
   background: #fff;
   border-radius: 25px;
-  display: flex;
-}
-
-.blank {
-  position: relative;
-  width: 192px;
-  background-color: skyblue;
 }
 
 .content {
@@ -48,6 +41,10 @@ a {
   padding: 28px 60px 36px;
   overflow-y: scroll;
   box-sizing: border-box;
+}
+
+.content.has-sub {
+  padding-left: 142px;
 }
 
 .container {
