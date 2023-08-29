@@ -87,6 +87,7 @@ const sidebar = useSidebarStore();
 	padding: 0;
 	padding-top: 7px;
 	height: 100%;
+	border: 0 none;
 }
 
 .el-menu>.el-menu-item {

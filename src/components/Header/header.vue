@@ -61,7 +61,6 @@
 	height: 76px;
 	font-size: 22px;
 	color: #333;
-	background-color: #eff1f8;
 }
 
 .header>div {
