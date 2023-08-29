@@ -1,7 +1,8 @@
 <template>
 	<div class="sidebar">
-		<el-menu class="sidebar-el-menu" :default-active="onRoutes" :collapse="sidebar.collapse" background-color="#eff1f8"
-			text-color="#7a8599" active-text-color="#111" unique-opened router>
+		<el-menu class="sidebar-el-menu" :default-active="onRoutes" background-color="#eff1f8" text-color="#7a8599"
+			active-text-color="#111" unique-opened router :collapse-transition="false" @open="handleOpen" @close="handleClose">
+			<!-- 第一层 -->
 			<template v-for="item in items">
 				<template v-if="item.subs">
 					<el-sub-menu :index="item.index" :key="item.index" v-permiss="item.permiss">
@@ -11,11 +12,18 @@
 							</el-icon>
 							<span>{{ item.title }}</span>
 						</template>
+						<!-- 第二层 -->
+						<p class="item-title">{{ item.title }}</p>
 						<template v-for="subItem in item.subs">
-							<el-sub-menu v-if="subItem.subs" :index="subItem.index" :key="subItem.index" v-permiss="item.permiss">
+							<el-sub-menu class="sec-menu-li" v-if="subItem.subs" :index="subItem.index" :key="subItem.index"
+								v-permiss="item.permiss">
+								<!-- 第三层 -->
 								<template #title>{{ subItem.title }}</template>
-								<el-menu-item v-for="(threeItem, i) in subItem.subs" :key="i" :index="threeItem.index">
-									{{ threeItem.title }}
+								<el-menu-item active-text-color="#3e7fff" class="thr-menu-li" v-for="(threeItem, i) in subItem.subs"
+									:key="i" :index="threeItem.index">
+									<p class="thr-p">
+										{{ threeItem.title }}
+									</p>
 								</el-menu-item>
 							</el-sub-menu>
 							<el-menu-item v-else :index="subItem.index" v-permiss="item.permiss">
@@ -51,7 +59,7 @@
 import { computed } from 'vue';
 import { useSidebarStore } from '@/store/sidebar';
 import { useRoute } from 'vue-router';
-import { first as items } from './sidebarItem.js';
+import items from './sidebarItem.js';
 
 const route = useRoute();
 const onRoutes = computed(() => {
@@ -59,6 +67,16 @@ const onRoutes = computed(() => {
 });
 
 const sidebar = useSidebarStore();
+const handleOpen = function (index) {
+	const flag = index.includes('sub');
+	sidebar.handleHasSub(flag);
+}
+
+const handleClose = function (index) {
+	const flag = index.includes('-sub');
+	sidebar.handleHasSub(flag);
+}
+
 </script>
 
 <style scoped>
@@ -68,8 +86,7 @@ const sidebar = useSidebarStore();
 	left: 0;
 	top: 76px;
 	bottom: 0;
-	overflow-y: scroll;
-	color: #111;
+	/* overflow-y: scroll; */
 	font-size: 14px;
 	user-select: none;
 	width: 108px;
@@ -88,6 +105,7 @@ const sidebar = useSidebarStore();
 	padding-top: 7px;
 	height: 100%;
 	border: 0 none;
+	position: relative;
 }
 
 .el-menu>.el-menu-item {

@@ -2,10 +2,8 @@
 	<v-header />
 	<v-sidebar />
 	<div class="content-box">
-		<div class="blank">
+		<div class="blank" v-show="sidebar.hasSub">
 			<div class="sub-sidebar">
-				<p>交易</p>
-				<div>subsidebar</div>
 			</div>
 		</div>
 		<div class="content">

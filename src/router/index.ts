@@ -1,6 +1,8 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import { usePermissStore } from '../store/permiss';
 import Index from '../views/Index.vue';
+// 导入子路由
+import routes_sellManage from './sellManage.js';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -94,6 +96,10 @@ const routes: RouteRecordRaw[] = [
     component: () => import(/* webpackChunkName: "403" */ '../views/403.vue'),
   },
 ];
+
+// 导入子路由
+routes[1].children = routes[1].children?.concat(routes_sellManage);
+
 
 const router = createRouter({
   history: createWebHashHistory(),

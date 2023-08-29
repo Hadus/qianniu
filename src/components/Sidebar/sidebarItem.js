@@ -1,4 +1,4 @@
-export const first = [
+let routes = [
     {
       icon: 'Odometer',
       index: '/qnworkbenchHome',
@@ -7,9 +7,45 @@ export const first = [
     },
     { // test
       icon: 'Odometer',
-      index: '',
+      index: 'sub-1',
       title: '商品--',
       permiss: '1',
+      subs: [
+        {
+          index: 'sub-1-sub',
+          title: '商品管理',
+          permiss: '1',
+          subs: [
+            {
+              index: '/SellManage/all',
+              title: '全部宝贝',
+              permiss: '1',
+            },
+            {
+              index: '/SellManage/decoration',
+              title: '描述',
+              permiss: '2',
+            },
+          ]
+        },
+        // {
+        //   index: '2',
+        //   title: '商品运营',
+        //   permiss: '1',
+        //   subs: [
+        //     {
+        //       index: '/SellManage/all',
+        //       title: '全部宝贝',
+        //       permiss: '1',
+        //     },
+        //     {
+        //       index: '/SellManage/decoration',
+        //       title: '描述',
+        //       permiss: '2',
+        //     },
+        //   ]
+        // },
+      ],
     },
     {
       icon: 'Odometer',
@@ -77,4 +113,6 @@ export const first = [
       title: '应用--',
       permiss: '13',
     },
-  ];
+];
+
+export default routes;
