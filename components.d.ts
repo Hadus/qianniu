@@ -3,7 +3,7 @@
 // Read more: https://github.com/vuejs/core/pull/3399
 import '@vue/runtime-core'
 
-export { }
+export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
@@ -49,6 +49,5 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Sidebar: typeof import('./src/components/Sidebar/sidebar.vue')['default']
-    Tags: typeof import('./src/components/Tags/tags.vue')['default']
   }
 }
