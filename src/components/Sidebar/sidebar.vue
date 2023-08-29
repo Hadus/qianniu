@@ -31,6 +31,9 @@
 						</el-icon>
 						<template #title>{{ item.title }}</template>
 					</el-menu-item>
+					<li class="line" v-if="item.title == '财务--'">
+						<span></span>
+					</li>
 				</template>
 			</template>
 		</el-menu>
@@ -60,7 +63,7 @@ const sidebar = useSidebarStore();
 
 <style scoped>
 .sidebar {
-	display: block;
+	height: 100%;
 	position: absolute;
 	left: 0;
 	top: 76px;
@@ -68,7 +71,8 @@ const sidebar = useSidebarStore();
 	overflow-y: scroll;
 	color: #111;
 	font-size: 14px;
-	user-select: none
+	user-select: none;
+	width: 108px;
 }
 
 .sidebar::-webkit-scrollbar {
@@ -79,16 +83,33 @@ const sidebar = useSidebarStore();
 	width: 108px;
 }
 
-.sidebar>ul {
+.el-menu {
+	padding: 0;
+	padding-top: 7px;
 	height: 100%;
 }
 
-.el-menu-item {
+.el-menu>.el-menu-item {
 	font-weight: normal;
+	height: 42px;
+	width: 100%;
 }
 
 .el-menu-item.is-active {
 	font-weight: 500;
+}
+
+.el-menu .line {
+	padding-top: 0px;
+	padding-bottom: 8px;
+	text-align: center;
+}
+
+.el-menu .line>span {
+	display: inline-block;
+	height: 1px;
+	width: 46px;
+	background-color: #d7dbe0;
 }
 
 .about {
@@ -96,8 +117,7 @@ const sidebar = useSidebarStore();
 	height: 74px;
 	position: absolute;
 	left: 0;
-	bottom: 15px;
-	background-color: skyblue;
+	bottom: 100px;
 	text-align: center;
 }
 
