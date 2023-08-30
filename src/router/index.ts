@@ -24,15 +24,6 @@ const routes: RouteRecordRaw[] = [
         },
         component: () => import(/* webpackChunkName: "import" */ '../views/qnworkbenchHome/index.vue'),
       },
-      {
-        path: '/data',
-        name: 'data',
-        meta: {
-          title: '数据',
-          permiss: '1',
-        },
-        component: () => import(/* webpackChunkName: "import" */ '../views/data/index.vue'),
-      },
     ],
   },
   {

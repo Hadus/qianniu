@@ -37,7 +37,10 @@
 						<el-icon>
 							<component :is="item.icon"></component>
 						</el-icon>
-						<template #title>{{ item.title }}</template>
+						<template #title v-if="item.link">
+							<a :href="item.link" class="link" target="_black">{{ item.title }}</a>
+						</template>
+						<template #title v-else>{{ item.title }}</template>
 					</el-menu-item>
 					<li class="line" v-if="item.title == '财务--'">
 						<span></span>
@@ -129,6 +132,10 @@ const handleClose = function (index) {
 	height: 1px;
 	width: 46px;
 	background-color: #d7dbe0;
+}
+
+.el-menu a.link {
+	color: #7a8599;
 }
 
 .about {
