@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<div class="plugins-tips">
-			privateDomainWorkbench
+			sold
 			<a href="https://www.wangeditor.com/doc/" target="_blank">wangEditor</a>
 		</div>
 		<div class="mgb20" ref="editor"></div>
@@ -9,7 +9,7 @@
 	</div>
 </template>
 
-<script setup lang="ts" name="privateDomainWorkbench">
+<script setup lang="ts" name="tradePlatform">
 import WangEditor from 'wangeditor';
 import { ref, reactive, onMounted, onBeforeUnmount } from 'vue';
 

@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<div class="plugins-tips">
-			shopManage
+			shop center
 			<a href="https://www.wangeditor.com/doc/" target="_blank">wangEditor</a>
 		</div>
 		<div class="mgb20" ref="editor"></div>

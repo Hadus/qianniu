@@ -2,7 +2,8 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import { usePermissStore } from '../store/permiss';
 import Index from '../views/Index.vue';
 // 导入子路由
-import routes_sellManage from './sellManage.js';
+import routes_tradePlatform from './tradePlatform.js';
+import routes_shopManage from './shopManage.js';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -22,51 +23,6 @@ const routes: RouteRecordRaw[] = [
           permiss: '1',
         },
         component: () => import(/* webpackChunkName: "import" */ '../views/qnworkbenchHome/index.vue'),
-      },
-      {
-        path: '/tradePlatform',
-        name: 'tradePlatform',
-        meta: {
-          title: '交易',
-          permiss: '1',
-        },
-        component: () => import(/* webpackChunkName: "import" */ '../views/tradePlatform/index.vue'),
-      },
-      {
-        path: '/privateDomainWorkbench',
-        name: 'privateDomainWorkbench',
-        meta: {
-          title: '私域',
-          permiss: '1',
-        },
-        component: () => import(/* webpackChunkName: "import" */ '../views/privateDomainWorkbench/index.vue'),
-      },
-      {
-        path: '/contentCenter',
-        name: 'contentCenter',
-        meta: {
-          title: '内容',
-          permiss: '1',
-        },
-        component: () => import(/* webpackChunkName: "import" */ '../views/contentCenter/index.vue'),
-      },
-      {
-        path: '/shopManage',
-        name: 'shopManage',
-        meta: {
-          title: '店铺',
-          permiss: '1',
-        },
-        component: () => import(/* webpackChunkName: "import" */ '../views/shopManage/index.vue'),
-      },
-      {
-        path: '/qnTmcSeller',
-        name: 'qnTmcSeller',
-        meta: {
-          title: '营销',
-          permiss: '1',
-        },
-        component: () => import(/* webpackChunkName: "import" */ '../views/qnTmcSeller/index.vue'),
       },
       {
         path: '/data',
@@ -98,7 +54,8 @@ const routes: RouteRecordRaw[] = [
 ];
 
 // 导入子路由
-routes[1].children = routes[1].children?.concat(routes_sellManage);
+routes[1].children = routes[1].children?.concat(routes_tradePlatform)
+  .concat(routes_shopManage);
 
 
 const router = createRouter({
