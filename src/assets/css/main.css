@@ -101,6 +101,7 @@ a {
   border-radius: 8px;
   height: 42px;
   line-height: 42px;
+  font-weight: normal;
 }
 
 .sidebar ul.el-menu>li.sec-menu-li>ul.el-menu>li.thr-menu-li>p.thr-p:hover {

@@ -17,14 +17,47 @@
 			<span class="c">中小商家利好规则与成长层级解读</span>
 		</div>
 		<div class="icons">
-			<p class="icon-download">下载</p>
-			<p class="icon-role">规则</p>
-			<p class="icon-learn">学习</p>
-			<p class="icon-msg">消息</p>
-			<p class="icon-service">官方客服</p>
-			<p class="icon-feedback">反馈</p>
+			<p class="icon-download">
+				<el-icon :size="18">
+					<Memo />
+				</el-icon>
+				下载
+			</p>
+			<p class="icon-role">
+				<el-icon :size="18">
+					<DocumentCopy />
+				</el-icon>
+				规则
+			</p>
+			<p class="icon-learn">
+				<el-icon :size="18">
+					<Document />
+				</el-icon>
+				学习
+			</p>
+			<p class="icon-msg">
+				<el-icon :size="18">
+					<MostlyCloudy />
+				</el-icon>
+				消息
+			</p>
+			<p class="icon-service">
+				<el-icon :size="18">
+					<Odometer />
+				</el-icon>
+				官方客服
+			</p>
+			<p class="icon-feedback">
+				<el-icon :size="18">
+					<Edit />
+				</el-icon>
+				反馈
+			</p>
 		</div>
 		<div class="user">
+			<el-icon :size="10">
+				<ArrowDownBold />
+			</el-icon>
 			<div class="userinfo">
 				<img src="https://img.alicdn.com/imgextra/i2/1115350887/O1CN01B2LRQR1IQIBDVMEob_!!1115350887-0-shopmanager.jpg">
 				<p class="name">惠水琥珀蜜蜡</p>
@@ -173,7 +206,7 @@
 	font-size: 12px;
 	color: #666;
 	position: relative;
-	padding-top: 25px;
+	padding-top: 24px;
 	cursor: pointer;
 }
 
@@ -181,40 +214,25 @@
 	flex: 2;
 }
 
-.icons>p::before {
-	content: ' ';
-	width: 22px;
-	height: 22px;
+.icons>p>i {
 	position: absolute;
-	left: 13px;
+	left: 12px;
 	top: 0;
-	background-color: skyblue;
 }
 
-.icons>p.icon-download::before {
-	content: ' ';
+.icons>p.icon-download>i {}
+
+.icons>p.icon-role>i {}
+
+.icons>p.icon-learn>i {}
+
+.icons>p.icon-msg>i {}
+
+.icons>p.icon-service>i {
+	left: 32px;
 }
 
-.icons>p.icon-role::before {
-	content: ' ';
-}
-
-.icons>p.icon-learn::before {
-	content: ' ';
-}
-
-.icons>p.icon-msg::before {
-	content: ' ';
-}
-
-.icons>p.icon-service::before {
-	content: ' ';
-	left: 36px;
-}
-
-.icons>p.icon-feedback::before {
-	content: ' ';
-}
+.icons>p.icon-feedback>i {}
 
 .header .user {
 	width: 218px;
@@ -225,14 +243,10 @@
 	cursor: pointer;
 }
 
-.user::before {
-	content: ' ';
+.user>i {
 	position: absolute;
-	background-color: pink;
-	right: 2px;
+	right: 30px;
 	top: 30px;
-	width: 12px;
-	height: 12px;
 	z-index: 9;
 	font-size: 10px;
 }

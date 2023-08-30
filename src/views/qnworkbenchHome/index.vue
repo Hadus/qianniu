@@ -1,37 +1,42 @@
 <template>
 	<div class="container">
-		<div class="plugins-tips">
-			qnworkbenchHome
-			<a href="https://www.wangeditor.com/doc/" target="_blank">wangEditor</a>
+		<div class="left">left</div>
+		<div class="right">
+			<div class="info-wapper">info-wapper</div>
+			<div class="follow-wapper">follow-wapper</div>
+			<div class="news-wrapper">news-wrapper</div>
+			<div class="date-wrapper">date</div>
+			<div class="ad-wrapper">ad</div>
 		</div>
-		<div class="mgb20" ref="editor"></div>
-		<el-button type="primary" @click="syncHTML">提交</el-button>
 	</div>
 </template>
 
 <script setup lang="ts" name="qnworkbenchHome">
-import WangEditor from 'wangeditor';
-import { ref, reactive, onMounted, onBeforeUnmount } from 'vue';
 
-const editor = ref(null);
-const content = reactive({
-	html: '',
-	text: ''
-});
-let instance: any;
-onMounted(() => {
-	instance = new WangEditor(editor.value);
-	instance.config.zIndex = 1;
-	instance.create();
-});
-onBeforeUnmount(() => {
-	instance.destroy();
-	instance = null;
-});
-const syncHTML = () => {
-	content.html = instance.txt.html();
-	console.log(content.html);
-};
 </script>
 
-<style></style>
+<style scoped>
+.container {
+	position: relative;
+}
+
+.left {
+	width: 100%;
+	background-color: pink;
+	padding-right: 407px;
+}
+
+.right {
+	width: 357px;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.right>div {
+	min-height: 100px;
+	margin-bottom: 17px;
+	background: peru;
+	border-radius: 10px;
+}
+</style>
