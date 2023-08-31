@@ -22,6 +22,20 @@ a {
   text-decoration: none
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+i {
+  font-style: normal;
+}
+
+h3 {
+  font-weight: normal;
+}
+
 .content-box {
   position: absolute;
   left: 108px;
@@ -33,14 +47,16 @@ a {
   transition: left .3s ease-in-out;
   background: #fff;
   border-radius: 25px;
+  height: 100%;
 }
 
 .content {
   width: auto;
   height: 100%;
-  padding: 28px 60px 36px;
+  padding: 28px 60px 600px;
   overflow-y: scroll;
   box-sizing: border-box;
+  min-height: 1000px;
 }
 
 .content.has-sub {
@@ -49,6 +65,7 @@ a {
 
 .container {
   border-radius: 5px;
+  height: auto;
 }
 
 .sidebar>ul>.el-sub-menu:hover,
@@ -112,4 +129,33 @@ a {
 .sidebar ul.el-menu>li.sec-menu-li>ul.el-menu>li.thr-menu-li.is-active>.thr-p {
   background-color: #f5f7ff;
   color: #3e7fff;
+}
+
+.el-carousel li.el-carousel__indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 3px;
+}
+
+.el-carousel li.el-carousel__indicator>button.el-carousel__button {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.el-carousel .el-carousel__arrow {
+  border-radius: 0;
+  width: 21px;
+  height: 42px;
+  background-color: rgba(31, 45, 61);
+  opacity: .28;
+}
+
+.el-carousel .el-carousel__arrow.el-carousel__arrow--left {
+  left: 0;
+}
+
+.el-carousel .el-carousel__arrow.el-carousel__arrow--right {
+  right: 0;
 }
