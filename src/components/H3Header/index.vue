@@ -6,7 +6,7 @@
     <slot name="left"></slot>
     <div class="h-right">
       <slot name="right"></slot>
-      <el-icon :size="14" v-if="true">
+      <el-icon :size="14" v-if="hasArrow">
         <ArrowRight />
       </el-icon>
     </div>
@@ -14,6 +14,13 @@
 </template>
 
 <script setup lang="ts" name="h3Block">
+
+const { props } = defineProps({
+  hasArrow: {
+    type: String,
+    default: true
+  }
+});
 </script>
 
 <style scoped>
