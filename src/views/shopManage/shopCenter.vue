@@ -12,10 +12,9 @@
 							<span class="year">8年老店</span>
 						</template>
 						<template #right>
-							<p class="edit">
-								<img src="//img.alicdn.com/imgextra/i1/O1CN01jkApnt1oddLPdWsQl_!!6000000005248-2-tps-24-24.png">
+							<v-btn-empty imgSrc="//img.alicdn.com/imgextra/i1/O1CN01jkApnt1oddLPdWsQl_!!6000000005248-2-tps-24-24.png">
 								修改信息
-							</p>
+							</v-btn-empty>
 						</template>
 					</v-h3-block>
 					<div class="info">
@@ -141,6 +140,7 @@
 <script setup lang="ts" name="shopCenter">
 import vConfirmItem from './confirmItem.vue';
 import vH3Block from '@/components/H3Header/index.vue';
+import vBtnEmpty from '@/components/BtnEmpty/index.vue';
 import vBtnSign from '@/components/BtnSign/index.vue';
 // 左侧：店铺店铺认证
 const confirmItemList = [
@@ -247,34 +247,6 @@ const adviseItemList = [
 	text-align: center;
 	margin-left: 8px;
 	line-height: 20px;
-}
-
-.introduce-wrapper .wrapper-right h3 p.edit {
-	width: 85px;
-	height: 30px;
-	border-radius: 500px;
-	padding: 0 9px;
-	height: 30px;
-	font-size: 12px;
-	border: 1px solid rgb(245, 247, 255);
-	position: relative;
-	text-align: center;
-	white-space: nowrap;
-	vertical-align: middle;
-	user-select: none;
-	transition: all .1s linear;
-	cursor: pointer;
-	color: #5584ff;
-	background-color: rgb(245, 247, 255);
-	line-height: 30px;
-}
-
-.introduce-wrapper .wrapper-right h3 p.edit>img {
-	height: 12px;
-}
-
-.introduce-wrapper .wrapper-right h3 p.edit:hover {
-	border-color: #3e71f7;
 }
 
 .introduce-wrapper .wrapper-right .info {
