@@ -508,7 +508,6 @@ div.banner-wrapper img {
 }
 
 .advise-wrapper>.info .status>.info .info-1>p.p-5 span {
-	background-color: pink;
 	width: 54px;
 	height: 20px;
 	line-height: 20px;

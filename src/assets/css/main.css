@@ -53,19 +53,20 @@ h3 {
 .content {
   width: auto;
   height: 100%;
-  padding: 28px 60px 600px;
+  padding: 28px 50px 600px 60px;
   overflow-y: scroll;
   box-sizing: border-box;
   min-height: 1000px;
 }
 
 .content.has-sub {
-  padding-left: 142px;
+  padding-left: 120px;
 }
 
 .container {
   border-radius: 5px;
   height: auto;
+  position: relative;
 }
 
 .hide {
@@ -80,7 +81,16 @@ h3 {
 .block-wrapper {
   width: 100%;
   min-height: 40px;
-  border-radius: 16px;
-  margin-bottom: 40px;
   background: #fff;
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 24px;
+}
+
+.bdrad16 {
+  border-radius: 16px;
+}
+
+.bdrad16 {
+  border-radius: 16px;
 }
