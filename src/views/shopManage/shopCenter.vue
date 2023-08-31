@@ -1,37 +1,45 @@
 <template>
 	<div class="container">
-		<div class="plugins-tips">
-			shop center
-			<a href="https://www.wangeditor.com/doc/" target="_blank">wangEditor</a>
+		<div class="left">
+			<div class="block-wrapper introduce-wrapper">
+				<v-h3-block>
+					惠水琥珀蜜蜡
+				</v-h3-block>
+			</div>
+			<div class="confirm-wrapper">com</div>
 		</div>
-		<div class="mgb20" ref="editor"></div>
-		<el-button type="primary" @click="syncHTML">提交</el-button>
+		<div class="right">
+			right
+		</div>
 	</div>
 </template>
 
-<script setup lang="ts" name="shopManage">
-import WangEditor from 'wangeditor';
-import { ref, reactive, onMounted, onBeforeUnmount } from 'vue';
+<script setup lang="ts" name="shopCenter">
+import vH3Block from '@/components/H3Header/index.vue';
 
-const editor = ref(null);
-const content = reactive({
-	html: '',
-	text: ''
-});
-let instance: any;
-onMounted(() => {
-	instance = new WangEditor(editor.value);
-	instance.config.zIndex = 1;
-	instance.create();
-});
-onBeforeUnmount(() => {
-	instance.destroy();
-	instance = null;
-});
-const syncHTML = () => {
-	content.html = instance.txt.html();
-	console.log(content.html);
-};
 </script>
 
-<style></style>
+<style scoped>
+.container {
+	position: relative;
+}
+
+.left {
+	width: 100%;
+	padding-right: 407px;
+}
+
+.right {
+	width: 357px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	background-color: skyblue;
+}
+
+.right>div {
+	min-height: 100px;
+	margin-bottom: 17px;
+	border-radius: 10px;
+}
+</style>

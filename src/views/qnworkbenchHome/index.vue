@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<div class="left">
-			<div class="banner-wrapper radius12">
+			<div class="banner-wrapper">
 				<div>
 					<p class="num">0</p>
 					<p class="desc">待付款</p>
