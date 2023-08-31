@@ -52,7 +52,9 @@
 						</template>
 					</v-h3-block>
 					<div class="info-content">
-						<v-confirm-item v-for="(item, index) in confirmItemList" :item="item" :index="index" />
+						<v-confirm-item v-for="(item, index) in confirmItemList" :item="item" :index="index">
+							<v-btn-fill>去完成</v-btn-fill>
+						</v-confirm-item>
 					</div>
 				</div>
 			</div>
@@ -129,7 +131,9 @@
 						推荐任务
 					</v-h3-block>
 					<div class="info-content">
-						<v-confirm-item v-for="(item, index) in adviseItemList" :item="item" :index="index" />
+						<v-confirm-item v-for="(item, index) in adviseItemList" :item="item" :index="index">
+							<v-btn-empty>{{ item.btnTitle }}</v-btn-empty>
+						</v-confirm-item>
 					</div>
 				</div>
 			</div>
@@ -141,6 +145,7 @@
 import vConfirmItem from './confirmItem.vue';
 import vH3Block from '@/components/H3Header/index.vue';
 import vBtnEmpty from '@/components/BtnEmpty/index.vue';
+import vBtnFill from '@/components/BtnFill/index.vue';
 import vBtnSign from '@/components/BtnSign/index.vue';
 // 左侧：店铺店铺认证
 const confirmItemList = [
@@ -184,11 +189,13 @@ const adviseItemList = [
 	{
 		title: '获取【高回头客】店铺标签',
 		msg: '获得店铺标签可在主搜商品卡片、猜你喜欢卡片等地透出实现流量加持，具体效果如下图',
+		btnTitle: '去管理',
 		img: 'https://img.alicdn.com/imgextra/i4/O1CN01eiBGDE1yJ9joiXB7P_!!6000000006557-2-tps-104-104.png'
 	},
 	{
 		title: '优化商品素材',
 		msg: '发现您店铺内有商品素材需要优化，及时优化可帮助您的商品更快被消费者找到哦',
+		btnTitle: '去优化',
 		img: 'https://gw.alicdn.com/imgextra/i4/O1CN01cFEFGE1DoUtlJtH06_!!6000000000263-2-tps-106-104.png'
 	},
 ];

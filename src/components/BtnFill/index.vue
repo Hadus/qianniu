@@ -5,7 +5,7 @@
   </p>
 </template>
 
-<script setup lang="ts" name="btnEmpty">
+<script setup lang="ts" name="btnFill">
 const { imgSrc } = defineProps({
   imgSrc: {
     type: String,
@@ -16,12 +16,20 @@ const { imgSrc } = defineProps({
 
 <style scoped>
 p {
-  width: 85px;
+  width: 56px;
   height: 30px;
-  border-radius: 50px;
-  font-size: 12px;
+  border-radius: 20px;
   text-align: center;
   line-height: 30px;
+  font-size: 12px;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  transition: all .1s linear;
+  cursor: pointer;
+}
+
+p {
   white-space: nowrap;
   vertical-align: middle;
   user-select: none;
@@ -39,9 +47,8 @@ p.img>img {
 }
 
 p {
-  color: #5584ff;
-  border: 1px solid rgb(245, 247, 255);
-  background-color: rgb(245, 247, 255);
+  background-color: #5584ff;
+  color: #fff;
 }
 
 p:hover {
