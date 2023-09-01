@@ -112,7 +112,7 @@
 					店铺工具
 				</v-h3-block>
 				<div class="info">
-					<div v-for="(item, index) in toolItemList" :index="index">
+					<div v-for="(item, index) in toolItemList" :index="index" @click="handelClickToolItem(item)">
 						<p>
 							<img :src="item.img" />
 						</p>
@@ -142,6 +142,9 @@
 </template>
 
 <script setup lang="ts" name="shopCenter">
+import { useRouter } from 'vue-router';
+const $router = useRouter();
+
 import vConfirmItem from './confirmItem.vue';
 import vH3Block from '@/components/H3Header/index.vue';
 import vBtnEmpty from '@/components/BtnEmpty/index.vue';
@@ -199,6 +202,11 @@ const adviseItemList = [
 		img: 'https://gw.alicdn.com/imgextra/i4/O1CN01cFEFGE1DoUtlJtH06_!!6000000000263-2-tps-106-104.png'
 	},
 ];
+const handelClickToolItem = function (item) {
+	if (item.desc == '经营许可') {
+		$router.push('/shop-manage/shop-qa');
+	}
+}
 </script>
 
 <style scoped>

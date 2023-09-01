@@ -10,9 +10,11 @@ declare module '@vue/runtime-core' {
     Block: typeof import('./src/components/Block/index.vue')['default']
     BtnEmpty: typeof import('./src/components/BtnEmpty/index.vue')['default']
     BtnFill: typeof import('./src/components/BtnFill/index.vue')['default']
-    BtnSign: typeof import('./src/components/btnSign/index.vue')['default']
+    BtnSign: typeof import('./src/components/BtnSign/index.vue')['default']
     copy: typeof import('./src/components/BtnEmpty copy/index.vue')['default']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
+    ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
+    ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElCarousel: typeof import('element-plus/es')['ElCarousel']
@@ -59,6 +61,6 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Sidebar: typeof import('./src/components/Sidebar/sidebar.vue')['default']
-    Template: typeof import('./src/components/btnBlank/template.vue')['default']
+    Template: typeof import('./src/components/Template/index.vue')['default']
   }
 }
