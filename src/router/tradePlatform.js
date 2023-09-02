@@ -8,4 +8,13 @@ export default [
     },
     component: () => import(/* webpackChunkName: "import" */ '../views/tradePlatform/sold.vue'),
   },
+  {
+    path: '/trade-platform/tp/orderDetail',
+    name: 'orderDetail',
+    meta: {
+      title: '订单详情',
+      permiss: '1',
+    },
+    component: () => import(/* webpackChunkName: "import" */ '../views/tradePlatform/orderDetail.vue'),
+  },
 ]
