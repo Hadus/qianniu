@@ -24,80 +24,152 @@
 		</div>
 		<div class="unusual-order block-wrapper">
 			<div class="item">
-				<p class="key">待发货单量</p>
+				<p class="key">待发货单量
+					<img src="https://gw.alicdn.com/imgextra/i4/O1CN01t0RZ7O1vAVR93depk_!!6000000006132-2-tps-36-36.png">
+				</p>
 				<p class="value">1</p>
 			</div>
+			<i>|</i>
 			<div class="item">
-				<p class="key">发货即将超时单量</p>
+				<p class="key">发货即将超时单量
+					<img src="https://gw.alicdn.com/imgextra/i4/O1CN01t0RZ7O1vAVR93depk_!!6000000006132-2-tps-36-36.png">
+				</p>
 				<p class="value">0</p>
 			</div>
 		</div>
 		<div class="info-wrapper">
-			<el-tabs v-model="activeName" class="tabs-order tabs-order-all">
-				<el-tab-pane label="有效证照" name="first">
-					<div class="card-type-warpper">
-						<div class="title block-wrapper">
-							营业执照
-						</div>
-						<div class="cards">
-							<div class="card block-wrapper">
-								<div class="top">
-									<div class="wrapper-left">
-										<img
-											src="https://img.alicdn.com/imgextra/i3/O1CN01421ct423WVKYFBZYo_!!6000000007263-2-tps-108-126.png">
-									</div>
-									<div class="wrapper-right">
-										<p class="head">《营业执照》</p>
-										<p><span class="key">公司名称：</span><span class="value">勉县辉洁菁百货店</span></p>
-										<p><span class="key">有效期截止日期：</span><span class="value">长期</span></p>
-									</div>
-								</div>
-								<div class="bot">
-									<p class="look" @click="handleClickCard">查看详情</p>
-									<p class="btn">
-										<v-btn-empty>下 载</v-btn-empty>
-										<v-btn-empty>更 新</v-btn-empty>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
+			<el-tabs v-model="activeNameAll" class="tabs-order tabs-order-all">
+				<el-tab-pane label="近三个月订单" name="firstAll">
+					<v-filter-block />
 				</el-tab-pane>
-				<el-tab-pane label="审核中证照" name="second">
+				<el-tab-pane label="三个月前订单" name="secondALL">
 					暂无
 				</el-tab-pane>
 			</el-tabs>
-			<el-tabs v-model="activeName" class="tabs-order tabs-order-details">
-				<el-tab-pane label="有效证照" name="first">
-					<div class="card-type-warpper">
-						<div class="title block-wrapper">
-							营业执照
-						</div>
-						<div class="cards">
-							<div class="card block-wrapper">
-								<div class="top">
-									<div class="wrapper-left">
-										<img
-											src="https://img.alicdn.com/imgextra/i3/O1CN01421ct423WVKYFBZYo_!!6000000007263-2-tps-108-126.png">
-									</div>
-									<div class="wrapper-right">
-										<p class="head">《营业执照》</p>
-										<p><span class="key">公司名称：</span><span class="value">勉县辉洁菁百货店</span></p>
-										<p><span class="key">有效期截止日期：</span><span class="value">长期</span></p>
-									</div>
-								</div>
-								<div class="bot">
-									<p class="look" @click="handleClickOrder">查看详情</p>
-									<p class="btn">
-										<v-btn-empty>下 载</v-btn-empty>
-										<v-btn-empty>更 新</v-btn-empty>
+			<div class="operate">
+				<v-btn-fill size="normal">搜索订单</v-btn-fill>
+				<v-btn-fill size="normal" type="blank">批量导出</v-btn-fill>
+				<p class="link">
+					<img src="https://img.alicdn.com/imgextra/i4/O1CN01pR8pqG20cyBSyIvBU_!!6000000006871-2-tps-48-45.png">
+					<span>清除条件</span>
+				</p>
+				<p class="link">
+					<el-icon>
+						<ArrowUpBold />
+					</el-icon>
+					<span>收起筛选项</span>
+				</p>
+			</div>
+			<el-tabs v-model="activeNameDetails" class="tabs-order tabs-order-details">
+				<div class="filter-condition">
+					<p class="condition-item">
+						快捷筛选：
+						<v-filter-input type="select" label="卖家备注" class="condition-select" />
+					</p>
+					<el-checkbox label="不显示已关闭的订单" size="large" class="condition-item" />
+				</div>
+				<div class="filter-result">
+					<p>共查询到<i> 91 </i>个订单</p>
+					<v-btn-fill class="btn-result" size="normal" type="blank">批量发货</v-btn-fill>
+					<v-btn-fill class="btn-result" size="normal" type="blank">批量标记</v-btn-fill>
+					<v-btn-fill class="btn-result" size="normal" type="blank">批量免运费</v-btn-fill>
+				</div>
+				<el-tab-pane label="近三个月订单" name="firstDetails" class="first-details">
+					<!-- 表头 -->
+					<el-table style="width: 100%" header-row-class-name="order-th" class="order-table order-thead-table">
+						<el-table-column label="宝贝">
+							<template #header>
+								<el-checkbox></el-checkbox>&nbsp;&nbsp;宝贝
+							</template>
+						</el-table-column>
+						<el-table-column align="center" class="td-format" label="数量" width="165" />
+						<el-table-column align="center" class="td-format" label="售后" width="165" />
+						<el-table-column align="center" class="td-format" label="交易状态" width="165" />
+						<el-table-column align="center" class="td-format" label="实收款" width="165" />
+						<el-table-column align="center" class="td-format" label="评价" width="165" />
+					</el-table>
+					<!-- 内容 -->
+					<el-table style="width: 100%" header-row-class-name="order-item-th" class="order-table order-tbody-table"
+						:data="tableData">
+						<el-table-column>
+							<template #header>
+								<div class="item-title">
+									<el-checkbox></el-checkbox>
+									<p><span class="key">&nbsp;&nbsp;订单号：</span><span class="value">3503107335644061564</span></p>
+									<p class="create-time"><span class="key">创建时间：</span><span class="value">2023-09-02 13:32:50</span></p>
+									<p class="nickname">
+										<a href="javascript: void(0);" target="_blank" title="点此可以直接和卖家交流选好的宝贝，或相互交流网购体验，还支持语音视频噢。"></a>
+										爱**
 									</p>
+									<el-icon>
+										<ArrowDownBold />
+									</el-icon>
 								</div>
-							</div>
-						</div>
-					</div>
+							</template>
+							<template #default>
+								<vOrderItem></vOrderItem>
+							</template>
+						</el-table-column>
+						<el-table-column class="td-format" label="" width="165" align="center">
+							<template #default>
+								<p class="main">1</p>
+							</template>
+						</el-table-column>/>
+						<el-table-column class="td-format" label="" width="165" align="center">
+							<template #default>
+								<p class="main"><a href="">退款成功</a></p>
+							</template>
+						</el-table-column>
+						<el-table-column class="td-format" label="" width="165" align="center">
+							<template #default>
+								<p class="main">交易关闭</p>
+								<p class="desc">
+									<a href="">详情</a>
+								</p>
+							</template>
+						</el-table-column>
+						<el-table-column class="td-format" label="" width="165" align="center">
+							<template #default>
+								<p class="main">¥50.00</p>
+								<p class="desc">（含快递：¥0.00）</p>
+							</template>
+						</el-table-column>
+						<el-table-column class="td-format" width="165" align="center">
+							<template #header>
+								<el-icon>
+									<ArrowDownBold />
+								</el-icon>
+							</template>
+							<template #default>
+								<p class="main">
+									<a href="">我已评价</a>
+								</p>
+							</template>
+						</el-table-column>/>
+					</el-table>
+					<!-- 表格end -->
+					<el-pagination layout="prev, pager, next, jumper" :total="50" class="order-pagination" prev-text="上一页"
+						next-text="下一页" />
 				</el-tab-pane>
-				<el-tab-pane label="审核中证照" name="second">
+				<el-tab-pane label="等待买家付款" name="secondDetails">
+					暂无
+				</el-tab-pane>
+				<el-tab-pane label="等待发货" name="thirdDetails">
+					暂无
+				</el-tab-pane>
+				<el-tab-pane label="已发货" name="forthDetails">
+					暂无
+				</el-tab-pane>
+				<el-tab-pane label="退款中" name="fivethDetails">
+					暂无
+				</el-tab-pane>
+				<el-tab-pane label="需要评价" name="sixthDetails">
+					暂无
+				</el-tab-pane>
+				<el-tab-pane label="成功的订单" name="seventhDetails">
+					暂无
+				</el-tab-pane>
+				<el-tab-pane label="关闭的订单" name="eightDetails">
 					暂无
 				</el-tab-pane>
 			</el-tabs>
@@ -108,19 +180,29 @@
 <script setup lang="ts" name="sold">
 import { useRouter } from 'vue-router';
 const $router = useRouter();
-import vBtnEmpty from '@/components/BtnEmpty/index.vue';
+import vFilterBlock from './filterBlock.vue';
+import vBtnFill from '@/components/BtnFill/index.vue';
+import vFilterInput from './filterInput.vue';
+import vOrderItem from './orderItem.vue';
 
-// const { item } = defineProps({
-//   item: Object,
-//   test: {
-//     type: String,
-//     default: '1'
-//   }
-// })
-const activeName = 'first';
+const activeNameAll = 'firstAll';
+const activeNameDetails = 'firstDetails'
+const tableData = [
+	{
+		date: '2016-05-03',
+		name: 'Tom',
+		address: 'No. 189, Grove St, Los Angeles',
+	},
+	{
+		date: '2016-05-02',
+		name: 'Tom',
+		address: 'No. 189, Grove St, Los Angeles',
+	},
+];
+
 const handleClickOrder = function () {
 	$router.push('/trade-platform/tp/orderDetail');
-}
+};
 </script>
 
 <style scoped>
@@ -177,131 +259,149 @@ const handleClickOrder = function () {
 }
 
 .unusual-order>div {
-	width: 144px;
+	min-width: 144px;
 	height: 100%;
+	line-height: 24px;
+	color: #111;
+}
+
+.unusual-order i {
+	color: #d5d9de;
+	width: 2px;
+	height: 16px;
+	line-height: 36px;
+	margin-right: 20px;
 }
 
 .unusual-order>div p {
 	display: inline-block;
+	font-size: 14px;
+}
+
+.unusual-order>div p>img {
+	width: 12px;
+	height: 12px;
+	margin-left: 2px;
+}
+
+.unusual-order>div p.value {
+	font-size: 24px;
+	margin-left: 20px;
 }
 
 .info-wrapper {
 	position: relative;
 }
 
-.info-wrapper .card-type-warpper {
+.info-wrapper .operate {
 	width: 100%;
-}
-
-.info-wrapper .card-type-warpper>.title {
-	width: 100%;
-	height: 42px;
-	background-color: #f2f5fc;
-	line-height: 42px;
-	padding: 0;
-	padding-left: 12px;
-	color: #111;
-	font-family: PingFangSC-Semibold;
-	font-size: 14px;
-}
-
-.info-wrapper .card-type-warpper .cards {
-	width: 100%;
-	height: auto;
-}
-
-.info-wrapper .card-type-warpper .card {
-	background-color: #fff;
-	width: 387px;
-	height: 188px;
-	border: 1px solid #cdd2d8;
-	padding: 30px 10px 0px 26px;
-	transition: .5s;
-}
-
-.info-wrapper .card-type-warpper .card:hover {
-	border: 1px solid #3d7fff;
-	box-shadow: 0 0 0 3px #e0ebff;
-}
-
-.info-wrapper .card-type-warpper .card .top {
+	height: 36px;
 	display: flex;
-	border-bottom: 1px solid #e6e9ed;
-	padding-bottom: 36px;
+	margin-bottom: 30px;
 }
 
-.info-wrapper .card-type-warpper .card .wrapper-left {
-	width: 36px;
-	height: 42px;
+.info-wrapper .operate>p {
 	margin-right: 12px;
 }
 
-.info-wrapper .card-type-warpper .card .wrapper-left img {
-	display: block;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	border-radius: 50%;
+.info-wrapper .operate>p.link {
+	font-size: 14px;
+	color: #3d7fff;
+	line-height: 36px;
+	padding: 0 15px;
 }
 
-.info-wrapper .card-type-warpper .card .wrapper-right {
-	height: auto;
+.info-wrapper .operate>p.link>img {
+	width: 14px;
+	height: 14px;
 }
 
-.info-wrapper .card-type-warpper .card .wrapper-right p {
+.info-wrapper .operate>p.link>span {
+	margin-left: 3px;
+}
+
+
+.info-wrapper .tabs-order-details .filter-condition {
+	display: flex;
+	line-height: 36px;
+}
+
+.info-wrapper .tabs-order-details .condition-item {
+	display: flex;
+}
+
+.info-wrapper .tabs-order-details .condition-select {
+	width: 180px;
+}
+
+.info-wrapper .tabs-order-details .filter-result {
+	height: 80px;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #e4e7ed;
+}
+
+.info-wrapper .tabs-order-details .filter-result>p>i {
+	color: rgb(61, 127, 255);
+	font-size: 14px;
+}
+
+.info-wrapper .tabs-order-details .filter-result .btn-result {
+	margin-left: 15px;
+}
+
+.tabs-order-details .item-title {
+	display: flex;
+	align-items: center;
+	line-height: 44px;
 	font-size: 12px;
-	letter-spacing: 0;
-	line-height: 20px;
-	color: #999;
-	font-family: PingFangSC-Regular;
+	border-radius: 12px 0 0 12px;
 }
 
-.info-wrapper .card-type-warpper .card .wrapper-right p.head {
-	color: #111;
-	font-family: PingFangSC-Medium;
-	font-size: 16px;
-	letter-spacing: 0;
-	line-height: 22px;
-	margin-bottom: 12px
+.tabs-order-details .item-title .create-time {
+	margin: 0 50px;
 }
 
-.info-wrapper .card-type-warpper .card .wrapper-right p>span.value {
-	color: #111;
+.tabs-order-details .item-title .nickname {
+	color: rgb(61, 127, 255);
+	margin-right: 2px;
 }
 
-
-.info-wrapper .card-type-warpper .card .bot {
-	height: 46px;
-	line-height: 46px;
-}
-
-.info-wrapper .card-type-warpper .card .bot .look {
-	float: left;
-	color: #4178ff;
-	font-family: PingFangSC-Regular;
-	font-size: 12px;
-	letter-spacing: 0;
-	padding-left: 50px;
-	cursor: pointer;
-}
-
-.info-wrapper .card-type-warpper .card .bot .btn {
-	float: right;
-}
-
-.info-wrapper .card-type-warpper .card .bot .btn>p {
-	width: 60px;
-	height: 30px;
-	background-color: #ebf3ff;
+.tabs-order-details .item-title .nickname>a {
 	display: inline-block;
-	cursor: pointer;
+	width: 20px;
+	height: 20px;
+	background-image: url("//img.alicdn.com/tps/i1/T15AD7FFFaXXbJnvQ_-130-60.gif");
+	background-position: 50px 0px;
+	vertical-align: sub;
 }
 
-.info-wrapper .card-type-warpper .card .bot .btn>p+p {
-	margin-left: 8px;
+.tabs-order-details p.main,
+.tabs-order-details p.desc {
+	font-size: 12px;
+	text-align: center;
+}
+
+.tabs-order-details p.desc {
+	color: #999;
+	background-color: #fff;
+}
+
+.tabs-order-details p>a {
+	color: #5584ff;
+}
+
+.order-pagination {
+	width: 40%;
+	margin: 30px auto;
 }
 </style>
 <style>
+.info-wrapper .tabs-order .el-tabs__nav-scroll {
+	padding-left: 15px;
+}
+
+
 .info-wrapper .tabs-order .el-tabs__item {
 	padding: 0 25px;
 	font-size: 14px;
@@ -336,6 +436,45 @@ const handleClickOrder = function () {
 	cursor: pointer;
 	border: 0 none;
 	outline: 0 none;
+}
+
+.tabs-order-details .el-table.order-table tr th {
+	color: #111;
+	font-weight: normal;
+}
+
+.tabs-order-details .el-table.order-table .el-table__body tr td {
+	border: none;
+}
+
+.tabs-order-details .el-table.order-table tr th {
+	background-color: #fff !important;
+	font-size: 14px;
+	color: #111;
+	font-weight: normal;
+}
+
+.tabs-order-details .el-table.order-table tr.order-item-th th {
+	background-color: #f0f2fa !important;
+	padding: 0;
+	font-size: 12px;
+}
+
+.tabs-order-details .el-table.order-table tr.order-item-th th:first-of-type {
+	border-radius: 10px 0 0 10px;
+}
+
+.tabs-order-details .el-table.order-table tr.order-item-th th:last-of-type {
+	border-radius: 0 10px 10px 0;
+}
+
+.tabs-order-details .el-table.order-table tr:hover,
+.tabs-order-details .el-table.order-table tr:hover>td {
+	background: #fff !important;
+}
+
+.tabs-order-details .el-table.order-table.order-thead-table .el-table__body-wrapper {
+	display: none !important;
 }
 </style>
 
