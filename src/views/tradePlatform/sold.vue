@@ -5,34 +5,33 @@
 				<img src="https://img.alicdn.com/imgextra/i2/1115350887/O1CN01B2LRQR1IQIBDVMEob_!!1115350887-0-shopmanager.jpg">
 			</div>
 			<div class="wrapper-right">
-				<p>1、不同类型商品所需资质类型不同，具体请参照平台“<a
-						href="https://helpcenter.taobao.com/servicehall/knowledge_detail?spm=a21wg.updatequalinfo.0.0.6739602bvTHUlv&amp;kwdContentId=10236023758923776&amp;hcSessionId=52c585a1-d677-42a4-9152-2fbbf466c650">淘宝特种资质备案知识汇总</a>”
+				<p>为更好的保护消费者隐私，买家淘宝会员名字段作为敏感字段，平台不再明文展示，卖家中心将对商家订单中的买家会员名字段脱敏展示，已卖出的宝贝页面将不再提供明文解密开关（逐步灰度中）
 				</p>
-				<p>2、商家所提交的证照请确保真实有效，若提供虚假资质，平台将依据规则处于店铺监管、店铺删除等处置。规则要求<a
-						href="https://rule.taobao.com/detail-14.htm?spm=a2177.7231193.0.0.LLSy3p&amp;tag=self">点此</a></p>
-				<p>3、医疗器械相关资质，若为淘宝上传审核通过的，1688平台需重新上传，审核通过后再发布商品</p>
-				<p>4、证照提交后审核时间为2个工作日，证照审核通过后，方可发布对应类型的商品</p>
-				<p>5、根据《电子商务法》和《网络交易监督管理办法
-					》的要求，资质审核通过后，平台将对已审核通过的资质进行每六个月一次的再次核验确认。如果再次核验不通过，仍将下线资质，为避免影响商家正常的业务经营，如果您的资质有变动，请您及时更新。</p>
+				<p>【短信服务】号码保护订单也可以给消费者发订单履约短信哦，快给贵店铺的亲们更好的关怀吧！<a target="_blank"
+						href="https://myseller.taobao.com/home.htm/bc-templates?appId=249">立即去设置&gt;&gt;</a>
+				</p>
 			</div>
 		</div>
 		<div class="note block-wrapper">
 			<div class="wrapper-left">
-				<img src="https://img.alicdn.com/imgextra/i2/1115350887/O1CN01B2LRQR1IQIBDVMEob_!!1115350887-0-shopmanager.jpg">
+				<img src="https://img.alicdn.com/imgextra/i1/O1CN01Tqodfp1W9iJUFhdCa_!!6000000002746-2-tps-254-200.png">
 			</div>
 			<div class="wrapper-right">
-				<p>1、不同类型商品所需资质类型不同，具体请参照平台“<a
-						href="https://helpcenter.taobao.com/servicehall/knowledge_detail?spm=a21wg.updatequalinfo.0.0.6739602bvTHUlv&amp;kwdContentId=10236023758923776&amp;hcSessionId=52c585a1-d677-42a4-9152-2fbbf466c650">淘宝特种资质备案知识汇总</a>”
+				<p>【不设置会很亏】顺手买一件【全面】开放跨店活动，一键设置后【免费】获取更多新客流量，带成交！
+					<a target="_blank" href="https://shell.mkt.taobao.com/taobaoTied/index">立即去设置&gt;&gt;</a>
 				</p>
-				<p>2、商家所提交的证照请确保真实有效，若提供虚假资质，平台将依据规则处于店铺监管、店铺删除等处置。规则要求<a
-						href="https://rule.taobao.com/detail-14.htm?spm=a2177.7231193.0.0.LLSy3p&amp;tag=self">点此</a></p>
-				<p>3、医疗器械相关资质，若为淘宝上传审核通过的，1688平台需重新上传，审核通过后再发布商品</p>
-				<p>4、证照提交后审核时间为2个工作日，证照审核通过后，方可发布对应类型的商品</p>
-				<p>5、根据《电子商务法》和《网络交易监督管理办法
-					》的要求，资质审核通过后，平台将对已审核通过的资质进行每六个月一次的再次核验确认。如果再次核验不通过，仍将下线资质，为避免影响商家正常的业务经营，如果您的资质有变动，请您及时更新。</p>
 			</div>
 		</div>
-		<div class="order block-wrapper"></div>
+		<div class="unusual-order block-wrapper">
+			<div class="item">
+				<p class="key">待发货单量</p>
+				<p class="value">1</p>
+			</div>
+			<div class="item">
+				<p class="key">发货即将超时单量</p>
+				<p class="value">0</p>
+			</div>
+		</div>
 		<div class="info-wrapper">
 			<el-tabs v-model="activeName" class="tabs-order tabs-order-all">
 				<el-tab-pane label="有效证照" name="first">
@@ -133,6 +132,7 @@ const handleClickOrder = function () {
 .note {
 	background-color: rgb(241 245 255);
 	display: flex;
+	padding: 12px;
 }
 
 .note .wrapper-left {
@@ -165,9 +165,24 @@ const handleClickOrder = function () {
 	color: #4178ff;
 }
 
-.order {
+.unusual-order {
 	background-color: rgb(241 245 255);
 	height: 40px;
+}
+
+.unusual-order {
+	background-color: #f7f8fa;
+	height: 64px;
+	display: flex;
+}
+
+.unusual-order>div {
+	width: 144px;
+	height: 100%;
+}
+
+.unusual-order>div p {
+	display: inline-block;
 }
 
 .info-wrapper {

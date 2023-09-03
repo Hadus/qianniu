@@ -8,7 +8,7 @@
         </div>
         <div class="wrapper-right">
           <p>1、不同类型商品所需资质类型不同，具体请参照平台“<a
-              href="https://helpcenter.taobao.com/servicehall/knowledge_detail?spm=a21wg.updatequalinfo.0.0.6739602bvTHUlv&amp;kwdContentId=10236023758923776&amp;hcSessionId=52c585a1-d677-42a4-9152-2fbbf466c650">淘宝特种资质备案知识汇总</a>”
+              href="https://helpcenter.taobao.com/servicehall/knowledge_detail?spm=a21wg.updatequalinfo.0.0.6739602bvTHUlv&amp;kwdContentId=10236023758923776&amp;hcSessionId=52c585a1-d677-42a4-9152-2fbbf466c650">淘宝特种资质备案知识汇总</a>
           </p>
           <p>2、商家所提交的证照请确保真实有效，若提供虚假资质，平台将依据规则处于店铺监管、店铺删除等处置。规则要求<a
               href="https://rule.taobao.com/detail-14.htm?spm=a2177.7231193.0.0.LLSy3p&amp;tag=self">点此</a></p>

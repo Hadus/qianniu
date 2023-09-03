@@ -115,6 +115,7 @@ const handleClose = function (index) {
 	font-weight: normal;
 	height: 42px;
 	width: 100%;
+
 }
 
 .el-menu-item.is-active {
@@ -157,5 +158,10 @@ const handleClose = function (index) {
 	color: #a1b1cd;
 	font-size: 12px;
 	transform: scale(.9);
+}
+</style>
+<style>
+.sidebar>ul>li.el-sub-menu>ul.el-menu {
+	transition: all 0s !important;
 }
 </style>
