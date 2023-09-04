@@ -1,4 +1,3 @@
-import {dataLink} from '@/mock/url.js';
 let routes = [
     {
       icon: 'Odometer',
@@ -137,7 +136,7 @@ let routes = [
       index: '',
       title: '数据',
       permiss: '11',
-      link: dataLink
+      link: '#/data'
     },
     { // test
       icon: 'Odometer',

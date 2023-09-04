@@ -35,6 +35,15 @@ const routes: RouteRecordRaw[] = [
     component: () => import(/* webpackChunkName: "403" */ '../views/wuliu/index.vue'),
   },
   {
+    path: '/data',
+    name: 'data',
+    meta: {
+      title: '数据',
+      permiss: '7',
+    },
+    component: () => import(/* webpackChunkName: "import" */ '../views/data/index.vue'),
+  },
+  {
     path: '/dataScreen',
     name: 'dataScreen',
     meta: {
