@@ -1,10 +1,152 @@
 <template>
-  <div class="wrapper">
-    aaaa
+  <div class="wrapper-order-detail">
+    <div class="title">
+      <el-breadcrumb separator=">">
+        <el-breadcrumb-item>我是卖家</el-breadcrumb-item>
+        <el-breadcrumb-item>交易管理</el-breadcrumb-item>
+        <el-breadcrumb-item>已卖出的宝贝</el-breadcrumb-item>
+        <el-breadcrumb-item>查看详情</el-breadcrumb-item>
+      </el-breadcrumb>
+      <div class="tips">
+        <span>该页面涉及用户隐私信息，请注意数据安全，如需显示全部用户信息请点击右侧按钮</span>
+        <span>
+          <el-switch v-model="flag_switch" active-test="显示" inactive-text="隐藏" size="large" />
+        </span>
+      </div>
+    </div>
+    <div class="status">
+      <div class="head"><span>订单状态:</span><span>交易关闭</span></div>
+      <div class="mark">
+        <v-btn-fill type="blank" size="normal">标记</v-btn-fill>
+        <v-btn-fill type="blank" size="normal">订单优惠详情</v-btn-fill>
+        <v-btn-fill type="blank" size="normal">订单优惠详情</v-btn-fill>
+        <v-btn-fill type="blank" size="normal">订单优惠详情</v-btn-fill>
+      </div>
+      <div class="note">
+        <p>
+          <span>经审核您的商品［紫水晶手链紫罗兰深紫单圈手串乌拉圭饰品女款乌拉圭紫紫色］存在交易风险。交易款项将在买家确认收货后的45天内进行交易账期延长，以用于买家可能提起的交易维权保障。交易账期将在2023年10月06日
+            22:46:36自动解除，在此期间若消费者发起售后维权，交易账期会持续延长至维权结束，并依维权结果确定归属。</span>
+          <a href="//rule.taobao.com/detail-1503.htm?spm=a21dvs.23742412.0.0.309a3606ksXY8U&amp;tag=self&amp;cId=87"
+            target="_blank" style="font-size: 12px;">交易账期延长解析
+          </a>
+          <a href="//lab.alipay.com/user/balance/frozen.htm" target="_blank" style="font-size: 12px;">查看资金明细
+          </a>
+        </p>
+      </div>
+    </div>
+    <div class="info">
+      <h3>订单信息</h3>
+      <div class="info-detail">
+        <div class="col">
+          <h4 class="head">交易信息</h4>
+          <p><span class="key">订单编号:</span><span class="value">3475009332833905518</span><a>复制</a></p>
+          <p><span class="key">支付宝交易号:</span><span class="value">2023090222001192141415955641</span><a>复制</a></p>
+          <p><span class="key">创建时间:</span><span class="value">2023-09-02 13:32:50</span></p>
+          <p><span class="key">付款时间:</span><span class="value">2023-09-02 13:32:54</span></p>
+        </div>
+        <div class="col">
+          <h4 class="head head-icon">买家信息
+            <el-icon class="icon-head" @click="handelClicklookInfo">
+              <ArrowDownBold />
+            </el-icon>
+          </h4>
+          <p><span class="key">昵称:</span><span class="value nickname-wrapper">
+              <p class="nickname">
+                <a href="javascript: void(0);" target="_blank" title="点此可以直接和卖家交流选好的宝贝，或相互交流网购体验，还支持语音视频噢。"></a>
+                爱**
+              </p>
+              <el-icon>
+                <ArrowDownBold />
+              </el-icon>
+            </span></p>
+          <p><span class="key">联系电话:</span><span class="value">180******55</span></p>
+          <p><span class="key">邮件:</span><span class="value">2023-09-02 13:32:50</span></p>
+          <p>
+            <span class="key">支付宝:</span><span class="value">2023-09-02 13:32:54</span><a>付款给买家</a>
+          <p class="tips"><span>该功能为支付宝即时到帐，用于退运费等小额退款，请谨慎操作</span></p>
+          </p>
+        </div>
+        <div class="col">
+          <h4 class="head head-icon">物流信息
+            <el-icon class="icon-head">
+              <ArrowDownBold />
+            </el-icon>
+          </h4>
+          <p><span class="key">收货地址：:</span><span class="value">张**，***********，江苏省 连云港市 东海县 ***********
+              ，***</span><a>复制</a></p>
+          <p><span class="key">运送方式:</span><span class="value">快递</span></p>
+          <p><span class="key">物流公司名称:</span><span class="value">邮政快递包裹</span></p>
+          <p>
+            <span class="key">运单号:</span><span class="value">9872018204859</span>
+            <a @click="handleLookWuliu">查看物流信息</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="table">
+      <el-table :data="tableData" style="width: 100%" header-row-class-name="order-item-th"
+        class="order-table order-tbody-table">
+        <el-table-column class="td-format" label="宝贝" align="center">
+          <template #default>
+            <v-order-item />
+          </template>
+        </el-table-column>
+        <el-table-column class="td-format" label="宝贝属性" width="165" align="center">
+          <template #default>
+            <p class="main">1</p>
+          </template>
+        </el-table-column>/>
+        <el-table-column class="td-format" label="状态" width="165" align="center">
+          <template #default>
+            <p class="main"><a href="javascript:;">退款成功</a></p>
+          </template>
+        </el-table-column>
+        <el-table-column class="td-format" label="服务" width="165" align="center">
+          <template #default>
+            <p class="main">交易关闭</p>
+            <p class="desc">
+            </p>
+          </template>
+        </el-table-column>
+        <el-table-column class="td-format" label="单价" width="165" align="center">
+          <template #default>
+            <p class="main">¥50.00</p>
+            <p class="desc">（含快递：¥0.00）</p>
+          </template>
+        </el-table-column>
+        <el-table-column class="td-format" label="数量" width="165" align="center">
+          <template #default>
+            <p class="main">
+              <a href="javascript:;">我已评价</a>
+            </p>
+          </template>
+        </el-table-column>/>
+        <el-table-column class="td-format" label="优惠" width="165" align="center">
+          <template #default>
+            <p class="main">
+              <a href="javascript:;">我已评价</a>
+            </p>
+          </template>
+        </el-table-column>/>
+        <el-table-column class="td-format" label="商品总价" width="165" align="center">
+          <template #default>
+            <p class="main">
+              <a href="javascript:;">我已评价</a>
+            </p>
+          </template>
+        </el-table-column>/>
+      </el-table>
+      <div class="money"><span>实收款：</span><span>100.00</span></div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts" name="orderDetail">
+import { useRouter } from 'vue-router';
+const $router = useRouter();
+import vBtnFill from '@/components/BtnFill/index.vue'
+import vOrderItem from './orderItem.vue';
+
 // const { item } = defineProps({
 //   item: Object,
 //   test: {
@@ -12,6 +154,264 @@
 //     default: '1'
 //   }
 // })
+let flag_switch = true;
+const handleLookWuliu = function () {
+  $router.push('/wuliu');
+};
+const handelClicklookInfo = function (e) {
+  console.log(e.target);
+};
+const tableData = [
+  {
+    date: '2016-05-03',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+];
 </script>
 
-<style scoped></style>
+<style scoped>
+.wrapper-order-detail {
+  width: 100%;
+}
+
+.wrapper-order-detail>.title {
+  line-height: 49px;
+}
+
+.wrapper-order-detail>.title>.tips {
+  color: rgb(17, 17, 17);
+  font-size: 14px;
+}
+
+.wrapper-order-detail>.status {
+  color: #111;
+  font-weight: 700;
+  font-size: 22px;
+  padding: 20px;
+  background: #f7f8fa;
+  border: 1px solid #f7f8fa;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.wrapper-order-detail>.status>div {
+  margin-bottom: 15px;
+}
+
+.wrapper-order-detail>.status>div:last-of-type {
+  margin-bottom: 0;
+}
+
+.wrapper-order-detail>.status .mark p {
+  margin-right: 20px;
+}
+
+.wrapper-order-detail>.status .note {
+  padding-top: 20px;
+  color: #111;
+  font-size: 14px;
+  border-top: 1px solid #e6e8ed;
+  font-weight: normal;
+}
+
+.wrapper-order-detail>.status .note>p {
+  margin-bottom: 5px;
+  line-height: 25px;
+}
+
+.wrapper-order-detail>.stauts .note>p>a {
+  color: #5584ff;
+}
+
+.wrapper-order-detail>.info {}
+
+.wrapper-order-detail>.info h3 {
+  color: rgb(17, 17, 17);
+  font-size: 18px;
+  position: relative;
+  font-weight: 500;
+  width: 92px;
+  line-height: 48px;
+}
+
+.wrapper-order-detail>.info h3::after {
+  content: ' ';
+  width: 40%;
+  font-size: 14px;
+  position: absolute;
+  bottom: 0px;
+  left: 20%;
+  border-bottom: 2px solid #3d7fff;
+}
+
+.wrapper-order-detail>.info>.info-detail {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  margin: 20px 0;
+  background: #f7f8fa;
+  border: 1px solid #f7f8fa;
+  border-radius: 10px;
+  padding: 20px;
+  padding-bottom: 5px;
+}
+
+.wrapper-order-detail>.info>.info-detail .col {
+  flex: 1;
+  font-size: 12px;
+  line-height: 28px;
+  margin-bottom: 15px;
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+}
+
+.wrapper-order-detail>.info>.info-detail .col .head-icon>.icon-head {
+  cursor: pointer;
+}
+
+.wrapper-order-detail>.info>.info-detail .col>h4 {
+  font-weight: 700;
+  font-size: 14px;
+  color: #111;
+  letter-spacing: 0;
+  line-height: 15px;
+  margin-bottom: 15px;
+  font-weight: normal;
+}
+
+.wrapper-order-detail>.info>.info-detail .col>p span:first-child {
+  margin-right: 5px;
+}
+
+.wrapper-order-detail>.info>.info-detail .col>p span.key {
+  color: #848689;
+}
+
+.wrapper-order-detail>.info>.info-detail .col>p span.value {
+  color: #111;
+}
+
+.wrapper-order-detail>.info>.info-detail .col>p a {
+  color: rgb(61, 127, 255);
+  margin-left: 5px;
+}
+
+.wrapper-order-detail>.info>.info-detail .col>p span.value .nickname {
+  display: inline;
+  color: rgb(61, 127, 255);
+  margin-right: 2px;
+}
+
+.wrapper-order-detail>.info>.info-detail .col>p span.value .nickname>a {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("//img.alicdn.com/tps/i1/T15AD7FFFaXXbJnvQ_-130-60.gif");
+  background-position: 50px 0px;
+  vertical-align: sub;
+}
+
+.wrapper-order-detail>.info>.info-detail .col p.tips {
+  background: url(https://img.alicdn.com/imgextra/i3/O1CN014k7WnK1s2lpgqT1eJ_!!6000000005709-2-tps-30-30.png?getAvatar=avatar) no-repeat;
+  background-position: 7px 13px;
+  background-size: 20px;
+  background-color: rgba(0, 87, 255, .06);
+  border-radius: 9px;
+  margin-bottom: 10px;
+  width: 390px;
+  line-height: 44px;
+  padding: 2px 10px 2px 32px;
+}
+
+.wrapper-order-detail p.main,
+.wrapper-order-detail p.desc {
+  font-size: 12px;
+  text-align: center;
+}
+
+.wrapper-order-detail p.desc {
+  color: #999;
+  background-color: #fff;
+}
+
+.wrapper-order-detail p>a {
+  color: #5584ff;
+}
+
+.wrapper-order-detail .table>.money {
+  line-height: 60px;
+  text-align: right;
+  font-weight: 500;
+}
+
+.wrapper-order-detail .table>.money>span:first-child {
+  color: #111;
+  font-size: 14px;
+}
+
+.wrapper-order-detail .table>.money>span:last-child {
+  color: #ff5000;
+  font-size: 18px;
+  margin-left: 100px;
+  margin-right: 15px;
+}
+</style>
+<style>
+.el-breadcrumb__item>.el-breadcrumb__inner {
+  font-weight: normal;
+  font-size: 14px;
+  color: rgb(102, 102, 102);
+  cursor: pointer;
+}
+
+.el-breadcrumb__item:last-child>.el-breadcrumb__inner {
+  color: rgb(51, 51, 51);
+  cursor: pointer;
+}
+
+.el-breadcrumb__item>.el-breadcrumb__inner:hover {
+  color: #3d7fff;
+}
+
+.el-breadcrumb__item:last-child>.el-breadcrumb__inner:hover {
+  color: #3d7fff;
+}
+
+/* table */
+.wrapper-order-detail .el-table.order-table tr th {
+  color: #111;
+  font-weight: normal;
+}
+
+.wrapper-order-detail .el-table.order-table .el-table__body tr td {
+  border: none;
+}
+
+.wrapper-order-detail .el-table.order-table tr th {
+  background-color: #fff !important;
+  font-size: 14px;
+  color: #111;
+  font-weight: normal;
+  height: 45px;
+}
+
+.wrapper-order-detail .el-table.order-table tr.order-item-th th {
+  background-color: #f0f2fa !important;
+  padding: 0;
+  font-size: 12px;
+}
+
+.wrapper-order-detail .el-table.order-table tr.order-item-th th:first-of-type {
+  border-radius: 10px 0 0 10px;
+}
+
+.wrapper-order-detail .el-table.order-table tr.order-item-th th:last-of-type {
+  border-radius: 0 10px 10px 0;
+}
+
+.wrapper-order-detail .el-table.order-table tr:hover,
+.wrapper-order-detail .el-table.order-table tr:hover>td {
+  background: #fff !important;
+}
+</style>

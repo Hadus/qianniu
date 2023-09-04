@@ -39,6 +39,7 @@ p.btn-fill {
   cursor: pointer;
   display: flex;
   border: 1px solid transparent;
+  font-weight: normal;
 }
 
 p.btn-fill {
@@ -70,6 +71,7 @@ p:hover {
 p.btn-fill.normal {
   height: 36px;
   line-height: 36px;
+  font-size: 14px;
 }
 
 p.btn-fill.blank {

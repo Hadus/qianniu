@@ -27,6 +27,14 @@ const routes: RouteRecordRaw[] = [
     ],
   },
   {
+    path: '/wuliu',
+    name: 'wuliu',
+    meta: {
+      title: '物流',
+    },
+    component: () => import(/* webpackChunkName: "403" */ '../views/wuliu/index.vue'),
+  },
+  {
     path: '/login',
     name: 'Login',
     meta: {

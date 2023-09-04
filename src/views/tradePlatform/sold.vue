@@ -82,11 +82,11 @@
 								<el-checkbox></el-checkbox>&nbsp;&nbsp;宝贝
 							</template>
 						</el-table-column>
-						<el-table-column align="center" class="td-format" label="数量" width="165" />
-						<el-table-column align="center" class="td-format" label="售后" width="165" />
-						<el-table-column align="center" class="td-format" label="交易状态" width="165" />
-						<el-table-column align="center" class="td-format" label="实收款" width="165" />
-						<el-table-column align="center" class="td-format" label="评价" width="165" />
+						<el-table-column align="center" label="数量" width="165" />
+						<el-table-column align="center" label="售后" width="165" />
+						<el-table-column align="center" label="交易状态" width="165" />
+						<el-table-column align="center" label="实收款" width="165" />
+						<el-table-column align="center" label="评价" width="165" />
 					</el-table>
 					<!-- 内容 -->
 					<el-table style="width: 100%" header-row-class-name="order-item-th" class="order-table order-tbody-table"
@@ -107,34 +107,34 @@
 								</div>
 							</template>
 							<template #default>
-								<vOrderItem></vOrderItem>
+								<v-order-item />
 							</template>
 						</el-table-column>
-						<el-table-column class="td-format" label="" width="165" align="center">
+						<el-table-column label="" width="165" align="center">
 							<template #default>
 								<p class="main">1</p>
 							</template>
 						</el-table-column>/>
-						<el-table-column class="td-format" label="" width="165" align="center">
+						<el-table-column label="" width="165" align="center">
 							<template #default>
-								<p class="main"><a href="">退款成功</a></p>
+								<p class="main"><a href="javascript:;">退款成功</a></p>
 							</template>
 						</el-table-column>
-						<el-table-column class="td-format" label="" width="165" align="center">
+						<el-table-column label="" width="165" align="center">
 							<template #default>
 								<p class="main">交易关闭</p>
 								<p class="desc">
-									<a href="">详情</a>
+									<a href="javascript:;" @click="handleClickOrder">详情</a>
 								</p>
 							</template>
 						</el-table-column>
-						<el-table-column class="td-format" label="" width="165" align="center">
+						<el-table-column label="" width="165" align="center">
 							<template #default>
 								<p class="main">¥50.00</p>
 								<p class="desc">（含快递：¥0.00）</p>
 							</template>
 						</el-table-column>
-						<el-table-column class="td-format" width="165" align="center">
+						<el-table-column width="165" align="center">
 							<template #header>
 								<el-icon>
 									<ArrowDownBold />
@@ -142,7 +142,7 @@
 							</template>
 							<template #default>
 								<p class="main">
-									<a href="">我已评价</a>
+									<a href="javascript:;">我已评价</a>
 								</p>
 							</template>
 						</el-table-column>/>
@@ -190,11 +190,6 @@ const activeNameDetails = 'firstDetails'
 const tableData = [
 	{
 		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-	{
-		date: '2016-05-02',
 		name: 'Tom',
 		address: 'No. 189, Grove St, Los Angeles',
 	},
