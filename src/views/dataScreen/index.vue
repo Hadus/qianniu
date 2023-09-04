@@ -374,18 +374,18 @@ export default {
 };
 </script>
 <style>
-.el-table__header,
-.el-scrollbar__view,
-.el-table__body {
+.dataScreen-container .el-table__header,
+.dataScreen-container .el-scrollbar__view,
+.dataScreen-container .el-table__body {
 	width: 100% !important;
 }
 
-.goods-table-column {
+.dataScreen-container .goods-table-column {
 	font-size: 15px;
 	color: #fff;
 }
 
-.imageTipsLong {
+.dataScreen-container .imageTipsLong {
 	height: 50px;
 	font-size: 15px;
 	white-space: normal;
@@ -401,14 +401,14 @@ export default {
 	color: #fff;
 }
 
-.el-table--border .el-table__inner-wrapper::after,
-.el-table--border::after,
-.el-table--border::before,
-.el-table__inner-wrapper::before {
+.dataScreen-container .el-table--border .el-table__inner-wrapper::after,
+.dataScreen-container .el-table--border::after,
+.dataScreen-container .el-table--border::before,
+.dataScreen-container .el-table__inner-wrapper::before {
 	display: none;
 }
 
-.goods-table .el-table th {
+.dataScreen-container .goods-table .el-table th {
 	background-color: #1a1a1a !important;
 	font-size: 15px;
 	color: #fff;
@@ -417,55 +417,55 @@ export default {
 	line-height: 47px;
 }
 
-.goods-table .el-table td.el-table__cell,
-.goods-table .el-table th.el-table__cell.is-leaf {
+.dataScreen-container .goods-table .el-table td.el-table__cell,
+.dataScreen-container .goods-table .el-table th.el-table__cell.is-leaf {
 	border-bottom: none;
 }
 
-.goods-table .el-table table tr:nth-child(odd) {
+.dataScreen-container .goods-table .el-table table tr:nth-child(odd) {
 	background-color: rgba(60, 60, 69, 0.5);
 }
 
-.goods-table .el-table tr {
+.dataScreen-container .goods-table .el-table tr {
 	background-color: transparent;
 }
 
 /* 偶数行背景色 */
-.goods-table .goods-table table tr:nth-child(even) {
+.dataScreen-container .goods-table .goods-table table tr:nth-child(even) {
 	background-color: #1a1a1a !important;
 }
 
-.goods-table .el-table--enable-row-hover .el-table__body tr:hover>td.el-table__cell {
+.dataScreen-container .goods-table .el-table--enable-row-hover .el-table__body tr:hover>td.el-table__cell {
 	background-color: transparent;
 }
 
-.goods-table .el-table tr:hover {
+.dataScreen-container .goods-table .el-table tr:hover {
 	background-color: transparent;
 }
 
-.el-table__row {
+.dataScreen-container .el-table__row {
 	background-color: rgba(60, 60, 69, 0.5);
 }
 
-.goods-table .el-table .ascending .sort-caret.ascending {
+.dataScreen-container .goods-table .el-table .ascending .sort-caret.ascending {
 	border-bottom-color: #ff033f;
 }
 
-.goods-table .el-table .descending .sort-caret.descending {
+.dataScreen-container .goods-table .el-table .descending .sort-caret.descending {
 	border-top-color: #ff033f;
 }
 
-.goods-table .el-table th:first-child {
+.dataScreen-container .goods-table .el-table th:first-child {
 	border-top-left-radius: 20px;
 	border: #1a1a1a !important;
 }
 
-.goods-table .el-table th:last-child {
+.dataScreen-container .goods-table .el-table th:last-child {
 	border-top-right-radius: 20px;
 	border: #1a1a1a !important;
 }
 
-.imageContainer {
+.dataScreen-container .imageContainer {
 	width: 50px;
 	height: 50px;
 	border-radius: 6px;
@@ -477,14 +477,14 @@ export default {
 	margin-right: 15px;
 }
 
-.imageContainer>img {
+.dataScreen-container .imageContainer>img {
 	width: 100%;
 	height: 100%;
 	display: inline-block;
 }
 </style>
 <style scoped>
-.tipNumImage {
+.dataScreen-container .tipNumImage {
 	position: absolute;
 	top: -5px;
 	left: -1px;
@@ -496,7 +496,7 @@ export default {
 	font-family: DINAlternate-Bold;
 }
 
-.chart-title {
+.dataScreen-container .chart-title {
 	font-family: PingFangSC;
 	font-size: 18px;
 	color: #fff;
@@ -506,16 +506,15 @@ export default {
 	flex-shrink: 0;
 }
 
-.chart-wrap {
-
+.dataScreen-container .chart-wrap {
 	height: 225px;
 }
 
-.lookAll {
+.dataScreen-container .lookAll {
 	position: relative;
 }
 
-.card {
+.dataScreen-container .card {
 	margin: 15px 10px;
 	background-image: -webkit-linear-gradient(113deg, rgba(59, 39, 91, .6), rgba(21, 19, 19, .6) 88%);
 	background-image: linear-gradient(-23deg, rgba(59, 39, 91, .6), rgba(21, 19, 19, .6) 88%);
@@ -523,7 +522,7 @@ export default {
 	height: 130px;
 }
 
-.card-title {
+.dataScreen-container .card-title {
 	font-family: PingFangSC-Regular;
 	font-size: 18px;
 	color: #fff;
@@ -532,37 +531,29 @@ export default {
 	padding: 12px;
 }
 
-.card-content {
-
+.dataScreen-container .card-content {
 	display: flex;
-
 	flex-direction: row;
-
 	align-items: center;
 	flex-wrap: wrap;
 }
 
-.card-content>.field {
+.dataScreen-container .card-content>.field {
 	width: 40%;
 	padding: 6px 12px;
-
-
 	justify-content: space-between;
-
 	display: flex;
-
 	flex-direction: row;
-
 	align-items: center;
 }
 
-.card-content>.field>.title {
+.dataScreen-container .card-content>.field>.title {
 	font-size: 14px;
 	color: #b3b3b3;
 	line-height: 16px;
 }
 
-.card-content>.field>.value {
+.dataScreen-container .card-content>.field>.value {
 	font-family: DINAlternate-Bold;
 	font-size: 18px;
 	color: #fff;
@@ -573,7 +564,7 @@ export default {
 	overflow: hidden;
 }
 
-.lookAll button {
+.dataScreen-container .lookAll button {
 	height: 28px;
 	width: 86px;
 	border: none;
@@ -587,7 +578,7 @@ export default {
 	padding-left: 10px;
 }
 
-.lookAll button:after {
+.dataScreen-container .lookAll button:after {
 	content: "";
 	position: absolute;
 	z-index: 5;
@@ -605,7 +596,7 @@ export default {
 	cursor: pointer;
 }
 
-.ant-spin-container {
+.dataScreen-container .ant-spin-container {
 	padding: 5px 12px;
 	border-radius: 12px;
 	cursor: pointer;
@@ -615,13 +606,13 @@ export default {
 	padding: 0px 26px;
 }
 
-.ant-spin-container img {
+.dataScreen-container .ant-spin-container img {
 	width: 19px;
 	height: 19px;
 	background: #1a1a1a;
 }
 
-.activeclass {
+.dataScreen-container .activeclass {
 	background-color: #ff0040;
 	;
 	text-shadow: 0 0 .25px currentColor;
@@ -629,7 +620,7 @@ export default {
 	border-radius: 5px;
 }
 
-.switch-item {
+.dataScreen-container .switch-item {
 	width: 50px;
 	height: 28px;
 	font-family: Helvetica;
@@ -641,7 +632,7 @@ export default {
 	display: inline-block;
 }
 
-.right-module {
+.dataScreen-container .right-module {
 	width: 100%;
 	position: relative;
 	margin: 10px 0;
@@ -653,7 +644,7 @@ export default {
 	color: #fff;
 }
 
-.right-module:first-child {
+.dataScreen-container .right-module:first-child {
 	height: 52px;
 	line-height: 52px;
 	box-sizing: border-box;
@@ -662,28 +653,28 @@ export default {
 	justify-content: flex-start;
 }
 
-.right-module:nth-child(2) {
+.dataScreen-container .right-module:nth-child(2) {
 	background-color: #1a1a1a;
 	height: 360px;
 }
 
-.goods-table {
+.dataScreen-container .goods-table {
 	font-size: 15px;
 	color: #fff;
 }
 
 
-.el-table__header {
+.dataScreen-container .el-table__header {
 	width: 100%;
 }
 
-.goods-table table {
+.dataScreen-container .goods-table table {
 	width: 100%;
 	height: 100%;
 }
 
 
-.middle-down {
+.dataScreen-container .middle-down {
 	width: 100%;
 	margin: 20px 0;
 	border-radius: 20px;
@@ -693,7 +684,7 @@ export default {
 	background-color: #1a1a1a;
 }
 
-.center--middle>div:first-child>div:first-child {
+.dataScreen-container .center--middle>div:first-child>div:first-child {
 	font-family: PingFangSC-Regular;
 	font-size: 18px;
 	color: #fff;
@@ -702,12 +693,12 @@ export default {
 	margin-bottom: 15px;
 }
 
-.center--middle>div:first-child>div:last-child {
+.dataScreen-container .center--middle>div:first-child>div:last-child {
 	font-size: 20px;
 	color: #fff;
 }
 
-.center--middle>div:last-child>div:last-child {
+.dataScreen-container .center--middle>div:last-child>div:last-child {
 	font-family: PingFangSC-Regular;
 	font-size: 18px;
 	color: #fff;
@@ -716,26 +707,26 @@ export default {
 	margin-bottom: 15px;
 }
 
-.firstImg {
+.dataScreen-container .firstImg {
 	position: absolute;
 	top: 60px;
 	left: 110px;
 }
 
-.firstImg>div:first-child {
+.dataScreen-container .firstImg>div:first-child {
 	font-size: 18px;
 	color: #fff;
 	text-align: center;
 }
 
-.firstImg>div:last-child {
+.dataScreen-container .firstImg>div:last-child {
 	font-size: 42px;
 	color: #fff;
 }
 
-.center--left,
-.center--middle,
-.center--middle {
+.dataScreen-container .center--left,
+.dataScreen-container .center--middle,
+.dataScreen-container .center--middle {
 	padding: 18px 30px;
 	position: relative;
 	border: 1px solid transparent;
@@ -744,15 +735,15 @@ export default {
 	text-align: center;
 }
 
-.center--left {
+.dataScreen-container .center--left {
 	margin-left: -20px;
 }
 
-.center--middle {
+.dataScreen-container .center--middle {
 	margin: 0 20px;
 }
 
-.centerContent {
+.dataScreen-container .centerContent {
 	left: 0;
 	right: 0;
 	top: 155px;
@@ -764,20 +755,20 @@ export default {
 	box-sizing: border-box;
 }
 
-.zhibotips {
+.dataScreen-container .zhibotips {
 	width: 100%;
 	text-align: right;
 	height: 40px;
 	line-height: 40px;
 }
 
-.liveTips {
+.dataScreen-container .liveTips {
 	display: flex;
 	justify-content: space-between;
 	padding: 0px 20px;
 }
 
-.duibi {
+.dataScreen-container .duibi {
 	height: 24px;
 	padding: 0 7px;
 	font-size: 14px;
@@ -787,45 +778,42 @@ export default {
 	background: #ff0040;
 }
 
-.avatarName {
+.dataScreen-container .avatarName {
 	margin-left: 10px;
 	font-size: 25px;
 	color: #fff;
 	letter-spacing: 0;
 }
 
-.center-big {
+.dataScreen-container .center-big {
 	display: flex;
 	justify-content: space-between;
 	padding: 13px 11px;
 }
 
-.middle-top {
+.dataScreen-container .middle-top {
 	flex: 1;
 	height: 430px;
 }
 
-.middle-live {
+.dataScreen-container .middle-live {
 	z-index: 2;
 	top: 0;
 	width: 100%;
+	height: 100px;
 	border-radius: 20px;
 	background-color: rgba(60, 60, 69, .55);
 	overflow: hidden;
-	background-position: 50%;
-	background-repeat: no-repeat;
-	background-size: cover;
-	height: 100px;
 	margin-top: 10px;
 
 }
 
-.left-module-down>div {
+.dataScreen-container .left-module-down>div {
 	height: 100%;
 	box-sizing: border-box;
 }
 
-.left-module-down>div .live-actions {
+.dataScreen-container .left-module-down>div .live-actions {
 	height: 100%;
 	display: flex;
 	justify-content: center;
@@ -834,23 +822,23 @@ export default {
 	margin-top: 50px;
 }
 
-.left-module-down>div .live-actions img {
+.dataScreen-container .left-module-down>div .live-actions img {
 	vertical-align: middle;
 	border-style: none;
 }
 
-.live-actions .btns-group {
+.dataScreen-container .live-actions .btns-group {
 	margin-top: 30px;
 }
 
-.ant-btn-round {
+.dataScreen-container .ant-btn-round {
 	height: 32px;
 	padding: 4px 16px;
 	font-size: 14px;
 	border-radius: 32px;
 }
 
-.ant-btn-primary {
+.dataScreen-container .ant-btn-primary {
 	color: #fff;
 	border-color: #ff0040;
 	background: #ff0040;
@@ -858,23 +846,23 @@ export default {
 	box-shadow: 0 2px 0 rgb(0 0 0 / 5%);
 }
 
-.live-actions .btns-group>div button:first-child {
+.dataScreen-container .live-actions .btns-group>div button:first-child {
 	margin-right: 10px;
 }
 
-.ant-btn-ghost {
+.dataScreen-container .ant-btn-ghost {
 	color: #a9a9a9;
 	border-color: #434343;
 	background: transparent;
 }
 
-.live-actions-text {
+.dataScreen-container .live-actions-text {
 	font-size: 16px;
 	padding: 0 25px;
 	text-align: center;
 }
 
-.core-data-content .data-item div:first-child.large {
+.dataScreen-container .core-data-content .data-item div:first-child.large {
 	opacity: 1;
 	font-weight: 700;
 	font-family: PingFangSC-Medium;
@@ -882,26 +870,26 @@ export default {
 	color: #fff;
 }
 
-.core-data-content .data-item div:last-child {
+.dataScreen-container .core-data-content .data-item div:last-child {
 	font-size: 20px;
 	color: #fff;
 	font-family: DINAlternate-Bold;
 	line-height: 22px;
 }
 
-.core-data-content .data-item div:first-child {
+.dataScreen-container .core-data-content .data-item div:first-child {
 	opacity: .6;
 	font-family: PingFangSC-Regular;
 	font-size: 14px;
 	color: #fff;
 }
 
-.core-data-content .data-item>div {
+.dataScreen-container .core-data-content .data-item>div {
 	position: relative;
 	margin-left: 20px;
 }
 
-.core-data-content .data-item div:first-child.large img {
+.dataScreen-container .core-data-content .data-item div:first-child.large img {
 	height: 14px;
 	width: 14px;
 	position: absolute;
@@ -909,7 +897,7 @@ export default {
 	margin-top: 4px;
 }
 
-.core-data-content .data-list .data-item {
+.dataScreen-container .core-data-content .data-list .data-item {
 	padding: 0 20px;
 	margin-top: 5px;
 	margin-bottom: 5px;
@@ -920,7 +908,7 @@ export default {
 	box-sizing: border-box;
 }
 
-.core-data-content .data-list {
+.dataScreen-container .core-data-content .data-list {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -929,21 +917,21 @@ export default {
 	transition: height .3s ease-in-out;
 }
 
-.core-data-content .data-list>div {
+.dataScreen-container .core-data-content .data-list>div {
 	width: 100%;
 	box-sizing: border-box;
 
 }
 
-.core-data-content .data-list>div>div {
+.dataScreen-container .core-data-content .data-list>div>div {
 	margin: 5px 0px
 }
 
-.activetba {
+.dataScreen-container .activetba {
 	left: 102px !important;
 }
 
-.ant-tabs-ink-bar {
+.dataScreen-container .ant-tabs-ink-bar {
 	position: absolute;
 	background: #ff0040;
 	pointer-events: none;
@@ -976,13 +964,13 @@ export default {
 	background-color: #1a1a1a;
 }
 
-.left {
+.dataScreen-container .left {
 	display: flex;
 	justify-content: flex-start;
 	flex-wrap: nowrap;
 }
 
-.homeLogo {
+.dataScreen-container .homeLogo {
 	height: 30px;
 	width: 230px;
 	background-image: url(https://img.alicdn.com/imgextra/i2/O1CN01LjExZD1kOHbmDyfDT_!!6000000004673-55-tps-230-30.svg);
@@ -991,12 +979,12 @@ export default {
 	margin-top: 20px;
 }
 
-.screen-switch {
+.dataScreen-container .screen-switch {
 	position: relative;
 	z-index: 9;
 }
 
-.entry {
+.dataScreen-container .entry {
 	position: relative;
 	width: 60px;
 	margin-left: 10px;
@@ -1012,7 +1000,7 @@ export default {
 	margin-top: 30px;
 }
 
-.entry:after {
+.dataScreen-container .entry:after {
 	content: "";
 	position: absolute;
 	top: 3px;
@@ -1027,7 +1015,7 @@ export default {
 	transform: rotate(-90deg) scale(.7);
 }
 
-.right {
+.dataScreen-container .right {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
@@ -1035,7 +1023,7 @@ export default {
 	flex-wrap: nowrap;
 }
 
-.right img {
+.dataScreen-container .right img {
 	width: 30px;
 	height: 30px;
 	border-radius: 15px;
@@ -1045,7 +1033,7 @@ export default {
 	box-sizing: border-box;
 }
 
-.right span {
+.dataScreen-container .right span {
 	font-family: PingFangSC-Regular;
 	font-size: 14px;
 	color: #bfbfbf;
@@ -1053,7 +1041,7 @@ export default {
 	word-break: keep-all;
 }
 
-.main {
+.dataScreen-container .main {
 	height: calc(100% - 50px);
 	position: relative;
 	z-index: 1;
@@ -1068,8 +1056,8 @@ export default {
 	justify-content: space-between;
 }
 
-.home-left,
-.home-right {
+.dataScreen-container .home-left,
+.dataScreen-container .home-right {
 	height: 100%;
 	display: flex;
 	flex-direction: column;
@@ -1078,7 +1066,7 @@ export default {
 	width: 370px;
 }
 
-.home-middle {
+.dataScreen-container .home-middle {
 	flex: 1;
 	margin: 0 20px;
 	min-width: 0;
@@ -1086,8 +1074,8 @@ export default {
 	color: #a9a9a9;
 }
 
-.left-module-up,
-.left-module-down {
+.dataScreen-container .left-module-up,
+.dataScreen-container .left-module-down {
 	width: 100%;
 	margin: 10px 0;
 	border-radius: 20px;
@@ -1096,17 +1084,16 @@ export default {
 	background-color: #1a1a1a;
 }
 
-.left-module-down {
+.dataScreen-container .left-module-down {
 	min-height: 500px;
 }
 
-.left-module-up:before {
+.dataScreen-container .left-module-up:before {
 	content: "";
-
 	background-color: rgba(60, 60, 69, .55);
 }
 
-.module-title {
+.dataScreen-container .module-title {
 	font-family: PingFangSC-Semibold;
 	font-size: 20px;
 	color: #fff;
@@ -1116,13 +1103,13 @@ export default {
 	border-top-right-radius: 20px;
 }
 
-.core-data-tab {
+.dataScreen-container .core-data-tab {
 	margin: 5px auto 0;
 	width: 200px;
 	user-select: none;
 }
 
-.ant-tabs {
+.dataScreen-container .ant-tabs {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
@@ -1139,14 +1126,14 @@ export default {
 	overflow: hidden;
 }
 
-.ant-tabs-nav {
+.dataScreen-container .ant-tabs-nav {
 	position: relative;
 	display: flex;
 	flex: none;
 	align-items: center;
 }
 
-.tab-item {
+.dataScreen-container .tab-item {
 	position: relative;
 	display: inline-flex;
 	align-items: center;
@@ -1161,11 +1148,11 @@ export default {
 }
 
 
-.tab-item:first-child {
+.dataScreen-container .tab-item:first-child {
 	margin-right: 30px;
 }
 
-.active {
+.dataScreen-container .active {
 	color: #ff0040;
 	text-shadow: 0 0 .25px currentColor;
 }
