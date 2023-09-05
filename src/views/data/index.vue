@@ -1,37 +1,53 @@
 <template>
-	<div class="container">
-		<div class="plugins-tips">
-			tradePlatform
-			<a href="https://www.wangeditor.com/doc/" target="_blank">wangEditor</a>
-		</div>
-		<div class="mgb20" ref="editor"></div>
-		<el-button type="primary" @click="syncHTML">提交</el-button>
-	</div>
+  <div class="data-wrapper">
+    <div class="data-container">
+      <el-menu :default-active="activeMenu" mode="horizontal" @select="handleSelect">
+        <el-menu-item index="homePage">首页</el-menu-item>
+        <el-menu-item index="liveStream">直播</el-menu-item>
+      </el-menu>
+      <div v-if="isHomePage" class="mt20">
+        <Overview />
+        <AdvertView />
+        <OperationWin />
+      </div>
+      <div v-else class="mt20">
+        <LiveStream />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts" name="tradePlatform">
-import WangEditor from 'wangeditor';
-import { ref, reactive, onMounted, onBeforeUnmount } from 'vue';
+import { computed, ref } from "vue";
+import Overview from "./components/Overview.vue";
+import OperationWin from "./components/OperationWin.vue";
+import AdvertView from "./components/AdvertView.vue";
+import LiveStream from "./components/LiveStream.vue";
 
-const editor = ref(null);
-const content = reactive({
-	html: '',
-	text: ''
-});
-let instance: any;
-onMounted(() => {
-	instance = new WangEditor(editor.value);
-	instance.config.zIndex = 1;
-	instance.create();
-});
-onBeforeUnmount(() => {
-	instance.destroy();
-	instance = null;
-});
-const syncHTML = () => {
-	content.html = instance.txt.html();
-	console.log(content.html);
-};
+const activeMenu = ref("liveStream");
+const handleSelect = (value: string) => {
+  activeMenu.value = value;
+}
+const isHomePage = computed(() => activeMenu.value === "homePage");
 </script>
 
-<style></style>
+<style>
+.content {
+  padding: 0;
+  background-color: #eef1f6;
+}
+
+.container {
+  color: #333;
+}
+
+.data-wrapper {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.data-container {
+  max-width: 1430px;
+  margin: 0 auto;
+}
+</style>

@@ -8,7 +8,7 @@ let routes = [
     { // test
       icon: 'Odometer',
       index: '',
-      title: '商品--',
+      title: '商品',
       permiss: '1',
     },
     {
@@ -56,13 +56,13 @@ let routes = [
     {
       icon: 'Odometer',
       index: '',
-      title: '私域--',
+      title: '私域',
       permiss: '1',
     },
     {
       icon: 'Odometer',
       index: '',
-      title: '内容--',
+      title: '内容',
       permiss: '1',
     },
     {
@@ -110,25 +110,25 @@ let routes = [
     {
       icon: 'Odometer',
       index: '',
-      title: '营销--',
+      title: '营销',
       permiss: '1',
     },
     { // test
       icon: 'Odometer',
       index: '',
-      title: '推广--',
+      title: '推广',
       permiss: '1',
     },
     { // test
       icon: 'Odometer',
       index: '',
-      title: '客服--',
+      title: '客服',
       permiss: '1',
     },
     { // test
       icon: 'Odometer',
       index: '',
-      title: '财务--',
+      title: '财务',
       permiss: '10',
     },
     {
@@ -136,18 +136,18 @@ let routes = [
       index: '',
       title: '数据',
       permiss: '11',
-      link: '#/data'
+      link: '/#/data'
     },
     { // test
       icon: 'Odometer',
       index: '',
-      title: '服务--',
+      title: '服务',
       permiss: '12',
     },
     { // test
       icon: 'Odometer',
       index: '',
-      title: '应用--',
+      title: '应用',
       permiss: '13',
     },
 ];

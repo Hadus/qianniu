@@ -38,7 +38,7 @@
 							<component :is="item.icon"></component>
 						</el-icon>
 						<template #title v-if="item.link">
-							<a :href="item.link" class="link" target="_black">{{ item.title }}</a>
+							<a :href="item.link" class="link" target="_blank">{{ item.title }}</a>
 						</template>
 						<template #title v-else>{{ item.title }}</template>
 					</el-menu-item>
