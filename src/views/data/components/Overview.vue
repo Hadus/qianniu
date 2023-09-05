@@ -252,9 +252,9 @@ const initPayMoneyChart = () => {
       left: 20,
       top: 15,
       data: ["今日", "昨日"],
-      itemStyle: {
-        opacity: 0,
-      },
+      itemWidth: 12,
+      itemHeight: 12,
+      icon: 'rect'
     },
     grid: {
       left: "3%",

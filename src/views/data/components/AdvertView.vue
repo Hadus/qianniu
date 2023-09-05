@@ -1,7 +1,7 @@
 <template>
   <div class="advert-view-container">
     <el-row :gutter="20">
-      <el-col :span="18">
+      <el-col :span="18" style="background: #fff">
         <div class="advert-view-item">
           <el-row>
             <el-col :span="13">
@@ -57,7 +57,7 @@
           </el-row>
         </div>
       </el-col>
-      <el-col :span="6">
+      <el-col :span="6" style="background: #fff">
         <div class="advert-view-item">
           <el-carousel trigger="click" :arrow="false" :loop="true" height="170px">
             <el-carousel-item key="1">

@@ -226,9 +226,9 @@ const initPayMoneyChart = (randomData: boolean = false) => {
     legend: {
       left: 20,
       data: ["我的", "同行同层平均", "同行同层优秀"],
-      itemStyle: {
-        opacity: 0,
-      },
+      itemWidth: 14,
+      itemHeight: 14,
+      icon: 'rect'
     },
     grid: {
       left: "3%",
@@ -326,6 +326,7 @@ onMounted(() => {
   padding: 20px;
   font-size: 12px;
   box-shadow: var(--el-box-shadow-light);
+  background: #fff;
 }
 .operation-win-container .title {
   font-size: 16px;

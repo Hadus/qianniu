@@ -124,14 +124,34 @@ h3 {
   margin-top: 20px;
 }
 
+.mr10 {
+  margin-right: 10px;
+}
+
+.mr20 {
+  margin-right: 20px;
+}
+
+.ml10 {
+  margin-left: 10px;
+}
+
+.ml20 {
+  margin-left: 20px;
+}
+
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
 .font12 {
   font-size: 12px;
 }
 
-@font-face {
-  font-family: "niceFonts";
-  src: url("../iconFonts/font2.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
+.font14 {
+  font-size: 14px;
 }
