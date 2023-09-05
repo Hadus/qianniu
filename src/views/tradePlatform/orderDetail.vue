@@ -142,8 +142,6 @@
 </template>
 
 <script setup lang="ts" name="orderDetail">
-import { useRouter } from 'vue-router';
-const $router = useRouter();
 import vBtnFill from '@/components/BtnFill/index.vue'
 import vOrderItem from './orderItem.vue';
 
@@ -156,7 +154,7 @@ import vOrderItem from './orderItem.vue';
 // })
 let flag_switch = true;
 const handleLookWuliu = function () {
-  $router.push('/wuliu');
+  window.open('#/wuliu');
 };
 const handelClicklookInfo = function (e) {
   console.log(e.target);

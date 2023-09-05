@@ -67,6 +67,14 @@ const routes: RouteRecordRaw[] = [
     },
     component: () => import(/* webpackChunkName: "403" */ '../views/403.vue'),
   },
+  {
+    path: '/test',
+    name: 'test',
+    meta: {
+      title: 'test',
+    },
+    component: () => import(/* webpackChunkName: "403" */ '../views/test/index.vue'),
+  },
 ];
 
 // 导入子路由
