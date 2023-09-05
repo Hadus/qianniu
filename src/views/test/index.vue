@@ -1,37 +1,11 @@
 <template>
 	<div class="container">
-		<div class="plugins-tips">
-			test
-			<a href="https://www.wangeditor.com/doc/" target="_blank">wangEditor</a>
-		</div>
-		<div class="mgb20" ref="editor"></div>
-		<el-button type="primary" @click="syncHTML">提交</el-button>
+		test
 	</div>
 </template>
 
 <script setup lang="ts" name="test">
-import WangEditor from 'wangeditor';
-import { ref, reactive, onMounted, onBeforeUnmount } from 'vue';
 
-const editor = ref(null);
-const content = reactive({
-	html: '',
-	text: ''
-});
-let instance: any;
-onMounted(() => {
-	instance = new WangEditor(editor.value);
-	instance.config.zIndex = 1;
-	instance.create();
-});
-onBeforeUnmount(() => {
-	instance.destroy();
-	instance = null;
-});
-const syncHTML = () => {
-	content.html = instance.txt.html();
-	console.log(content.html);
-};
 </script>
 
-<style></style>
+<style scoped></style>

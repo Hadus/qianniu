@@ -1,0 +1,58 @@
+[class^="niceFonts-"],
+[class*=" niceFonts-"] {
+  font-family: "niceFonts" !important;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.niceFonts-money:before {
+  content: "\e752";
+}
+
+.niceFonts-vistor:before {
+  content: "\e74f";
+}
+
+.niceFonts-pay-buyers:before {
+  content: "\e74e";
+}
+
+.niceFonts-pay-view:before {
+  content: "\e750";
+}
+
+.niceFonts-order-list:before {
+  content: "\e751";
+}
+
+.niceFonts-fold-line-chart:before {
+  content: "\e6ab";
+}
+
+.niceFonts-whole:before {
+  content: "\e948";
+}
+
+.niceFonts-front-btn:before {
+  content: "\e660";
+}
+
+.niceFonts-end-btn:before {
+  content: "\e679";
+}
+
+.niceFonts-trend-up:before {
+  content: "\e62a"
+}
+
+.niceFonts-trend-down:before {
+  content: "\e61a"
+}
