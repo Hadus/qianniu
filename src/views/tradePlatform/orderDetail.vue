@@ -9,13 +9,37 @@
       </el-breadcrumb>
       <div class="tips">
         <span>该页面涉及用户隐私信息，请注意数据安全，如需显示全部用户信息请点击右侧按钮</span>
-        <span>
-          <el-switch v-model="flag_switch" active-test="显示" inactive-text="隐藏" size="large" />
-        </span>
+        <el-switch v-model="flag_switch" inline-prompt
+          style="margin-left: 8px; --el-switch-on-color: #3d7fff; --el-switch-off-color: #ff4949" active-text="显示"
+          inactive-text="隐藏" size="large" />
       </div>
     </div>
     <div class="status">
-      <div class="head"><span>订单状态:</span><span>交易关闭</span></div>
+      <div class="head">
+        <span>订单状态:</span><span>交易关闭</span>
+        <div class="step">
+          <ul>
+            <li class="finished">
+              <span>
+                <img src="https://img.alicdn.com/imgextra/i3/O1CN01FrmgJK1Pkd1UVIKQ1_!!6000000001879-2-tps-48-48.png">
+              </span>
+              <span>买家下单</span><span class="last"></span>
+            </li>
+            <li class="finished"><span>
+                <img src="https://img.alicdn.com/imgextra/i3/O1CN01FrmgJK1Pkd1UVIKQ1_!!6000000001879-2-tps-48-48.png">
+
+              </span><span>买家付款</span><span class="last"></span></li>
+            <li class="finished"><span>
+                <img src="https://img.alicdn.com/imgextra/i3/O1CN01FrmgJK1Pkd1UVIKQ1_!!6000000001879-2-tps-48-48.png">
+
+              </span><span>发货</span><span class="last"></span></li>
+            <li><span>
+                <img src="https://img.alicdn.com/imgextra/i3/O1CN01FrmgJK1Pkd1UVIKQ1_!!6000000001879-2-tps-48-48.png">
+              </span><span>买家收到商品</span><span class="last"></span></li>
+            <li><span class="not-img">5</span><span>评价</span></li>
+          </ul>
+        </div>
+      </div>
       <div class="mark">
         <v-btn-fill type="blank" size="normal">标记</v-btn-fill>
         <v-btn-fill type="blank" size="normal">订单优惠详情</v-btn-fill>
@@ -46,7 +70,10 @@
         </div>
         <div class="col">
           <h4 class="head head-icon">买家信息
-            <i class="homeFonts-look" style="font-weight: normal; cursor: pointer; margin-left: 8px;"></i>
+            <a @click="handelClicklookInfo">
+              <i class="homeFonts2-hide" v-if="!flag_look"></i>
+              <i class="homeFonts2-look" v-else></i>
+            </a>
           </h4>
           <p>
             <span class="key">昵称:</span>
@@ -64,8 +91,10 @@
         </div>
         <div class="col">
           <h4 class="head head-icon">物流信息
-            <i class="qn_iconfont"
-              style="font-family:'home2Fonts'; font-weight: normal; cursor: pointer; margin-left: 8px;"></i>
+            <a @click="handelClicklookInfo">
+              <i class="homeFonts2-hide" v-if="!flag_look"></i>
+              <i class="homeFonts2-look" v-else></i>
+            </a>
           </h4>
           <p><span class="key">收货地址：:</span><span class="value">张**，***********，江苏省 连云港市 东海县 ***********
               ，***</span><a>复制</a></p>
@@ -151,8 +180,11 @@ let flag_switch = true;
 const handleLookWuliu = function () {
   window.open('#/wuliu');
 };
+let flag_look = false;
 const handelClicklookInfo = function (e) {
   console.log(e.target);
+  flag_look = !flag_look;
+  console.log(flag_look)
 };
 const tableData = [
   {
@@ -190,6 +222,65 @@ const tableData = [
   border: 1px solid #f7f8fa;
   border-radius: 10px;
   margin-bottom: 20px;
+}
+
+.wrapper-order-detail>.status .head {
+  position: relative;
+}
+
+.wrapper-order-detail>.status .head>.step {
+  position: absolute;
+  top: 0;
+  margin-left: 350px;
+}
+
+.wrapper-order-detail>.status .head>.step ul {
+  display: flex;
+}
+
+.wrapper-order-detail>.status .head>.step ul li {
+  font-size: 14px;
+  color: #111;
+  opacity: .8;
+}
+
+.wrapper-order-detail>.status .head>.step ul li span {
+  display: inline-block;
+}
+
+.wrapper-order-detail>.status .head>.step ul li.finished {
+  color: #999;
+}
+
+.wrapper-order-detail>.status .head>.step ul li span:first-child {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+}
+
+.wrapper-order-detail>.status .head>.step ul li span:first-child.not-img {
+  border-radius: 50%;
+  background-color: #3d7fff;
+  text-align: center;
+  line-height: 16px;
+  color: #fff;
+  font-size: 10px;
+}
+
+.wrapper-order-detail>.status .head>.step ul li span img {
+  width: 16px;
+  height: 16px;
+  vertical-align: sub;
+}
+
+.wrapper-order-detail>.status .head>.step ul li span.last {
+  width: 36px;
+  height: 2px;
+  border: 1px solid #999;
+  transform: translateY(-4px);
+  margin-left: 3px;
+  margin-right: 4px;
+  opacity: .3;
 }
 
 .wrapper-order-detail>.status>div {
@@ -275,6 +366,12 @@ const tableData = [
   line-height: 15px;
   margin-bottom: 15px;
   font-weight: normal;
+}
+
+.wrapper-order-detail>.info>.info-detail .col>a>i {
+  font-weight: normal;
+  cursor: pointer;
+  margin-left: 8px;
 }
 
 .wrapper-order-detail>.info>.info-detail .col>p span:first-child {
@@ -410,5 +507,23 @@ const tableData = [
 .wrapper-order-detail .el-table.order-table tr:hover,
 .wrapper-order-detail .el-table.order-table tr:hover>td {
   background: #fff !important;
+}
+</style>
+<style>
+.wrapper-order-detail .el-switch {}
+
+.wrapper-order-detail .el-switch .el-switch__core {
+  width: 68px;
+  height: 28px;
+}
+
+.wrapper-order-detail .el-switch .el-switch__inner {
+  padding-top: 3px;
+}
+
+.wrapper-order-detail .el-switch .el-switch__action {
+  width: 24px;
+  height: 24px;
+  margin-left: calc(-1px - 23px) !important;
 }
 </style>
