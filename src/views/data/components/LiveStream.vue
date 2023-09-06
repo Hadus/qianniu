@@ -1,4 +1,3 @@
-
 <template>
   <div class="live-stream-container">
     <el-container>
@@ -11,6 +10,9 @@
           <el-menu default-active="overview" @select="selectMenu">
             <el-menu-item index="overview">直播概况</el-menu-item>
             <el-menu-item index="achievement">直播间业绩</el-menu-item>
+            <el-menu-item index="1">本店商品成交</el-menu-item>
+            <el-menu-item index="2">货品分析</el-menu-item>
+            <el-menu-item index="3">店播助手</el-menu-item>
           </el-menu>
         </div>
       </el-aside>

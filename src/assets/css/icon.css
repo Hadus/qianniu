@@ -276,4 +276,8 @@
   content: "\e795"
 }
 
+.niceFonts-message:before {
+  content: "\e625"
+}
+
 /* data end */
