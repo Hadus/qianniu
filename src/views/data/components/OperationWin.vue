@@ -1,13 +1,43 @@
 <template>
-  <div class="operation-win-container">
-    <div class="header">
-      <div class="title">
-        <i class="niceFonts-whole" style="padding-right: 10px"></i>整体看板
-      </div>
-      <div class="date-select">
+  <div class="top-tab-container">
+    <el-row justify="space-between">
+      <el-tabs v-model="activeTab">
+        <el-tab-pane name="1">
+          <template #label>
+            <i class="niceFonts-recipt"></i>
+            层级诊断
+          </template>
+        </el-tab-pane>
+        <el-tab-pane name="overview">
+          <template #label>
+            <i class="niceFonts-operation"></i>
+            运营视窗
+          </template>
+        </el-tab-pane>
+        <el-tab-pane name="2">
+          <template #label>
+            <i class="niceFonts-service"></i>
+            服务视窗
+          </template>
+        </el-tab-pane>
+        <el-tab-pane name="3">
+          <template #label>
+            <i class="niceFonts-manage"></i>
+            管理视窗
+          </template>
+        </el-tab-pane>
+        <el-tab-pane name="4">
+          <template #label>
+            <i class="niceFonts-app"></i>
+            应用视窗
+          </template>
+        </el-tab-pane>
+      </el-tabs>
+      <div class="date-select mr20">
         <div>
           <span class="pr10">统计时间</span>
           <el-date-picker
+            ref="datePickRef"
             v-model="selectDate"
             :type="dateType"
             :format="dateType === 'week' ? '[第]ww[周]' : 'YYYY-MM-DD'"
@@ -27,6 +57,20 @@
             <el-radio-button label="month">月</el-radio-button>
           </el-radio-group>
         </div>
+      </div>
+    </el-row>
+  </div>
+  <div class="operation-win-container">
+    <div class="header">
+      <div class="title">
+        <i class="niceFonts-whole" style="padding-right: 10px"></i>整体看板
+      </div>
+      <div class="header-right-box">
+        <el-checkbox size="small" v-model="showActiveInfo" >显示活动信息</el-checkbox>
+        <el-checkbox size="small"  v-model="compareOther" >同行对比</el-checkbox>
+        <span style="color: #2062e6">图表</span>
+        <span style="margin: 0 5px">|</span>
+        <span>表格</span>
       </div>
     </div>
     <div class="show-card-group">
@@ -115,15 +159,20 @@ import { ref, computed, watch, reactive, onMounted } from "vue";
 import { viewBoardData as _viewBoardData } from "./operationWinData";
 import { getYearWeek } from "../utils";
 
-const MAX_CARD_ITEM = 7;
+const activeTab = ref('overview')
+const showActiveInfo = ref(true)
+const compareOther = ref(true)
 
+const MAX_CARD_ITEM = 7;
+const datePickRef = ref(null);
 const dateType = ref("date");
 const selectDate = ref(new Date());
-const disabledDate = (date:Date) => {
-  return date.getTime() > new Date().getTime()
-}
+const disabledDate = (date: Date) => {
+  return date.getTime() > new Date().getTime();
+};
 const changeDateType = () => {
   initPayMoneyChart();
+  datePickRef.value.click();
 };
 
 const cardPage = ref(0);
@@ -228,7 +277,7 @@ const initPayMoneyChart = (randomData: boolean = false) => {
       data: ["我的", "同行同层平均", "同行同层优秀"],
       itemWidth: 14,
       itemHeight: 14,
-      icon: 'rect'
+      icon: "rect",
     },
     grid: {
       left: "3%",
@@ -322,7 +371,7 @@ onMounted(() => {
 </script>
 <style lang="css" scoped>
 .operation-win-container {
-  margin-top: 20px;
+  margin-top: 10px;
   padding: 20px;
   font-size: 12px;
   box-shadow: var(--el-box-shadow-light);
@@ -330,6 +379,33 @@ onMounted(() => {
 }
 .operation-win-container .title {
   font-size: 16px;
+}
+.top-tab-container {
+  margin-top: 8px;
+  padding-left: 20px;
+  font-size: 12px;
+  box-shadow: var(--el-box-shadow-light);
+  background: #fff;
+}
+.top-tab-container :deep(.el-tabs__header) {
+  margin-bottom: 0px;
+}
+.top-tab-container :deep(.el-tabs__item) {
+  font-size: 12px;
+  height: 50px;
+  line-height: 50px;
+  color: #333;
+}
+.header-right-box {
+  display: flex;
+  align-items: center;
+  color: #333 !important;
+}
+.header-right-box :deep(.el-checkbox) {
+  margin-right: 10px;
+}
+.header-right-box :deep(.el-checkbox .el-checkbox__label) {
+  color: #333 !important;
 }
 .header {
   display: flex;

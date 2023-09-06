@@ -280,4 +280,32 @@
   content: "\e625"
 }
 
+.niceFonts-message:before {
+  content: "\e625"
+}
+
+.niceFonts-tooltip:before {
+  content: "\e639"
+}
+
+.niceFonts-recipt:before {
+  content: "\e852"
+}
+
+.niceFonts-operation:before {
+  content: "\e947"
+}
+
+.niceFonts-service:before {
+  content: "\e79b"
+}
+
+.niceFonts-manage:before {
+  content: "\e93b"
+}
+
+.niceFonts-app:before {
+  content: "\e851"
+}
+
 /* data end */

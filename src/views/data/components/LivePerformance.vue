@@ -191,45 +191,35 @@
       </div>
       <div class="defail-table-wrapper">
         <el-table
-          :data="tableData"
+          :data="orderFrontTable"
           style="width: 100%"
           v-loading="preorderTableLoading"
         >
           <el-table-column
             fixed
-            prop="contentTitle"
-            label="直播标题"
+            prop="statisticsTime"
+            label="统计日期"
             width="150"
           />
           <el-table-column
-            fixed
-            prop="liveStartTime"
-            label="开播时间"
+            prop="payPersonCount"
+            label="当日预售支付定金人数"
             width="120"
           />
-          <el-table-column prop="orderId" label="场次ID" width="120" />
-          <el-table-column prop="daiboName" label="代播主播名称" width="150" />
-          <el-table-column prop="address" label="会员名" />
-          <el-table-column prop="fansType" label="直播粉丝层级" width="150" />
-          <el-table-column prop="contentId" label="商品ID" />
-          <el-table-column prop="itemTitle" label="商品标题" width="260" />
+          <el-table-column prop="payFrontCount" label="当日预售支付定金笔数" width="120" />
+          <el-table-column prop="payFrontMonry" label="当日预售支付定金金额" width="150" />
+          <el-table-column prop="payTailPerson" label="当日预售支付尾款人数（不含定金）" width="150" />
+          <el-table-column prop="payTailCount" label="当日预售支付尾款笔数（不含定金）" width="150" />
+          <el-table-column prop="payTailMoney" label="当日预售支付尾款金额（不含定金）"  width="150"/>
           <el-table-column
-            prop="cateLevel1Name"
-            label="商品一级类目"
+            prop="confirmReceiptPerson"
+            label="当日预售确认收货人数"
             width="150"
           />
-          <el-table-column prop="cateLevel1Id" label="父订单" />
-          <el-table-column prop="itemId" label="子订单" />
-          <el-table-column prop="createTime" label="下单时间" />
-          <el-table-column prop="payTime" label="支付时间" />
-          <el-table-column prop="divPayAmt" label="支付金额" />
-          <el-table-column
-            prop="confirmPaidTime"
-            label="确认收货时间"
-            width="150"
-          />
-          <el-table-column prop="refundAmt" label="确认收货金额" width="150" />
-          <el-table-column prop="daiboId" label="代播ID" />
+          <el-table-column prop="confirmReceiptCount" label="当日预售确认收货笔数" width="150" />
+          <el-table-column prop="confirmReceiptMoney" label="当日预售确认收货金额" width="150" />
+          <el-table-column prop="totalMoney" label="当日实际预售支付总金额（定金 + 尾款）" width="180" />
+          <el-table-column prop="toatlTailMoney" label="预估最终支付尾款金额（不含定金）" width="180" />
         </el-table>
         <div class="pagination-box">
           <el-pagination
@@ -246,7 +236,7 @@
 <script lang="ts" setup>
 import { ref, reactive, onMounted, computed, watch } from "vue";
 import * as echarts from "echarts";
-import { liveBroadcastData, orderDetails } from "./liveStreamData";
+import { liveBroadcastData, orderDetails, orderFront } from "./liveStreamData";
 
 const broadcastDate = ref(new Date());
 const disabledDate = (date: Date) => {
@@ -356,6 +346,8 @@ watch(
   { deep: true }
 );
 const tableData = reactive(orderDetails);
+
+const orderFrontTable  = reactive(orderFront)
 
 const preorderTableLoading = ref(false);
 const preorderDate = ref([

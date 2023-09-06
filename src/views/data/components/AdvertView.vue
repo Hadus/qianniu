@@ -1,14 +1,14 @@
 <template>
   <div class="advert-view-container">
-    <el-row :gutter="20">
-      <el-col :span="18" style="background: #fff">
+    <el-row :gutter="10">
+      <el-col :span="18">
         <div class="advert-view-item">
           <el-row>
             <el-col :span="13">
               <el-carousel trigger="click" :arrow="false" :autoplay="false" :loop="true" height="170px">
                 <el-carousel-item key="actionEffect">
                   <div class="carousel-item">
-                    <div class="title">行动效果</div>
+                    <div class="title">行动效果<i class="niceFonts-tooltip"></i></div>
                     <div class="item-content">
                       <div style="line-height: 28px">
                         <span class="ds-link-type" style="margin-right: 10px">成交加速</span>
@@ -57,7 +57,7 @@
           </el-row>
         </div>
       </el-col>
-      <el-col :span="6" style="background: #fff">
+      <el-col :span="6">
         <div class="advert-view-item">
           <el-carousel trigger="click" :arrow="false" :loop="true" height="170px">
             <el-carousel-item key="1">
@@ -77,11 +77,12 @@
 </script>
 <style scoped>
 .advert-view-container {
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 
 .advert-view-item {
+  background: #fff;
   box-shadow: var(--el-box-shadow-light);
 }
 

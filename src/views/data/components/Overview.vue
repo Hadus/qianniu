@@ -1,6 +1,6 @@
 <template>
   <div class="data-overview">
-    <el-row :gutter="20">
+    <el-row :gutter="10">
       <el-col :span="18">
         <el-card>
           <template #header>
@@ -237,6 +237,7 @@ const overviewData = reactive({
     yesterday: 21,
   },
   paySubOrder: {
+    today: 15,
     livePercentage: "12.1%",
     yesterday: 8,
   },
