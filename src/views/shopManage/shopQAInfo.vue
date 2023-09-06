@@ -20,7 +20,7 @@
         <p><span class="key">工商营业执照有效期截止时间:</span><span class="value">长期</span></p>
         <p><span class="key">营业执照照片:</span>
           <span class="value">
-            <a href="javascript:;" @click="handleLookYYZZ">
+            <a href="src/assets/img/home/yyzz.png" target="_blank">
               <img src="@/assets/img/home/yyzz.png" style="width: 100px; height: 100px; margin-right: 15px;">
             </a>
           </span>

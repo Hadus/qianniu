@@ -26,4 +26,13 @@ export default [
     },
     component: () => import(/* webpackChunkName: "import" */ '../views/shopManage/shopQAInfo.vue'),
   },
+  {
+    path: '/shop-manage/serverReport',
+    name: 'serverReport',
+    meta: {
+      title: '综合体验分',
+      permiss: '1',
+    },
+    component: () => import(/* webpackChunkName: "import" */ '../views/shopManage/serverReport.vue'),
+  },
 ]

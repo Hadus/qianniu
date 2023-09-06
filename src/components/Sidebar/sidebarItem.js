@@ -130,7 +130,7 @@ let routes = [
           permiss: '1',
           subs: [
             {
-              index: '',
+              index: '/shop-manage/serverReport',
               title: '综合体验分',
               permiss: '1',
             },
