@@ -47,6 +47,7 @@
 
 /* login end */
 /* home start */
+/* font_2421889_i5phj3ikhh8.woff2 */
 @font-face {
   font-family: "homeFonts1";
   src: url("../iconFonts/font_home.woff2") format("woff2");
@@ -77,6 +78,11 @@
 
 .homeFonts1-calendar:before {
   content: "\E607";
+  color: #333;
+}
+
+.homeFonts1-download:before {
+  content: "\E628";
   color: #333;
 }
 
