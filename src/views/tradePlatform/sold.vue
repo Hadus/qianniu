@@ -87,13 +87,13 @@
 								<el-checkbox></el-checkbox>&nbsp;&nbsp;宝贝
 							</template>
 						</el-table-column>
-						<el-table-column align="center" label="单价" width="150">
+						<el-table-column align="center" label="单价" width="200">
 						</el-table-column>
-						<el-table-column align="center" label="数量" width="150" />
-						<el-table-column align="center" label="售后" width="150" />
-						<el-table-column align="center" label="交易状态" width="150" />
-						<el-table-column align="center" label="实收款" width="150" />
-						<el-table-column align="center" label="评价" width="150" />
+						<el-table-column align="center" label="数量" width="140" />
+						<el-table-column align="center" label="售后" width="140" />
+						<el-table-column align="center" label="交易状态" width="140" />
+						<el-table-column align="center" label="实收款" width="140" />
+						<el-table-column align="center" label="评价" width="140" />
 					</el-table>
 					<!-- 内容 -->
 					<el-table style="width: 100%" header-row-class-name="order-item-th" class="order-table order-tbody-table"
@@ -104,33 +104,35 @@
 									<el-checkbox></el-checkbox>
 									<p><span class="key">&nbsp;&nbsp;订单号：</span><span class="value">3503107335644061564</span></p>
 									<p class="create-time"><span class="key">创建时间：</span><span class="value">2023-09-02 13:32:50</span></p>
-									<p class="nickname">
-										<a href="javascript: void(0);" target="_blank" title="点此可以直接和卖家交流选好的宝贝，或相互交流网购体验，还支持语音视频噢。"></a>
-										爱**
-									</p>
-									<!-- <i class="homeFonts1-filter"></i> -->
 								</div>
 							</template>
 							<template #default>
 								<v-order-item />
 							</template>
 						</el-table-column>
-						<el-table-column label="" width="150" align="center">
+						<el-table-column label="" width="200" align="center">
 							<template #header>
-								<span class="tag">号码保护订单</span>
+								<div class="item-title">
+									<p class="nickname">
+										<a href="javascript: void(0);" target="_blank" title="点此可以直接和卖家交流选好的宝贝，或相互交流网购体验，还支持语音视频噢。"></a>
+										爱**
+									</p>
+									<i class="homeFonts1-filter"></i>
+									<span class="tag">号码保护订单</span>
+								</div>
 							</template>
 						</el-table-column>/>
-						<el-table-column label="" width="150" align="center">
+						<el-table-column label="" width="140" align="center">
 							<template #default>
 								<p class="main">1</p>
 							</template>
 						</el-table-column>/>
-						<el-table-column label="" width="150" align="center">
+						<el-table-column label="" width="140" align="center">
 							<template #default>
 								<p class="main"><a href="javascript:;">退款成功</a></p>
 							</template>
 						</el-table-column>
-						<el-table-column label="" width="150" align="center">
+						<el-table-column label="" width="140" align="center">
 							<template #default>
 								<p class="main">交易关闭</p>
 								<p class="desc">
@@ -138,13 +140,13 @@
 								</p>
 							</template>
 						</el-table-column>
-						<el-table-column label="" width="150" align="center">
+						<el-table-column label="" width="140" align="center">
 							<template #default>
 								<p class="main">¥50.00</p>
 								<p class="desc">（含快递：¥0.00）</p>
 							</template>
 						</el-table-column>
-						<el-table-column width="150" align="center">
+						<el-table-column width="140" align="center">
 							<template #header>
 								<img class="img-judge"
 									src="https://img.alicdn.com/imgextra/i1/O1CN01YiUmff1cR0wVAP6Nv_!!6000000003596-2-tps-54-54.png">
@@ -365,17 +367,18 @@ const handleClickOrder = function () {
 	line-height: 44px;
 	font-size: 12px;
 	border-radius: 12px 0 0 12px;
+	justify-content: center;
 }
 
 .tabs-order-details .item-title i {
 	width: 15px;
 	height: 15px;
 	font-size: 15px;
-	margin-left: 3px;
+	margin-right: 10px;
 }
 
 .tabs-order-details .item-title .create-time {
-	margin: 0 50px;
+	margin: 0 30px;
 }
 
 .tabs-order-details .item-title .nickname {

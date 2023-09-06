@@ -170,7 +170,19 @@ const handleClose = function (index) {
 	transition: all 0s !important;
 }
 
-.sidebar .el-menu .el-icon.el-sub-menu__icon-arrow {
+.sidebar>.el-menu>li.el-sub-menu .el-icon.el-sub-menu__icon-arrow {
+	right: 11px;
+	top: calc(50% + 2px);
+	font-weight: 900;
+	font-size: 11px;
+}
+
+.sidebar>.el-menu>li.el-sub-menu>.el-sub-menu__title>.el-icon.el-sub-menu__icon-arrow {
 	display: none;
+}
+
+.sidebar ul.el-menu>li.sec-menu-li>div.el-sub-menu__title {
+	font-size: 14px;
+	color: #111;
 }
 </style>
