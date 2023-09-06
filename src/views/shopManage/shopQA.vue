@@ -4,7 +4,12 @@
     <div>
       <div class="note block-wrapper">
         <div class="wrapper-left">
-          <img src="https://img.alicdn.com/imgextra/i2/1115350887/O1CN01B2LRQR1IQIBDVMEob_!!1115350887-0-shopmanager.jpg">
+          <svg viewBox="64 64 896 896" focusable="false" data-icon="exclamation-circle" width="1em" height="1em"
+            fill="currentColor" aria-hidden="true">
+            <path
+              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm-32 232c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v272c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V296zm32 440a48.01 48.01 0 010-96 48.01 48.01 0 010 96z">
+            </path>
+          </svg>
         </div>
         <div class="wrapper-right">
           <p>1、不同类型商品所需资质类型不同，具体请参照平台“<a
@@ -112,18 +117,12 @@ const handleClickCard = function () {
 }
 
 .note .wrapper-left {
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
   margin-right: 8px;
+  color: #3d7fff;
 }
 
-.note .wrapper-left img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-}
 
 .note .wrapper-right {
   height: auto;

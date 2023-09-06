@@ -47,9 +47,11 @@
 					<span>店铺数据</span>
 					<span class="date">数据更新时间：2023-08-30 20:06:20</span>
 					<div class="h-right">
-						<el-icon :size="18">
-							<CirclePlus />
-						</el-icon>
+						<span class="icon-wrapper">
+							<el-icon>
+								<Plus />
+							</el-icon>
+						</span>
 						<span>指标</span>
 						<el-icon :size="14">
 							<ArrowRight />
@@ -100,7 +102,24 @@
 			<div class="app-wrapper">
 				<h3>
 					<span>我的应用</span>
-					<span class="desc">需下载千牛客户端使用</span>
+					<span class="desc">
+						<svg width="12px" color="white" height="12px" viewBox="0 0 12 12" version="1.1"
+							xmlns="http://www.w3.org/2000/svg">
+							<g id="工作台各状态" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<g id="工作台" transform="translate(-1131.000000, -473.000000)" fill="#000000" fill-rule="nonzero">
+									<g id="Group-41" transform="translate(1028.000000, 469.000000)">
+										<g id="Group-14" transform="translate(103.000000, 1.000000)">
+											<g id="Icon-info_circle" transform="translate(0.000000, 3.000000)">
+												<path
+													d="M6,11.8333333 C9.21666667,11.8333333 11.8333333,9.21666667 11.8333333,6 C11.8333333,2.78333333 9.21666667,0.166666667 6,0.166666667 C2.78333333,0.166666667 0.166666667,2.78333333 0.166666667,6 C0.166666667,9.21666667 2.78333333,11.8333333 6,11.8333333 Z M6,10.9963889 C3.245,10.9963889 1.00388889,8.755 1.00388889,6 C1.00388889,3.24555556 3.245,1.00388889 6,1.00388889 C8.75444444,1.00388889 10.9961111,3.24555556 10.9961111,6 C10.9961111,8.755 8.75444444,10.9961111 6,10.9961111 L6,10.9963889 Z M6,3.35638889 C6.34517797,3.35638889 6.625,3.07656686 6.625,2.73138889 C6.625,2.38621092 6.34517797,2.10638889 6,2.10638889 C5.65482203,2.10638889 5.375,2.38621092 5.375,2.73138889 C5.375,3.07656686 5.65482203,3.35638889 6,3.35638889 Z M6,9.61111111 C6.23011865,9.61111111 6.41666667,9.42456309 6.41666667,9.19444444 L6.41666667,4.75 C6.41666667,4.51988135 6.23011865,4.33333333 6,4.33333333 C5.76988135,4.33333333 5.58333333,4.51988135 5.58333333,4.75 L5.58333333,9.19444444 C5.58333333,9.42456309 5.76988135,9.61111111 6,9.61111111 Z"
+													id="Shape"></path>
+											</g>
+										</g>
+									</g>
+								</g>
+							</g>
+						</svg>
+						需下载千牛客户端使用</span>
 					<div class="h-right">
 						<el-icon :size="14">
 							<ArrowRight />
@@ -124,30 +143,50 @@
 				<h3>
 					<span>惠水琥珀蜜蜡</span>
 					<div class="h-right">
-						<el-icon :size="18">
-							<DocumentCopy />
-						</el-icon>
-						<el-icon :size="18">
-							<DocumentCopy />
-						</el-icon>
+						<i>
+							<img src="https://gw.alicdn.com/imgextra/i1/O1CN01ZijcyM1ZdtJmxinmq_!!6000000003218-2-tps-36-36.png" alt="">
+						</i>
+						<i>
+							<img src="https://gw.alicdn.com/imgextra/i4/O1CN01376Uha1buUucoyQWf_!!6000000003525-2-tps-42-28.png" alt="">
+						</i>
 					</div>
 				</h3>
 				<div class="info">
 					<div class="type-1 info-1">
 						<p class="top">描述</p>
-						<p class="bot">5.0</p>
+						<p class="bot">5.0
+							<svg width="7" height="8" viewBox="0 0 7 8" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M.787 6.173L2.993 1.05a.5.5 0 0 1 .916-.006l2.283 5.138a.678.678 0 0 1-.942.872l-1.274-.69a1 1 0 0 0-.952 0l-1.274.69a.69.69 0 0 1-.963-.881z"
+									fill="#FF585E" fill-rule="evenodd"></path>
+							</svg>
+						</p>
 					</div>
 					<div class="type-1 info-2">
 						<p class="top">服务</p>
-						<p class="bot">5.0</p>
+						<p class="bot">5.0
+							<svg width="7" height="8" viewBox="0 0 7 8" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M.787 6.173L2.993 1.05a.5.5 0 0 1 .916-.006l2.283 5.138a.678.678 0 0 1-.942.872l-1.274-.69a1 1 0 0 0-.952 0l-1.274.69a.69.69 0 0 1-.963-.881z"
+									fill="#FF585E" fill-rule="evenodd"></path>
+							</svg>
+						</p>
 					</div>
 					<div class="type-1 info-3">
 						<p class="top">物流</p>
-						<p class="bot">4.9</p>
+						<p class="bot">4.9
+							<svg width="7" height="8" viewBox="0 0 7 8" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M.787 6.173L2.993 1.05a.5.5 0 0 1 .916-.006l2.283 5.138a.678.678 0 0 1-.942.872l-1.274-.69a1 1 0 0 0-.952 0l-1.274.69a.69.69 0 0 1-.963-.881z"
+									fill="#FF585E" fill-rule="evenodd"></path>
+							</svg>
+						</p>
 					</div>
 					<div class="info-4">
 						<p class="top">信用等级</p>
-						<p class="bot">5.0</p>
+						<p class="bot">
+							<img src="//gtms03.alicdn.com/tps/i3/TB1c9z_HpXXXXcQXpXXCBGNFFXX-24-24.png" alt="" width="14" height="14">
+						</p>
 					</div>
 					<div class="type-2 info-5">
 						<p class="top">店铺成长等级</p>
@@ -202,9 +241,7 @@
 						</div>
 					</div>
 					<p class="info-3">
-						<el-icon :size="14">
-							<Memo />
-						</el-icon>
+						<i class="homeFonts1-help"></i>
 						<span class="type-1">常见问题</span>
 						<span class="type-2">关注运营升级新手速览</span>
 					</p>
@@ -253,7 +290,7 @@
 							</el-icon>
 						</p>
 						<p class="month">
-							<i>2023</i>年<i>8</i>月
+							<i>2023</i>年<i>9</i>月
 						</p>
 					</div>
 				</h3>
@@ -407,6 +444,24 @@ div.banner-wrapper img {
 	font-size: 14px;
 	margin-right: 10px;
 	margin-left: 5px;
+}
+
+.shopData-wrapper h3 .h-right span.icon-wrapper {
+	color: #999;
+	font-size: 12px;
+	border: 1px solid #999;
+	display: inline-block;
+	padding: 0 2px 2px 1px;
+	text-align: center;
+	border-radius: 5px;
+	line-height: 12px;
+	margin-right: 3px;
+	position: relative;
+	top: -1px;
+}
+
+.shopData-wrapper h3 .h-right span.icon-wrapper i {
+	font-weight: 900;
 }
 
 .shopData-wrapper>.info {}
@@ -567,9 +622,9 @@ div.banner-wrapper img {
 }
 
 .app-wrapper h3>span.desc {
-	color: #999;
 	font-size: 12px;
 	margin-left: 15px;
+	opacity: .5;
 }
 
 .app-wrapper .h-right {
@@ -633,11 +688,33 @@ div.banner-wrapper img {
 
 .info-wapper h3>.h-right {
 	float: right;
-	width: 60px;
+}
+
+.info-wapper h3>.h-right i {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background-color: #fff;
+	border: 1px solid #e6e9ed;
+	border-radius: 50%;
+	cursor: pointer;
+	text-align: center;
+	padding: 0;
+	line-height: 30px;
+}
+
+.info-wapper h3>.h-right i>img {
+	width: 16px;
+	height: 15px;
+}
+
+.info-wapper h3>.h-right i:last-child>img {
+	width: 19px;
+	height: 13px;
 }
 
 .info-wapper h3>.h-right i+i {
-	margin-left: 15px;
+	margin-left: 18px;
 }
 
 .info-wapper .info {

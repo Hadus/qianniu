@@ -7,9 +7,9 @@
 				<template v-if="item.subs">
 					<el-sub-menu :index="item.index" :key="item.index" v-permiss="item.permiss">
 						<template #title>
-							<el-icon>
-								<component :is="item.icon"></component>
-							</el-icon>
+							<img :src="item.icon">
+							{{ items.icon }}
+							<el-image :src="items.icon" fit="cover" />
 							<span>{{ item.title }}</span>
 						</template>
 						<!-- 第二层 -->
@@ -34,9 +34,7 @@
 				</template>
 				<template v-else>
 					<el-menu-item :index="item.index" :key="item.index" v-permiss="item.permiss">
-						<el-icon>
-							<component :is="item.icon"></component>
-						</el-icon>
+						<img :src="item.icon">
 						<template #title v-if="item.link">
 							<a :href="item.link" class="link" target="_blank">{{ item.title }}</a>
 						</template>
@@ -63,6 +61,7 @@ import { computed } from 'vue';
 import { useSidebarStore } from '@/store/sidebar';
 import { useRoute } from 'vue-router';
 import items from './sidebarItem.js';
+const alt = "https://qnworkbench.alibaba.com/workbench/oss_c4f6f9d4-0c6d-4f33-8dca-8417bb05d32c.png"
 
 const route = useRoute();
 const onRoutes = computed(() => {
@@ -93,6 +92,12 @@ const handleClose = function (index) {
 	font-size: 14px;
 	user-select: none;
 	width: 108px;
+}
+
+.sidebar-el-menu img {
+	width: 18px;
+	height: 18px;
+	margin-right: 10px;
 }
 
 .sidebar::-webkit-scrollbar {
@@ -163,5 +168,9 @@ const handleClose = function (index) {
 <style>
 .sidebar>ul>li.el-sub-menu>ul.el-menu {
 	transition: all 0s !important;
+}
+
+.sidebar .el-menu .el-icon.el-sub-menu__icon-arrow {
+	display: none;
 }
 </style>

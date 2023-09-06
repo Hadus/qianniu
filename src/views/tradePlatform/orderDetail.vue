@@ -46,31 +46,26 @@
         </div>
         <div class="col">
           <h4 class="head head-icon">买家信息
-            <el-icon class="icon-head" @click="handelClicklookInfo">
-              <ArrowDownBold />
-            </el-icon>
+            <i class="homeFonts-look" style="font-weight: normal; cursor: pointer; margin-left: 8px;"></i>
           </h4>
-          <p><span class="key">昵称:</span><span class="value nickname-wrapper">
-              <p class="nickname">
-                <a href="javascript: void(0);" target="_blank" title="点此可以直接和卖家交流选好的宝贝，或相互交流网购体验，还支持语音视频噢。"></a>
-                爱**
-              </p>
-              <el-icon>
-                <ArrowDownBold />
-              </el-icon>
-            </span></p>
+          <p>
+            <span class="key">昵称:</span>
+            <span class="value nickname-wrapper">
+              <a href="javascript: void(0);" target="_blank" title="点此可以直接和卖家交流选好的宝贝，或相互交流网购体验，还支持语音视频噢。"></a>
+              爱**
+            </span>
+          </p>
           <p><span class="key">联系电话:</span><span class="value">180******55</span></p>
           <p><span class="key">邮件:</span><span class="value">2023-09-02 13:32:50</span></p>
           <p>
             <span class="key">支付宝:</span><span class="value">2023-09-02 13:32:54</span><a>付款给买家</a>
-          <p class="tips"><span>该功能为支付宝即时到帐，用于退运费等小额退款，请谨慎操作</span></p>
+          <p class="tips"><span>该功能为支付宝<a herf="javascript:;">即时到帐</a>，用于退运费等小额退款，请谨慎操作</span></p>
           </p>
         </div>
         <div class="col">
           <h4 class="head head-icon">物流信息
-            <el-icon class="icon-head">
-              <ArrowDownBold />
-            </el-icon>
+            <i class="qn_iconfont"
+              style="font-family:'home2Fonts'; font-weight: normal; cursor: pointer; margin-left: 8px;"></i>
           </h4>
           <p><span class="key">收货地址：:</span><span class="value">张**，***********，江苏省 连云港市 东海县 ***********
               ，***</span><a>复制</a></p>
@@ -91,44 +86,44 @@
             <v-order-item />
           </template>
         </el-table-column>
-        <el-table-column class="td-format" label="宝贝属性" width="165" align="center">
+        <el-table-column class="td-format" label="宝贝属性" width="150" align="center">
           <template #default>
             <p class="main">1</p>
           </template>
         </el-table-column>/>
-        <el-table-column class="td-format" label="状态" width="165" align="center">
+        <el-table-column class="td-format" label="状态" width="150" align="center">
           <template #default>
             <p class="main"><a href="javascript:;">退款成功</a></p>
           </template>
         </el-table-column>
-        <el-table-column class="td-format" label="服务" width="165" align="center">
+        <el-table-column class="td-format" label="服务" width="150" align="center">
           <template #default>
             <p class="main">交易关闭</p>
             <p class="desc">
             </p>
           </template>
         </el-table-column>
-        <el-table-column class="td-format" label="单价" width="165" align="center">
+        <el-table-column class="td-format" label="单价" width="150" align="center">
           <template #default>
             <p class="main">¥50.00</p>
             <p class="desc">（含快递：¥0.00）</p>
           </template>
         </el-table-column>
-        <el-table-column class="td-format" label="数量" width="165" align="center">
+        <el-table-column class="td-format" label="数量" width="150" align="center">
           <template #default>
             <p class="main">
               <a href="javascript:;">我已评价</a>
             </p>
           </template>
         </el-table-column>/>
-        <el-table-column class="td-format" label="优惠" width="165" align="center">
+        <el-table-column class="td-format" label="优惠" width="150" align="center">
           <template #default>
             <p class="main">
               <a href="javascript:;">我已评价</a>
             </p>
           </template>
         </el-table-column>/>
-        <el-table-column class="td-format" label="商品总价" width="165" align="center">
+        <el-table-column class="td-format" label="商品总价" width="150" align="center">
           <template #default>
             <p class="main">
               <a href="javascript:;">我已评价</a>
@@ -174,12 +169,16 @@ const tableData = [
 }
 
 .wrapper-order-detail>.title {
+  font-family: PingFang SC, Microsoft YaHei, Roboto, Helvetica Neue, Helvetica, Tahoma, Arial !important;
   line-height: 49px;
+  font-size: 14px;
+  color: #666;
 }
 
 .wrapper-order-detail>.title>.tips {
   color: rgb(17, 17, 17);
   font-size: 14px;
+  margin: 10px 0;
 }
 
 .wrapper-order-detail>.status {
@@ -295,13 +294,13 @@ const tableData = [
   margin-left: 5px;
 }
 
-.wrapper-order-detail>.info>.info-detail .col>p span.value .nickname {
+.wrapper-order-detail>.info>.info-detail .col>p span.value .nickname-wrapper {
   display: inline;
   color: rgb(61, 127, 255);
   margin-right: 2px;
 }
 
-.wrapper-order-detail>.info>.info-detail .col>p span.value .nickname>a {
+.wrapper-order-detail>.info>.info-detail .col .nickname-wrapper>a {
   display: inline-block;
   width: 20px;
   height: 20px;

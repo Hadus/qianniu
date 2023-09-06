@@ -65,6 +65,11 @@ const { type } = defineProps({
   display: inline-block;
   color: #3d7fff;
   background-color: #fff;
+  max-width: 300px;
+  min-width: 220px;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
 }
 
 .order-item-info .right .type {

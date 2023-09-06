@@ -25,9 +25,7 @@
 						<p><span class="key">店铺类型:</span><span class="value">个人</span></p>
 						<p>
 							<span class="key">店铺ID:</span><span class="value">101883495</span>
-							<el-icon :size="12">
-								<Edit />
-							</el-icon>
+							<img src="//img.alicdn.com/imgextra/i4/O1CN01Ko7tKk28Xwk7NLJdx_!!6000000007943-2-tps-64-64.png">
 						</p>
 					</div>
 				</div>
@@ -84,15 +82,33 @@
 				<div class="info block-wrapper">
 					<div class="info-1">
 						<p class="top">描述相符</p>
-						<p class="bot">5.0</p>
+						<p class="bot">5.0
+							<svg width="7" height="8" viewBox="0 0 7 8" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M.787 6.173L2.993 1.05a.5.5 0 0 1 .916-.006l2.283 5.138a.678.678 0 0 1-.942.872l-1.274-.69a1 1 0 0 0-.952 0l-1.274.69a.69.69 0 0 1-.963-.881z"
+									fill="#FF585E" fill-rule="evenodd"></path>
+							</svg>
+						</p>
 					</div>
 					<div class="info-2">
 						<p class="top">服务态度</p>
-						<p class="bot">5.0</p>
+						<p class="bot">5.0
+							<svg width="7" height="8" viewBox="0 0 7 8" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M.787 6.173L2.993 1.05a.5.5 0 0 1 .916-.006l2.283 5.138a.678.678 0 0 1-.942.872l-1.274-.69a1 1 0 0 0-.952 0l-1.274.69a.69.69 0 0 1-.963-.881z"
+									fill="#FF585E" fill-rule="evenodd"></path>
+							</svg>
+						</p>
 					</div>
 					<div class="info-3">
 						<p class="top">物流服务</p>
-						<p class="bot">4.9</p>
+						<p class="bot">4.9
+							<svg width="7" height="8" viewBox="0 0 7 8" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M.787 6.173L2.993 1.05a.5.5 0 0 1 .916-.006l2.283 5.138a.678.678 0 0 1-.942.872l-1.274-.69a1 1 0 0 0-.952 0l-1.274.69a.69.69 0 0 1-.963-.881z"
+									fill="#FF585E" fill-rule="evenodd"></path>
+							</svg>
+						</p>
 					</div>
 				</div>
 				<div class="line"></div>
@@ -285,8 +301,10 @@ const handelClickToolItem = function (item) {
 	color: #111;
 }
 
-.introduce-wrapper .wrapper-right .info>p i {
+.introduce-wrapper .wrapper-right .info>p img {
 	margin-left: 5px;
+	width: 12px;
+	height: 12px;
 }
 
 .confirm-wrapper>h3 {}

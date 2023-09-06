@@ -64,9 +64,12 @@ declare module '@vue/runtime-core' {
     ElUpload: typeof import('element-plus/es')['ElUpload']
     H3Header: typeof import('./src/components/H3Header/index.vue')['default']
     Header: typeof import('./src/components/Header/header.vue')['default']
+    HomeSvg: typeof import('./src/components/svg/homeSvg.vue')['default']
+    Paganation: typeof import('./src/components/Paganation/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Sidebar: typeof import('./src/components/Sidebar/sidebar.vue')['default']
+    Svg: typeof import('./src/components/svg/index.vue')['default']
     Template: typeof import('./src/components/Template/index.vue')['default']
   }
   export interface ComponentCustomProperties {

@@ -1,4 +1,3 @@
-/* datastart */
 [class*=" el-icon-"],
 [class^="el-icon-"] {
   speak: none;
@@ -13,6 +12,181 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* login start */
+@font-face {
+  font-family: "loginFonts";
+  src: url("../iconFonts/font_login.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="loginFonts-"],
+[class*=" loginFonts-"] {
+  font-family: "loginFonts" !important;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.loginFonts-qrcode:before {
+  content: "\E628";
+  color: #111;
+  font-size: 60px;
+  top: 2px;
+  right: 2px;
+  z-index: 9;
+}
+
+/* login end */
+/* home start */
+@font-face {
+  font-family: "homeFonts1";
+  src: url("../iconFonts/font_home.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="homeFonts1-"],
+[class*=" homeFonts1-"] {
+  font-family: "homeFonts1" !important;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.homeFonts1-help:before {
+  content: "\E673";
+  color: #666;
+}
+
+.homeFonts1-calendar:before {
+  content: "\E607";
+  color: #333;
+}
+
+@font-face {
+  font-family: "homeFonts2";
+  src: url("../iconFonts/font_home2.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="homeFonts2-"],
+[class*=" homeFonts2-"] {
+  font-family: "homeFonts2" !important;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* .icon-plus-square:before {
+  content: "\e6b0";
+  color: #666;
+} */
+
+.homeFonts1-filter:before {
+  content: "\E627";
+  color: #111;
+}
+
+/* home end */
+/* wuliu start */
+@font-face {
+  font-family: "wuliuFonts1";
+  src: url(../iconFonts/font_wuliu.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="wuliuFonts1-"],
+[class*=" wuliuFonts1-"] {
+  font-family: "wuliuFonts1" !important;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: "wuliuFonts2";
+  src: url(../iconFonts/font_wuliu2.woff2) format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="wuliuFonts2-"],
+[class*=" wuliuFonts2-"] {
+  font-family: "wuliuFonts2" !important;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: "wuliuFonts3";
+  src: url(../iconFonts/font_wuliu3.woff2) format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="wuliuFonts3-"],
+[class*=" wuliuFonts3-"] {
+  font-family: "wuliuFonts3" !important;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* wuliu end */
+
+/* datastart */
 .el-sub-menu [class^="el-icon-"] {
   vertical-align: middle;
   margin-right: 5px;

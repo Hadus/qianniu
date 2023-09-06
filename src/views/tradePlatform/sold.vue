@@ -2,7 +2,12 @@
 	<div class="container">
 		<div class="note block-wrapper">
 			<div class="wrapper-left">
-				<img src="https://img.alicdn.com/imgextra/i2/1115350887/O1CN01B2LRQR1IQIBDVMEob_!!1115350887-0-shopmanager.jpg">
+				<svg t="1637738327022" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+					p-id="6252" width="16" height="16">
+					<path
+						d="M512 0c282.766222 0 512 229.233778 512 512s-229.233778 512-512 512S0 794.766222 0 512 229.233778 0 512 0z m0 320a64 64 0 1 0 0-128 64 64 0 0 0 0 128z m15.445333 512c17.066667 0 30.919111-13.852444 30.919111-30.919111V414.919111c0-17.066667-13.824-30.919111-30.919111-30.919111h-30.890666c-17.066667 0-30.919111 13.852444-30.919111 30.919111v386.161778c0 17.066667 13.824 30.919111 30.919111 30.919111h30.890666z"
+						fill="#3e81fd" p-id="6253"></path>
+				</svg>
 			</div>
 			<div class="wrapper-right">
 				<p>为更好的保护消费者隐私，买家淘宝会员名字段作为敏感字段，平台不再明文展示，卖家中心将对商家订单中的买家会员名字段脱敏展示，已卖出的宝贝页面将不再提供明文解密开关（逐步灰度中）
@@ -82,11 +87,13 @@
 								<el-checkbox></el-checkbox>&nbsp;&nbsp;宝贝
 							</template>
 						</el-table-column>
-						<el-table-column align="center" label="数量" width="165" />
-						<el-table-column align="center" label="售后" width="165" />
-						<el-table-column align="center" label="交易状态" width="165" />
-						<el-table-column align="center" label="实收款" width="165" />
-						<el-table-column align="center" label="评价" width="165" />
+						<el-table-column align="center" label="单价" width="150">
+						</el-table-column>
+						<el-table-column align="center" label="数量" width="150" />
+						<el-table-column align="center" label="售后" width="150" />
+						<el-table-column align="center" label="交易状态" width="150" />
+						<el-table-column align="center" label="实收款" width="150" />
+						<el-table-column align="center" label="评价" width="150" />
 					</el-table>
 					<!-- 内容 -->
 					<el-table style="width: 100%" header-row-class-name="order-item-th" class="order-table order-tbody-table"
@@ -101,26 +108,29 @@
 										<a href="javascript: void(0);" target="_blank" title="点此可以直接和卖家交流选好的宝贝，或相互交流网购体验，还支持语音视频噢。"></a>
 										爱**
 									</p>
-									<el-icon>
-										<ArrowDownBold />
-									</el-icon>
+									<!-- <i class="homeFonts1-filter"></i> -->
 								</div>
 							</template>
 							<template #default>
 								<v-order-item />
 							</template>
 						</el-table-column>
-						<el-table-column label="" width="165" align="center">
+						<el-table-column label="" width="150" align="center">
+							<template #header>
+								<span class="tag">号码保护订单</span>
+							</template>
+						</el-table-column>/>
+						<el-table-column label="" width="150" align="center">
 							<template #default>
 								<p class="main">1</p>
 							</template>
 						</el-table-column>/>
-						<el-table-column label="" width="165" align="center">
+						<el-table-column label="" width="150" align="center">
 							<template #default>
 								<p class="main"><a href="javascript:;">退款成功</a></p>
 							</template>
 						</el-table-column>
-						<el-table-column label="" width="165" align="center">
+						<el-table-column label="" width="150" align="center">
 							<template #default>
 								<p class="main">交易关闭</p>
 								<p class="desc">
@@ -128,17 +138,16 @@
 								</p>
 							</template>
 						</el-table-column>
-						<el-table-column label="" width="165" align="center">
+						<el-table-column label="" width="150" align="center">
 							<template #default>
 								<p class="main">¥50.00</p>
 								<p class="desc">（含快递：¥0.00）</p>
 							</template>
 						</el-table-column>
-						<el-table-column width="165" align="center">
+						<el-table-column width="150" align="center">
 							<template #header>
-								<el-icon>
-									<ArrowDownBold />
-								</el-icon>
+								<img class="img-judge"
+									src="https://img.alicdn.com/imgextra/i1/O1CN01YiUmff1cR0wVAP6Nv_!!6000000003596-2-tps-54-54.png">
 							</template>
 							<template #default>
 								<p class="main">
@@ -147,9 +156,9 @@
 							</template>
 						</el-table-column>/>
 					</el-table>
+					<div>分页</div>
 					<!-- 表格end -->
-					<el-pagination layout="prev, pager, next, jumper" :total="50" class="order-pagination" prev-text="上一页"
-						next-text="下一页" />
+					<v-paganation>分页</v-paganation>
 				</el-tab-pane>
 				<el-tab-pane label="等待买家付款" name="secondDetails">
 					暂无
@@ -182,6 +191,7 @@ import { useRouter } from 'vue-router';
 const $router = useRouter();
 import vFilterBlock from './filterBlock.vue';
 import vBtnFill from '@/components/BtnFill/index.vue';
+import vPaganation from '@/components/paganation/index.vue';
 import vFilterInput from './filterInput.vue';
 import vOrderItem from './orderItem.vue';
 
@@ -196,7 +206,7 @@ const tableData = [
 ];
 
 const handleClickOrder = function () {
-	$router.push('/trade-platform/tp/orderDetail');
+	window.open('#/trade-platform/tp/orderDetail');
 };
 </script>
 
@@ -213,8 +223,8 @@ const handleClickOrder = function () {
 }
 
 .note .wrapper-left {
-	width: 24px;
-	height: 24px;
+	width: 16px;
+	height: 16px;
 	margin-right: 8px;
 }
 
@@ -277,6 +287,9 @@ const handleClickOrder = function () {
 	width: 12px;
 	height: 12px;
 	margin-left: 2px;
+	position: relative;
+	top: -1px;
+	left: -4px;
 }
 
 .unusual-order>div p.value {
@@ -323,6 +336,7 @@ const handleClickOrder = function () {
 
 .info-wrapper .tabs-order-details .condition-item {
 	display: flex;
+	margin-right: 10px;
 }
 
 .info-wrapper .tabs-order-details .condition-select {
@@ -353,6 +367,13 @@ const handleClickOrder = function () {
 	border-radius: 12px 0 0 12px;
 }
 
+.tabs-order-details .item-title i {
+	width: 15px;
+	height: 15px;
+	font-size: 15px;
+	margin-left: 3px;
+}
+
 .tabs-order-details .item-title .create-time {
 	margin: 0 50px;
 }
@@ -377,6 +398,11 @@ const handleClickOrder = function () {
 	text-align: center;
 }
 
+.tabs-order-details .img-judge {
+	width: 17px;
+	height: 17px;
+}
+
 .tabs-order-details p.desc {
 	color: #999;
 	background-color: #fff;
@@ -384,6 +410,20 @@ const handleClickOrder = function () {
 
 .tabs-order-details p>a {
 	color: #5584ff;
+}
+
+.order-tbody-table .tag {
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	font-size: 12px;
+	display: inline-block;
+	border-radius: 3px;
+	color: #3d7fff;
+	border: 1px solid #3d7fff;
+	opacity: .7;
+	padding: 0 2px;
+	background-color: transparent;
 }
 
 .order-pagination {
@@ -470,6 +510,31 @@ const handleClickOrder = function () {
 
 .tabs-order-details .el-table.order-table.order-thead-table .el-table__body-wrapper {
 	display: none !important;
+}
+
+.order-pagination button {
+	border: 1px solid #c4c6cf;
+	border-radius: 500px;
+	width: 82px;
+	color: #111;
+}
+
+.order-pagination .el-pager>li:first-child {
+	margin-left: 13px;
+}
+
+.order-pagination .el-pager>li {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	border: 1px solid #c4c6cf;
+	margin-right: 13px;
+}
+
+.order-pagination .el-pager>li.is-active {
+	border-color: #3d7fff;
+	background-color: #3d7fff;
+	color: #fff;
 }
 </style>
 

@@ -8,7 +8,7 @@
     </div>
     <div class="info-wrapper">
       <div class="top">
-        <el-icon>
+        <el-icon size="16px" color="#1dc11d">
           <CircleCheck />
         </el-icon>
         有效证件
@@ -20,11 +20,8 @@
         <p><span class="key">工商营业执照有效期截止时间:</span><span class="value">长期</span></p>
         <p><span class="key">营业执照照片:</span>
           <span class="value">
-            <a href="https://pm.alicdn.com/quali/62365aebca1c4efa6e711be309d54c49.jpg?auth_key=1693577851-0-0-5744a899210e17e7971aacf1d25b96ae"
-              target="_blank">
-              <img
-                src="//pm.alicdn.com/quali/62365aebca1c4efa6e711be309d54c49.jpg?auth_key=1693573757-0-0-08f5ff28a16bc468aa09bd670f0f663b"
-                style="width: 100px; height: 100px; margin-right: 15px;">
+            <a href="@/assets/img/home/yyzz.png" target="_blank">
+              <img src="@/assets/img/home/yyzz.png" style="width: 100px; height: 100px; margin-right: 15px;">
             </a>
           </span>
         </p>
@@ -62,6 +59,10 @@
   font-size: 14px;
   color: #333;
   font-family: Roboto, "Helvetica Neue", Helvetica, Tahoma, Arial, "PingFang SC", "Microsoft YaHei";
+}
+
+.top i {
+  vertical-align: sub;
 }
 
 .info>p {
