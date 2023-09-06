@@ -61,7 +61,6 @@ import { computed } from 'vue';
 import { useSidebarStore } from '@/store/sidebar';
 import { useRoute } from 'vue-router';
 import items from './sidebarItem.js';
-const alt = "https://qnworkbench.alibaba.com/workbench/oss_c4f6f9d4-0c6d-4f33-8dca-8417bb05d32c.png"
 
 const route = useRoute();
 const onRoutes = computed(() => {

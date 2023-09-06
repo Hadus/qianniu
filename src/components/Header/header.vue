@@ -35,7 +35,6 @@
 				<span>规则</span>
 			</p>
 			<p class="icon-learn">
-
 				<svg width="18" height="16" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg">
 					<g fill-rule="nonzero" fill="none">
 						<path
@@ -103,7 +102,7 @@
 				<ArrowDownBold />
 			</el-icon>
 			<div class="userinfo">
-				<img src="https://img.alicdn.com/imgextra/i2/1115350887/O1CN01B2LRQR1IQIBDVMEob_!!1115350887-0-shopmanager.jpg">
+				<img src="@/assets/img/shop.jpg">
 				<p class="name">惠水琥珀蜜蜡</p>
 				<p class="type">晶玺一品</p>
 			</div>
@@ -265,31 +264,34 @@
 }
 
 .icons>p.icon-service {
-	flex: 2;
+	flex: 1.4;
 }
 
 .icons>p>svg,
 .icons>p>img {
 	position: absolute;
-	left: 12px;
+	left: 15px;
 	top: 0;
 }
 
-.icons>p.icon-download>i {}
 
-.icons>p.icon-role>i {}
-
-.icons>p.icon-learn>i {}
-
-.icons>p.icon-msg>i {}
+.icons>p.icon-msg::before {
+	content: "";
+	width: 6px;
+	height: 6px;
+	position: absolute;
+	top: -4px;
+	right: 12px;
+	border-radius: 50%;
+	background-color: red;
+	z-index: 99;
+}
 
 .icons>p.icon-service>img {
 	width: 20px;
 	height: 20px;
-	left: 32px;
+	left: calc(50% - 12px);
 }
-
-.icons>p.icon-feedback>i {}
 
 .header .user {
 	width: 218px;

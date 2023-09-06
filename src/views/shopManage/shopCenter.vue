@@ -147,7 +147,7 @@
 						推荐任务
 					</v-h3-block>
 					<div class="info-content">
-						<v-confirm-item v-for="(item, index) in adviseItemList" :item="item" :index="index">
+						<v-confirm-item v-for="(item, index) in adviseItemList" :item="item" :index="index" class="ad-cofirm-wrapper">
 							<v-btn-empty>{{ item.btnTitle }}</v-btn-empty>
 						</v-confirm-item>
 					</div>
@@ -232,7 +232,7 @@ const handelClickToolItem = function (item) {
 
 .left {
 	width: 100%;
-	padding: 20px 395px 20px 25px;
+	padding: 20px 430px 20px 25px;
 }
 
 .introduce-wrapper {
@@ -343,11 +343,11 @@ const handelClickToolItem = function (item) {
 }
 
 .right {
-	width: 357px;
+	width: 400px;
 	position: absolute;
 	right: 0;
 	top: 0;
-	padding: 20px;
+	padding: 15px;
 	padding-left: 0;
 }
 
@@ -459,8 +459,19 @@ const handelClickToolItem = function (item) {
 	object-fit: contain;
 }
 
-.advise-wrapper .block-wrapper.confirm-item-wrapper {
+.advise-wrapper .info h3 {
+	font-size: 15px;
+}
+</style>
+<style>
+.advise-wrapper .ad-cofirm-wrapper div.block-wrapper {
 	background: #fff;
 	background-image: none;
+	padding-right: 0;
+}
+
+.advise-wrapper .ad-cofirm-wrapper div.block-wrapper .btn {
+	right: 0px;
+	top: 30%;
 }
 </style>
