@@ -275,68 +275,19 @@ const tableData = [
 		seven: '商品体验',
 	},
 ];
-const fn = () => {
-	console.log(111)
-}
 // chart
 const initServerChart = () => {
-	const optionBasic = {
-		color: ['rgba(50, 229, 255, 1)', 'rgba(250, 207, 18, 1)'],
-		tooltip: {},
-		grid: {
-			left: '0%',
-			right: '0%',
-		},
-		xAxis: [
-			{
-				type: 'category',
-				data: ['2017', '2018', '2019', '2020', '2021', '2022', '2017', '2018', '2019', '2020', '2021', '2022'],
-				show: false
-			}
-		],
-		yAxis: [
-			{
-				type: 'value',
-				show: false
-			},
-			{
-				type: 'value',
-				show: false
-			}
-		],
-		series: [
-			{
-				name: '柱状图',
-				type: 'bar',
-				itemStyle: {
-					color: 'rgb(226,234,253)'
-				},
-				barGap: '0%',
-				barWidth: '100%',
-				data: [80, 120, 110, 130, 120, 110, 80, 120, 110, 130, 120, 110],
-			},
-			{
-				name: '折线图',
-				type: 'line',
-				yAxisIndex: 1,
-				itemStyle: {
-					color: 'rgb(32,98,230)'
-				},
-				showSymbol: false,
-				data: [80, 120, 110, 130, 120, 110, 80, 120, 110, 130, 120, 110],
-			},
-		]
-	};
 	const domList_server_chart = document.querySelectorAll('#serverReporter_chart');
 	console.log(domList_server_chart)
 	domList_server_chart.forEach((dom) => {
 		const serverReporter_chart = echarts.init(dom);
 		const option = {
 			color: ['rgba(50, 229, 255, 1)', 'rgba(250, 207, 18, 1)'],
-			tooltip: {},
-			grid: {
-				left: '0%',
-				right: '0%',
+			tooltip: {
+				show: false,
+				position: {
+					left: 0, bottom: 0
+				}
 			},
 			xAxis: [
 				{
@@ -348,11 +299,15 @@ const initServerChart = () => {
 			yAxis: [
 				{
 					type: 'value',
-					show: false
+					show: false,
+					// scale: true,
+					minInterval: 100,
 				},
 				{
 					type: 'value',
-					show: false
+					show: false,
+					// scale: true,
+					minInterval: 100,
 				}
 			],
 			series: [
@@ -364,7 +319,7 @@ const initServerChart = () => {
 					},
 					barGap: '0%',
 					barWidth: '100%',
-					data: [80, 120, 110, 130, 120, 110, 80, 120, 110, 130, 120, 110],
+					data: [0, 20, 110, 130, 120, 110, 80, 120, 110, 130, 120, 110],
 				},
 				{
 					name: '折线图',
@@ -374,7 +329,7 @@ const initServerChart = () => {
 						color: 'rgb(32,98,230)'
 					},
 					showSymbol: false,
-					data: [80, 120, 110, 130, 120, 110, 80, 120, 110, 130, 120, 110],
+					data: [0, 20, 110, 130, 120, 110, 80, 120, 110, 130, 120, 110],
 				},
 			]
 		};
@@ -383,9 +338,9 @@ const initServerChart = () => {
 }
 
 onMounted(() => {
-	nextTick(() => {
+	setTimeout(() => {
 		initServerChart();
-	});
+	}, 0);
 });
 </script>
 
@@ -562,10 +517,6 @@ onMounted(() => {
 	flex: 1;
 	height: 50px;
 	line-height: 50px;
-}
-
-.server-chart {
-	background-color: pink;
 }
 
 .serverReport-container .examine-table .six .process {
