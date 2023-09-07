@@ -10,7 +10,7 @@
       <div class="tips">
         <span>该页面涉及用户隐私信息，请注意数据安全，如需显示全部用户信息请点击右侧按钮</span>
         <el-switch v-model="flag_switch" inline-prompt
-          style="margin-left: 8px; --el-switch-on-color: #3d7fff; --el-switch-off-color: #ff4949" active-text="显示"
+          style="margin-left: 8px; --el-switch-on-color: #3d7fff; --el-switch-off-color: #ebecf0" active-text="显示"
           inactive-text="隐藏" size="large" />
       </div>
     </div>
@@ -96,8 +96,13 @@
               <i class="homeFonts2-look" v-else></i>
             </a>
           </h4>
-          <p><span class="key">收货地址：:</span><span class="value">张**，***********，江苏省 连云港市 东海县 ***********
-              ，***</span><a>复制</a></p>
+          <p><span class="key">收货地址：:</span>
+            <span class="value">
+              {{ flag_look ? `安小姐，18466861227-5695，江苏省 南京市 栖霞区 栖霞经济开发区 乡河大道 ，000000` : `张**，***********，江苏省 连云港市
+              东海县***********，*** ` }}
+            </span>
+            <a>复制</a>
+          </p>
           <p><span class="key">运送方式:</span><span class="value">快递</span></p>
           <p><span class="key">物流公司名称:</span><span class="value">邮政快递包裹</span></p>
           <p>
@@ -166,6 +171,7 @@
 </template>
 
 <script setup lang="ts" name="orderDetail">
+import { ref, reactive } from 'vue';
 import vBtnFill from '@/components/BtnFill/index.vue'
 import vOrderItem from './orderItem.vue';
 
@@ -176,15 +182,13 @@ import vOrderItem from './orderItem.vue';
 //     default: '1'
 //   }
 // })
-let flag_switch = true;
+let flag_switch = false;
 const handleLookWuliu = function () {
   window.open('#/wuliu');
 };
-let flag_look = false;
-const handelClicklookInfo = function (e) {
-  console.log(e.target);
-  flag_look = !flag_look;
-  console.log(flag_look)
+let flag_look = ref(false);
+const handelClicklookInfo = function () {
+  flag_look.value = !flag_look.value;
 };
 const tableData = [
   {
@@ -508,8 +512,7 @@ const tableData = [
 .wrapper-order-detail .el-table.order-table tr:hover>td {
   background: #fff !important;
 }
-</style>
-<style>
+
 .wrapper-order-detail .el-switch {}
 
 .wrapper-order-detail .el-switch .el-switch__core {
@@ -521,9 +524,14 @@ const tableData = [
   padding-top: 3px;
 }
 
+.wrapper-order-detail .el-switch .el-switch__inner .is-show {
+  padding-top: 3px;
+  color: rgb(153, 153, 153);
+}
+
 .wrapper-order-detail .el-switch .el-switch__action {
   width: 24px;
   height: 24px;
-  margin-left: calc(-1px - 23px) !important;
+  margin-left: 0;
 }
 </style>
