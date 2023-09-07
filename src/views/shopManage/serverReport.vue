@@ -346,7 +346,7 @@ onMounted(() => {
 
 <style scoped>
 .serverReport-container {
-	height: 100%;
+	height: auto;
 	width: 100%;
 	color: rgba(0, 0, 0, 0.85);
 	font-size: 14px;
@@ -579,7 +579,7 @@ onMounted(() => {
 }
 
 .serverReport-container .right-wrapper {
-	height: 1900px;
+	/* height: 400px; */
 }
 
 
