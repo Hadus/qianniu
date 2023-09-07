@@ -133,10 +133,56 @@
 										导出
 									</p>
 								</h3>
-								<el-table :data="tableData" style="width: 100%" class="examine-table">
-									<el-table-column prop="date" label="Date" width="180" />
-									<el-table-column prop="name" label="Name" width="180" />
-									<el-table-column prop="address" label="Address" />
+								<el-table :data="tableData" style="width: 100%" class="examine-table" border
+									:span-method="objectSpanMethod">
+									<el-table-column prop="one" label="考核维度" width="180" />
+									<el-table-column prop="two" label="考核得分" width="180" class-name="two">
+										<template #default>
+											<p>5.0</p>
+											<p>较昨日0.00%</p>
+											<p><a href="javascript">诊断提升</a></p>
+										</template>
+									</el-table-column>
+									<el-table-column prop="three" label="考核指标" width="300" class-name="three">
+										<template #default>
+											首次品退率
+											<i class="homeFonts1-prompt"> </i>
+											<el-icon color="rgb(148, 148, 148)" class="icon-video">
+												<VideoPlay />
+											</el-icon>
+										</template>
+									</el-table-column>
+									<el-table-column prop="four" label="指标得分" width="180" />
+									<el-table-column prop="five" label="指标表现" width="320" class-name="five">
+										<div class="chart">
+											<div>43秒</div>
+											<div class="server-chart" id="serverReporter_chart">
+											</div>
+										</div>
+									</el-table-column>
+									<el-table-column prop="six" label="考核标准" width="320" class-name="six">
+										<div class="process">
+											<div class="bot">
+												<p></p>
+												<p></p>
+												<p></p>
+												<p></p>
+												<p></p>
+											</div>
+											<div class="top">
+												<p></p>
+												<p></p>
+												<p></p>
+												<p></p>
+												<p></p>
+											</div>
+										</div>
+									</el-table-column>
+									<el-table-column prop="seven" label="下一档目标值" width="180" class-name="seven">
+										<span class="ok">
+											已达标
+										</span>
+									</el-table-column>
 								</el-table>
 								<div class="notice">
 									<p>1、综合体验分(原基础服务分)=商品体验得分*<span style="color:red">25%</span>+物流体验得分*<span
@@ -167,145 +213,180 @@
 </template>
 
 <script setup lang="ts" name="serverReport">
+import { onMounted, nextTick } from "vue";
+
+import * as echarts from 'echarts';
 let activeName = 'first';
 let activeName_inner = 'one';
+// table
+const objectSpanMethod = ({
+	rowIndex,
+	columnIndex,
+}) => {
+	if (columnIndex < 2) {
+		if (rowIndex % 2 === 0) {
+			return {
+				rowspan: 2,
+				colspan: 1,
+			}
+		} else {
+			return {
+				rowspan: 0,
+				colspan: 0,
+			}
+		}
+	}
+}
 const tableData = [
 	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
+		one: '商品体验1',
+		two: '商品体验',
+		three: '商品体验1',
+		four: '商品体验',
+		five: '商品体验',
+		six: '商品体验',
+		seven: '商品体验',
 	},
 	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
+		one: '商品体验2',
+		two: '商品体验',
+		three: '商品体验2',
+		four: '商品体验',
+		five: '商品体验',
+		six: '商品体验',
+		seven: '商品体验',
 	},
 	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
+		one: '商品体验3',
+		two: '商品体验',
+		three: '商品体验3',
+		four: '商品体验',
+		five: '商品体验',
+		six: '商品体验',
+		seven: '商品体验',
 	},
 	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
+		one: '商品体验4',
+		two: '商品体验',
+		three: '商品体验4',
+		four: '商品体验',
+		five: '商品体验',
+		six: '商品体验',
+		seven: '商品体验',
 	},
 ];
+const fn = () => {
+	console.log(111)
+}
+// chart
+const initServerChart = () => {
+	const optionBasic = {
+		color: ['rgba(50, 229, 255, 1)', 'rgba(250, 207, 18, 1)'],
+		tooltip: {},
+		grid: {
+			left: '0%',
+			right: '0%',
+		},
+		xAxis: [
+			{
+				type: 'category',
+				data: ['2017', '2018', '2019', '2020', '2021', '2022', '2017', '2018', '2019', '2020', '2021', '2022'],
+				show: false
+			}
+		],
+		yAxis: [
+			{
+				type: 'value',
+				show: false
+			},
+			{
+				type: 'value',
+				show: false
+			}
+		],
+		series: [
+			{
+				name: '柱状图',
+				type: 'bar',
+				itemStyle: {
+					color: 'rgb(226,234,253)'
+				},
+				barGap: '0%',
+				barWidth: '100%',
+				data: [80, 120, 110, 130, 120, 110, 80, 120, 110, 130, 120, 110],
+			},
+			{
+				name: '折线图',
+				type: 'line',
+				yAxisIndex: 1,
+				itemStyle: {
+					color: 'rgb(32,98,230)'
+				},
+				showSymbol: false,
+				data: [80, 120, 110, 130, 120, 110, 80, 120, 110, 130, 120, 110],
+			},
+		]
+	};
+	const domList_server_chart = document.querySelectorAll('#serverReporter_chart');
+	console.log(domList_server_chart)
+	domList_server_chart.forEach((dom) => {
+		const serverReporter_chart = echarts.init(dom);
+		const option = {
+			color: ['rgba(50, 229, 255, 1)', 'rgba(250, 207, 18, 1)'],
+			tooltip: {},
+			grid: {
+				left: '0%',
+				right: '0%',
+			},
+			xAxis: [
+				{
+					type: 'category',
+					data: ['2017', '2018', '2019', '2020', '2021', '2022', '2017', '2018', '2019', '2020', '2021', '2022'],
+					show: false
+				}
+			],
+			yAxis: [
+				{
+					type: 'value',
+					show: false
+				},
+				{
+					type: 'value',
+					show: false
+				}
+			],
+			series: [
+				{
+					name: '柱状图',
+					type: 'bar',
+					itemStyle: {
+						color: 'rgb(226,234,253)'
+					},
+					barGap: '0%',
+					barWidth: '100%',
+					data: [80, 120, 110, 130, 120, 110, 80, 120, 110, 130, 120, 110],
+				},
+				{
+					name: '折线图',
+					type: 'line',
+					yAxisIndex: 1,
+					itemStyle: {
+						color: 'rgb(32,98,230)'
+					},
+					showSymbol: false,
+					data: [80, 120, 110, 130, 120, 110, 80, 120, 110, 130, 120, 110],
+				},
+			]
+		};
+		serverReporter_chart.setOption(option);
+	});
+}
+
+onMounted(() => {
+	nextTick(() => {
+		initServerChart();
+	});
+});
 </script>
 
 <style scoped>
@@ -448,6 +529,98 @@ const tableData = [
 	top: 0;
 }
 
+.serverReport-container .examine-table .two p {
+	font-size: 12px;
+	line-height: 17px;
+	color: #999;
+}
+
+.serverReport-container .examine-table .two p:first-child {
+	font-size: 28px;
+	font-weight: 500;
+	line-height: 28px;
+	color: rgb(17, 17, 17);
+	margin-bottom: 5px;
+}
+
+.serverReport-container .examine-table .two a {
+	color: #3d7fff;
+}
+
+.serverReport-container .examine-table .three i.icon-video {
+	transform: translateY(2px);
+	margin-left: 2px;
+}
+
+.serverReport-container .examine-table .five .chart {
+	width: 100%;
+	height: 100%;
+	display: flex;
+}
+
+.serverReport-container .examine-table .five .chart div {
+	flex: 1;
+	height: 50px;
+	line-height: 50px;
+}
+
+.server-chart {
+	background-color: pink;
+}
+
+.serverReport-container .examine-table .six .process {
+	background-color: #fff;
+	width: 296px;
+	height: 8px;
+	position: relative;
+}
+
+.serverReport-container .examine-table .six .process .top {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.serverReport-container .examine-table .six .process>div {
+	width: 100%;
+	height: 100%;
+	background: transparent;
+	display: flex;
+}
+
+.serverReport-container .examine-table .six .process>div p {
+	height: 100%;
+	background: transparent;
+	width: 27%;
+	margin: 0 1px;
+}
+
+.serverReport-container .examine-table .six .process>div p:first-child {
+	border-radius: 4px 0 0 4px;
+	width: 8%;
+}
+
+.serverReport-container .examine-table .six .process>div p:last-child {
+	border-radius: 0 4px 4px 0;
+	width: 10%;
+}
+
+.serverReport-container .examine-table .six .process>div.bot p {
+	background: #e5e5e5;
+}
+
+.serverReport-container .examine-table .six .process>div.top p {
+	background: rgb(32, 98, 230);
+}
+
+.serverReport-container .examine-table .six .process>div.top p:nth-child(5) {
+	/* width: 0px; */
+}
+
+.serverReport-container .examine-table .seven span {
+	color: #31b57d;
+}
+
 .serverReport-container .examine-wrapper>.notice {
 	margin-top: 10px;
 	line-height: 30px;
@@ -455,7 +628,7 @@ const tableData = [
 }
 
 .serverReport-container .right-wrapper {
-	height: 40px;
+	height: 1900px;
 }
 
 
@@ -515,5 +688,20 @@ const tableData = [
 
 .serverReport-container .date {
 	top: calc(76px + 28px + 54px - 2px);
+}
+
+.serverReport-container .examine-wrapper tr th,
+.serverReport-container .examine-wrapper tr td {
+	color: #111;
+	font-size: 14px;
+}
+
+.serverReport-container .examine-wrapper tr th {
+	background-color: #f2f4f7;
+	font-weight: 700;
+}
+
+.serverReport-container .examine-wrapper tr .el-table__cell {
+	padding: 20px 0;
 }
 </style>

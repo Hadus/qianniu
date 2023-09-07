@@ -158,9 +158,8 @@
 							</template>
 						</el-table-column>/>
 					</el-table>
-					<div>分页</div>
 					<!-- 表格end -->
-					<v-paganation>分页</v-paganation>
+					<v-paganation layout="prev, pager, next, jumper" :total="50" class="order-pagination" />
 				</el-tab-pane>
 				<el-tab-pane label="等待买家付款" name="secondDetails">
 					暂无
@@ -193,7 +192,7 @@ import { useRouter } from 'vue-router';
 const $router = useRouter();
 import vFilterBlock from './filterBlock.vue';
 import vBtnFill from '@/components/BtnFill/index.vue';
-import vPaganation from '@/components/paganation/index.vue';
+import vPaganation from '@/components/Paganation/index.vue';
 import vFilterInput from './filterInput.vue';
 import vOrderItem from './orderItem.vue';
 
@@ -430,7 +429,6 @@ const handleClickOrder = function () {
 }
 
 .order-pagination {
-	width: 40%;
 	margin: 30px auto;
 }
 </style>
@@ -513,31 +511,6 @@ const handleClickOrder = function () {
 
 .tabs-order-details .el-table.order-table.order-thead-table .el-table__body-wrapper {
 	display: none !important;
-}
-
-.order-pagination button {
-	border: 1px solid #c4c6cf;
-	border-radius: 500px;
-	width: 82px;
-	color: #111;
-}
-
-.order-pagination .el-pager>li:first-child {
-	margin-left: 13px;
-}
-
-.order-pagination .el-pager>li {
-	width: 36px;
-	height: 36px;
-	border-radius: 50%;
-	border: 1px solid #c4c6cf;
-	margin-right: 13px;
-}
-
-.order-pagination .el-pager>li.is-active {
-	border-color: #3d7fff;
-	background-color: #3d7fff;
-	color: #fff;
 }
 </style>
 

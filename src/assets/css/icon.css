@@ -86,6 +86,11 @@
   color: #333;
 }
 
+.homeFonts1-prompt:before {
+  content: "\E60C";
+  color: rgb(148, 148, 148);
+}
+
 @font-face {
   font-family: "homeFonts2";
   src: url("../iconFonts/font_home2.woff2") format("woff2");
