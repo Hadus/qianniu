@@ -1,22 +1,38 @@
 <template>
   <div class="advert-view-container">
     <el-row :gutter="10">
-      <el-col :span="18">
+      <el-col :span="17">
         <div class="advert-view-item">
           <el-row>
             <el-col :span="13">
-              <el-carousel trigger="click" :arrow="false" :autoplay="false" :loop="true" height="170px">
+              <el-carousel
+                trigger="click"
+                :arrow="false"
+                :autoplay="false"
+                :loop="true"
+                height="170px"
+              >
                 <el-carousel-item key="actionEffect">
                   <div class="carousel-item">
-                    <div class="title">行动效果<i class="niceFonts-tooltip"></i></div>
+                    <div class="title">
+                      行动效果<i
+                        style="padding-left: 5px"
+                        class="niceFonts-tooltip"
+                      ></i>
+                    </div>
                     <div class="item-content">
                       <div style="line-height: 28px">
-                        <span class="ds-link-type" style="margin-right: 10px">成交加速</span>
+                        <span class="ds-link-type" style="margin-right: 10px"
+                          >成交加速</span
+                        >
                         <el-link>
-                          近期无宝贝使用万相台，使用万相台快速成交破零></el-link>
+                          近期无宝贝使用万相台，使用万相台快速成交破零></el-link
+                        >
                       </div>
                       <div style="line-height: 28px">
-                        <span class="ds-link-type" style="margin-right: 10px">提升搜索</span>
+                        <span class="ds-link-type" style="margin-right: 10px"
+                          >提升搜索</span
+                        >
                         <el-link> 试试直通车极简计划，加速店铺起量></el-link>
                       </div>
                     </div>
@@ -49,7 +65,9 @@
               <div class="carousel-item">
                 <div class="title">学堂早知道</div>
                 <div class="item-content">
-                  <span class="ds-link-type" style="margin-right: 10px">必看</span>
+                  <span class="ds-link-type" style="margin-right: 10px"
+                    >必看</span
+                  >
                   <el-link> 快速提升流程及转化</el-link>
                 </div>
               </div>
@@ -57,17 +75,27 @@
           </el-row>
         </div>
       </el-col>
-      <el-col :span="6">
+      <el-col :span="7">
         <div class="advert-view-item">
-          <el-carousel trigger="click" :arrow="false" :loop="true" height="170px">
+          <el-carousel
+            trigger="click"
+            :arrow="false"
+            :loop="true"
+            height="170px"
+          >
             <el-carousel-item key="1">
-              <img style="width: 100%; height: 170px" src="@/assets/img/data/business1.png" />
+              <img
+                style="width: 100%; height: 170px"
+                src="@/assets/img/data/business1.png"
+              />
             </el-carousel-item>
             <el-carousel-item key="2">
-              <img style="width: 100%; height: 170px" src="@/assets/img/data/business2.png" />
+              <img
+                style="width: 100%; height: 170px"
+                src="@/assets/img/data/business2.png"
+              />
             </el-carousel-item>
           </el-carousel>
-          <div></div>
         </div>
       </el-col>
     </el-row>
@@ -117,8 +145,11 @@
   opacity: 0;
 }
 
-.advert-view-item :deep(.el-carousel__indicators .is-active .el-carousel__button) {
+.advert-view-item
+  :deep(.el-carousel__indicators .is-active .el-carousel__button) {
   background-color: #2062e6;
+  width: 30px;
+  height: 2px;
 }
 
 .advert-view-item :deep(.el-carousel__button) {

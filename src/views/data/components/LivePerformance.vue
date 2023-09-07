@@ -112,6 +112,7 @@
             end-placeholder="结束时间"
             style="width: 350px"
           />
+          <el-button class="ml10" type=""><el-icon><Download /></el-icon>下载</el-button>
         </div>
       </div>
       <div class="detail-table-header">
@@ -183,6 +184,7 @@
             range-separator="-"
             style="width: 260px"
           />
+          <el-button class="ml10" type=""><el-icon><Download /></el-icon>下载</el-button>
         </div>
       </div>
       <div class="detail-table-header">

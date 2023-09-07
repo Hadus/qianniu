@@ -66,8 +66,10 @@
         <i class="niceFonts-whole" style="padding-right: 10px"></i>整体看板
       </div>
       <div class="header-right-box">
-        <el-checkbox size="small" v-model="showActiveInfo" >显示活动信息</el-checkbox>
-        <el-checkbox size="small"  v-model="compareOther" >同行对比</el-checkbox>
+        <el-checkbox size="small" v-model="showActiveInfo"
+          >显示活动信息</el-checkbox
+        >
+        <el-checkbox size="small" v-model="compareOther">同行对比</el-checkbox>
         <span style="color: #2062e6">图表</span>
         <span style="margin: 0 5px">|</span>
         <span>表格</span>
@@ -152,6 +154,19 @@
     </div>
     <div id="view-board-chart" style="width: 100%; height: 350px"></div>
   </div>
+  <div class="oui-floor-nav">
+    <ul>
+      <li><a class="oui-floor-nav-item item-active">实时</a></li>
+      <li><a class="oui-floor-nav-item">整体</a></li>
+      <li><a class="oui-floor-nav-item">诊断</a></li>
+      <li><a class="oui-floor-nav-item">流量</a></li>
+      <li><a class="oui-floor-nav-item">转化</a></li>
+      <li><a class="oui-floor-nav-item">客单</a></li>
+      <li><a class="oui-floor-nav-item">内容</a></li>
+      <li><a class="oui-floor-nav-item">竞争</a></li>
+      <li><a class="oui-floor-nav-item">行业</a></li>
+    </ul>
+  </div>
 </template>
 <script setup lang="ts">
 import * as echarts from "echarts";
@@ -159,9 +174,9 @@ import { ref, computed, watch, reactive, onMounted } from "vue";
 import { viewBoardData as _viewBoardData } from "./operationWinData";
 import { getYearWeek } from "../utils";
 
-const activeTab = ref('overview')
-const showActiveInfo = ref(true)
-const compareOther = ref(true)
+const activeTab = ref("overview");
+const showActiveInfo = ref(true);
+const compareOther = ref(true);
 
 const MAX_CARD_ITEM = 7;
 const datePickRef = ref(null);
@@ -370,6 +385,11 @@ onMounted(() => {
 });
 </script>
 <style lang="css" scoped>
+@media (min-width: 1600px) {
+  .oui-floor-nav {
+    margin-right: -770px;
+  }
+}
 .operation-win-container {
   margin-top: 10px;
   padding: 20px;
@@ -486,5 +506,28 @@ onMounted(() => {
   width: 100%;
   height: 400px;
   margin-top: 30px;
+}
+.oui-floor-nav {
+  position: fixed;
+  top: 33%;
+  z-index: 999;
+  right: 50%;
+  width: 42px;
+}
+.oui-floor-nav-item {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  color: #666;
+  font-size: 12px;
+  justify-content: center;
+  text-align: center;
+  padding: 0 3px;
+}
+.oui-floor-nav-item.item-active {
+  background: #2062e6;
+  color: #fff;
 }
 </style>

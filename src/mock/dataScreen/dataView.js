@@ -33,11 +33,6 @@ export function dealData() {
               zhuanhualv1: Math.floor(Math.random() * 100) + 1,
 
           }, {
-              img: "https://img.alicdn.com/imgextra/i2/O1CN010Oc8PO1blKwEAeqFp_!!6000000003505-55-tps-16-16.svg",
-              name1: "封面图点击率",
-              zhuanhualv1: Math.floor(Math.random() * 100) + 1+"%"
-
-          }, {
               img: "https://img.alicdn.com/imgextra/i3/O1CN01fPifbq1Oh8G28Qcdx_!!6000000001736-55-tps-12-14.svg",
               name1: "流量券消耗(PV)",
               zhuanhualv1: Math.floor(Math.random() * 100) + 1,

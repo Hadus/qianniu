@@ -1,12 +1,10 @@
-// 用户
-const user = {
-
-};
-// 首页
-const home = {};
-
+// user
+const user = {};
 // 店铺
 const shop = {};
+
+// 首页
+const home = {};
 
 // 交易
 const trade = {};
@@ -19,3 +17,5 @@ const sycm = {};
 
 // 数据大屏
 const dataScreen = {};
+
+// test
