@@ -291,7 +291,7 @@
 							</el-icon>
 						</p>
 						<p class="month">
-							<i>2023</i>年<i>9</i>月
+							{{ getDateString({ text: true, type: "YM" }) }}
 						</p>
 					</div>
 				</h3>
@@ -310,6 +310,7 @@ import vShopDataItem from './shopDataItem.vue';
 import vProcess from './process.vue';
 // data
 import mock_home from '@/mock/current/home';
+import { getDateString } from '@/utils/utils';
 const shopDataItemList = [
 	{ desc: '支付金额', num: mock_home.shop_data.zhifu, stat: mock_home.shop_data.zhifu_prev },
 	{ desc: '访客数', num: mock_home.shop_data.fangke, stat: mock_home.shop_data.fangke_prev },
