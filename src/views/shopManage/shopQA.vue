@@ -40,8 +40,8 @@
                   </div>
                   <div class="wrapper-right">
                     <p class="head">《营业执照》</p>
-                    <p><span class="key">公司名称：</span><span class="value">勉县辉洁菁百货店</span></p>
-                    <p><span class="key">有效期截止日期：</span><span class="value">长期</span></p>
+                    <p><span class="key">公司名称：</span><span class="value">{{ mock_shop.yyzz.companyName }}</span></p>
+                    <p><span class="key">有效期截止日期：</span><span class="value">{{ mock_shop.yyzz.expireDate }}</span></p>
                   </div>
                 </div>
                 <div class="bot">
@@ -86,14 +86,7 @@ import { useRouter } from 'vue-router';
 const $router = useRouter();
 import vShopQAEmpty from './showQAEmpty.vue';
 import vBtnEmpty from '@/components/BtnEmpty/index.vue';
-
-// const { item } = defineProps({
-//   item: Object,
-//   test: {
-//     type: String,
-//     default: '1'
-//   }
-// })
+import mock_shop from '@/mock/current/shop';
 const activeName = 'first';
 const handleClickCard = function () {
   $router.push('/shop-manage/shop-qa-info');

@@ -32,14 +32,14 @@
 				<p class="key">待发货单量
 					<img src="https://gw.alicdn.com/imgextra/i4/O1CN01t0RZ7O1vAVR93depk_!!6000000006132-2-tps-36-36.png">
 				</p>
-				<p class="value">1</p>
+				<p class="value">{{ mock_trade.orderNumber }}</p>
 			</div>
 			<i>|</i>
 			<div class="item">
 				<p class="key">发货即将超时单量
 					<img src="https://gw.alicdn.com/imgextra/i4/O1CN01t0RZ7O1vAVR93depk_!!6000000006132-2-tps-36-36.png">
 				</p>
-				<p class="value">0</p>
+				<p class="value">{{ mock_trade.orderTimeoutNumber }}</p>
 			</div>
 		</div>
 		<div class="info-wrapper">
@@ -188,13 +188,14 @@
 </template>
 
 <script setup lang="ts" name="sold">
-import { useRouter } from 'vue-router';
-const $router = useRouter();
 import vFilterBlock from './filterBlock.vue';
 import vBtnFill from '@/components/BtnFill/index.vue';
 import vPaganation from '@/components/Paganation/index.vue';
 import vFilterInput from './filterInput.vue';
 import vOrderItem from './orderItem.vue';
+
+import mock_trade from '@/mock/current/trade';
+
 
 const activeNameAll = 'firstAll';
 const activeNameDetails = 'firstDetails'

@@ -7,7 +7,7 @@
 				</div>
 				<div class="wrapper-right">
 					<v-h3-block :hasArrow="false">
-						<template #default>惠水琥珀蜜蜡</template>
+						<template #default>{{ user.name }}</template>
 						<template #left>
 							<span class="year">8年老店</span>
 						</template>
@@ -18,13 +18,14 @@
 						</template>
 					</v-h3-block>
 					<div class="info">
-						<p><span class="key">淘宝账号名:</span><span class="value">晶玺一品</span></p>
-						<p><span class="key">绑定支付宝:</span><span class="value">177******51</span></p>
-						<p><span class="key">首次开店时间:</span><span class="value">2013.01.09 (已开店 2974 天）</span></p>
-						<p><span class="key">联系地址:</span><span class="value">江苏省连云港市东海县牛山街道天光墟玉器广场</span></p>
-						<p><span class="key">店铺类型:</span><span class="value">个人</span></p>
+						<p><span class="key">淘宝账号名:</span><span class="value">{{ user.taobaoName }}</span></p>
+						<p><span class="key">绑定支付宝:</span><span class="value">{{ mock_shop.shop_info.zhifubao }}</span></p>
+						<p><span class="key">首次开店时间:</span><span class="value">{{ mock_shop.shop_info.zhifubao }}(已开店 2974 天)</span>
+						</p>
+						<p><span class="key">联系地址:</span><span class="value">{{ mock_shop.shop_info.address }}</span></p>
+						<p><span class="key">店铺类型:</span><span class="value">{{ mock_shop.shop_info.type }}</span></p>
 						<p>
-							<span class="key">店铺ID:</span><span class="value">101883495</span>
+							<span class="key">店铺ID:</span><span class="value">{{ mock_shop.shop_info.id }}</span>
 							<img src="//img.alicdn.com/imgextra/i4/O1CN01Ko7tKk28Xwk7NLJdx_!!6000000007943-2-tps-64-64.png">
 						</p>
 					</div>
@@ -82,7 +83,7 @@
 				<div class="info block-wrapper">
 					<div class="info-1">
 						<p class="top">描述相符</p>
-						<p class="bot">5.0
+						<p class="bot">{{ mock_home.right_info.desc }}
 							<svg width="7" height="8" viewBox="0 0 7 8" xmlns="http://www.w3.org/2000/svg">
 								<path
 									d="M.787 6.173L2.993 1.05a.5.5 0 0 1 .916-.006l2.283 5.138a.678.678 0 0 1-.942.872l-1.274-.69a1 1 0 0 0-.952 0l-1.274.69a.69.69 0 0 1-.963-.881z"
@@ -92,7 +93,7 @@
 					</div>
 					<div class="info-2">
 						<p class="top">服务态度</p>
-						<p class="bot">5.0
+						<p class="bot">{{ mock_home.right_info.server }}
 							<svg width="7" height="8" viewBox="0 0 7 8" xmlns="http://www.w3.org/2000/svg">
 								<path
 									d="M.787 6.173L2.993 1.05a.5.5 0 0 1 .916-.006l2.283 5.138a.678.678 0 0 1-.942.872l-1.274-.69a1 1 0 0 0-.952 0l-1.274.69a.69.69 0 0 1-.963-.881z"
@@ -102,7 +103,7 @@
 					</div>
 					<div class="info-3">
 						<p class="top">物流服务</p>
-						<p class="bot">4.9
+						<p class="bot">{{ mock_home.right_info.wuliu }}
 							<svg width="7" height="8" viewBox="0 0 7 8" xmlns="http://www.w3.org/2000/svg">
 								<path
 									d="M.787 6.173L2.993 1.05a.5.5 0 0 1 .916-.006l2.283 5.138a.678.678 0 0 1-.942.872l-1.274-.69a1 1 0 0 0-.952 0l-1.274.69a.69.69 0 0 1-.963-.881z"
@@ -159,6 +160,11 @@
 
 <script setup lang="ts" name="shopCenter">
 import { useRouter } from 'vue-router';
+import mock_home from '@/mock/current/home';
+import mock_shop from '@/mock/current/shop';
+import { useUserStore } from '@/store/user';
+const user = useUserStore();
+
 const $router = useRouter();
 
 import vConfirmItem from './confirmItem.vue';

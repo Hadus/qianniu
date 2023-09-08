@@ -2,3 +2,5 @@
 const wuliu = {
   
 };
+
+export default wuliu;

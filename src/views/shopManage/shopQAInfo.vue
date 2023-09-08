@@ -14,14 +14,14 @@
         有效证件
       </div>
       <div class="info">
-        <p><span class="key">工商营业执照注册号/统一社会信用代码:</span><span class="value">92610725MA70248379</span></p>
-        <p><span class="key">企业名称:</span><span class="value">勉县辉洁菁百货店</span></p>
-        <p><span class="key">法定代表人:</span><span class="value">于桂芝</span></p>
-        <p><span class="key">工商营业执照有效期截止时间:</span><span class="value">长期</span></p>
+        <p><span class="key">工商营业执照注册号/统一社会信用代码:</span><span class="value">{{ mock_shop.yyzz.code }}</span></p>
+        <p><span class="key">企业名称:</span><span class="value">{{ mock_shop.yyzz.companyName }}</span></p>
+        <p><span class="key">法定代表人:</span><span class="value">{{ mock_shop.yyzz.dailiren }}</span></p>
+        <p><span class="key">工商营业执照有效期截止时间:</span><span class="value">{{ mock_shop.yyzz.expireDate }}</span></p>
         <p><span class="key">营业执照照片:</span>
           <span class="value">
-            <a href="src/assets/img/home/yyzz.png" target="_blank">
-              <img src="@/assets/img/home/yyzz.png" style="width: 100px; height: 100px; margin-right: 15px;">
+            <a :href="mock_shop.yyzz.yyzzImg" target="_blank">
+              <img :src="mock_shop.yyzz.yyzzImg" style="width: 100px; height: 100px; margin-right: 15px;">
             </a>
           </span>
         </p>
@@ -31,16 +31,8 @@
 </template>
 
 <script setup lang="ts" name="shopQAInfo">
-// const { item } = defineProps({
-//   item: Object,
-//   test: {
-//     type: String,
-//     default: '1'
-//   }
-// })
-const handleLookYYZZ = function () {
-  window.open('../../assets/img/home/yyzz.png');
-}
+import mock_shop from '@/mock/current/shop';
+
 </script>
 
 <style scoped>

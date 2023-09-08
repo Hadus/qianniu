@@ -3,27 +3,27 @@
 		<div class="left">
 			<div class="banner-wrapper">
 				<div>
-					<p class="num">0</p>
+					<p class="num">{{ mock_home.left_banner.fukuan }}</p>
 					<p class="desc">待付款</p>
 				</div>
 				<div>
-					<p class="num">0</p>
+					<p class="num">{{ mock_home.left_banner.fahuo }}</p>
 					<p class="desc">待发货</p>
 				</div>
 				<div>
-					<p class="num">0</p>
+					<p class="num">{{ mock_home.left_banner.shouhou }}</p>
 					<p class="desc">待售后</p>
 				</div>
 				<div>
-					<p class="num">0</p>
+					<p class="num">{{ mock_home.left_banner.pingjia }}</p>
 					<p class="desc">待评价</p>
 				</div>
 				<div>
-					<p class="num">0</p>
+					<p class="num">{{ mock_home.left_banner.tousu }}</p>
 					<p class="desc">待处理投诉</p>
 				</div>
 				<div>
-					<p class="num">1</p>
+					<p class="num">{{ mock_home.left_banner.weigui }}</p>
 					<p class="desc">违规</p>
 				</div>
 				<img class="img-1"
@@ -82,7 +82,8 @@
 						<div class="info">
 							<div class="info-1">
 								<p class="p-1">
-									店铺质量分<span>80.0</span>分，<span>优于85%</span>同行水平
+									店铺质量分<span>{{ mock_home.shop_advise.quality }}</span>分，<span>优于{{
+										mock_home.shop_advise.per }}%</span>同行水平
 								</p>
 								<p class="p-2">质量分越高，越有机会获得搜索和免费推荐流量</p>
 								<p class="p-3">推荐建议</p>
@@ -154,7 +155,7 @@
 				<div class="info">
 					<div class="type-1 info-1">
 						<p class="top">描述</p>
-						<p class="bot">5.0
+						<p class="bot">{{ mock_home.right_info.desc }}
 							<svg width="7" height="8" viewBox="0 0 7 8" xmlns="http://www.w3.org/2000/svg">
 								<path
 									d="M.787 6.173L2.993 1.05a.5.5 0 0 1 .916-.006l2.283 5.138a.678.678 0 0 1-.942.872l-1.274-.69a1 1 0 0 0-.952 0l-1.274.69a.69.69 0 0 1-.963-.881z"
@@ -164,7 +165,7 @@
 					</div>
 					<div class="type-1 info-2">
 						<p class="top">服务</p>
-						<p class="bot">5.0
+						<p class="bot">{{ mock_home.right_info.server }}
 							<svg width="7" height="8" viewBox="0 0 7 8" xmlns="http://www.w3.org/2000/svg">
 								<path
 									d="M.787 6.173L2.993 1.05a.5.5 0 0 1 .916-.006l2.283 5.138a.678.678 0 0 1-.942.872l-1.274-.69a1 1 0 0 0-.952 0l-1.274.69a.69.69 0 0 1-.963-.881z"
@@ -174,7 +175,7 @@
 					</div>
 					<div class="type-1 info-3">
 						<p class="top">物流</p>
-						<p class="bot">4.9
+						<p class="bot">{{ mock_home.right_info.wuliu }}
 							<svg width="7" height="8" viewBox="0 0 7 8" xmlns="http://www.w3.org/2000/svg">
 								<path
 									d="M.787 6.173L2.993 1.05a.5.5 0 0 1 .916-.006l2.283 5.138a.678.678 0 0 1-.942.872l-1.274-.69a1 1 0 0 0-.952 0l-1.274.69a.69.69 0 0 1-.963-.881z"
@@ -190,11 +191,11 @@
 					</div>
 					<div class="type-2 info-5">
 						<p class="top">店铺成长等级</p>
-						<p class="bot">Lv.4</p>
+						<p class="bot">Lv.{{ mock_home.right_info.level }}</p>
 					</div>
 					<div class="type-2 info-6">
 						<p class="top">综合体验分</p>
-						<p class="bot">5.0</p>
+						<p class="bot">{{ mock_home.right_info.tiyanfen }}</p>
 					</div>
 					<div class="type-2 info-7">
 						<p class="top">店铺保证金</p>
@@ -212,7 +213,7 @@
 					</div>
 				</h3>
 				<div class="info">
-					<p class="info-1">最近有 <i>158</i> 个活跃店铺粉丝，正在期待您发布优质内容</p>
+					<p class="info-1">最近有 <i>{{ mock_home.follow.fans }}</i> 个活跃店铺粉丝，正在期待您发布优质内容</p>
 					<div class="info-2">
 						<div>
 							<img src="http://img.alicdn.com/sns_logo/i2/0/TB2U_Grj3vD8KJjSsplXXaIEFXa_!!0-mytaobao.jpg">
@@ -307,15 +308,17 @@
 <script setup lang="ts" name="qnworkbenchHome">
 import vShopDataItem from './shopDataItem.vue';
 import vProcess from './process.vue';
+// data
+import mock_home from '@/mock/current/home';
 const shopDataItemList = [
-	{ desc: '支付金额', num: 0, stat: 0 },
-	{ desc: '访客数', num: 0, stat: 0 },
-	{ desc: '支付子订单数', num: 0, stat: 0 },
-	{ desc: '支付转化率', num: 0, stat: 0, type: 'per' },
-	{ desc: '浏览量', num: 0, stat: 0 },
-	{ desc: '加购人数', num: 0, stat: 0 },
-	{ desc: '客单价', num: 0, stat: 0 },
-	{ desc: '支付买家数', num: 0, stat: 0 },
+	{ desc: '支付金额', num: mock_home.shop_data.zhifu, stat: mock_home.shop_data.zhifu_prev },
+	{ desc: '访客数', num: mock_home.shop_data.fangke, stat: mock_home.shop_data.fangke_prev },
+	{ desc: '支付子订单数', num: mock_home.shop_data.zhidingdan, stat: mock_home.shop_data.zhidingdan_perv },
+	{ desc: '支付转化率', num: mock_home.shop_data.zhuanhualv, stat: mock_home.shop_data.zhuanhualv_perv, type: 'per' },
+	{ desc: '浏览量', num: mock_home.shop_data.liulaniang, stat: mock_home.shop_data.liulaniang_perv },
+	{ desc: '加购人数', num: mock_home.shop_data.jiagou, stat: mock_home.shop_data.jiagou_perv },
+	{ desc: '客单价', num: mock_home.shop_data.kedan, stat: mock_home.shop_data.kedan_perv },
+	{ desc: '支付买家数', num: mock_home.shop_data.maijiashu, stat: mock_home.shop_data.maijiashu_perv },
 ];
 const processList = [
 	{ desc: '店铺基础', num: 0 },

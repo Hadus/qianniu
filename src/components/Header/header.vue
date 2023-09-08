@@ -102,9 +102,9 @@
 				<ArrowDownBold />
 			</el-icon>
 			<div class="userinfo">
-				<img src="@/assets/img/shop.jpg">
-				<p class="name">惠水琥珀蜜蜡</p>
-				<p class="type">晶玺一品</p>
+				<img :src="user.avatarImg">
+				<p class="name">{{ user.name }}</p>
+				<p class="type">{{ user.taobaoName }}</p>
 			</div>
 			<div class="drop-wapper">
 				<div class="accinfo">
@@ -127,6 +127,8 @@
 	</div>
 </template>
 <script setup lang="ts">
+import { useUserStore } from '@/store/user';
+const user = useUserStore();
 
 </script>
 <style scoped>

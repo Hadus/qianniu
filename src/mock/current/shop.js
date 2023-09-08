@@ -1,7 +1,6 @@
 // 店铺
 const shop = {
   shop_info: {
-    taobaoName: '珠宝一品',
     createTime: '2013.11.12',
     type: '个人',
     zhifubao: '18888888888',
@@ -13,8 +12,8 @@ const shop = {
     companyName: '---百货店',
     expireDate: '长期',
     code: '99821213134',
-    dailiren: '',
-    yyzzImg: '@/mock/current/img/yyzz.png',
+    dailiren: '于桂芝',
+    yyzzImg: '/src/mock/current/img/yyzz.png',
   },
   shop_overall:{ // 店铺概况
     tiyan: {
@@ -32,3 +31,4 @@ const shop = {
   },
   examine_tableData: []
 };
+export default shop;

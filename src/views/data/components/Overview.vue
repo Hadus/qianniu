@@ -16,10 +16,7 @@
                   <div class="view-item">
                     <div class="icon-data-box">
                       <div>
-                        <i
-                          class="icon-item niceFonts-money"
-                          style="color: #2062e6"
-                        ></i>
+                        <i class="icon-item niceFonts-money" style="color: #2062e6"></i>
                       </div>
                       <div>
                         <p class="title">支付金额(元)</p>
@@ -50,10 +47,7 @@
                     <div class="view-item" style="flex-direction: column">
                       <div class="icon-data-box">
                         <div>
-                          <i
-                            class="niceFonts-vistor icon-item"
-                            style="color: #fe7c24"
-                          ></i>
+                          <i class="niceFonts-vistor icon-item" style="color: #fe7c24"></i>
                         </div>
                         <div>
                           <p class="title">访客数</p>
@@ -76,10 +70,7 @@
                     <div class="view-item" style="flex-direction: column">
                       <div class="icon-data-box">
                         <div>
-                          <i
-                            class="niceFonts-pay-buyers icon-item"
-                            style="color: #00ba26"
-                          ></i>
+                          <i class="niceFonts-pay-buyers icon-item" style="color: #00ba26"></i>
                         </div>
                         <div>
                           <p class="title">支付买家数</p>
@@ -110,10 +101,7 @@
                     <div class="view-item" style="flex-direction: column">
                       <div class="icon-data-box">
                         <div>
-                          <i
-                            class="niceFonts-pay-view icon-item"
-                            style="color: #f3d024"
-                          ></i>
+                          <i class="niceFonts-pay-view icon-item" style="color: #f3d024"></i>
                         </div>
                         <div>
                           <p class="title">浏览量</p>
@@ -132,10 +120,7 @@
                     <div class="view-item" style="flex-direction: column">
                       <div class="icon-data-box">
                         <div>
-                          <i
-                            class="niceFonts-order-list icon-item"
-                            style="color: #00b3fe"
-                          ></i>
+                          <i class="niceFonts-order-list icon-item" style="color: #00b3fe"></i>
                         </div>
                         <div>
                           <p class="title">支付子订单数</p>
@@ -169,10 +154,7 @@
           <template #header>
             <div class="card-header">
               <div style="position: relative; top: -8px">
-                商家成长层级<i
-                  style="padding-left: 5px"
-                  class="niceFonts-tooltip"
-                ></i>
+                商家成长层级<i style="padding-left: 5px" class="niceFonts-tooltip"></i>
               </div>
               <div class="extra-info" style="display: block">
                 <p style="line-height: 12px">行业：珠宝/钻石/翡翠/黄金</p>
@@ -185,26 +167,19 @@
               <el-col :span="4">
                 <div>
                   <span style="font-size: 18px; font-weight: 700">Lv.</span>
-                  <span style="font-size: 36px; font-weight: 700">3</span>
+                  <span style="font-size: 36px; font-weight: 700">{{ mock_home.shopGrowLevel.level }}</span>
                 </div>
                 <div class="extra-info">当前层级</div>
               </el-col>
               <el-col :span="20">
                 <div style="font-size: 12px; color: #333; padding-top: 15px">
-                  打败<span class="sycm-level-progress-num">61</span
-                  >%同行同层，进步1.05%
-                  <i
-                    class="niceFonts-fold-line-chart"
-                    style="color: #2062e6"
-                  ></i>
+                  打败<span class="sycm-level-progress-num">{{ mock_home.shopGrowLevel.per
+                  }}</span>%同行同层，进步{{ mock_home.shopGrowLevel.improve }}%
+                  <i class="niceFonts-fold-line-chart" style="color: #2062e6"></i>
                 </div>
                 <div style="display: flex">
                   <div class="font12 pt10" style="color: #b2cafb">Lv3</div>
-                  <el-progress
-                    :show-text="false"
-                    :percentage="61"
-                    style="width: 100%; padding: 10px 10px 0 10px"
-                  />
+                  <el-progress :show-text="false" :percentage="61" style="width: 100%; padding: 10px 10px 0 10px" />
                   <div class="font12 pt10" style="color: #b2cafb">Lv4</div>
                 </div>
               </el-col>
@@ -213,16 +188,10 @@
             <el-row>
               <el-col :span="4">
                 <div>
-                  <img
-                    class="sycm-list-item-logo"
-                    src="@/assets/img/data/equlty.png"
-                  />
+                  <img class="sycm-list-item-logo" src="@/assets/img/data/equlty.png" />
                 </div>
               </el-col>
-              <el-col
-                :span="20"
-                style="display: flex; justify-content: space-between"
-              >
+              <el-col :span="20" style="display: flex; justify-content: space-between">
                 <div>
                   <div style="font-size: 12px">权益：2项分层专属权益</div>
                   <div class="extra-info">市场洞察标准版</div>
@@ -233,16 +202,10 @@
             <el-row class="pt10">
               <el-col :span="4">
                 <div>
-                  <img
-                    class="sycm-list-item-logo"
-                    src="@/assets/img/data/equlty.png"
-                  />
+                  <img class="sycm-list-item-logo" src="@/assets/img/data/equlty.png" />
                 </div>
               </el-col>
-              <el-col
-                :span="20"
-                style="display: flex; justify-content: space-between"
-              >
+              <el-col :span="20" style="display: flex; justify-content: space-between">
                 <div>
                   <div style="font-size: 12px">诊断：10个必做任务未完成</div>
                   <div class="extra-info">60%的商家通过必须做任务升级成功</div>
@@ -261,35 +224,10 @@
 import { ref, reactive, onMounted } from "vue";
 import * as echarts from "echarts";
 
+import { home as mock_home } from '@/mock/current/sycm';
+
 const date = ref(new Date().toLocaleString());
-const overviewData = reactive({
-  money: {
-    today: 7,
-    yesterday: 13,
-    livePercentage: "5.12%",
-    rank: "100+",
-  },
-  vistor: {
-    today: 7,
-    yesterday: 13,
-    rank: "100+",
-  },
-  payBuyer: {
-    today: 5,
-    yesterday: 11,
-    livePercentage: "5%",
-    rank: "80",
-  },
-  view: {
-    today: 26,
-    yesterday: 21,
-  },
-  paySubOrder: {
-    today: 15,
-    livePercentage: "12.1%",
-    yesterday: 8,
-  },
-});
+const overviewData = mock_home.overall;
 
 const initPayMoneyChart = () => {
   const payMoneyChart = echarts.init(document.getElementById("pay-chart"));
@@ -359,12 +297,15 @@ onMounted(() => {
 .data-overview :deep(.el-card__header) {
   border-bottom: none;
 }
+
 .data-overview :deep(.el-card__body) {
   padding-top: 0;
 }
+
 .shop-info-card :deep(.el-card__header) {
   padding-bottom: 10px;
 }
+
 .view-item {
   display: flex;
   justify-content: space-between;
@@ -413,6 +354,7 @@ onMounted(() => {
   width: 46px;
   border-radius: 6px;
 }
+
 .view-more-btn {
   position: relative;
   top: 10px;
@@ -424,6 +366,7 @@ onMounted(() => {
   border-radius: 2px;
   height: 24px;
 }
+
 .more-benifit-btn {
   font-size: 12px;
   text-align: right;

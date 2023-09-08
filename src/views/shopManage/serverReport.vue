@@ -34,7 +34,7 @@
 									<div class="item">
 										<div class="left">
 											<p>店铺综合体验分</p>
-											<p>4.92</p>
+											<p>{{ mock_shop.shop_overall.tiyan.total }}</p>
 											<p style="visibility: hidden;">上期考核结果：未达标
 												<el-icon>
 													<QuestionFilled />
@@ -47,16 +47,16 @@
 													src="https://img.alicdn.com/imgextra/i2/O1CN014B0zCS1qLtDojM0IW_!!6000000005480-2-tps-210-48.png">
 											</p>
 											<div>
-												<p><span>较昨日</span><span>0.00%</span></p>
-												<p><span>行业均值</span><span>4.02分</span></p>
-												<p><span>行业优秀</span><span>4.59</span></p>
+												<p><span>较昨日</span><span>{{ mock_shop.shop_overall.tiyan.toPrevDay }}</span></p>
+												<p><span>行业均值</span><span>{{ mock_shop.shop_overall.tiyan.average }}</span></p>
+												<p><span>行业优秀</span><span>{{ mock_shop.shop_overall.tiyan.excellent }}</span></p>
 											</div>
 										</div>
 									</div>
 									<div class="item">
 										<div class="left">
 											<p>金牌卖家今日考核</p>
-											<p>4.92</p>
+											<p>{{ mock_shop.shop_overall.seller_kaohe.total }}</p>
 											<p>上期考核结果：未达标
 												<el-icon>
 													<QuestionFilled />
@@ -90,7 +90,7 @@
 									<div class="item">
 										<div class="left">
 											<p>金牌客服今日考核</p>
-											<p>4.92</p>
+											<p>{{ mock_shop.shop_overall.buyer_kaohe.total }}</p>
 											<p>上期考核结果：未达标
 												<el-icon>
 													<QuestionFilled />
@@ -214,8 +214,9 @@
 
 <script setup lang="ts" name="serverReport">
 import { onMounted, nextTick } from "vue";
-
 import * as echarts from 'echarts';
+import mock_shop from '@/mock/current/shop';
+
 let activeName = 'first';
 let activeName_inner = 'one';
 // table
