@@ -116,8 +116,8 @@
       <el-table :data="tableData" style="width: 100%" header-row-class-name="order-item-th"
         class="order-table order-tbody-table">
         <el-table-column class="td-format" label="宝贝" align="center">
-          <template #default>
-            <v-order-item />
+          <template #default="{ row }">
+            <v-order-item :itemData="row" />
           </template>
         </el-table-column>
         <el-table-column class="td-format" label="宝贝属性" width="150" align="center">
@@ -172,18 +172,18 @@
 
 <script setup lang="ts" name="orderDetail">
 import { ref, reactive } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+const router = useRouter();
+const route = useRoute();
+
 import vBtnFill from '@/components/BtnFill/index.vue'
 import vOrderItem from './orderItem.vue';
+import mock_trade from '@/mock/current/trade';
+const order_detail = mock_trade.order_table.mainOrders[route.query.index];
 
-// const { item } = defineProps({
-//   item: Object,
-//   test: {
-//     type: String,
-//     default: '1'
-//   }
-// })
 let flag_switch = false;
 const handleLookWuliu = function () {
+  router.push('/');
   window.open('#/wuliu');
 };
 let flag_look = ref(false);
@@ -192,9 +192,60 @@ const handelClicklookInfo = function () {
 };
 const tableData = [
   {
-    date: '2016-05-03',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    "priceInfo": {
+      "realTotal": "1.00"
+    },
+    "operations": [
+      {
+        "dataUrl": "//refund2.tmall.com/dispute/secondConfirm.do?bizOrderId=3474212761592495609 &attrKey =openSHWY &from =listSoldItems &isQnNew =true",
+        "data": {
+          "width": 304,
+          "crossOrigin": false,
+          "height": 203
+        },
+        "action": "a28",
+        "style": "t16",
+        "text": "打开售后入口",
+        "type": "operation"
+      }
+    ],
+    "quantity": "1",
+    "id": 3474212761592495609,
+    "itemInfo": {
+      "subId": "3474212761592495609",
+      "skuText": [
+        {
+          "visible": "SOLID",
+          "name": "颜色分类",
+          "value": "9毫米"
+        }
+      ],
+      "extra": [
+        {
+          "visible": "SOLID",
+          "name": "发货时间",
+          "value": "08月14日 20:31前发货"
+        }
+      ],
+      "pic": "//img.alicdn.com/imgextra/i2/2559988253/O1CN01ebqfbj2ApvbB4SW1n_!!2559988253.jpg_sum.jpg",
+      "title": "紫水晶手链紫罗兰深紫单圈手串乌拉圭饰品女款乌拉圭紫紫色",
+      "serviceIcons": [
+        {
+          "linkTitle": "消费者保障服务，卖家承诺7天无理由退换货",
+          "linkUrl": "https://liveplatform.taobao.com/restful/index/shop/shop-rule?lastCategoryId=1351 &ruleId =20000865#/DetailRule",
+          "type": 3,
+          "url": "//img.alicdn.com/tps/i3/T1Vyl6FCBlXXaSQP_X-16-16.png"
+        },
+        {
+          "linkUrl": "//rule.taobao.com/detail-1722.htm",
+          "title": "该笔订单不计入销量",
+          "type": 3,
+          "url": "//gtd.alicdn.com/tps/i4/TB1043lGpXXXXcZXXXXAz6UFXXX-16-16.png"
+        }
+      ],
+      "itemUrl": "//trade.taobao.com/trade/detail/tradeSnap.htm?tradeID=3474212761592495609 &snapShot =true",
+      "skuId": 0
+    }
   },
 ];
 </script>
