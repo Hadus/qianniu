@@ -30,40 +30,40 @@
 						<div class="item">
 							<h4>流量</h4>
 							<p>
-								<label><input type="checkbox">观看次数</label>
-								<label><input type="checkbox">观看人数</label>
-								<label><input type="checkbox">封面图点击率</label>
-								<label><input type="checkbox">流量券消耗</label>
+								<label><input type="checkbox" checked>观看次数</label>
+								<label><input type="checkbox" checked>观看人数</label>
+								<label><input type="checkbox" checked>封面图点击率</label>
+								<label><input type="checkbox" checked>流量券消耗</label>
 							</p>
 						</div>
 						<div class="item">
 							<h4>观看</h4>
 							<p>
-								<label><input type="checkbox">平均观看时长（秒）</label>
+								<label><input type="checkbox" checked>平均观看时长（秒）</label>
 							</p>
 						</div>
 						<div class="item">
 							<h4>转粉</h4>
 							<p>
-								<label><input type="checkbox">新增粉丝数</label>
+								<label><input type="checkbox" checked>新增粉丝数</label>
 							</p>
 						</div>
 						<div class="item">
 							<h4>引导</h4>
 							<p>
-								<label><input type="checkbox">商品点击人数</label>
+								<label><input type="checkbox" checked>商品点击人数</label>
 								<label><input type="checkbox">商品点击次数</label>
-								<label><input type="checkbox">商品点击率</label>
+								<label><input type="checkbox" checked>商品点击率</label>
 							</p>
 						</div>
 						<div class="item">
 							<h4>成交</h4>
 							<p>
-								<label><input type="checkbox">引导成交转化率</label>
-								<label><input type="checkbox">引导成交人数</label>
+								<label><input type="checkbox" checked>引导成交转化率</label>
+								<label><input type="checkbox" checked>引导成交人数</label>
 								<label><input type="checkbox">引导成交件数</label>
 								<label><input type="checkbox">引导成交笔数</label>
-								<label><input type="checkbox">引导成交金额</label>
+								<label><input type="checkbox" checked>引导成交金额</label>
 								<label><input type="checkbox">退款人数</label>
 								<label><input type="checkbox">退款金额</label>
 								<label><input type="checkbox">退款件数</label>
@@ -163,15 +163,15 @@
 					<div class="check-wrapper">
 						<div class="item">
 							<p>
-								<label><input type="checkbox">商品点击次数</label>
-								<label><input type="checkbox">商品点击人数</label>
-								<label><input type="checkbox">引导成交件数</label>
-								<label><input type="checkbox">引导成交金额</label>
-								<label><input type="checkbox">预售下定金金额</label>
-								<label><input type="checkbox">预售预估总金额</label>
-								<label><input type="checkbox">退款件数</label>
-								<label><input type="checkbox">退款人数</label>
-								<label><input type="checkbox">退款金额</label>
+								<label><input type="checkbox" checked>商品点击次数</label>
+								<label><input type="checkbox" checked>商品点击人数</label>
+								<label><input type="checkbox" checked>引导成交件数</label>
+								<label><input type="checkbox" checked>引导成交金额</label>
+								<label><input type="checkbox" checked>预售下定金金额</label>
+								<label><input type="checkbox" checked>预售预估总金额</label>
+								<label><input type="checkbox" checked>退款件数</label>
+								<label><input type="checkbox" checked>退款人数</label>
+								<label><input type="checkbox" checked>退款金额</label>
 							</p>
 						</div>
 					</div>

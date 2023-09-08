@@ -9,13 +9,37 @@
       </el-breadcrumb>
       <div class="tips">
         <span>该页面涉及用户隐私信息，请注意数据安全，如需显示全部用户信息请点击右侧按钮</span>
-        <span>
-          <el-switch v-model="flag_switch" active-test="显示" inactive-text="隐藏" size="large" />
-        </span>
+        <el-switch v-model="flag_switch" inline-prompt
+          style="margin-left: 8px; --el-switch-on-color: #3d7fff; --el-switch-off-color: #ebecf0" active-text="显示"
+          inactive-text="隐藏" size="large" />
       </div>
     </div>
     <div class="status">
-      <div class="head"><span>订单状态:</span><span>交易关闭</span></div>
+      <div class="head">
+        <span>订单状态:</span><span>交易关闭</span>
+        <div class="step">
+          <ul>
+            <li class="finished">
+              <span>
+                <img src="https://img.alicdn.com/imgextra/i3/O1CN01FrmgJK1Pkd1UVIKQ1_!!6000000001879-2-tps-48-48.png">
+              </span>
+              <span>买家下单</span><span class="last"></span>
+            </li>
+            <li class="finished"><span>
+                <img src="https://img.alicdn.com/imgextra/i3/O1CN01FrmgJK1Pkd1UVIKQ1_!!6000000001879-2-tps-48-48.png">
+
+              </span><span>买家付款</span><span class="last"></span></li>
+            <li class="finished"><span>
+                <img src="https://img.alicdn.com/imgextra/i3/O1CN01FrmgJK1Pkd1UVIKQ1_!!6000000001879-2-tps-48-48.png">
+
+              </span><span>发货</span><span class="last"></span></li>
+            <li><span>
+                <img src="https://img.alicdn.com/imgextra/i3/O1CN01FrmgJK1Pkd1UVIKQ1_!!6000000001879-2-tps-48-48.png">
+              </span><span>买家收到商品</span><span class="last"></span></li>
+            <li><span class="not-img">5</span><span>评价</span></li>
+          </ul>
+        </div>
+      </div>
       <div class="mark">
         <v-btn-fill type="blank" size="normal">标记</v-btn-fill>
         <v-btn-fill type="blank" size="normal">订单优惠详情</v-btn-fill>
@@ -46,34 +70,39 @@
         </div>
         <div class="col">
           <h4 class="head head-icon">买家信息
-            <el-icon class="icon-head" @click="handelClicklookInfo">
-              <ArrowDownBold />
-            </el-icon>
+            <a @click="handelClicklookInfo">
+              <i class="homeFonts2-hide" v-if="!flag_look"></i>
+              <i class="homeFonts2-look" v-else></i>
+            </a>
           </h4>
-          <p><span class="key">昵称:</span><span class="value nickname-wrapper">
-              <p class="nickname">
-                <a href="javascript: void(0);" target="_blank" title="点此可以直接和卖家交流选好的宝贝，或相互交流网购体验，还支持语音视频噢。"></a>
-                爱**
-              </p>
-              <el-icon>
-                <ArrowDownBold />
-              </el-icon>
-            </span></p>
+          <p>
+            <span class="key">昵称:</span>
+            <span class="value nickname-wrapper">
+              <a href="javascript: void(0);" target="_blank" title="点此可以直接和卖家交流选好的宝贝，或相互交流网购体验，还支持语音视频噢。"></a>
+              爱**
+            </span>
+          </p>
           <p><span class="key">联系电话:</span><span class="value">180******55</span></p>
           <p><span class="key">邮件:</span><span class="value">2023-09-02 13:32:50</span></p>
           <p>
             <span class="key">支付宝:</span><span class="value">2023-09-02 13:32:54</span><a>付款给买家</a>
-          <p class="tips"><span>该功能为支付宝即时到帐，用于退运费等小额退款，请谨慎操作</span></p>
+          <p class="tips"><span>该功能为支付宝<a herf="javascript:;">即时到帐</a>，用于退运费等小额退款，请谨慎操作</span></p>
           </p>
         </div>
         <div class="col">
           <h4 class="head head-icon">物流信息
-            <el-icon class="icon-head">
-              <ArrowDownBold />
-            </el-icon>
+            <a @click="handelClicklookInfo">
+              <i class="homeFonts2-hide" v-if="!flag_look"></i>
+              <i class="homeFonts2-look" v-else></i>
+            </a>
           </h4>
-          <p><span class="key">收货地址：:</span><span class="value">张**，***********，江苏省 连云港市 东海县 ***********
-              ，***</span><a>复制</a></p>
+          <p><span class="key">收货地址：:</span>
+            <span class="value">
+              {{ flag_look ? `安小姐，18466861227-5695，江苏省 南京市 栖霞区 栖霞经济开发区 乡河大道 ，000000` : `张**，***********，江苏省 连云港市
+              东海县***********，*** ` }}
+            </span>
+            <a>复制</a>
+          </p>
           <p><span class="key">运送方式:</span><span class="value">快递</span></p>
           <p><span class="key">物流公司名称:</span><span class="value">邮政快递包裹</span></p>
           <p>
@@ -91,44 +120,44 @@
             <v-order-item />
           </template>
         </el-table-column>
-        <el-table-column class="td-format" label="宝贝属性" width="165" align="center">
+        <el-table-column class="td-format" label="宝贝属性" width="150" align="center">
           <template #default>
             <p class="main">1</p>
           </template>
         </el-table-column>/>
-        <el-table-column class="td-format" label="状态" width="165" align="center">
+        <el-table-column class="td-format" label="状态" width="150" align="center">
           <template #default>
             <p class="main"><a href="javascript:;">退款成功</a></p>
           </template>
         </el-table-column>
-        <el-table-column class="td-format" label="服务" width="165" align="center">
+        <el-table-column class="td-format" label="服务" width="150" align="center">
           <template #default>
             <p class="main">交易关闭</p>
             <p class="desc">
             </p>
           </template>
         </el-table-column>
-        <el-table-column class="td-format" label="单价" width="165" align="center">
+        <el-table-column class="td-format" label="单价" width="150" align="center">
           <template #default>
             <p class="main">¥50.00</p>
             <p class="desc">（含快递：¥0.00）</p>
           </template>
         </el-table-column>
-        <el-table-column class="td-format" label="数量" width="165" align="center">
+        <el-table-column class="td-format" label="数量" width="150" align="center">
           <template #default>
             <p class="main">
               <a href="javascript:;">我已评价</a>
             </p>
           </template>
         </el-table-column>/>
-        <el-table-column class="td-format" label="优惠" width="165" align="center">
+        <el-table-column class="td-format" label="优惠" width="150" align="center">
           <template #default>
             <p class="main">
               <a href="javascript:;">我已评价</a>
             </p>
           </template>
         </el-table-column>/>
-        <el-table-column class="td-format" label="商品总价" width="165" align="center">
+        <el-table-column class="td-format" label="商品总价" width="150" align="center">
           <template #default>
             <p class="main">
               <a href="javascript:;">我已评价</a>
@@ -142,6 +171,7 @@
 </template>
 
 <script setup lang="ts" name="orderDetail">
+import { ref, reactive } from 'vue';
 import vBtnFill from '@/components/BtnFill/index.vue'
 import vOrderItem from './orderItem.vue';
 
@@ -152,12 +182,13 @@ import vOrderItem from './orderItem.vue';
 //     default: '1'
 //   }
 // })
-let flag_switch = true;
+let flag_switch = false;
 const handleLookWuliu = function () {
   window.open('#/wuliu');
 };
-const handelClicklookInfo = function (e) {
-  console.log(e.target);
+let flag_look = ref(false);
+const handelClicklookInfo = function () {
+  flag_look.value = !flag_look.value;
 };
 const tableData = [
   {
@@ -174,12 +205,16 @@ const tableData = [
 }
 
 .wrapper-order-detail>.title {
+  font-family: PingFang SC, Microsoft YaHei, Roboto, Helvetica Neue, Helvetica, Tahoma, Arial !important;
   line-height: 49px;
+  font-size: 14px;
+  color: #666;
 }
 
 .wrapper-order-detail>.title>.tips {
   color: rgb(17, 17, 17);
   font-size: 14px;
+  margin: 10px 0;
 }
 
 .wrapper-order-detail>.status {
@@ -191,6 +226,65 @@ const tableData = [
   border: 1px solid #f7f8fa;
   border-radius: 10px;
   margin-bottom: 20px;
+}
+
+.wrapper-order-detail>.status .head {
+  position: relative;
+}
+
+.wrapper-order-detail>.status .head>.step {
+  position: absolute;
+  top: 0;
+  margin-left: 350px;
+}
+
+.wrapper-order-detail>.status .head>.step ul {
+  display: flex;
+}
+
+.wrapper-order-detail>.status .head>.step ul li {
+  font-size: 14px;
+  color: #111;
+  opacity: .8;
+}
+
+.wrapper-order-detail>.status .head>.step ul li span {
+  display: inline-block;
+}
+
+.wrapper-order-detail>.status .head>.step ul li.finished {
+  color: #999;
+}
+
+.wrapper-order-detail>.status .head>.step ul li span:first-child {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+}
+
+.wrapper-order-detail>.status .head>.step ul li span:first-child.not-img {
+  border-radius: 50%;
+  background-color: #3d7fff;
+  text-align: center;
+  line-height: 16px;
+  color: #fff;
+  font-size: 10px;
+}
+
+.wrapper-order-detail>.status .head>.step ul li span img {
+  width: 16px;
+  height: 16px;
+  vertical-align: sub;
+}
+
+.wrapper-order-detail>.status .head>.step ul li span.last {
+  width: 36px;
+  height: 2px;
+  border: 1px solid #999;
+  transform: translateY(-4px);
+  margin-left: 3px;
+  margin-right: 4px;
+  opacity: .3;
 }
 
 .wrapper-order-detail>.status>div {
@@ -278,6 +372,12 @@ const tableData = [
   font-weight: normal;
 }
 
+.wrapper-order-detail>.info>.info-detail .col>a>i {
+  font-weight: normal;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
 .wrapper-order-detail>.info>.info-detail .col>p span:first-child {
   margin-right: 5px;
 }
@@ -295,13 +395,13 @@ const tableData = [
   margin-left: 5px;
 }
 
-.wrapper-order-detail>.info>.info-detail .col>p span.value .nickname {
+.wrapper-order-detail>.info>.info-detail .col>p span.value .nickname-wrapper {
   display: inline;
   color: rgb(61, 127, 255);
   margin-right: 2px;
 }
 
-.wrapper-order-detail>.info>.info-detail .col>p span.value .nickname>a {
+.wrapper-order-detail>.info>.info-detail .col .nickname-wrapper>a {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -411,5 +511,27 @@ const tableData = [
 .wrapper-order-detail .el-table.order-table tr:hover,
 .wrapper-order-detail .el-table.order-table tr:hover>td {
   background: #fff !important;
+}
+
+.wrapper-order-detail .el-switch {}
+
+.wrapper-order-detail .el-switch .el-switch__core {
+  width: 68px;
+  height: 28px;
+}
+
+.wrapper-order-detail .el-switch .el-switch__inner {
+  padding-top: 3px;
+}
+
+.wrapper-order-detail .el-switch .el-switch__inner .is-show {
+  padding-top: 3px;
+  color: rgb(153, 153, 153);
+}
+
+.wrapper-order-detail .el-switch .el-switch__action {
+  width: 24px;
+  height: 24px;
+  margin-left: 0;
 }
 </style>

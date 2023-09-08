@@ -12,7 +12,7 @@
 			<div class="right">
 				<img alt="头像" class="peopleImg"
 					src="https://wwc.alicdn.com/avatar/getAvatar.do?userId=2559988253&amp;type=taobao">
-				<span>水晶珠宝工厂直销</span>
+				<!-- <span>{{ user.name }}</span> -->
 			</div>
 		</div>
 		<div class="main">
@@ -297,6 +297,9 @@
 import onlinePeople from "./onlinePeople.vue";
 import dataForm from "./dataForm.vue";
 import { dealData } from "@/mock/dataScreen/dataview.js"
+import { useUserStore } from '@/store/user';
+const user = useUserStore();
+
 export default {
 	components: {
 		onlinePeople, dataForm

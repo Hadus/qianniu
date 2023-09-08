@@ -7,9 +7,9 @@
 				</div>
 				<div class="wrapper-right">
 					<v-h3-block :hasArrow="false">
-						<template #default>惠水琥珀蜜蜡</template>
+						<template #default>{{ user.name }}</template>
 						<template #left>
-							<span class="year">8年老店</span>
+							<span class="year">{{ shop_year }}年老店</span>
 						</template>
 						<template #right>
 							<v-btn-empty imgSrc="//img.alicdn.com/imgextra/i1/O1CN01jkApnt1oddLPdWsQl_!!6000000005248-2-tps-24-24.png">
@@ -18,16 +18,16 @@
 						</template>
 					</v-h3-block>
 					<div class="info">
-						<p><span class="key">淘宝账号名:</span><span class="value">晶玺一品</span></p>
-						<p><span class="key">绑定支付宝:</span><span class="value">177******51</span></p>
-						<p><span class="key">首次开店时间:</span><span class="value">2013.01.09 (已开店 2974 天）</span></p>
-						<p><span class="key">联系地址:</span><span class="value">江苏省连云港市东海县牛山街道天光墟玉器广场</span></p>
-						<p><span class="key">店铺类型:</span><span class="value">个人</span></p>
+						<p><span class="key">淘宝账号名:</span><span class="value">{{ user.taobaoName }}</span></p>
+						<p><span class="key">绑定支付宝:</span><span class="value">{{ mock_shop.shop_info.zhifubao }}</span></p>
+						<p><span class="key">首次开店时间:</span><span class="value">{{ mock_shop.shop_info.createTime }}(已开店 {{ shop_day }}
+								天)</span>
+						</p>
+						<p><span class="key">联系地址:</span><span class="value">{{ mock_shop.shop_info.address }}</span></p>
+						<p><span class="key">店铺类型:</span><span class="value">{{ mock_shop.shop_info.type }}</span></p>
 						<p>
-							<span class="key">店铺ID:</span><span class="value">101883495</span>
-							<el-icon :size="12">
-								<Edit />
-							</el-icon>
+							<span class="key">店铺ID:</span><span class="value">{{ mock_shop.shop_info.id }}</span>
+							<img src="//img.alicdn.com/imgextra/i4/O1CN01Ko7tKk28Xwk7NLJdx_!!6000000007943-2-tps-64-64.png">
 						</p>
 					</div>
 				</div>
@@ -84,15 +84,33 @@
 				<div class="info block-wrapper">
 					<div class="info-1">
 						<p class="top">描述相符</p>
-						<p class="bot">5.0</p>
+						<p class="bot">{{ mock_home.right_info.desc }}
+							<svg width="7" height="8" viewBox="0 0 7 8" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M.787 6.173L2.993 1.05a.5.5 0 0 1 .916-.006l2.283 5.138a.678.678 0 0 1-.942.872l-1.274-.69a1 1 0 0 0-.952 0l-1.274.69a.69.69 0 0 1-.963-.881z"
+									fill="#FF585E" fill-rule="evenodd"></path>
+							</svg>
+						</p>
 					</div>
 					<div class="info-2">
 						<p class="top">服务态度</p>
-						<p class="bot">5.0</p>
+						<p class="bot">{{ mock_home.right_info.server }}
+							<svg width="7" height="8" viewBox="0 0 7 8" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M.787 6.173L2.993 1.05a.5.5 0 0 1 .916-.006l2.283 5.138a.678.678 0 0 1-.942.872l-1.274-.69a1 1 0 0 0-.952 0l-1.274.69a.69.69 0 0 1-.963-.881z"
+									fill="#FF585E" fill-rule="evenodd"></path>
+							</svg>
+						</p>
 					</div>
 					<div class="info-3">
 						<p class="top">物流服务</p>
-						<p class="bot">4.9</p>
+						<p class="bot">{{ mock_home.right_info.wuliu }}
+							<svg width="7" height="8" viewBox="0 0 7 8" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M.787 6.173L2.993 1.05a.5.5 0 0 1 .916-.006l2.283 5.138a.678.678 0 0 1-.942.872l-1.274-.69a1 1 0 0 0-.952 0l-1.274.69a.69.69 0 0 1-.963-.881z"
+									fill="#FF585E" fill-rule="evenodd"></path>
+							</svg>
+						</p>
 					</div>
 				</div>
 				<div class="line"></div>
@@ -131,7 +149,7 @@
 						推荐任务
 					</v-h3-block>
 					<div class="info-content">
-						<v-confirm-item v-for="(item, index) in adviseItemList" :item="item" :index="index">
+						<v-confirm-item v-for="(item, index) in adviseItemList" :item="item" :index="index" class="ad-cofirm-wrapper">
 							<v-btn-empty>{{ item.btnTitle }}</v-btn-empty>
 						</v-confirm-item>
 					</div>
@@ -143,6 +161,10 @@
 
 <script setup lang="ts" name="shopCenter">
 import { useRouter } from 'vue-router';
+import mock_home from '@/mock/current/home';
+import mock_shop from '@/mock/current/shop';
+import { useUserStore } from '@/store/user';
+const user = useUserStore();
 const $router = useRouter();
 
 import vConfirmItem from './confirmItem.vue';
@@ -150,6 +172,10 @@ import vH3Block from '@/components/H3Header/index.vue';
 import vBtnEmpty from '@/components/BtnEmpty/index.vue';
 import vBtnFill from '@/components/BtnFill/index.vue';
 import vBtnSign from '@/components/BtnSign/index.vue';
+
+const shop_createTime = mock_shop.shop_info.createTime;
+const shop_year = new Date().getFullYear() - new Date(shop_createTime).getFullYear() + 1;
+const shop_day = Math.ceil((new Date().getTime() - new Date(shop_createTime).getTime()) / 1000 / 60 / 60 / 24);
 // 左侧：店铺店铺认证
 const confirmItemList = [
 	{
@@ -216,7 +242,7 @@ const handelClickToolItem = function (item) {
 
 .left {
 	width: 100%;
-	padding: 20px 395px 20px 25px;
+	padding: 20px 430px 20px 25px;
 }
 
 .introduce-wrapper {
@@ -285,8 +311,10 @@ const handelClickToolItem = function (item) {
 	color: #111;
 }
 
-.introduce-wrapper .wrapper-right .info>p i {
+.introduce-wrapper .wrapper-right .info>p img {
 	margin-left: 5px;
+	width: 12px;
+	height: 12px;
 }
 
 .confirm-wrapper>h3 {}
@@ -325,11 +353,11 @@ const handelClickToolItem = function (item) {
 }
 
 .right {
-	width: 357px;
+	width: 400px;
 	position: absolute;
 	right: 0;
 	top: 0;
-	padding: 20px;
+	padding: 15px;
 	padding-left: 0;
 }
 
@@ -441,8 +469,19 @@ const handelClickToolItem = function (item) {
 	object-fit: contain;
 }
 
-.advise-wrapper .block-wrapper.confirm-item-wrapper {
+.advise-wrapper .info h3 {
+	font-size: 15px;
+}
+</style>
+<style>
+.advise-wrapper .ad-cofirm-wrapper div.block-wrapper {
 	background: #fff;
 	background-image: none;
+	padding-right: 0;
+}
+
+.advise-wrapper .ad-cofirm-wrapper div.block-wrapper .btn {
+	right: 0px;
+	top: 30%;
 }
 </style>

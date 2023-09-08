@@ -14,7 +14,7 @@
   </div>
 </template>
 
-<script setup lang="ts" name="shopDataItem">
+<script setup lang="ts" name="process">
 const { dataList, active } = defineProps({
   dataList: Array,
   active: Number

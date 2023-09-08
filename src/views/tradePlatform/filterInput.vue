@@ -13,10 +13,7 @@
     <input />
     <span>结束日期</span>
     <input />
-    <i>
-      <el-icon>
-        <ArrowDownBold />
-      </el-icon>
+    <i class="homeFonts1-calendar">
     </i>
   </div>
   <div class="filter-input-wrapper" style="background-color: transparent;" v-else-if="type == 'blank'">
@@ -66,7 +63,7 @@ div.filter-input-wrapper span {
 }
 
 div.filter-input-wrapper>i {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 12px;
   color: #111;
   position: absolute;

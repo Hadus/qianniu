@@ -7,9 +7,8 @@
 				<template v-if="item.subs">
 					<el-sub-menu :index="item.index" :key="item.index" v-permiss="item.permiss">
 						<template #title>
-							<el-icon>
-								<component :is="item.icon"></component>
-							</el-icon>
+							<img :src="item.icon" class="icon-img">
+							<img :src="item.iconActive" class="icon-img-active">
 							<span>{{ item.title }}</span>
 						</template>
 						<!-- 第二层 -->
@@ -34,15 +33,14 @@
 				</template>
 				<template v-else>
 					<el-menu-item :index="item.index" :key="item.index" v-permiss="item.permiss">
-						<el-icon>
-							<component :is="item.icon"></component>
-						</el-icon>
+						<img :src="item.icon" class="icon-img">
+						<img :src="item.iconActive" class="icon-img-active">
 						<template #title v-if="item.link">
 							<a :href="item.link" class="link" target="_blank">{{ item.title }}</a>
 						</template>
 						<template #title v-else>{{ item.title }}</template>
 					</el-menu-item>
-					<li class="line" v-if="item.title == '财务--'">
+					<li class="line" v-if="item.title == '财务'">
 						<span></span>
 					</li>
 				</template>
@@ -93,6 +91,12 @@ const handleClose = function (index) {
 	font-size: 14px;
 	user-select: none;
 	width: 108px;
+}
+
+.sidebar-el-menu img {
+	width: 18px;
+	height: 18px;
+	margin-right: 10px;
 }
 
 .sidebar::-webkit-scrollbar {
@@ -161,7 +165,40 @@ const handleClose = function (index) {
 }
 </style>
 <style>
+.sidebar>ul>li .icon-img {
+	display: block;
+}
+
+.sidebar>ul>li .icon-img-active {
+	display: none;
+}
+
+.sidebar>ul>li.is-active .icon-img {
+	display: none;
+}
+
+.sidebar>ul>li.is-active .icon-img-active {
+	display: block;
+}
+
+
 .sidebar>ul>li.el-sub-menu>ul.el-menu {
 	transition: all 0s !important;
+}
+
+.sidebar>.el-menu>li.el-sub-menu .el-icon.el-sub-menu__icon-arrow {
+	right: 11px;
+	top: calc(50% + 2px);
+	font-weight: 900;
+	font-size: 11px;
+}
+
+.sidebar>.el-menu>li.el-sub-menu>.el-sub-menu__title>.el-icon.el-sub-menu__icon-arrow {
+	display: none;
+}
+
+.sidebar ul.el-menu>li.sec-menu-li>div.el-sub-menu__title {
+	font-size: 14px;
+	color: #111;
 }
 </style>

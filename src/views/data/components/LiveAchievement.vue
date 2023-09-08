@@ -34,28 +34,32 @@
             </div>
           </div>
           <div class="optimization-box mt10">
-            <div class="mb10">
+            <div class="mb10" style="position: relative">
               <span style="color: #e6a23c; font-size: 14px"><el-icon :size="20" color="#E6A23C"
                   style="postion: relative; top: 5px">
                   <WarningFilled />
                 </el-icon>开播：</span>
               <span class="optimization-text">近7天场均有效开播时长260，相比同级同类主播平均水平312，低17%</span>
+              <span class="view-plan">查看锦囊</span>
             </div>
-            <div class="mb10">
+            <div class="mb10" style="position: relative">
               <span style="color: #e6a23c; font-size: 14px"><el-icon :size="20" color="#E6A23C"
                   style="postion: relative; top: 5px">
                   <WarningFilled />
                 </el-icon>开播：</span>
               <span class="optimization-text">近7天场均有效开播场次1，相比同级同类主播平均水平1，低2%</span>
+              <span class="view-plan">查看锦囊</span>
             </div>
-            <div>
+            <div style="position: relative">
               <span style="color: #e6a23c; font-size: 14px"><el-icon :size="20" color="#E6A23C"
                   style="postion: relative; top: 5px">
                   <WarningFilled />
                 </el-icon>观看：</span>
               <span class="optimization-text">近7天场均有效观看时长194，相比同级同类主播平均水平382，低49%</span>
+              <span class="view-plan">查看锦囊</span>
             </div>
           </div>
+          <div class="view-all-opts">查看全部 10 个优化项</div>
           <div class="notice-box mt20">
             <div>
               <span class="notice-icon">
@@ -98,9 +102,12 @@
       </div>
     </div>
     <div class="tabs">
-      <div class="tab-item" :class="{ 'active': isPerformanceActive }" @click="handleSelectLiveType('livePerformance')">
-        直播间业绩表现</div>
-      <div class="tab-item" :class="{ 'active': myLiveActive }" @click="handleSelectLiveType('myLive')">我的直播列表</div>
+      <div class="tab-item" :class="{ active: isPerformanceActive }" @click="handleSelectLiveType('livePerformance')">
+        直播间业绩表现
+      </div>
+      <div class="tab-item" :class="{ active: myLiveActive }" @click="handleSelectLiveType('myLive')">
+        我的直播列表
+      </div>
     </div>
     <div class="tab-content">
       <div class="live-performance-box" v-if="isPerformanceActive">
@@ -114,10 +121,12 @@
 </template>
 <script setup lang="ts">
 import { reactive, ref, onMounted, computed } from "vue";
-import liveList from './liveList.vue'
+import liveList from "./liveList.vue";
 import * as echarts from "echarts";
-import LivePerformance from './LivePerformance.vue'
+import LivePerformance from "./LivePerformance.vue";
+import { live as mock_live } from '@/mock/current/sycm';
 
+console.log(mock_live)
 const now = new Date();
 const updateDate = ref(
   new Date(now.setDate(now.getDate() - 1))
@@ -125,18 +134,7 @@ const updateDate = ref(
     .replaceAll("/", "-")
 );
 
-const rankInfo = reactive({
-  my: {
-    cur: 537,
-    change: 51,
-    direction: "down",
-  },
-  all: {
-    cur: 6496,
-    change: 370,
-    direction: "down",
-  },
-});
+const rankInfo = mock_live.performance.overall;
 
 const initUserRadarChart = () => {
   const chart = echarts.init(document.getElementById("userRadarChart"));
@@ -146,7 +144,7 @@ const initUserRadarChart = () => {
       bottom: -5,
       itemWidth: 12,
       itemHeight: 12,
-      icon: 'rect'
+      icon: "rect",
     },
     radar: {
       shape: "circle",
@@ -186,12 +184,14 @@ const initUserRadarChart = () => {
   chart.setOption(option);
 };
 
-const activeTab = ref('livePerformance');
-const isPerformanceActive = computed(() => activeTab.value === 'livePerformance')
-const myLiveActive = computed(() => activeTab.value === 'myLive')
+const activeTab = ref("livePerformance");
+const isPerformanceActive = computed(
+  () => activeTab.value === "livePerformance"
+);
+const myLiveActive = computed(() => activeTab.value === "myLive");
 const handleSelectLiveType = (type: string) => {
   activeTab.value = type;
-}
+};
 onMounted(() => {
   initUserRadarChart();
 });
@@ -323,5 +323,35 @@ onMounted(() => {
 .my-live-box {
   padding: 50px 40px;
   background-color: #fff;
+}
+
+.view-plan {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #2062e6;
+  border: 1px solid #2062e6;
+  padding: 1px 3px;
+  border-radius: 2px;
+  margin-left: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  flex-shrink: 0;
+  height: 22px;
+}
+
+.view-all-opts {
+  display: block;
+  color: #333;
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #2062e6;
+  letter-spacing: 0;
+  line-height: 22px;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 20px;
 }
 </style>

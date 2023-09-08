@@ -22,7 +22,7 @@
 						<div class="pop">
 							扫码登录更便捷<span class="arrow"></span>
 						</div>
-						<i class="icon icon-qrcode"></i>
+						<i class="loginFonts loginFonts-qrcode"></i>
 					</div>
 					<el-tabs v-model="activeName" class="login-tabs">
 						<el-tab-pane label="密码登录" name="first">
@@ -250,17 +250,16 @@ const submitForm = (formEl: FormInstance | undefined) => {
 	border-right-color: transparent;
 }
 
-.ms-login .qrcode-wrapper .icon-qrcode {
+.ms-login .qrcode-wrapper .loginFonts-qrcode {
 	width: 60px;
 	height: 66px;
 	color: #111;
 	font-size: 60px;
 	position: absolute;
 	top: 2px;
-	right: 2px;
+	right: -2px;
 	z-index: 9;
 	cursor: pointer;
-	background-color: pink;
 }
 
 .content .login-btn {

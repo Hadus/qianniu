@@ -2,7 +2,10 @@
   <div class="head-wrapper">
     <div class="head">
       <div class="left">
-        <p>卖家手机端</p>
+        <p>
+          <span></span>
+          卖家手机端
+        </p>
         <p>晓峰珠宝, <a>退出</a></p>
       </div>
       <div class="right">
@@ -29,8 +32,11 @@
       <div class="left">
         <img src="https://img.alicdn.com/tfs/TB1m.NSoET1gK0jSZFrXXcNCXXa-180-60.png">
       </div>
-      <div class="right">
-        <input type="search" name="" id="">
+      <div class="right search">
+        <div class="input-wapper">
+          <img src="https://gw.alicdn.com/imgextra/i3/O1CN01RoqUXb1YqQRWDLoK0_!!6000000003110-2-tps-28-32.png">
+          <input autocomplete="off" value="">
+        </div>
       </div>
     </div>
   </div>
@@ -73,6 +79,12 @@
   height: 22px;
 }
 
+.head>.left>p>span {
+  font-family: wuliuFonts;
+  color: #3c81f6;
+  font-size: 14px;
+}
+
 .banner {
   height: 60px;
   display: flex;
@@ -91,5 +103,43 @@
   display: inline-block;
   cursor: pointer;
   vertical-align: middle;
+}
+
+.banner .right.search {
+  left: 168px;
+  padding-left: 10px;
+  display: flex;
+}
+
+.search .input-wapper {
+  width: 320px;
+  height: 34px;
+  margin-top: -6px;
+  position: relative;
+}
+
+.search .input-wapper img {
+  position: absolute;
+  left: 12px;
+  top: 22px;
+  width: 14px;
+  height: 16px;
+}
+
+.search .input-wapper>input {
+  height: 100%;
+  width: 100%;
+  border: 0 none;
+  border-radius: 20px;
+  padding-left: 30px;
+  font-size: 12px;
+  color: #111;
+  outline: 0 none;
+  background-color: #e5eaf8;
+  border: 1px solid #e5eaf8;
+}
+
+.search .input-wapper>input:hover {
+  border-color: #3d7fff;
 }
 </style>

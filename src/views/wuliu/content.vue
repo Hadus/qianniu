@@ -25,16 +25,16 @@
               <el-icon>
                 <ArrowDownBold />
               </el-icon>
-              <a href="javascript:;">显示</a>
+              <a href="javascript:;" style="color: #5584ff; font-size: 12px;">
+                <i class="wuliuFonts3-show" style="color: #5584ff;"></i>
+                显示</a>
             </p>
           </div>
         </div>
         <div class="right">
           <a href="javascript:;">查看发货/退货信息</a>
           <a href="javascript:;">
-            <el-icon>
-              <ArrowDownBold />
-            </el-icon>
+            <i class="wuliuFonts2-back" style="margin-right: 4px; font-size: 12px;"></i>
             回到旧版</a>
         </div>
       </div>
@@ -205,7 +205,7 @@ const activities = [
 }
 
 .item>.order-info>div.left i {
-  margin: 0 10px;
+  margin: 0 8px;
 }
 
 .item>.order-info>div.right a {
