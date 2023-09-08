@@ -96,13 +96,14 @@
 						<el-table-column align="center" label="评价" width="140" />
 					</el-table>
 					<!-- 内容 -->
-					<el-table style="width: 100%" header-row-class-name="order-item-th" class="order-table order-tbody-table"
-						:data="tableData">
+					<el-table v-for="item in tableData" style="width: 100%" header-row-class-name="order-item-th"
+						class="order-table order-tbody-table" :data="tableData">
 						<el-table-column>
 							<template #header>
 								<div class="item-title">
 									<el-checkbox></el-checkbox>
-									<p><span class="key">&nbsp;&nbsp;订单号：</span><span class="value">3503107335644061564</span></p>
+									<p><span class="key">&nbsp;&nbsp;订单号：</span><span class="value">{{ tableData[0].orderInfo.id }}</span>
+									</p>
 									<p class="create-time"><span class="key">创建时间：</span><span class="value">2023-09-02 13:32:50</span></p>
 								</div>
 							</template>
@@ -159,7 +160,7 @@
 						</el-table-column>/>
 					</el-table>
 					<!-- 表格end -->
-					<v-paganation layout="prev, pager, next, jumper" :total="50" class="order-pagination" />
+					<v-paganation layout="prev, pager, next, jumper" :total="91" class="order-pagination" />
 				</el-tab-pane>
 				<el-tab-pane label="等待买家付款" name="secondDetails">
 					暂无
@@ -201,9 +202,354 @@ const activeNameAll = 'firstAll';
 const activeNameDetails = 'firstDetails'
 const tableData = [
 	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
+		"operations": [
+			{
+				"dataUrl": "/trade/json/memoInfo.htm?user_type=seller &_input_charset =utf-8 &orderid =3474396939193191918",
+				"style": "thead",
+				"id": "flag",
+				"text": "编辑标记信息，仅自己可见",
+				"type": "operation",
+				"url": "/trade/memo/update_sell_memo.htm?seller_id=2559988253 &biz_order_id =3474396939193191918 &user_type =1 &pageNum =2 &auctionTitle =null &dateBegin =0 &dateEnd =0 &commentStatus=&buyerNick=&auctionStatus=&logisticsService ="
+			},
+			{
+				"style": "t16",
+				"text": "双方已评",
+				"type": "operation",
+				"url": "//rate.taobao.com/RateDetailSeller.htm?parentTradeId=3474396939193191918"
+			}
+		],
+		"statusInfo": {
+			"operations": [
+				{
+					"style": "t16",
+					"text": "详情",
+					"params": {
+						"qianNiuPCDetailUrl": "//qn.taobao.com/home.htm/trade-platform/tp/detail?bizOrderId=3474396939193191918",
+						"solutionPCDetailUrl": "//trade.taobao.com/trade/detail/trade_item_detail.htm?bizOrderId=3474396939193191918"
+					},
+					"type": "operation",
+					"url": "//trade.taobao.com/trade/detail/trade_item_detail.htm?bizOrderId=3474396939193191918"
+				},
+				{
+					"style": "t15",
+					"text": "补发货",
+					"type": "operation",
+					"url": "//qn.taobao.com/home.htm/consign-order/?from=list &tradeId =3474396939193191918 &type =1"
+				}
+			],
+			"text": "资金保护中",
+			"type": "t0"
+		},
+		"extra": {
+			"usePrivacyPhone": true,
+			"sellerFlag": 0,
+			"currencySymbol": "￥",
+			"inHold": false,
+			"isShowSellerService": false,
+			"currency": "CNY",
+			"sellerFlagPic": "https://gw.alicdn.com/imgextra/i3/O1CN01kOL67z1j0BDjYiCKU_!!6000000004485-2-tps-120-120.png?getAvatar=avatar",
+			"batchSendGoods": 1,
+			"disableCheckbox": false
+		},
+		"orderInfo": {
+			"createTime": "2023-08-12 20:40:43",
+			"id": "3474396939193191918"
+		},
+		"id": "3474396939193191918",
+		"subOrders": [
+			{
+				"priceInfo": {
+					"realTotal": "1.00"
+				},
+				"quantity": "1",
+				"id": 3474396939194191918,
+				"itemInfo": {
+					"subId": "3474396939194191918",
+					"skuText": [
+						{
+							"visible": "SOLID",
+							"name": "颜色分类",
+							"value": "更多定制圈口联系客服"
+						}
+					],
+					"extra": [
+						{
+							"visible": "SOLID",
+							"name": "发货时间",
+							"value": "08月14日 20:42前发货"
+						}
+					],
+					"pic": "//img.alicdn.com/imgextra/i3/2559988253/O1CN01JIi3PZ2ApvbEjcBPu_!!2559988253.jpg_sum.jpg",
+					"title": "樱花玛瑙手镯纯天然樱花玛瑙水晶冰透高冰厂家直销",
+					"serviceIcons": [
+						{
+							"linkTitle": "消费者保障服务，卖家承诺7天无理由退换货",
+							"linkUrl": "https://liveplatform.taobao.com/restful/index/shop/shop-rule?lastCategoryId=1351 &ruleId =20000865#/DetailRule",
+							"type": 3,
+							"url": "//img.alicdn.com/tps/i3/T1Vyl6FCBlXXaSQP_X-16-16.png"
+						},
+						{
+							"linkUrl": "//rule.taobao.com/detail-1722.htm",
+							"title": "该笔订单不计入销量",
+							"type": 3,
+							"url": "//gtd.alicdn.com/tps/i4/TB1043lGpXXXXcZXXXXAz6UFXXX-16-16.png"
+						}
+					],
+					"itemUrl": "//trade.taobao.com/trade/detail/tradeSnap.htm?tradeID=3474396939194191918 &snapShot =true",
+					"skuId": 0
+				}
+			},
+			{
+				"priceInfo": {
+					"realTotal": "1.00"
+				},
+				"quantity": "1",
+				"id": 3474396939195191918,
+				"itemInfo": {
+					"subId": "3474396939195191918",
+					"skuText": [
+						{
+							"visible": "SOLID",
+							"name": "颜色分类",
+							"value": "12毫米"
+						}
+					],
+					"extra": [
+						{
+							"visible": "SOLID",
+							"name": "发货时间",
+							"value": "08月14日 20:42前发货"
+						}
+					],
+					"pic": "//img.alicdn.com/imgextra/i4/2559988253/O1CN018BHWDJ2Apvb99Y0UK_!!2559988253.jpg_sum.jpg",
+					"title": "满天星草莓晶手串小清新甜美粉色水晶手链纯天然招桃桃人缘",
+					"serviceIcons": [
+						{
+							"linkTitle": "消费者保障服务，卖家承诺7天无理由退换货",
+							"linkUrl": "https://liveplatform.taobao.com/restful/index/shop/shop-rule?lastCategoryId=1351 &ruleId =20000865#/DetailRule",
+							"type": 3,
+							"url": "//img.alicdn.com/tps/i3/T1Vyl6FCBlXXaSQP_X-16-16.png"
+						},
+						{
+							"linkUrl": "//rule.taobao.com/detail-1722.htm",
+							"title": "该笔订单不计入销量",
+							"type": 3,
+							"url": "//gtd.alicdn.com/tps/i4/TB1043lGpXXXXcZXXXXAz6UFXXX-16-16.png"
+						}
+					],
+					"itemUrl": "//trade.taobao.com/trade/detail/tradeSnap.htm?tradeID=3474396939195191918 &snapShot =true",
+					"skuId": 0
+				}
+			},
+			{
+				"priceInfo": {
+					"realTotal": "1.00"
+				},
+				"quantity": "1",
+				"id": 3474396939196191918,
+				"itemInfo": {
+					"subId": "3474396939196191918",
+					"skuText": [
+						{
+							"visible": "SOLID",
+							"name": "颜色分类",
+							"value": "娜娜1"
+						}
+					],
+					"extra": [
+						{
+							"visible": "SOLID",
+							"name": "发货时间",
+							"value": "08月14日 20:42前发货"
+						}
+					],
+					"pic": "//img.alicdn.com/imgextra/i2/2559988253/O1CN017j5t4e2ApvbBV4gB8_!!2559988253.jpg_sum.jpg",
+					"title": "娜娜直播专拍保山南红手串柿子红精品牛血红锦红项链吊坠",
+					"serviceIcons": [
+						{
+							"linkTitle": "消费者保障服务，卖家承诺7天无理由退换货",
+							"linkUrl": "https://liveplatform.taobao.com/restful/index/shop/shop-rule?lastCategoryId=1351 &ruleId =20000865#/DetailRule",
+							"type": 3,
+							"url": "//img.alicdn.com/tps/i3/T1Vyl6FCBlXXaSQP_X-16-16.png"
+						},
+						{
+							"linkUrl": "//rule.taobao.com/detail-1722.htm",
+							"title": "该笔订单不计入销量",
+							"type": 3,
+							"url": "//gtd.alicdn.com/tps/i4/TB1043lGpXXXXcZXXXXAz6UFXXX-16-16.png"
+						}
+					],
+					"itemUrl": "//trade.taobao.com/trade/detail/tradeSnap.htm?tradeID=3474396939196191918 &snapShot =true",
+					"skuId": 0
+				}
+			},
+			{
+				"priceInfo": {
+					"realTotal": "1.00"
+				},
+				"quantity": "1",
+				"id": 3474396939197191918,
+				"itemInfo": {
+					"subId": "3474396939197191918",
+					"skuText": [
+						{
+							"visible": "SOLID",
+							"name": "颜色分类",
+							"value": "11毫米"
+						}
+					],
+					"extra": [
+						{
+							"visible": "SOLID",
+							"name": "发货时间",
+							"value": "08月14日 20:42前发货"
+						}
+					],
+					"pic": "//img.alicdn.com/imgextra/i1/2559988253/O1CN013AMOLo2Apvb472GJd_!!2559988253.jpg_sum.jpg",
+					"title": "川料南红玛瑙108颗佛珠多圈手链项链火焰红樱桃红 保山柿子红手串",
+					"serviceIcons": [
+						{
+							"linkTitle": "消费者保障服务，卖家承诺7天无理由退换货",
+							"linkUrl": "https://liveplatform.taobao.com/restful/index/shop/shop-rule?lastCategoryId=1351 &ruleId =20000865#/DetailRule",
+							"type": 3,
+							"url": "//img.alicdn.com/tps/i3/T1Vyl6FCBlXXaSQP_X-16-16.png"
+						},
+						{
+							"linkUrl": "//rule.taobao.com/detail-1722.htm",
+							"title": "该笔订单不计入销量",
+							"type": 3,
+							"url": "//gtd.alicdn.com/tps/i4/TB1043lGpXXXXcZXXXXAz6UFXXX-16-16.png"
+						}
+					],
+					"itemUrl": "//trade.taobao.com/trade/detail/tradeSnap.htm?tradeID=3474396939197191918 &snapShot =true",
+					"skuId": 0
+				}
+			},
+			{
+				"priceInfo": {
+					"realTotal": "1.00"
+				},
+				"quantity": "1",
+				"id": 3474396939198191918,
+				"itemInfo": {
+					"subId": "3474396939198191918",
+					"skuText": [
+						{
+							"visible": "SOLID",
+							"name": "颜色分类",
+							"value": "7毫米"
+						}
+					],
+					"extra": [
+						{
+							"visible": "SOLID",
+							"name": "发货时间",
+							"value": "08月14日 20:42前发货"
+						}
+					],
+					"pic": "//img.alicdn.com/imgextra/i3/2559988253/O1CN01y49MEa2Apvb7vnkBk_!!2559988253.jpg_sum.jpg",
+					"title": "粉水晶手链天然粉晶单圈少女心转运手串招桃花粉晶小女生甜美",
+					"serviceIcons": [
+						{
+							"linkTitle": "消费者保障服务，卖家承诺7天无理由退换货",
+							"linkUrl": "https://liveplatform.taobao.com/restful/index/shop/shop-rule?lastCategoryId=1351 &ruleId =20000865#/DetailRule",
+							"type": 3,
+							"url": "//img.alicdn.com/tps/i3/T1Vyl6FCBlXXaSQP_X-16-16.png"
+						},
+						{
+							"linkUrl": "//rule.taobao.com/detail-1722.htm",
+							"title": "该笔订单不计入销量",
+							"type": 3,
+							"url": "//gtd.alicdn.com/tps/i4/TB1043lGpXXXXcZXXXXAz6UFXXX-16-16.png"
+						}
+					],
+					"itemUrl": "//trade.taobao.com/trade/detail/tradeSnap.htm?tradeID=3474396939198191918 &snapShot =true",
+					"skuId": 0
+				}
+			},
+			{
+				"priceInfo": {
+					"realTotal": "1.00"
+				},
+				"quantity": "1",
+				"id": 3474396939199191918,
+				"itemInfo": {
+					"subId": "3474396939199191918",
+					"skuText": [
+						{
+							"visible": "SOLID",
+							"name": "颜色分类",
+							"value": "9毫米"
+						}
+					],
+					"extra": [
+						{
+							"visible": "SOLID",
+							"name": "发货时间",
+							"value": "08月14日 20:42前发货"
+						}
+					],
+					"pic": "//img.alicdn.com/imgextra/i2/2559988253/O1CN01ebqfbj2ApvbB4SW1n_!!2559988253.jpg_sum.jpg",
+					"title": "紫水晶手链紫罗兰深紫单圈手串乌拉圭饰品女款乌拉圭紫紫色",
+					"serviceIcons": [
+						{
+							"linkTitle": "消费者保障服务，卖家承诺7天无理由退换货",
+							"linkUrl": "https://liveplatform.taobao.com/restful/index/shop/shop-rule?lastCategoryId=1351 &ruleId =20000865#/DetailRule",
+							"type": 3,
+							"url": "//img.alicdn.com/tps/i3/T1Vyl6FCBlXXaSQP_X-16-16.png"
+						},
+						{
+							"linkUrl": "//rule.taobao.com/detail-1722.htm",
+							"title": "该笔订单不计入销量",
+							"type": 3,
+							"url": "//gtd.alicdn.com/tps/i4/TB1043lGpXXXXcZXXXXAz6UFXXX-16-16.png"
+						}
+					],
+					"itemUrl": "//trade.taobao.com/trade/detail/tradeSnap.htm?tradeID=3474396939199191918 &snapShot =true",
+					"skuId": 0
+				}
+			}
+		],
+		"payInfo": {
+			"operations": [
+				{
+					"style": "t16",
+					"text": "查看物流",
+					"type": "operation",
+					"url": "//wuliu.taobao.com/user/order_detail_new.htm?trade_id=3474396939193191918 &seller_id =2559988253"
+				}
+			],
+			"postType": "(含快递:￥0.00)",
+			"icons": [
+				{
+					"linkTitle": "该订单来自您的手机淘宝店铺",
+					"linkUrl": "http://www.taobao.com/go/act/integrated/maijia-index.php?sprefer=symj27",
+					"type": 3,
+					"url": "//img.alicdn.com/tps/i1/T1xRBqXdNAXXXXXXXX-46-16.png"
+				}
+			],
+			"actualFee": "6.00"
+		},
+		"buyer": {
+			"nick": "刘**",
+			"decodeNick": "刘翠琴mm",
+			"operations": [
+				{
+					"imgUrl": "//gtd.alicdn.com/tps/i8/T1KNtuXc4rXXXXXXXX-12-12.png",
+					"action": "a14",
+					"style": "t0",
+					"title": "查询该买家订单",
+					"type": "operation",
+					"url": "/trade/itemlist/list_sold_items.htm?action=itemlist/SoldQueryAction &event_submit_do_query =1"
+				}
+			],
+			"memberUrl": "",
+			"phoneNum": "173********",
+			"encodeNick": "刘**",
+			"id": 2208411191819,
+			"guestUser": false,
+			"encodeId": "RAzN8HWJyxg6ypUBTdzmtecs5mqV2DdP8XwmnPQEnuZ5WQESWK6"
+		}
 	},
 ];
 

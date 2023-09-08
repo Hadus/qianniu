@@ -1,6 +1,7 @@
 // 交易
+const trade_orderList_obj  = require('@/mock/current/tableData/trade_orderList.json');
 /* 订单页 */
-const order_table =[];
+const order_table = trade_orderList_obj;
 /* 订单详情页 */
 const order_detail = {};
 
