@@ -136,10 +136,10 @@
 								<el-table :data="tableData" style="width: 100%" class="examine-table" border
 									:span-method="objectSpanMethod">
 									<el-table-column prop="one" label="考核维度" width="180" />
-									<el-table-column prop="two" label="考核得分" width="180" class-name="two">
-										<template #default>
-											<p>5.0</p>
-											<p>较昨日0.00%</p>
+									<el-table-column label="考核得分" width="180" class-name="two">
+										<template #default="{ row }">
+											<p>{{ row.two.score }}</p>
+											<p>较昨日{{ row.two.toPrevDay }}%</p>
 											<p><a href="javascript">诊断提升</a></p>
 										</template>
 									</el-table-column>
@@ -154,34 +154,40 @@
 									</el-table-column>
 									<el-table-column prop="four" label="指标得分" width="180" />
 									<el-table-column prop="five" label="指标表现" width="320" class-name="five">
-										<div class="chart">
-											<div>43秒</div>
-											<div class="server-chart" id="serverReporter_chart">
+										<template #default="{ row }">
+											<div class="chart">
+												<div>{{ row.five.performance }}</div>
+												<div class="server-chart" id="serverReporter_chart">
+												</div>
 											</div>
-										</div>
+										</template>
 									</el-table-column>
 									<el-table-column prop="six" label="考核标准" width="320" class-name="six">
-										<div class="process">
-											<div class="bot">
-												<p></p>
-												<p></p>
-												<p></p>
-												<p></p>
-												<p></p>
+										<template #default="{ row }">
+											<div class="process">
+												<div class="bot">
+													<p></p>
+													<p></p>
+													<p></p>
+													<p></p>
+													<p></p>
+												</div>
+												<div class="top" :class="{ top4: row.six !== 5 }">
+													<p></p>
+													<p></p>
+													<p></p>
+													<p></p>
+													<p></p>
+												</div>
 											</div>
-											<div class="top">
-												<p></p>
-												<p></p>
-												<p></p>
-												<p></p>
-												<p></p>
-											</div>
-										</div>
+										</template>
 									</el-table-column>
 									<el-table-column prop="seven" label="下一档目标值" width="180" class-name="seven">
-										<span class="ok">
-											已达标
-										</span>
+										<template #default="{ row }">
+											<span :class="{ ok: row.six === 5 }">
+												{{ row.seven }}
+											</span>
+										</template>
 									</el-table-column>
 								</el-table>
 								<div class="notice">
@@ -213,13 +219,13 @@
 </template>
 
 <script setup lang="ts" name="serverReport">
-import { onMounted, nextTick } from "vue";
+import { ref, onMounted } from "vue";
 import * as echarts from 'echarts';
 import mock_shop from '@/mock/current/shop';
 import { getDateString } from '@/utils/utils';
 
-let activeName = 'first';
-let activeName_inner = 'one';
+let activeName = ref('first');
+let activeName_inner = ref('one');
 // table
 const objectSpanMethod = ({
 	rowIndex,
@@ -239,50 +245,13 @@ const objectSpanMethod = ({
 		}
 	}
 }
-const tableData = [
-	{
-		one: '商品体验1',
-		two: '商品体验',
-		three: '商品体验1',
-		four: '商品体验',
-		five: '商品体验',
-		six: '商品体验',
-		seven: '商品体验',
-	},
-	{
-		one: '商品体验2',
-		two: '商品体验',
-		three: '商品体验2',
-		four: '商品体验',
-		five: '商品体验',
-		six: '商品体验',
-		seven: '商品体验',
-	},
-	{
-		one: '商品体验3',
-		two: '商品体验',
-		three: '商品体验3',
-		four: '商品体验',
-		five: '商品体验',
-		six: '商品体验',
-		seven: '商品体验',
-	},
-	{
-		one: '商品体验4',
-		two: '商品体验',
-		three: '商品体验4',
-		four: '商品体验',
-		five: '商品体验',
-		six: '商品体验',
-		seven: '商品体验',
-	},
-];
+const tableData = mock_shop.examine_tableData;
 // chart
-const initServerChart = () => {
+const initServerChart = (fn) => {
 	const domList_server_chart = document.querySelectorAll('#serverReporter_chart');
-	console.log(domList_server_chart)
 	domList_server_chart.forEach((dom) => {
 		const serverReporter_chart = echarts.init(dom);
+		const dataList = fn();
 		const option = {
 			color: ['rgba(50, 229, 255, 1)', 'rgba(250, 207, 18, 1)'],
 			tooltip: {
@@ -321,7 +290,7 @@ const initServerChart = () => {
 					},
 					barGap: '0%',
 					barWidth: '100%',
-					data: [0, 20, 110, 130, 120, 110, 80, 120, 110, 130, 120, 110],
+					data: dataList,
 				},
 				{
 					name: '折线图',
@@ -331,7 +300,7 @@ const initServerChart = () => {
 						color: 'rgb(32,98,230)'
 					},
 					showSymbol: false,
-					data: [0, 20, 110, 130, 120, 110, 80, 120, 110, 130, 120, 110],
+					data: dataList,
 				},
 			]
 		};
@@ -340,8 +309,17 @@ const initServerChart = () => {
 }
 
 onMounted(() => {
+	const getChartData = () => {
+		const list = [];
+		const num = 10, n = 0, m = 120;
+		for (let index = 0; index < num; index++) {
+			const random = parseInt(Math.random() * (m - n) + n);
+			list.push(random)
+		}
+		return list;
+	}
 	setTimeout(() => {
-		initServerChart();
+		initServerChart(getChartData);
 	}, 0);
 });
 </script>
@@ -566,11 +544,11 @@ onMounted(() => {
 	background: rgb(32, 98, 230);
 }
 
-.serverReport-container .examine-table .six .process>div.top p:nth-child(5) {
-	/* width: 0px; */
+.serverReport-container .examine-table .six .process>div.top.top4 p:nth-child(5) {
+	width: 0px;
 }
 
-.serverReport-container .examine-table .seven span {
+.serverReport-container .examine-table .seven span.ok {
 	color: #31b57d;
 }
 
