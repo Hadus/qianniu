@@ -15,7 +15,7 @@
             <ArrowDownBold />
           </el-icon>
         </p>
-        <p>牵牛卖家中心
+        <p>千牛卖家中心
           <el-icon class="icon-head">
             <ArrowDownBold />
           </el-icon>

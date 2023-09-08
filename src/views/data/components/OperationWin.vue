@@ -35,17 +35,59 @@
       </el-tabs>
       <div class="date-select mr20">
         <div>
-          <span class="pr10">统计时间</span>
-          <el-date-picker ref="datePickRef" v-model="selectDate" :type="dateType"
-            :format="dateType === 'week' ? '[第]ww[周]' : 'YYYY-MM-DD'" :disabled-date="disabledDate" size="small"
-            style="width: 150px; margin-right: 10px"></el-date-picker>
+          <span style="padding-right: 5px; position: relative; top: 3px"
+            ><el-icon :size="14"><Warning /></el-icon
+          ></span>
+          <span class="pr10">统计时间 {{ statisticTime }}</span>
         </div>
-        <div>
-          <el-radio-group v-model="dateType" size="small" @change="changeDateType">
-            <el-radio-button label="date">日</el-radio-button>
-            <el-radio-button label="week">周</el-radio-button>
-            <el-radio-button label="month">月</el-radio-button>
+        <div style="position: relative; display: flex">
+          <el-date-picker
+            ref="datePickRef"
+            v-model="selectDate"
+            :type="dateType"
+            :format="dateType === 'week' ? '[第]ww[周]' : 'YYYY-MM-DD'"
+            :disabled-date="disabledDate"
+            size="small"
+            style="
+              width: 150px;
+              margin-right: 10px;
+              position: absolute;
+              opacity: 0;
+            "
+          ></el-date-picker>
+          <el-radio-group
+            v-model="dateType"
+            size="small"
+            @change="changeDateType"
+          >
+            <el-radio-button
+              label="date"
+              @mouseenter.passive="openDatePickPanel"
+              >日</el-radio-button
+            >
+            <el-radio-button
+              label="week"
+              @mouseenter.passive="openDatePickPanel"
+              >周</el-radio-button
+            >
+            <el-radio-button
+              label="month"
+              @mouseenter.passive="openDatePickPanel"
+              >月</el-radio-button
+            >
           </el-radio-group>
+          <el-button size="small" style="margin: 0 5px"
+            >自定义<i class="niceFonts-tooltip"></i
+          ></el-button>
+          <el-button size="small" style="margin-left: 0; padding: 0 7px"
+            ><el-icon><ArrowLeft /></el-icon
+          ></el-button>
+          <el-button
+            size="small"
+            :disabled="true"
+            style="margin-left: 5px; padding: 0 7px"
+            ><el-icon><ArrowRight /></el-icon
+          ></el-button>
         </div>
       </div>
     </el-row>
@@ -56,7 +98,9 @@
         <i class="niceFonts-whole" style="padding-right: 10px"></i>整体看板
       </div>
       <div class="header-right-box">
-        <el-checkbox size="small" v-model="showActiveInfo">显示活动信息</el-checkbox>
+        <el-checkbox size="small" v-model="showActiveInfo"
+          >显示活动信息</el-checkbox
+        >
         <el-checkbox size="small" v-model="compareOther">同行对比</el-checkbox>
         <span style="color: #2062e6">图表</span>
         <span style="margin: 0 5px">|</span>
@@ -68,8 +112,13 @@
         <i class="niceFonts-front-btn"></i>
       </div>
       <div class="card-box">
-        <div v-for="(cardItem, index) in cardDatas" :key="index" class="card-item"
-          :class="{ 'card-item-active': selectCardItem === cardItem.key }" @click="clickCardItem(cardItem.key)">
+        <div
+          v-for="(cardItem, index) in cardDatas"
+          :key="index"
+          class="card-item"
+          :class="{ 'card-item-active': selectCardItem === cardItem.key }"
+          @click="clickCardItem(cardItem.key)"
+        >
           <div>
             <div>
               <div class="card-title">{{ cardItem.desc }}</div>
@@ -78,36 +127,60 @@
             <div class="change-level">
               <div class="label">{{ changeLevelOneLabel }}</div>
               <div class="trend-value">
-                <span :style="{
-                  color: parseCardTrend(cardItem.pre).isTextColorRender
-                    ? parseCardTrend(cardItem.pre).color
-                    : '',
-                }" style="padding-right: 10px">{{ parseCardTrend(cardItem.pre).value }}</span>
-                <i class="niceFonts-trend-up" v-if="parseCardTrend(cardItem.pre).trend === 'up'"
-                  :style="{ color: parseCardTrend(cardItem.pre).color }"></i>
-                <i class="niceFonts-trend-down" v-if="parseCardTrend(cardItem.pre).trend === 'down'"
-                  :style="{ color: parseCardTrend(cardItem.pre).color }"></i>
+                <span
+                  :style="{
+                    color: parseCardTrend(cardItem.pre).isTextColorRender
+                      ? parseCardTrend(cardItem.pre).color
+                      : '',
+                  }"
+                  style="padding-right: 10px"
+                  >{{ parseCardTrend(cardItem.pre).value }}</span
+                >
+                <i
+                  class="niceFonts-trend-up"
+                  v-if="parseCardTrend(cardItem.pre).trend === 'up'"
+                  :style="{ color: parseCardTrend(cardItem.pre).color }"
+                ></i>
+                <i
+                  class="niceFonts-trend-down"
+                  v-if="parseCardTrend(cardItem.pre).trend === 'down'"
+                  :style="{ color: parseCardTrend(cardItem.pre).color }"
+                ></i>
               </div>
             </div>
             <div class="change-level">
               <div class="label">{{ changeLevelTwoLabel }}</div>
               <div class="trend-value">
-                <span :style="{
-                  color: parseCardTrend(cardItem.compareLast)
-                    .isTextColorRender
-                    ? parseCardTrend(cardItem.compareLast).color
-                    : '',
-                }" style="padding-right: 10px">{{ parseCardTrend(cardItem.compareLast).value }}</span>
-                <i class="niceFonts-trend-up" v-if="parseCardTrend(cardItem.compareLast).trend === 'up'"
-                  :style="{ color: parseCardTrend(cardItem.compareLast).color }"></i>
-                <i class="niceFonts-trend-down" v-if="parseCardTrend(cardItem.compareLast).trend === 'down'"
-                  :style="{ color: parseCardTrend(cardItem.compareLast).color }"></i>
+                <span
+                  :style="{
+                    color: parseCardTrend(cardItem.compareLast)
+                      .isTextColorRender
+                      ? parseCardTrend(cardItem.compareLast).color
+                      : '',
+                  }"
+                  style="padding-right: 10px"
+                  >{{ parseCardTrend(cardItem.compareLast).value }}</span
+                >
+                <i
+                  class="niceFonts-trend-up"
+                  v-if="parseCardTrend(cardItem.compareLast).trend === 'up'"
+                  :style="{ color: parseCardTrend(cardItem.compareLast).color }"
+                ></i>
+                <i
+                  class="niceFonts-trend-down"
+                  v-if="parseCardTrend(cardItem.compareLast).trend === 'down'"
+                  :style="{ color: parseCardTrend(cardItem.compareLast).color }"
+                ></i>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="turn-btn" @click="changeCard(1)" style="right: -10px; left: unset">
+      <div
+        class="turn-btn"
+        @click="changeCard(1)"
+        style="right: -10px; left: unset"
+      >
         <i class="niceFonts-end-btn"></i>
       </div>
     </div>
@@ -132,6 +205,7 @@ import * as echarts from "echarts";
 import { ref, computed, watch, reactive, onMounted } from "vue";
 import { viewBoardData as _viewBoardData } from "./operationWinData";
 import { getYearWeek } from "@/utils/utils";
+import { Warning } from "@element-plus/icons-vue";
 
 const activeTab = ref("overview");
 const showActiveInfo = ref(true);
@@ -141,13 +215,39 @@ const MAX_CARD_ITEM = 7;
 const datePickRef = ref(null);
 const dateType = ref("date");
 const selectDate = ref(new Date());
+const statisticTime = computed(() => {
+  const year = selectDate.value.getFullYear();
+  const day = selectDate.value.getDate();
+  const month = selectDate.value.getMonth();
+  if (dateType.value === "date") {
+    return selectDate.value.toLocaleDateString().replaceAll("/", "-");
+  }
+  if (dateType.value === "week") {
+    const endDate = new Date(
+      new Date(selectDate.value.getTime()).setDate(day - 7)
+    );
+    return [selectDate.value, endDate]
+      .map((date) => date.toLocaleDateString().replaceAll("/", "-"))
+      .join(" ~ ");
+  }
+  if (dateType.value === "month") {
+    const endDate = new Date(
+      new Date(year, month + 1, 1).getTime() - 1
+    ).getDate();
+    return `${year}-${month}-1 ~ ${year}-${month}-${endDate}`;
+  }
+
+  return "";
+});
 const disabledDate = (date: Date) => {
   return date.getTime() > new Date().getTime();
 };
 const changeDateType = () => {
   initPayMoneyChart();
-  datePickRef.value.click();
 };
+const openDatePickPanel = () => {
+  datePickRef.value.handleOpen();
+}
 
 const cardPage = ref(0);
 const changeCard = (value: -1 | 1) => {
@@ -241,7 +341,7 @@ const initPayMoneyChart = (randomData: boolean = false) => {
     chartData: { my, rivalAvg, rivalTop },
   } = _viewBoardData.find(({ key }) => key === selectCardItem.value)?.[
     dateType.value
-    ];
+  ];
   payMoneyChart.setOption({
     tooltip: {
       trigger: "axis",
@@ -249,8 +349,8 @@ const initPayMoneyChart = (randomData: boolean = false) => {
     legend: {
       left: 20,
       data: ["我的", "同行同层平均", "同行同层优秀"],
-      itemWidth: 14,
-      itemHeight: 14,
+      itemWidth: 10,
+      itemHeight: 10,
       icon: "rect",
     },
     grid: {
@@ -277,6 +377,9 @@ const initPayMoneyChart = (randomData: boolean = false) => {
         ),
         smooth: true,
         symbol: "none",
+        itemStyle: {
+          color: "#1c58e1",
+        },
       },
       {
         name: "同行同层平均",
@@ -287,6 +390,9 @@ const initPayMoneyChart = (randomData: boolean = false) => {
         ),
         smooth: true,
         symbol: "none",
+        itemStyle: {
+          color: "#f2c922",
+        },
       },
       {
         name: "同行同层优秀",
@@ -297,13 +403,16 @@ const initPayMoneyChart = (randomData: boolean = false) => {
         ),
         smooth: true,
         symbol: "none",
+        itemStyle: {
+          color: "#fe7a2e",
+        },
       },
     ],
   });
 };
 const getXAiasLabel = () => {
   const result: string[] = [];
-  const now = new Date();
+  const now = selectDate.value;
   const year = now.getFullYear();
   const month = now.getMonth() + 1;
   const day = now.getDate();
@@ -332,6 +441,7 @@ const getXAiasLabel = () => {
       });
       break;
   }
+  console.log(result)
   return result.reverse();
 };
 
@@ -404,7 +514,18 @@ onMounted(() => {
   display: flex;
   align-items: center;
 }
-
+.date-select :deep(.el-radio-button) {
+  margin-right: 5px;
+  border-left: 1px solid rgb(220, 223, 230);
+}
+.date-select :deep(.el-radio-button__inner) {
+  border-radius: 0 !important;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+.date-select :deep(.el-radio-button:first-child .el-radio-button__inner) {
+  border-left: 0;
+}
 .show-card-group {
   position: relative;
   width: 100%;

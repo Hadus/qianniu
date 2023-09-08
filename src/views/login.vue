@@ -15,7 +15,7 @@
 			<div class="ms-login">
 				<div class="ms-title">
 					欢迎登陆
-					<span>做生意上牵牛</span>
+					<span>做生意上千牛</span>
 				</div>
 				<div class="content block-wrapper">
 					<div class="qrcode-wrapper">
