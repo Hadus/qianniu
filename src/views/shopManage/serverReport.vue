@@ -7,7 +7,7 @@
 		<el-tabs v-model="activeName" class="server-tabs">
 			<el-tab-pane label="新灯塔考核" name="first">
 				<div class="fix date">
-					2023-9-7
+					{{ getDateString() }}
 					<i class="homeFonts1-calendar"></i>
 				</div>
 				<el-tabs v-model="activeName_inner" class="server-tabs-inner">
@@ -216,6 +216,7 @@
 import { onMounted, nextTick } from "vue";
 import * as echarts from 'echarts';
 import mock_shop from '@/mock/current/shop';
+import { getDateString } from '@/utils/utils';
 
 let activeName = 'first';
 let activeName_inner = 'one';

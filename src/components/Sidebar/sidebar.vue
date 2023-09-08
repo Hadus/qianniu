@@ -7,9 +7,8 @@
 				<template v-if="item.subs">
 					<el-sub-menu :index="item.index" :key="item.index" v-permiss="item.permiss">
 						<template #title>
-							<img :src="item.icon">
-							{{ items.icon }}
-							<el-image :src="items.icon" fit="cover" />
+							<img :src="item.icon" class="icon-img">
+							<img :src="item.iconActive" class="icon-img-active">
 							<span>{{ item.title }}</span>
 						</template>
 						<!-- 第二层 -->
@@ -34,13 +33,14 @@
 				</template>
 				<template v-else>
 					<el-menu-item :index="item.index" :key="item.index" v-permiss="item.permiss">
-						<img :src="item.icon">
+						<img :src="item.icon" class="icon-img">
+						<img :src="item.iconActive" class="icon-img-active">
 						<template #title v-if="item.link">
 							<a :href="item.link" class="link" target="_blank">{{ item.title }}</a>
 						</template>
 						<template #title v-else>{{ item.title }}</template>
 					</el-menu-item>
-					<li class="line" v-if="item.title == '财务--'">
+					<li class="line" v-if="item.title == '财务'">
 						<span></span>
 					</li>
 				</template>
@@ -165,6 +165,23 @@ const handleClose = function (index) {
 }
 </style>
 <style>
+.sidebar>ul>li .icon-img {
+	display: block;
+}
+
+.sidebar>ul>li .icon-img-active {
+	display: none;
+}
+
+.sidebar>ul>li.is-active .icon-img {
+	display: none;
+}
+
+.sidebar>ul>li.is-active .icon-img-active {
+	display: block;
+}
+
+
 .sidebar>ul>li.el-sub-menu>ul.el-menu {
 	transition: all 0s !important;
 }

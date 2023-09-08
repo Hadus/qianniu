@@ -9,7 +9,7 @@
 					<v-h3-block :hasArrow="false">
 						<template #default>{{ user.name }}</template>
 						<template #left>
-							<span class="year">8年老店</span>
+							<span class="year">{{ shop_year }}年老店</span>
 						</template>
 						<template #right>
 							<v-btn-empty imgSrc="//img.alicdn.com/imgextra/i1/O1CN01jkApnt1oddLPdWsQl_!!6000000005248-2-tps-24-24.png">
@@ -20,7 +20,8 @@
 					<div class="info">
 						<p><span class="key">淘宝账号名:</span><span class="value">{{ user.taobaoName }}</span></p>
 						<p><span class="key">绑定支付宝:</span><span class="value">{{ mock_shop.shop_info.zhifubao }}</span></p>
-						<p><span class="key">首次开店时间:</span><span class="value">{{ mock_shop.shop_info.zhifubao }}(已开店 2974 天)</span>
+						<p><span class="key">首次开店时间:</span><span class="value">{{ mock_shop.shop_info.createTime }}(已开店 {{ shop_day }}
+								天)</span>
 						</p>
 						<p><span class="key">联系地址:</span><span class="value">{{ mock_shop.shop_info.address }}</span></p>
 						<p><span class="key">店铺类型:</span><span class="value">{{ mock_shop.shop_info.type }}</span></p>
@@ -164,7 +165,6 @@ import mock_home from '@/mock/current/home';
 import mock_shop from '@/mock/current/shop';
 import { useUserStore } from '@/store/user';
 const user = useUserStore();
-
 const $router = useRouter();
 
 import vConfirmItem from './confirmItem.vue';
@@ -172,6 +172,10 @@ import vH3Block from '@/components/H3Header/index.vue';
 import vBtnEmpty from '@/components/BtnEmpty/index.vue';
 import vBtnFill from '@/components/BtnFill/index.vue';
 import vBtnSign from '@/components/BtnSign/index.vue';
+
+const shop_createTime = mock_shop.shop_info.createTime;
+const shop_year = new Date().getFullYear() - new Date(shop_createTime).getFullYear() + 1;
+const shop_day = Math.ceil((new Date().getTime() - new Date(shop_createTime).getTime()) / 1000 / 60 / 60 / 24);
 // 左侧：店铺店铺认证
 const confirmItemList = [
 	{

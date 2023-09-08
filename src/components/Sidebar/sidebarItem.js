@@ -1,6 +1,7 @@
 let routes = [
     {
       icon: 'https://openworkbench.oss-cn-hangzhou.aliyuncs.com/8bfa5513e74e46f58186f0b61482d27d.png',
+      iconActive: 'https://openworkbench.oss-cn-hangzhou.aliyuncs.com/a590b212f1fd471b8bd33568072ae4b1.png',
       index: '/qnworkbenchHome',
       title: '首页',
       permiss: '1',
@@ -13,6 +14,7 @@ let routes = [
     },
     {
       icon: 'https://openworkbench.oss-cn-hangzhou.aliyuncs.com/2b918aae069442b08e81c5517c6ed621.png',
+      iconActive:'https://openworkbench.oss-cn-hangzhou.aliyuncs.com/79761dcdc28843f98d589c7c3fd57626.png',
       index: 'sub-1',
       title: '交易',
       permiss: '1',
@@ -120,6 +122,7 @@ let routes = [
     },
     {
       icon: 'https://openworkbench.oss-cn-hangzhou.aliyuncs.com/073ac4a541cc4beb9b3741edd4b6f0e1.png',
+      iconActive: 'https://openworkbench.oss-cn-hangzhou.aliyuncs.com/4d00b875ec4d416aa464d843fe401216.png',
       index: 'sub-2',
       title: '店铺',
       permiss: '1',
