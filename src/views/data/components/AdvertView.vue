@@ -7,7 +7,7 @@
             <el-col :span="13">
               <el-carousel
                 trigger="click"
-                :arrow="false"
+                arrow="never"
                 :autoplay="false"
                 :loop="true"
                 height="170px"
@@ -79,7 +79,7 @@
         <div class="advert-view-item">
           <el-carousel
             trigger="click"
-            :arrow="false"
+            arrow="never"
             :loop="true"
             height="170px"
           >

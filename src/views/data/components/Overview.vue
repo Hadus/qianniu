@@ -213,7 +213,11 @@
                 <button type="button" class="view-more-btn">立即查看</button>
               </el-col>
             </el-row>
-            <div></div>
+            <div style="text-align: right; position: relative; top: -10px">
+              <span class="slick-item" style="width: 24px; background-color: rgba(32, 98, 230, 0.3)"></span>
+              <span class="slick-item"></span>
+              <span class="slick-item" style="margin-right: 10px"></span>
+            </div>
           </div>
         </el-card>
       </el-col>
@@ -236,22 +240,25 @@ const initPayMoneyChart = () => {
       trigger: "axis",
     },
     legend: {
-      left: 20,
+      left: 10,
       top: 15,
       data: ["今日", "昨日"],
-      itemWidth: 12,
-      itemHeight: 12,
+      itemWidth: 10,
+      itemHeight: 10,
       icon: "rect",
     },
     grid: {
       left: "3%",
       right: "4%",
-      bottom: "3%",
+      bottom: 0,
       containLabel: true,
     },
     xAxis: {
       type: "category",
       boundaryGap: false,
+      axisTick: {
+        show: false
+      },
       data: ["00", "03", "06", "09", "12", "15", "18", "21", "23"],
     },
     yAxis: {
@@ -261,6 +268,12 @@ const initPayMoneyChart = () => {
           return index % 2 === 0 ? value : "";
         },
       },
+      axisTick: {
+        show: false
+      },
+      splitLine: {
+        show: false
+      }
     },
     series: [
       {
@@ -270,6 +283,12 @@ const initPayMoneyChart = () => {
         data: [0, 0, 0, 210, 90, 83, 9, 89, 103, 0],
         symbol: "none",
         smooth: true,
+        itemStyle: {
+          color: '#1d59e2'
+        },
+        areaStyle: {
+          opacity: 0.2
+        }
       },
       {
         name: "昨日",
@@ -278,6 +297,12 @@ const initPayMoneyChart = () => {
         data: [0, 0, 0, 130, 212, 15, 91, 26, 0, 0],
         symbol: "none",
         smooth: true,
+        itemStyle: {
+          color: '#c6c6c6'
+        },
+        areaStyle: {
+          opacity: 0.2
+        }
       },
     ],
   });
@@ -376,5 +401,12 @@ onMounted(() => {
   outline: none;
   cursor: pointer;
   transition: color 0.3s;
+}
+.slick-item {
+  display: inline-block;
+  width: 16px;
+  height: 3px;
+  background-color: rgb(236, 236, 236);
+  margin: 0 2px;
 }
 </style>
