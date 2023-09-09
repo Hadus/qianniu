@@ -90,62 +90,50 @@
 				</div>
 			</div>
 			<div class="home-middle">
+				<!-- start -->
 				<div class="middle-top">
-					<div class="middle-live">
-						<div class="center-big">
-							<div class="avatarName"> 正在直播中</div>
-							<div class="duibi">场次对比</div>
+					<div class="top">
+						<div class="top-left">
+							<p>天然美货 尽在臻宝</p>
+							<p><span>开播时间: 2023-09-06 18:52:38</span><span>直播时长: 4小时16分钟</span></p>
 						</div>
-						<div class="liveTips">
-							<div style="word-break: keep-all; white-space: nowrap;"><span>开播时间: 2023-09-02
-									13:24:19</span><span style="padding-left: 20px;">直播时长: 0小时10分钟</span></div>
-							<div title="若数据没有自动更新，可能是网络抖动，可刷新页面或稍等片刻。"
-								style="display: flex; align-items: center; justify-content: flex-end;">
-								<div>数据统计时间: 2023-09-02 13:35:17</div><img alt="刷新" title="刷新"
-									src="https://img.alicdn.com/imgextra/i2/O1CN0167PKlo1aObdAWQTvU_!!6000000003320-55-tps-24-20.svg"
-									style="margin-left: 10px; cursor: pointer;">
-							</div>
+						<div class="top-right">
+							<p>
+								<span class="btn">场次对比</span>
+							</p>
+							<p><span>数据统计时间: 2023-09-06 23:09:36</span>
+								<span>
+									<img alt="刷新" title="刷新"
+										src="https://img.alicdn.com/imgextra/i2/O1CN0167PKlo1aObdAWQTvU_!!6000000003320-55-tps-24-20.svg">
+								</span>
+							</p>
 						</div>
 					</div>
-					<div class="zhibotips">
-
-						<el-tooltip class="box-item" effect="dark"
-							content='<div ><b>直播成交金额：</b>本场直播累计成交金额；<br><b>在线人数：</b>本场直播当前在线观看人数,<br>根据同行业实时在线人数排名划分为高级、<br>中级和初级；<br> <b>实时流量竞争力：</b>内容指数：近30分钟直播间推荐渠道进入<br>用户的停留时长指数（从低到高1-5级）交易指数：近30分钟直<br>播间推荐渠道进入用户的商品点击及成交指数<br>（从低到高D-S级）  矩阵位置越靠近右上角，推荐流量上涨概率越大；</div>'
-							placement="bottom" raw-content>
-							<img src="https://img.alicdn.com/imgextra/i4/O1CN01WKQLU81ed2ZbubuVC_!!6000000003893-55-tps-16-16.svg"
-								style="cursor: help;">
-						</el-tooltip>
-
-
+					<img src="https://gw.alicdn.com/imgextra/i3/O1CN01AckiJN1n2hhw5O5JB_!!6000000005032-54-tps-206-206.apng"
+						class="leftEye">
+					<img src="https://gw.alicdn.com/imgextra/i3/O1CN01AckiJN1n2hhw5O5JB_!!6000000005032-54-tps-206-206.apng"
+						class="rightEye">
+					<div class="tip">
+						<img src="https://img.alicdn.com/imgextra/i4/O1CN01WKQLU81ed2ZbubuVC_!!6000000003893-55-tps-16-16.svg"
+							style="cursor: help;">
 					</div>
-
-					<div class="centerContent">
-						<div class="center--left">
-							<img src="https://gw.alicdn.com/imgextra/i3/O1CN01AckiJN1n2hhw5O5JB_!!6000000005032-54-tps-206-206.apng">
-							<div class="firstImg">
-								<div>最高在线人数</div>
-								<div>{{ pageData.zuiGaoNum }}</div>
-							</div>
+					<div class="content">
+						<div class="c-left position hover">
+							<p>最高在线人数</p>
+							<p>111</p>
 						</div>
-						<div class="center--middle">
-							<div>
-								<div>直播成交金额</div>
-								<div>{{ pageData.zuiGaoJiner }}</div>
-							</div>
-							<div>
-								<div style="    display: flex;
-	justify-content: space-between;margin-top: 30px;">
-									<div>非粉丝成交金额占比</div>
-									<div>{{ pageData.fenSiZhanBi }}</div>
-								</div>
-							</div>
+						<div class="c-center hover">
+							<p>直播成交金额</p>
+							<p>200021</p>
+							<p>
+								<span>非粉丝成交金额占比</span>
+								<span>11</span>
+							</p>
 						</div>
-						<div class="center--right">
-							<img src="https://gw.alicdn.com/imgextra/i3/O1CN01AckiJN1n2hhw5O5JB_!!6000000005032-54-tps-206-206.apng"
-								class="center--rightEye--1mseSsF">
-						</div>
+						<div class="c-right position"></div>
 					</div>
 				</div>
+				<!-- end -->
 				<div class="middle-down">
 					<div class="goods-table">
 						<el-table :data="tableData" style="width: 100%;background-color: black;" @sort-change="sortChange">
@@ -160,7 +148,7 @@
 新增单商品的加购人数、件数、商品曝</br>光点击率和成交转化率，指标解读教学见中央公告' placement="bottom" raw-content>
 
 
-											<img
+											<img style="margin-left: 3px"
 												src="https://img.alicdn.com/imgextra/i4/O1CN01WKQLU81ed2ZbubuVC_!!6000000003893-55-tps-16-16.svg" />
 										</el-tooltip>
 
@@ -650,129 +638,6 @@ const changeMessage = () => {
 	background-color: #1a1a1a;
 }
 
-.dataScreen-container .center--middle>div:first-child>div:first-child {
-	font-family: PingFangSC-Regular;
-	font-size: 18px;
-	color: #fff;
-	text-align: center;
-	line-height: 24px;
-	margin-bottom: 15px;
-}
-
-.dataScreen-container .center--middle>div:first-child>div:last-child {
-	font-size: 20px;
-	color: #fff;
-}
-
-.dataScreen-container .center--middle>div:last-child>div:last-child {
-	font-family: PingFangSC-Regular;
-	font-size: 18px;
-	color: #fff;
-	text-align: center;
-	line-height: 24px;
-	margin-bottom: 15px;
-}
-
-.dataScreen-container .firstImg {
-	position: absolute;
-	top: 60px;
-	left: 110px;
-}
-
-.dataScreen-container .firstImg>div:first-child {
-	font-size: 18px;
-	color: #fff;
-	text-align: center;
-}
-
-.dataScreen-container .firstImg>div:last-child {
-	font-size: 42px;
-	color: #fff;
-}
-
-.dataScreen-container .center--left,
-.dataScreen-container .center--middle,
-.dataScreen-container .center--middle {
-	padding: 18px 30px;
-	position: relative;
-	border: 1px solid transparent;
-	flex: 1;
-	transition: all .35s ease-in-out;
-	text-align: center;
-}
-
-.dataScreen-container .center--left {
-	margin-left: -20px;
-}
-
-.dataScreen-container .center--middle {
-	margin: 0 20px;
-}
-
-.dataScreen-container .centerContent {
-	left: 0;
-	right: 0;
-	top: 155px;
-	bottom: 50px;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	box-sizing: border-box;
-}
-
-.dataScreen-container .zhibotips {
-	width: 100%;
-	text-align: right;
-	height: 40px;
-	line-height: 40px;
-}
-
-.dataScreen-container .liveTips {
-	display: flex;
-	justify-content: space-between;
-	padding: 0px 20px;
-}
-
-.dataScreen-container .duibi {
-	height: 24px;
-	padding: 0 7px;
-	font-size: 14px;
-	border-radius: 6px;
-	color: #fff;
-	border-color: #ff0040;
-	background: #ff0040;
-}
-
-.dataScreen-container .avatarName {
-	margin-left: 10px;
-	font-size: 25px;
-	color: #fff;
-	letter-spacing: 0;
-}
-
-.dataScreen-container .center-big {
-	display: flex;
-	justify-content: space-between;
-	padding: 13px 11px;
-}
-
-.dataScreen-container .middle-top {
-	flex: 1;
-	height: 430px;
-}
-
-.dataScreen-container .middle-live {
-	z-index: 2;
-	top: 0;
-	width: 100%;
-	height: 100px;
-	border-radius: 20px;
-	background-color: rgba(60, 60, 69, .55);
-	overflow: hidden;
-	margin-top: 10px;
-
-}
 
 .dataScreen-container .left-module-down>div {
 	height: 100%;
@@ -791,6 +656,178 @@ const changeMessage = () => {
 .dataScreen-container .left-module-down>div .live-actions img {
 	vertical-align: middle;
 	border-style: none;
+}
+
+.dataScreen-container .middle-top {
+	width: 100%;
+	height: 428px;
+	position: relative;
+	padding: 10px 0;
+}
+
+.dataScreen-container .middle-top>.top {
+	width: 100%;
+	height: 100px;
+	border-radius: 16px;
+	background-color: rgba(60, 60, 69, .55);
+	display: flex;
+	padding: 20px;
+}
+
+.dataScreen-container .middle-top>.top>div {
+	flex: 1;
+	color: #fff;
+}
+
+.dataScreen-container .middle-top>.top>div.top-left {
+	text-align: left;
+}
+
+.dataScreen-container .middle-top>.top>div p:first-child {
+	margin-right: 4px;
+	margin-bottom: 10px;
+	font-size: 25px;
+	height: 50%;
+}
+
+.dataScreen-container .middle-top>.top>div p>span {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+.dataScreen-container .middle-top>.top>div p>span img {
+	vertical-align: middle;
+}
+
+.dataScreen-container .middle-top>.top>div p>span:first-child {
+	margin-right: 20px;
+}
+
+.dataScreen-container .middle-top>.top>div .btn {
+	display: inline-block;
+	padding: 2px 7px;
+	border-radius: 4px;
+	background-color: #ff0040;
+	font-size: 14px;
+}
+
+.dataScreen-container .middle-top>.top>div.top-right {
+	text-align: right;
+}
+
+.dataScreen-container .middle-top>.tip {
+	height: 24px;
+	float: right;
+	margin-right: 5px;
+	padding-top: 5px;
+}
+
+
+.dataScreen-container .middle-top>img {
+	position: absolute;
+	bottom: 40px;
+	width: 219px;
+	height: 219px;
+}
+
+.dataScreen-container .middle-top>img.leftEye {
+	left: 80px;
+}
+
+.dataScreen-container .middle-top>img.rightEye {
+	right: 80px;
+}
+
+.dataScreen-container .middle-top>.tips {
+	width: 100%;
+	padding-right: 8px;
+}
+
+.dataScreen-container .middle-top>.content {
+	width: 100%;
+	height: 300px;
+	min-height: 0;
+	padding: 0;
+	padding-top: 50px;
+	position: relative;
+	color: #fff;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+}
+
+
+.dataScreen-container .middle-top>.content>div.c-left,
+.dataScreen-container .middle-top>.content>div.c-right {
+	position: absolute;
+	top: 20%;
+	width: 30%;
+	height: 40%;
+	transition: all .35s ease-in-out;
+	border-radius: 36px;
+	z-index: 99;
+	padding-top: 15px;
+}
+
+.dataScreen-container .middle-top>.content>div.c-left {
+	left: 60px;
+}
+
+.dataScreen-container .middle-top>.content>div.c-right {
+	right: 60px;
+}
+
+.dataScreen-container .middle-top>.content>div.c-center {
+	width: 35%;
+	height: 80%;
+	transition: all .35s ease-in-out;
+	border-radius: 36px;
+	padding: 20px 40px;
+}
+
+.dataScreen-container .middle-top>.content>div.hover:hover {
+	background: rgba(19, 20, 21, .42);
+	border: 1px solid #333;
+	transform: scale(1.5);
+	backdrop-filter: blur(10px);
+	box-shadow: 0 20px 40px rgba(0, 0, 0, .55);
+}
+
+.dataScreen-container .middle-top>.content>div>p {
+	width: 100%;
+	text-align: center;
+	font-family: PingFangSC-Regular;
+}
+
+.dataScreen-container .middle-top>.content>div>p:first-child {
+	font-size: 18px;
+	margin-bottom: 15px;
+}
+
+.dataScreen-container .middle-top>.content>div.position>p:last-child {
+	font-size: 42px;
+}
+
+.dataScreen-container .middle-top>.content>div.c-center>p:nth-child(2) {
+	font-family: DINAlternate-Bold;
+	font-size: 72px;
+	margin-bottom: 25px;
+}
+
+.dataScreen-container .middle-top>.content>div.c-center>p:last-child {
+	font-size: 14px;
+	display: flex;
+}
+
+.dataScreen-container .middle-top>.content>div.c-center>p:last-child>span {
+	text-align: left;
+	flex: 1;
+}
+
+.dataScreen-container .middle-top>.content>div.c-center>p:last-child>span:last-child {
+	font-size: 18px;
+	font-family: DINAlternate-Bold;
+	text-align: right;
 }
 
 .dataScreen-container .live-actions .btns-group {
