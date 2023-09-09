@@ -236,8 +236,7 @@ const order_span_method = function ({ rowIndex, columnIndex }, length) {
 let page = 1;
 let tableData = getTrade_orderList(1);
 const handelGoPage = function (page) {
-	page = page;
-	const data = getTrade_orderList(page);
+	const data = reactive(getTrade_orderList(page));
 	tableData = reactive(data);
 }
 
