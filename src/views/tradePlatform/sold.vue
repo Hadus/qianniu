@@ -91,23 +91,26 @@
 						</el-table-column>
 						<el-table-column align="center" label="数量" width="140" />
 						<el-table-column align="center" label="售后" width="140" />
-						<el-table-column align="center" label="交易状态" width="140" />
+						<el-table-column align="center" label="交易状态" width="160" />
 						<el-table-column align="center" label="实收款" width="140" />
 						<el-table-column align="center" label="评价" width="140" />
 					</el-table>
 					<!-- 内容 -->
 					<el-table style="width: 100%" header-row-class-name="order-item-th" class="order-table order-tbody-table"
-						:data="tableData">
+						v-for="(item, index) in tableData" :key="item.id" :data="item.subOrders"
+						:span-method="(val) => order_span_method(val, item.subOrders.length)">
 						<el-table-column>
 							<template #header>
 								<div class="item-title">
 									<el-checkbox></el-checkbox>
-									<p><span class="key">&nbsp;&nbsp;订单号：</span><span class="value">3503107335644061564</span></p>
-									<p class="create-time"><span class="key">创建时间：</span><span class="value">2023-09-02 13:32:50</span></p>
+									<p><span class="key">&nbsp;&nbsp;订单号：</span><span class="value">{{ item.orderInfo.id }}</span>
+									</p>
+									<p class="create-time"><span class="key">创建时间：</span><span class="value">{{ item.orderInfo.createTime
+									}}</span></p>
 								</div>
 							</template>
-							<template #default>
-								<v-order-item />
+							<template #default="{ row }">
+								<v-order-item :itemData="row" />
 							</template>
 						</el-table-column>
 						<el-table-column label="" width="200" align="center">
@@ -115,35 +118,45 @@
 								<div class="item-title">
 									<p class="nickname">
 										<a href="javascript: void(0);" target="_blank" title="点此可以直接和卖家交流选好的宝贝，或相互交流网购体验，还支持语音视频噢。"></a>
-										爱**
+										{{ item.buyer.nick }}
 									</p>
 									<i class="homeFonts1-filter"></i>
 									<span class="tag">号码保护订单</span>
 								</div>
 							</template>
-						</el-table-column>/>
-						<el-table-column label="" width="140" align="center">
-							<template #default>
-								<p class="main">1</p>
+							<template #default="{ row }">
+								{{ row.priceInfo.realTotal }}
 							</template>
 						</el-table-column>/>
 						<el-table-column label="" width="140" align="center">
-							<template #default>
-								<p class="main"><a href="javascript:;">退款成功</a></p>
+							<template #default="{ row }">
+								<p class="main">{{ row.quantity }}</p>
+							</template>
+						</el-table-column>/>
+						<el-table-column label="" width="140" align="center">
+							<template #default="{ row }">
+								<p class="main"><a href="javascript:;">{{ row.operations && row.operations[0] && row.operations[0].text
+								}}</a></p>
 							</template>
 						</el-table-column>
-						<el-table-column label="" width="140" align="center">
+						<el-table-column label="" width="160" align="center">
 							<template #default>
-								<p class="main">交易关闭</p>
+								<p class="main">{{ item.statusInfo.text }}<span style="color: #999"> | {{
+									item.statusInfo.operations && item.statusInfo.operations[1] && item.statusInfo.operations[1].text }}
+										<el-icon color="#999">
+											<ArrowRight />
+										</el-icon>
+									</span></p>
 								<p class="desc">
-									<a href="javascript:;" @click="handleClickOrder">详情</a>
+									<a href="javascript:;"
+										@click="handleClickOrder(index, item.orderInfo.createTime, item.orderInfo.id)">详情</a>
 								</p>
 							</template>
 						</el-table-column>
 						<el-table-column label="" width="140" align="center">
 							<template #default>
-								<p class="main">¥50.00</p>
-								<p class="desc">（含快递：¥0.00）</p>
+								<p class="main">¥{{ item.payInfo.actualFee }}</p>
+								<p class="desc">{{ item.payInfo.postType }}</p>
 							</template>
 						</el-table-column>
 						<el-table-column width="140" align="center">
@@ -153,13 +166,14 @@
 							</template>
 							<template #default>
 								<p class="main">
-									<a href="javascript:;">我已评价</a>
+									<a href="javascript:;">{{ item.operations && item.operations[1] && item.operations[1].text }}</a>
 								</p>
 							</template>
 						</el-table-column>/>
 					</el-table>
 					<!-- 表格end -->
-					<v-paganation layout="prev, pager, next, jumper" :total="50" class="order-pagination" />
+					<v-paganation layout="prev, pager, next, jumper" :total="mock_trade.page.totalNumber"
+						:page-size="mock_trade.page.pageSize" class="order-pagination" @current-change="handelGoPage" />
 				</el-tab-pane>
 				<el-tab-pane label="等待买家付款" name="secondDetails">
 					暂无
@@ -188,27 +202,49 @@
 </template>
 
 <script setup lang="ts" name="sold">
+import { ref, reactive, nextTick } from 'vue';
+import { useRouter } from 'vue-router';
+const router = useRouter();
+
 import vFilterBlock from './filterBlock.vue';
 import vBtnFill from '@/components/BtnFill/index.vue';
 import vPaganation from '@/components/Paganation/index.vue';
 import vFilterInput from './filterInput.vue';
 import vOrderItem from './orderItem.vue';
 
-import mock_trade from '@/mock/current/trade';
-
+import mock_trade, { getTrade_orderList, getTrade_orderDetailIndex } from '@/mock/current/trade';
 
 const activeNameAll = 'firstAll';
 const activeNameDetails = 'firstDetails'
-const tableData = [
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-	},
-];
+// table
+const order_span_method = function ({ rowIndex, columnIndex }, length) {
+	if (columnIndex >= 4) {
+		if (rowIndex == 0) {
+			return {
+				rowspan: length,
+				colspan: 1
+			}
+		} else {
+			return {
+				rowspan: 0,
+				colspan: 0
+			}
+		}
+	}
+}
 
-const handleClickOrder = function () {
-	window.open('#/trade-platform/tp/orderDetail');
+let page = 1;
+let tableData = ref(getTrade_orderList(1));
+const handelGoPage = function (page) {
+	const data = getTrade_orderList(page);
+	tableData.value = data;
+}
+
+
+// 点击详情
+const handleClickOrder = function (index, createTimeStr, id) {
+	const orderDetailIndex = getTrade_orderDetailIndex();
+	window.open(`#/trade-platform/tp/orderDetail?page=${page}&index=${index}&orderDetailIndex=${orderDetailIndex}&createTimeStr=${createTimeStr}&OrderId=${id}`, '_blank');
 };
 </script>
 
@@ -367,7 +403,6 @@ const handleClickOrder = function () {
 	line-height: 44px;
 	font-size: 12px;
 	border-radius: 12px 0 0 12px;
-	justify-content: center;
 }
 
 .tabs-order-details .item-title i {
@@ -399,6 +434,10 @@ const handleClickOrder = function () {
 .tabs-order-details p.desc {
 	font-size: 12px;
 	text-align: center;
+}
+
+.tabs-order-details p.main {
+	vertical-align: middle;
 }
 
 .tabs-order-details .img-judge {

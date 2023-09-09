@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
-    <template v-for="(item, index) in dataList">
-      <div class="item" :index="index" :class="active == index ? 'active' : ''">
+    <template v-for="(item, index) in dataList" :index="index">
+      <div class="item" :class="active == index ? 'active' : ''">
         <img class="RecommendationTabs_activeTagBk__T1uBx"
           src="https://gw.alicdn.com/imgextra/i1/O1CN01tyctYf1t1gZtJb9qg_!!6000000005842-55-tps-151-41.svg" alt="">
         <span>{{ item.desc }}</span>

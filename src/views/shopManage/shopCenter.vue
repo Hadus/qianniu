@@ -52,7 +52,7 @@
 						</template>
 					</v-h3-block>
 					<div class="info-content">
-						<v-confirm-item v-for="(item, index) in confirmItemList" :item="item" :index="index">
+						<v-confirm-item v-for="(item, index) in confirmItemList" :item="item" :key="index">
 							<v-btn-fill>去完成</v-btn-fill>
 						</v-confirm-item>
 					</div>
@@ -130,7 +130,7 @@
 					店铺工具
 				</v-h3-block>
 				<div class="info">
-					<div v-for="(item, index) in toolItemList" :index="index" @click="handelClickToolItem(item)">
+					<div v-for="(item, index) in toolItemList" :key="index" @click="handelClickToolItem(item)">
 						<p>
 							<img :src="item.img" />
 						</p>
@@ -149,7 +149,7 @@
 						推荐任务
 					</v-h3-block>
 					<div class="info-content">
-						<v-confirm-item v-for="(item, index) in adviseItemList" :item="item" :index="index" class="ad-cofirm-wrapper">
+						<v-confirm-item v-for="(item, index) in adviseItemList" :item="item" :key="index" class="ad-cofirm-wrapper">
 							<v-btn-empty>{{ item.btnTitle }}</v-btn-empty>
 						</v-confirm-item>
 					</div>

@@ -45,7 +45,7 @@
 					<div class="core-data-content">
 						<div class="data-list">
 							<div v-if="isActive">
-								<div v-for="item in liuLiangHuDong" :key="index">
+								<div v-for="(item, index) in liuLiangHuDong" :key="index">
 									<div class="data-item">
 										<div class="large"><img :src="item.img">{{ item.name1 }}
 										</div>
@@ -260,7 +260,7 @@
 
 					</div>
 					<div style="height: 10px;"></div>
-					<div style="height: 440px;">
+					<div style="height: 480px;">
 						<div class="chart-wrap">
 							<div class="chart-title">在线人数
 								<el-tooltip class="box-item" effect="dark"
@@ -293,88 +293,52 @@
 	</div>
 </template>
 
-<script lang="ts" name="dataScreen">
+<script lang="ts" setup name="dataScreen">
+import { ref, reactive } from 'vue'
 import onlinePeople from "./onlinePeople.vue";
 import dataForm from "./dataForm.vue";
 import { dealData } from "@/mock/dataScreen/dataview.js"
 import { useUserStore } from '@/store/user';
 const user = useUserStore();
+let pageData = dealData();
+let { liuLiangHuDong, zhuanHuaChengJiao, tableData, zhiBoYu, dianpuyu } = pageData;
 
-export default {
-	components: {
-		onlinePeople, dataForm
-	},
-	data() {
-		return {
-			activeName: "first",
-			isActive: true,
-			value2: false,
-			active: "guanzong",
-			pageData: {},
-			liuLiangHuDong: [],
-			zhuanHuaChengJiao: [],
-			heardlist: [{
-				name: "商品明细",
-				id: "productInfo",
-				width: "20%",
-				prop: "productInfo",
-			}, {
-				name: "曝光人数",
-				id: "peopleNum",
-				width: "18%"
-			}, {
-				name: "点击次数",
-				id: "clickNum",
-				width: "18%"
-			}, {
-				name: "加购人数",
-				id: "buyNum",
-				width: "18%"
-			}, {
-				name: "成交金额",
-				id: "mony",
-				width: "18%"
-			}],
-			tableData: [
-			],
-			zhiBoYu: [],
-			dianpuyu: []
-		};
-	},
-	created() {
-		this.pageData = dealData();
-		this.liuLiangHuDong = this.pageData.liuLiangHuDong;
-		this.zhuanHuaChengJiao = this.pageData.zhuanHuaChengJiao;
-		this.tableData = this.pageData.tableData
-		this.zhiBoYu = this.pageData.zhiBoYu;
-		this.dianpuyu = this.pageData.dianpuyu
-		console.log(dealData())
-		setInterval(() => {
-			this.pageData = dealData();
-			this.liuLiangHuDong = this.pageData.liuLiangHuDong;
-			this.zhuanHuaChengJiao = this.pageData.zhuanHuaChengJiao;
-			this.tableData = this.pageData.tableData
-			this.zhiBoYu = this.pageData.zhiBoYu;
-			this.dianpuyu = this.pageData.dianpuyu
-			console.log(dealData())
-		}, 6000);
-	},
-	methods: {
-		sortChange(column, prop, order) {
-			console.log(column, prop, order)
-
-		},
-		dealClick(currentActive) {
-			this.active = currentActive
-		},
-		tbaClick() {
-			this.isActive = !this.isActive
-		},
-		changeMessage() {
-			this.message = "Message changed!";
-		}
-	}
+let isActive = true;
+let value2 = false;
+let active = "guanzong";
+const heardlist = [{
+	name: "商品明细",
+	id: "productInfo",
+	width: "20%",
+	prop: "productInfo",
+}, {
+	name: "曝光人数",
+	id: "peopleNum",
+	width: "18%"
+}, {
+	name: "点击次数",
+	id: "clickNum",
+	width: "18%"
+}, {
+	name: "加购人数",
+	id: "buyNum",
+	width: "18%"
+}, {
+	name: "成交金额",
+	id: "mony",
+	width: "18%"
+}];
+const sortChange = (column, prop, order) => {
+}
+const dealClick = (currentActive) => {
+	active = currentActive;
 };
+const tbaClick = () => {
+	isActive = !isActive
+};
+const changeMessage = () => {
+	const message = "Message changed!";
+}
 </script>
 <style>
 .dataScreen-container .el-table__header,
@@ -658,7 +622,7 @@ export default {
 
 .dataScreen-container .right-module:nth-child(2) {
 	background-color: #1a1a1a;
-	height: 360px;
+	height: 380px;
 }
 
 .dataScreen-container .goods-table {
@@ -1061,7 +1025,7 @@ export default {
 
 .dataScreen-container .home-left,
 .dataScreen-container .home-right {
-	height: 100%;
+	height: auto;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;

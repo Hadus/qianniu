@@ -4,6 +4,7 @@ import VueSetupExtend from 'vite-plugin-vue-setup-extend';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+import requireTransform from 'vite-plugin-require-transform';
 import path from 'path';
 
 export default defineConfig({
@@ -23,7 +24,10 @@ export default defineConfig({
 		}),
 		Components({
 			resolvers: [ElementPlusResolver()]
-		})
+		}),
+		requireTransform({
+      fileRegex: /.js$|.vue$/
+    }),
 	],
 	optimizeDeps: {
 		include: ['schart.js']
