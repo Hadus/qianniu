@@ -176,8 +176,10 @@
 			</div>
 			<div class="home-right">
 				<div class="right-module">
-					<div style="padding: 0px 20px;"><span style="margin-right: 10px;"> 预售</span> <el-switch v-model="value2"
-							class="ml-2" style="--el-switch-on-color: #ff0040; --el-switch-off-color: #535353" /></div>
+					<div style="padding: 0px 20px;"><span style="margin-right: 10px;"> 预售</span>
+						<el-switch v-model="switch_flag" class="ml-2"
+							style="--el-switch-on-color: #ff0040; --el-switch-off-color: #535353" />
+					</div>
 					<div> <span style="background: black;display: inline-flex;">
 							<span class="switch-item" :class="active == 'guanzong' ? 'activeclass' : ''"
 								@click="dealClick('guanzong')">观众</span>
@@ -285,14 +287,23 @@ import { ref, reactive } from 'vue'
 import onlinePeople from "./onlinePeople.vue";
 import dataForm from "./dataForm.vue";
 import { dealData } from "@/mock/dataScreen/dataview.js"
+import { useRoute } from 'vue-router';
+const route = useRoute();
 import { useUserStore } from '@/store/user';
 const user = useUserStore();
 let pageData = dealData();
 let { liuLiangHuDong, zhuanHuaChengJiao, tableData, zhiBoYu, dianpuyu } = pageData;
 
-let isActive = true;
-let value2 = false;
-let active = "guanzong";
+const { tableIndex, modelIndex, index, liveId } = route.query;
+
+import mock_live from '@/mock/current/live';
+const mock_live_detail = mock_live.live_table_list['table_' + tableIndex]['model_' + modelIndex][index];
+console.log(mock_live_detail);
+
+let switch_flag = ref(false);
+// 右上角tabs
+let active = ref("guanzong");
+// 表头
 const heardlist = [{
 	name: "商品明细",
 	id: "productInfo",
@@ -318,10 +329,12 @@ const heardlist = [{
 const sortChange = (column, prop, order) => {
 }
 const dealClick = (currentActive) => {
-	active = currentActive;
+	active.value = currentActive;
 };
+// 左上角tabs
+let isActive = ref(true);
 const tbaClick = () => {
-	isActive = !isActive
+	isActive.value = !isActive.value;
 };
 const changeMessage = () => {
 	const message = "Message changed!";

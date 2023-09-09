@@ -90,8 +90,13 @@
 						</div>
 						<el-table :data="table_1.model_1" style="width: 100%" class="live-table">
 							<el-table-column width="140" fixed prop="date" label="直播标题">
-								<template #default="{ row }">
-									<a href="javascript:;" @click="handleClickLiveTitle(row.contentId)">{{ row.contentTitle }}</a>
+								<template #default="{ row, $index }">
+									<a href="javascript:;" @click="handleClickLiveTitle({
+										tableIndex: 1,
+										modelIndex: 1,
+										index: $index,
+										liveId: row.contentId
+									})">{{ row.contentTitle }}</a>
 								</template>
 							</el-table-column>
 							<el-table-column width="120" fixed prop="contentId" label="场次ID" />
@@ -201,8 +206,13 @@
 						</div>
 						<el-table :data="table_2.model_1" style="width: 100%" class="live-table">
 							<el-table-column width="300" prop="date" label="商品主图/标题" fixed>
-								<template #default="{ row }">
-									<div class="table-content" @click="handleClickLiveTitle(row.contentId)">
+								<template #default="{ row, $index }">
+									<div class="table-content" @click="handleClickLiveTitle({
+										tableIndex: 2,
+										modelIndex: 1,
+										index: $index,
+										liveId: row.contentId
+									})">
 										<p>
 											<img :src="row.itemPictUrl">
 										</p>
@@ -341,8 +351,13 @@
 						</div>
 						<el-table :data="table_3.model_1" style="width: 100%" class="live-table">
 							<el-table-column width="140" fixed prop="date" label="直播标题">
-								<template #default="{ row }">
-									<a href="javascript:;" @click="handleClickLiveTitle(row.contentId)">{{ row.contentTitle }}</a>
+								<template #default="{ row, $index }">
+									<a href="javascript:;" @click="handleClickLiveTitle({
+										tableIndex: 3,
+										modelIndex: 1,
+										index: $index,
+										liveId: row.contentId
+									})">{{ row.contentTitle }}</a>
 								</template>
 							</el-table-column>
 							<el-table-column width="120" prop="contentId" label="场次ID" fixed />
@@ -456,8 +471,13 @@
 						</div>
 						<el-table :data="table_4.model_1" style="width: 100%" class="live-table">
 							<el-table-column width="300" prop="date" label="商品主图/标题" fixed>
-								<template #default="{ row }">
-									<div class="table-content" @click="handleClickLiveTitle(row.contentId)">
+								<template #default="{ row, $index }">
+									<div class="table-content" @click="handleClickLiveTitle({
+										tableIndex: 4,
+										modelIndex: 1,
+										index: $index,
+										liveId: row.contentId
+									})">
 										<p>
 											<img :src="row.itemPictUrl">
 										</p>
@@ -544,8 +564,8 @@ const { table_1, table_2, table_3, table_4 } = mock_live.live_table_list;
 
 
 // 点击table中直播标题
-const handleClickLiveTitle = function (id) {
-	window.open(`#/dataScreen?liveId=${id}`);
+const handleClickLiveTitle = function ({ tableIndex, modelIndex, index, liveId }) {
+	window.open(`#/dataScreen?tableIndex=${tableIndex}&modelIndex=${modelIndex}&index=${index}&liveId=${liveId}`);
 }
 </script>
 

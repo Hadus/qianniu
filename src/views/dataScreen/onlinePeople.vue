@@ -13,7 +13,6 @@ export default {
 		}
 	},
 	created() {
-		console.log(echarts);
 		setTimeout(() => {
 			this.dealEchart()
 		}, 1000);
