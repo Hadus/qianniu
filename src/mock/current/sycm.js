@@ -701,43 +701,4 @@ const home = {
   chart: {},
 };
 
-/* 直播页 */
-const live = {
-  overview: {
-    // 直播概况
-  },
-  performance: {
-    // 直播间业绩
-    overall: {
-      my: {
-        cur: 600,
-        change: 51,
-        direction: "down",
-      },
-      all: {
-        cur: 6496,
-        change: 370,
-        direction: "down",
-      },
-      bigPan: {
-        // 直播间大盘
-      },
-      orderListTable: [
-        // 直播间订单明细
-      ],
-      presaleListTable: [
-        // 直播间预售数据
-      ],
-    },
-  },
-  myLiveList: {
-    // 我的直播列表
-    realtime: [],
-    playback: [],
-  },
-};
-export { home, live };
-
-const sycm = {};
-
-export default sycm;
+export default home;

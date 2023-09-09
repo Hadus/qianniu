@@ -231,7 +231,7 @@
 import { ref, reactive, onMounted } from "vue";
 import * as echarts from "echarts";
 
-import { home as mock_home } from '@/mock/current/sycm';
+import mock_home from '@/mock/current/sycm.js';
 
 const date = ref(new Date().toLocaleString());
 const overviewData = mock_home.overall;
@@ -288,7 +288,7 @@ const initPayMoneyChart = () => {
       {
         name: "今日",
         type: "line",
-        data: [ 0, 0, 0, 0, 13978, 21001, 39013, 58612, 67912],
+        data: [0, 0, 0, 0, 13978, 21001, 39013, 58612, 67912],
         symbol: "none",
         smooth: true,
         itemStyle: {
@@ -409,6 +409,7 @@ onMounted(() => {
   cursor: pointer;
   transition: color 0.3s;
 }
+
 .slick-item {
   display: inline-block;
   width: 16px;
@@ -416,6 +417,7 @@ onMounted(() => {
   background-color: rgb(236, 236, 236);
   margin: 0 2px;
 }
+
 .real-time-link {
   color: #2062e6;
   margin-left: 20px;

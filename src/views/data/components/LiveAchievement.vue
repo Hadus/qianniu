@@ -124,9 +124,8 @@ import { reactive, ref, onMounted, computed } from "vue";
 import liveList from "./liveList.vue";
 import * as echarts from "echarts";
 import LivePerformance from "./LivePerformance.vue";
-import { live as mock_live } from '@/mock/current/sycm';
+import mock_live from '@/mock/current/live.js';
 
-console.log(mock_live)
 const now = new Date();
 const updateDate = ref(
   new Date(now.setDate(now.getDate() - 1))

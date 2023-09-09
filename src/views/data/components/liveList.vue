@@ -533,14 +533,14 @@
 <script setup lang="ts" name="liveList">
 import { ref } from 'vue';
 import vPaganation from '@/components/Paganation/index.vue';
-import live_table_list from '@/mock/current/live';
+import mock_live from '@/mock/current/live';
 
 import vH3Header from '@/components/H3Header/index.vue';
 
 const activeName = ref('first');
 
 // table-1
-const { table_1, table_2, table_3, table_4 } = live_table_list;
+const { table_1, table_2, table_3, table_4 } = mock_live.live_table_list;
 
 
 // 点击table中直播标题
