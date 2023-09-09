@@ -10,9 +10,8 @@
 				</div>
 			</div>
 			<div class="right">
-				<img alt="头像" class="peopleImg"
-					src="https://wwc.alicdn.com/avatar/getAvatar.do?userId=2559988253&amp;type=taobao">
-				<!-- <span>{{ user.name }}</span> -->
+				<img alt="头像" class="peopleImg" :src="user.avatarImg">
+				<span>{{ user.taobaoName }}</span>
 			</div>
 		</div>
 		<div class="main">
