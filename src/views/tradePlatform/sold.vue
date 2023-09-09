@@ -96,9 +96,8 @@
 						<el-table-column align="center" label="评价" width="140" />
 					</el-table>
 					<!-- 内容 -->
-					<el-table v-for="(item, index) in tableData" :index="index" style="width: 100%"
-						header-row-class-name="order-item-th" class="order-table order-tbody-table" :data="item.subOrders"
-						:span-method="(val) => order_span_method(val, item.subOrders.length)">
+					<el-table style="width: 100%" header-row-class-name="order-item-th" class="order-table order-tbody-table"
+						:data="item.subOrders" :span-method="(val) => order_span_method(val, item.subOrders.length)">
 						<el-table-column>
 							<template #header>
 								<div class="item-title">
@@ -202,7 +201,7 @@
 </template>
 
 <script setup lang="ts" name="sold">
-import { reactive } from 'vue';
+import { reactive, nextTick } from 'vue';
 import { useRouter } from 'vue-router';
 const router = useRouter();
 
@@ -234,11 +233,19 @@ const order_span_method = function ({ rowIndex, columnIndex }, length) {
 }
 
 let page = 1;
-let tableData = getTrade_orderList(1);
+let item = getTrade_orderList(1)[0];
+// let tableData = getTrade_orderList(1);
 const handelGoPage = function (page) {
-	const data = reactive(getTrade_orderList(page));
-	tableData = reactive(data);
+	// const data = getTrade_orderList(page);
+	// tableData = reactive(data);
+	// console.log(tableData[0]);
+	// 11111
+	nextTick(() => {
+		item = reactive({ ...getTrade_orderList(page)[0] });
+	});
+	console.log(item.id);
 }
+
 
 // 点击详情
 const handleClickOrder = function (index, createTimeStr, id) {
