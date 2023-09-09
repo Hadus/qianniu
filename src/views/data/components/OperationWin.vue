@@ -121,7 +121,10 @@
         >
           <div>
             <div>
-              <div class="card-title">{{ cardItem.desc }}</div>
+              <div class="card-title">
+                {{ cardItem.desc
+                }}<i style="padding-left: 5px" class="niceFonts-tooltip"></i>
+              </div>
               <div class="data-label">{{ cardItem.cur }}</div>
             </div>
             <div class="change-level">
@@ -203,9 +206,9 @@
 <script setup lang="ts">
 import * as echarts from "echarts";
 import { ref, computed, watch, reactive, onMounted } from "vue";
-import { viewBoardData as _viewBoardData } from "./operationWinData";
 import { getYearWeek } from "@/utils/utils";
 import { Warning } from "@element-plus/icons-vue";
+import { home } from "@/mock/current/sycm";
 
 const activeTab = ref("overview");
 const showActiveInfo = ref(true);
@@ -247,7 +250,7 @@ const changeDateType = () => {
 };
 const openDatePickPanel = () => {
   datePickRef.value.handleOpen();
-}
+};
 
 const cardPage = ref(0);
 const changeCard = (value: -1 | 1) => {
@@ -262,7 +265,7 @@ const changeCard = (value: -1 | 1) => {
   }
   cardPage.value += value;
 };
-const viewBoardData = reactive(_viewBoardData);
+const viewBoardData = reactive(home.board);
 const parseCardTrend = (value: string | null) => {
   let trend = value === null ? "" : "up";
   let color = "#F04134";
@@ -279,19 +282,31 @@ const parseCardTrend = (value: string | null) => {
     isTextColorRender: Number(value?.slice(-1)) > 30,
   };
 };
+const cardCache = {};
 const cardDatas = computed(() => {
   const date = selectDate.value;
   const result = viewBoardData
     .map((item) => {
       const { cur, pre, compareLast } = item[dateType.value];
       const fixedNum = Number.isInteger(cur) ? 0 : 2;
+      const dateCacheKey = `${dateType.value}-${date.toLocaleDateString()}`;
+      let usedCur = cur;
+      console.log(cardCache);
+      if (cardCache[item.key]?.[dateCacheKey]) {
+        usedCur = cardCache[item.key]?.[dateCacheKey];
+      } else {
+        if (!cardCache[item.key]) {
+          cardCache[item.key] = {};
+        }
+        cardCache[item.key][dateCacheKey] = usedCur =
+          typeof cur === "number"
+            ? ((Math.random() * 0.1 + 1) * cur).toFixed(fixedNum)
+            : cur;
+      }
       return {
         key: item.key,
         desc: item.desc,
-        cur:
-          typeof cur === "number"
-            ? ((Math.random() + 1) * cur).toFixed(fixedNum)
-            : cur,
+        cur: usedCur,
         pre,
         compareLast,
       };
@@ -339,7 +354,7 @@ const initPayMoneyChart = (randomData: boolean = false) => {
   );
   const {
     chartData: { my, rivalAvg, rivalTop },
-  } = _viewBoardData.find(({ key }) => key === selectCardItem.value)?.[
+  } = home.board.find(({ key }) => key === selectCardItem.value)?.[
     dateType.value
   ];
   payMoneyChart.setOption({
@@ -371,9 +386,8 @@ const initPayMoneyChart = (randomData: boolean = false) => {
       {
         name: "我的",
         type: "line",
-        stack: "Total",
-        data: my.map((item: number) =>
-          randomData ? ((Math.random() + 1) * item).toFixed(2) : item
+        data: my.map((item) =>
+          randomData ? (Math.random() * 0.1 + 1) * item : item
         ),
         smooth: true,
         symbol: "none",
@@ -384,9 +398,8 @@ const initPayMoneyChart = (randomData: boolean = false) => {
       {
         name: "同行同层平均",
         type: "line",
-        stack: "Total",
-        data: rivalAvg.map((item: number) =>
-          randomData ? ((Math.random() + 1) * item).toFixed(2) : item
+        data: rivalAvg.map((item) =>
+          randomData ? (Math.random() * 0.1 + 1) * item : item
         ),
         smooth: true,
         symbol: "none",
@@ -397,9 +410,8 @@ const initPayMoneyChart = (randomData: boolean = false) => {
       {
         name: "同行同层优秀",
         type: "line",
-        stack: "Total",
-        data: rivalTop.map((item: number) =>
-          randomData ? ((Math.random() + 1) * item).toFixed(2) : item
+        data: rivalTop.map((item) =>
+          randomData ? (Math.random() * 0.1 + 1) * item : item
         ),
         smooth: true,
         symbol: "none",
@@ -441,13 +453,29 @@ const getXAiasLabel = () => {
       });
       break;
   }
-  console.log(result)
   return result.reverse();
 };
 
 watch(selectDate, () => {
   initPayMoneyChart(true);
 });
+
+function ceateData(value, count) {
+  const fixedNum = value.toString().includes(".") ? 2 : 0;
+  return new Array(count).fill(0).map(() => {
+    const randomVal = Math.random();
+    return Number(
+      (value * (randomVal > 0.5 ? randomVal : 1 + randomVal)).toFixed(fixedNum)
+    );
+  });
+}
+function ceateDataTop(value, count) {
+  const fixedNum = value.toString().includes(".") ? 2 : 0;
+  return new Array(count).fill(0).map(() => {
+    const randomVal = Math.random() * 0.1;
+    return Number((value * (randomVal + 1)).toFixed(fixedNum));
+  });
+}
 
 onMounted(() => {
   initPayMoneyChart();
@@ -457,6 +485,12 @@ onMounted(() => {
 @media (min-width: 1600px) {
   .oui-floor-nav {
     margin-right: -770px;
+  }
+}
+@media (max-width: 1480px) {
+  .oui-floor-nav {
+    margin-right: 0 !important;
+    right: 0 !important;
   }
 }
 

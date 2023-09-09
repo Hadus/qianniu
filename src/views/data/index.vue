@@ -120,6 +120,10 @@
             <el-menu-item index="14">自助分析</el-menu-item>
             <el-menu-item index="15">人群</el-menu-item>
             <el-menu-item index="16">学堂</el-menu-item>
+            <el-menu-item v-show="!showHeaderTop" index="16"
+              >消息
+              <div class="notification-remind"></div
+            ></el-menu-item>
           </el-menu>
         </div>
       </el-header>
@@ -188,6 +192,18 @@ onMounted(() => {
 
 .container {
   color: #333;
+}
+
+@media (max-width: 1480px) {
+  .outer-main.el-main {
+    width: 1210px !important;
+  }
+  .header--top-inner {
+    width: 1210px !important;
+  }
+  .data-container .top-menu {
+    width: 1210px !important;
+  }
 }
 
 .outer-main.el-main {
