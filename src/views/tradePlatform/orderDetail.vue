@@ -16,7 +16,7 @@
     </div>
     <div class="status">
       <div class="head">
-        <span>订单状态:</span><span>交易关闭</span>
+        <span>订单状态:</span><span> 交易成功</span>
         <div class="step">
           <ul>
             <li class="finished">
@@ -43,10 +43,9 @@
       <div class="mark">
         <v-btn-fill type="blank" size="normal">标记</v-btn-fill>
         <v-btn-fill type="blank" size="normal">订单优惠详情</v-btn-fill>
-        <v-btn-fill type="blank" size="normal">订单优惠详情</v-btn-fill>
-        <v-btn-fill type="blank" size="normal">订单优惠详情</v-btn-fill>
+        <v-btn-fill type="blank" size="normal">补发货</v-btn-fill>
       </div>
-      <div class="note">
+      <div class="note" v-if="false">
         <p>
           <span>经审核您的商品［紫水晶手链紫罗兰深紫单圈手串乌拉圭饰品女款乌拉圭紫紫色］存在交易风险。交易款项将在买家确认收货后的45天内进行交易账期延长，以用于买家可能提起的交易维权保障。交易账期将在2023年10月06日
             22:46:36自动解除，在此期间若消费者发起售后维权，交易账期会持续延长至维权结束，并依维权结果确定归属。</span>
@@ -63,10 +62,10 @@
       <div class="info-detail">
         <div class="col">
           <h4 class="head">交易信息</h4>
-          <p><span class="key">订单编号:</span><span class="value">3475009332833905518</span><a>复制</a></p>
-          <p><span class="key">支付宝交易号:</span><span class="value">2023090222001192141415955641</span><a>复制</a></p>
-          <p><span class="key">创建时间:</span><span class="value">2023-09-02 13:32:50</span></p>
-          <p><span class="key">付款时间:</span><span class="value">2023-09-02 13:32:54</span></p>
+          <p><span class="key">订单编号:</span><span class="value">{{ order_detail.id }}</span><a>复制</a></p>
+          <p><span class="key">支付宝交易号:</span><span class="value">{{ order_detail__plus.tbTradeId }}</span><a>复制</a></p>
+          <p><span class="key">创建时间:</span><span class="value">{{ order_detail__plus.createTime }}</span></p>
+          <p><span class="key">付款时间:</span><span class="value">{{ order_detail__plus.payTime }}</span></p>
         </div>
         <div class="col">
           <h4 class="head head-icon">买家信息
@@ -79,13 +78,13 @@
             <span class="key">昵称:</span>
             <span class="value nickname-wrapper">
               <a href="javascript: void(0);" target="_blank" title="点此可以直接和卖家交流选好的宝贝，或相互交流网购体验，还支持语音视频噢。"></a>
-              爱**
+              {{ order_detail.buyer.nick }}
             </span>
           </p>
-          <p><span class="key">联系电话:</span><span class="value">180******55</span></p>
-          <p><span class="key">邮件:</span><span class="value">2023-09-02 13:32:50</span></p>
+          <p><span class="key">联系电话:</span><span class="value">{{ order_detail.buyer.phoneNum }}</span></p>
+          <p><span class="key">邮件:</span><span class="value">***</span></p>
           <p>
-            <span class="key">支付宝:</span><span class="value">2023-09-02 13:32:54</span><a>付款给买家</a>
+            <span class="key">支付宝:</span><span class="value">1***</span><a>付款给买家</a>
           <p class="tips"><span>该功能为支付宝<a herf="javascript:;">即时到帐</a>，用于退运费等小额退款，请谨慎操作</span></p>
           </p>
         </div>
@@ -98,31 +97,37 @@
           </h4>
           <p><span class="key">收货地址：:</span>
             <span class="value">
-              {{ flag_look ? `安小姐，18466861227-5695，江苏省 南京市 栖霞区 栖霞经济开发区 乡河大道 ，000000` : `张**，***********，江苏省 连云港市
-              东海县***********，*** ` }}
+              {{ flag_look ?
+                order_detail__plus.orderDetailList[orderDetailIndex].content.address :
+                order_detail__plus.orderDetailList[orderDetailIndex].content.address_ }}
             </span>
             <a>复制</a>
           </p>
           <p><span class="key">运送方式:</span><span class="value">快递</span></p>
-          <p><span class="key">物流公司名称:</span><span class="value">邮政快递包裹</span></p>
+          <p><span class="key">物流公司名称:</span><span class="value">{{
+            order_detail__plus.orderDetailList[orderDetailIndex].content.logisticsName
+          }}</span></p>
           <p>
-            <span class="key">运单号:</span><span class="value">9872018204859</span>
+            <span class="key">运单号:</span><span class="value">{{
+              order_detail__plus.orderDetailList[orderDetailIndex].content.logisticsNum
+            }}</span>
             <a @click="handleLookWuliu">查看物流信息</a>
           </p>
         </div>
       </div>
     </div>
     <div class="table">
-      <el-table :data="tableData" style="width: 100%" header-row-class-name="order-item-th"
-        class="order-table order-tbody-table">
+      <el-table :data="order_detail.subOrders" style="width: 100%" header-row-class-name="order-item-th"
+        class="order-table order-tbody-table"
+        :span-method="(val) => order_detail_span_method(val, order_detail.subOrders.length)">
         <el-table-column class="td-format" label="宝贝" align="center">
           <template #default="{ row }">
             <v-order-item :itemData="row" />
           </template>
         </el-table-column>
         <el-table-column class="td-format" label="宝贝属性" width="150" align="center">
-          <template #default>
-            <p class="main">1</p>
+          <template #default="{ row }">
+            <p class="main">{{ row.itemInfo.skuText[0].name }}{{ row.itemInfo.skuText[0].value }}</p>
           </template>
         </el-table-column>/>
         <el-table-column class="td-format" label="状态" width="150" align="center">
@@ -132,122 +137,84 @@
         </el-table-column>
         <el-table-column class="td-format" label="服务" width="150" align="center">
           <template #default>
-            <p class="main">交易关闭</p>
+            <p class="main">{{ }}</p>
             <p class="desc">
             </p>
           </template>
         </el-table-column>
         <el-table-column class="td-format" label="单价" width="150" align="center">
-          <template #default>
-            <p class="main">¥50.00</p>
-            <p class="desc">（含快递：¥0.00）</p>
+          <template #default="{ row }">
+            {{ row.priceInfo.realTotal }}
           </template>
         </el-table-column>
         <el-table-column class="td-format" label="数量" width="150" align="center">
-          <template #default>
+          <template #default="{ row }">
             <p class="main">
-              <a href="javascript:;">我已评价</a>
+              {{ row.quantity }}
             </p>
           </template>
         </el-table-column>/>
         <el-table-column class="td-format" label="优惠" width="150" align="center">
           <template #default>
             <p class="main">
-              <a href="javascript:;">我已评价</a>
+              <a href="javascript:;">{{ }}</a>
             </p>
           </template>
         </el-table-column>/>
         <el-table-column class="td-format" label="商品总价" width="150" align="center">
           <template #default>
             <p class="main">
-              <a href="javascript:;">我已评价</a>
+            <p class="main">¥{{ order_detail.payInfo.actualFee }}</p>
+            <p class="desc">{{ order_detail.payInfo.postType }}</p>
             </p>
           </template>
         </el-table-column>/>
       </el-table>
-      <div class="money"><span>实收款：</span><span>100.00</span></div>
+      <div class="money"><span>实收款：</span><span>{{ order_detail.payInfo.actualFee }}</span></div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts" name="orderDetail">
 import { ref, reactive } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
-const router = useRouter();
+import { useRoute } from 'vue-router';
 const route = useRoute();
 
 import vBtnFill from '@/components/BtnFill/index.vue'
 import vOrderItem from './orderItem.vue';
-import mock_trade from '@/mock/current/trade';
-const order_detail = mock_trade.order_table.mainOrders[route.query.index];
+import mock_trade, { getTrade_orderList, getOrder_detail_plus } from '@/mock/current/trade';
+// data
+const { page, index, orderDetailIndex, createTimeStr } = route.query;
+const order_detail = getTrade_orderList(page)[index];
 
-let flag_switch = false;
-const handleLookWuliu = function () {
-  router.push('/');
-  window.open('#/wuliu');
-};
+const order_detail__plus = getOrder_detail_plus(createTimeStr);
+const order_detail_span_method = function ({ rowIndex, columnIndex }, length) {
+  if (columnIndex >= 6) {
+    if (rowIndex == 1) {
+      return {
+        rowspan: length,
+        colspan: 1
+      }
+    } else {
+      return {
+        rowspan: 0,
+        colspan: 0
+      }
+    }
+  }
+}
+
+let flag_switch = ref(false);
 let flag_look = ref(false);
 const handelClicklookInfo = function () {
   flag_look.value = !flag_look.value;
 };
-const tableData = [
-  {
-    "priceInfo": {
-      "realTotal": "1.00"
-    },
-    "operations": [
-      {
-        "dataUrl": "//refund2.tmall.com/dispute/secondConfirm.do?bizOrderId=3474212761592495609 &attrKey =openSHWY &from =listSoldItems &isQnNew =true",
-        "data": {
-          "width": 304,
-          "crossOrigin": false,
-          "height": 203
-        },
-        "action": "a28",
-        "style": "t16",
-        "text": "打开售后入口",
-        "type": "operation"
-      }
-    ],
-    "quantity": "1",
-    "id": 3474212761592495609,
-    "itemInfo": {
-      "subId": "3474212761592495609",
-      "skuText": [
-        {
-          "visible": "SOLID",
-          "name": "颜色分类",
-          "value": "9毫米"
-        }
-      ],
-      "extra": [
-        {
-          "visible": "SOLID",
-          "name": "发货时间",
-          "value": "08月14日 20:31前发货"
-        }
-      ],
-      "pic": "//img.alicdn.com/imgextra/i2/2559988253/O1CN01ebqfbj2ApvbB4SW1n_!!2559988253.jpg_sum.jpg",
-      "title": "紫水晶手链紫罗兰深紫单圈手串乌拉圭饰品女款乌拉圭紫紫色",
-      "serviceIcons": [
-        {
-          "linkTitle": "消费者保障服务，卖家承诺7天无理由退换货",
-          "linkUrl": "https://liveplatform.taobao.com/restful/index/shop/shop-rule?lastCategoryId=1351 &ruleId =20000865#/DetailRule",
-          "type": 3,
-          "url": "//img.alicdn.com/tps/i3/T1Vyl6FCBlXXaSQP_X-16-16.png"
-        },
-        {
-          "linkUrl": "//rule.taobao.com/detail-1722.htm",
-          "title": "该笔订单不计入销量",
-          "type": 3,
-          "url": "//gtd.alicdn.com/tps/i4/TB1043lGpXXXXcZXXXXAz6UFXXX-16-16.png"
-        }
-      ],
-      "itemUrl": "//trade.taobao.com/trade/detail/tradeSnap.htm?tradeID=3474212761592495609 &snapShot =true",
-      "skuId": 0
-    }
-  },
-];
+
+const handleLookWuliu = function () {
+  window.open(`#/wuliu?page=${page}&index=${index}&orderDetailIndex=${orderDetailIndex}&createTimeStr=${createTimeStr}&tradeId=${order_detail.id}`, '_blank');
+
+};
+
 </script>
 
 <style scoped>
@@ -575,7 +542,12 @@ const tableData = [
   padding-top: 3px;
 }
 
-.wrapper-order-detail .el-switch .el-switch__inner .is-show {
+.wrapper-order-detail .el-switch .el-switch__inner>span:first-child {
+  padding-top: 3px;
+  color: #fff;
+}
+
+.wrapper-order-detail .el-switch .el-switch__inner>span:last-child {
   padding-top: 3px;
   color: rgb(153, 153, 153);
 }

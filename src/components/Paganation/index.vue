@@ -1,12 +1,13 @@
 <template>
   <div class="paganation-wrapper" :class="{ right: position == 'right' }">
-    <el-pagination :layout="layout" :total="total" class="paganation" prev-text="上一页" next-text="下一页" />
+    <el-pagination class="paganation" :layout="layout" :total="total" :pageSize="pageSize" prev-text="上一页" next-text="下一页"
+      @current-change="(val) => { emits('currentChange', val) }" />
     <p class="confirm" v-if="layout.includes('jumper')">确定</p>
   </div>
 </template>
 
 <script setup lang="ts" name="paganation">
-const { position, layout, total } = defineProps({
+const { position, layout, total, pageSize } = defineProps({
   position: {
     type: String,
     default: 'center'
@@ -19,8 +20,12 @@ const { position, layout, total } = defineProps({
     type: Number,
     default: 10
   },
-})
-
+  pageSize: {
+    type: Number,
+    default: 10
+  },
+});
+const emits = defineEmits(['currentChange'])
 </script>
 
 <style scoped>

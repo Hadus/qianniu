@@ -96,8 +96,8 @@
 						<el-table-column align="center" label="评价" width="140" />
 					</el-table>
 					<!-- 内容 -->
-					<el-table v-for="(item, index) in tableData" style="width: 100%" header-row-class-name="order-item-th"
-						class="order-table order-tbody-table" :data="item.subOrders"
+					<el-table v-for="(item, index) in tableData" :index="index" style="width: 100%"
+						header-row-class-name="order-item-th" class="order-table order-tbody-table" :data="item.subOrders"
 						:span-method="(val) => order_span_method(val, item.subOrders.length)">
 						<el-table-column>
 							<template #header>
@@ -148,7 +148,8 @@
 										</el-icon>
 									</span></p>
 								<p class="desc">
-									<a href="javascript:;" @click="handleClickOrder(index)">详情</a>
+									<a href="javascript:;"
+										@click="handleClickOrder(index, item.orderInfo.createTime, item.orderInfo.id)">详情</a>
 								</p>
 							</template>
 						</el-table-column>
@@ -171,7 +172,8 @@
 						</el-table-column>/>
 					</el-table>
 					<!-- 表格end -->
-					<v-paganation layout="prev, pager, next, jumper" :total="91" class="order-pagination" />
+					<v-paganation layout="prev, pager, next, jumper" :total="mock_trade.page.totalNumber"
+						:page-size="mock_trade.page.pageSize" class="order-pagination" @current-change="handelGoPage" />
 				</el-tab-pane>
 				<el-tab-pane label="等待买家付款" name="secondDetails">
 					暂无
@@ -200,6 +202,7 @@
 </template>
 
 <script setup lang="ts" name="sold">
+import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
 const router = useRouter();
 
@@ -209,15 +212,14 @@ import vPaganation from '@/components/Paganation/index.vue';
 import vFilterInput from './filterInput.vue';
 import vOrderItem from './orderItem.vue';
 
-import mock_trade from '@/mock/current/trade';
-
+import mock_trade, { getTrade_orderList, getTrade_orderDetailIndex } from '@/mock/current/trade';
 
 const activeNameAll = 'firstAll';
 const activeNameDetails = 'firstDetails'
-const tableData = mock_trade.order_table.mainOrders;
+// table
 const order_span_method = function ({ rowIndex, columnIndex }, length) {
 	if (columnIndex >= 4) {
-		if (rowIndex == 1) {
+		if (rowIndex == 0) {
 			return {
 				rowspan: length,
 				colspan: 1
@@ -230,8 +232,19 @@ const order_span_method = function ({ rowIndex, columnIndex }, length) {
 		}
 	}
 }
-const handleClickOrder = function (index) {
-	window.open('#/trade-platform/tp/orderDetail?index=1', '_blank');
+
+let page = 1;
+let tableData = getTrade_orderList(1);
+const handelGoPage = function (page) {
+	page = page;
+	const data = getTrade_orderList(page);
+	tableData = reactive(data);
+}
+
+// 点击详情
+const handleClickOrder = function (index, createTimeStr, id) {
+	const orderDetailIndex = getTrade_orderDetailIndex();
+	window.open(`#/trade-platform/tp/orderDetail?page=${page}&index=${index}&orderDetailIndex=${orderDetailIndex}&createTimeStr=${createTimeStr}&OrderId=${id}`, '_blank');
 };
 </script>
 

@@ -6,8 +6,7 @@
     </div>
     <div class="right">
       <p class="title">
-        <a href="//trade.taobao.com/trade/detail/tradeSnap.htm?tradeID=3503107335644061564&amp;snapShot=true"
-          target="_blank">{{ itemData.itemInfo.title }}</a>
+        <a :href="itemData.itemInfo.itemUrl" target="_blank">{{ itemData.itemInfo.title }}</a>
       </p>
       <p class="type">
         <span class="key">{{ itemData.itemInfo.skuText[0].name }}：</span><span class="value">{{
