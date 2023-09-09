@@ -97,7 +97,8 @@
 					</el-table>
 					<!-- 内容 -->
 					<el-table style="width: 100%" header-row-class-name="order-item-th" class="order-table order-tbody-table"
-						:data="item.subOrders" :span-method="(val) => order_span_method(val, item.subOrders.length)">
+						v-for="(item, index) in tableData" :key="item.id" :data="item.subOrders"
+						:span-method="(val) => order_span_method(val, item.subOrders.length)">
 						<el-table-column>
 							<template #header>
 								<div class="item-title">
@@ -201,7 +202,7 @@
 </template>
 
 <script setup lang="ts" name="sold">
-import { reactive, nextTick } from 'vue';
+import { ref, reactive, nextTick } from 'vue';
 import { useRouter } from 'vue-router';
 const router = useRouter();
 
@@ -233,17 +234,10 @@ const order_span_method = function ({ rowIndex, columnIndex }, length) {
 }
 
 let page = 1;
-let item = getTrade_orderList(1)[0];
-// let tableData = getTrade_orderList(1);
+let tableData = ref(getTrade_orderList(1));
 const handelGoPage = function (page) {
-	// const data = getTrade_orderList(page);
-	// tableData = reactive(data);
-	// console.log(tableData[0]);
-	// 11111
-	nextTick(() => {
-		item = reactive({ ...getTrade_orderList(page)[0] });
-	});
-	console.log(item.id);
+	const data = getTrade_orderList(page);
+	tableData.value = data;
 }
 
 

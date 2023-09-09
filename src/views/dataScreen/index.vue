@@ -260,7 +260,7 @@
 
 					</div>
 					<div style="height: 10px;"></div>
-					<div style="height: 440px;">
+					<div style="height: 480px;">
 						<div class="chart-wrap">
 							<div class="chart-title">在线人数
 								<el-tooltip class="box-item" effect="dark"
@@ -270,7 +270,7 @@
 										style="position: relative; z-index: 10; margin-left: 10px; cursor: help;">
 								</el-tooltip>
 								<div style="height: 200px;">
-									<!-- <onlinePeople></onlinePeople> -->
+									<onlinePeople></onlinePeople>
 								</div>
 							</div>
 						</div>
@@ -281,7 +281,7 @@
 										style="position: relative; z-index: 10; margin-left: 10px; cursor: help;">
 								</el-tooltip>
 								<div style="height: 200px;">
-									<!-- <dataForm></dataForm> -->
+									<dataForm></dataForm>
 								</div>
 							</div>
 						</div>
@@ -295,14 +295,13 @@
 
 <script lang="ts" setup name="dataScreen">
 import { ref, reactive } from 'vue'
-// import onlinePeople from "./onlinePeople.vue";
-// import dataForm from "./dataForm.vue";
+import onlinePeople from "./onlinePeople.vue";
+import dataForm from "./dataForm.vue";
 import { dealData } from "@/mock/dataScreen/dataview.js"
 import { useUserStore } from '@/store/user';
 const user = useUserStore();
 let pageData = dealData();
 let { liuLiangHuDong, zhuanHuaChengJiao, tableData, zhiBoYu, dianpuyu } = pageData;
-
 
 let isActive = true;
 let value2 = false;
@@ -623,7 +622,7 @@ const changeMessage = () => {
 
 .dataScreen-container .right-module:nth-child(2) {
 	background-color: #1a1a1a;
-	height: 360px;
+	height: 380px;
 }
 
 .dataScreen-container .goods-table {
@@ -1026,7 +1025,7 @@ const changeMessage = () => {
 
 .dataScreen-container .home-left,
 .dataScreen-container .home-right {
-	height: 100%;
+	height: auto;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
