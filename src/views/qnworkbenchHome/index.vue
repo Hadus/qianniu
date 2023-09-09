@@ -59,9 +59,8 @@
 					</div>
 				</h3>
 				<div class="info">
-					<template v-for="(item, index) in shopDataItemList">
-						<v-shop-data-item class="shop-data-item" :index="index" :item="item"
-							:class="(index + 1) % 4 == 0 ? 'isright' : ''" />
+					<template v-for="(item, index) in shopDataItemList" :key="index">
+						<v-shop-data-item class="shop-data-item" :item="item" :class="(index + 1) % 4 == 0 ? 'isright' : ''" />
 					</template>
 				</div>
 			</div>
