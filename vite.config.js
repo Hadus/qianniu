@@ -35,7 +35,8 @@ export default defineConfig({
 		include: ['schart.js']
 	},
 	server: {
-		port: 3000,
+		host: '0.0.0.0', // 配置host 才可以外网访问
+		port: 80, // 访问80端口不需要加端口号
 		open: true,
 	},
 });
