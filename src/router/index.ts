@@ -38,7 +38,7 @@ const routes: RouteRecordRaw[] = [
     path: '/data',
     name: 'data',
     meta: {
-      title: '数据',
+      title: '生意参谋，阿里巴巴生意参谋，市场行情，数据作战室，大数据分析，生意经，电商运营，零售电商',
       permiss: '7',
     },
     component: () => import(/* webpackChunkName: "import" */ '../views/data/index.vue'),
@@ -47,7 +47,7 @@ const routes: RouteRecordRaw[] = [
     path: '/dataScreen',
     name: 'dataScreen',
     meta: {
-      title: '淘宝数据大屏',
+      title: '实时数据大屏',
     },
     component: () => import(/* webpackChunkName: "charts" */ '../views/dataScreen/index.vue'),
   },

@@ -5,7 +5,6 @@
 				<div class="homeLogo"></div>
 				<div>
 					<div class="screen-switch"><button type="button" class="entry">普通版</button>
-
 					</div>
 				</div>
 			</div>
