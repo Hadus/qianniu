@@ -71,8 +71,8 @@
 				</div>
 				<div class="left-module-down">
 					<div>
-						<div class="live-actions"><img
-								src="https://img.alicdn.com/imgextra/i4/O1CN01fkRTHI1GahpZ5cwpB_!!6000000000639-55-tps-168-168.svg"
+						<div class="live-actions" v-if="false">
+							<img src="https://img.alicdn.com/imgextra/i4/O1CN01fkRTHI1GahpZ5cwpB_!!6000000000639-55-tps-168-168.svg"
 								alt="继续加油">
 							<div class="live-actions-text">开播时长太短啦！开播至少大于30分钟，解锁场次复盘～</div>
 							<div class="btns-group"><button type="button" class="ant-btn ant-btn-round ant-btn-primary"
@@ -80,6 +80,53 @@
 								<div style="display: flex; justify-content: space-between; margin-top: 30px;"><button type="button"
 										class="ant-btn ant-btn-round ant-btn-ghost"><span>货品分析</span></button><button type="button"
 										class="ant-btn ant-btn-round ant-btn-ghost"><span>粉丝数据</span></button>
+								</div>
+							</div>
+						</div>
+						<div class="live-actions-show" v-else>
+							<div class="module-header">场次复盘
+								<img src="https://img.alicdn.com/imgextra/i4/O1CN01WKQLU81ed2ZbubuVC_!!6000000003893-55-tps-16-16.svg">
+							</div>
+							<div class="module-content">
+								<div>
+									<p>
+										<img class="card-icon"
+											src="https://gw.alicdn.com/imgextra/i3/O1CN01TWm0aD1taUmPj1ZcT_!!6000000005918-2-tps-18-18.png">
+										活动流量奖励(PV)
+										<span>3219</span>
+									</p>
+									<p style="color: #b3b3b3;">注：来自广告激励等
+									</p>
+								</div>
+								<div>
+									<p>
+										<img class="card-icon"
+											src="https://gw.alicdn.com/imgextra/i4/O1CN01wuJnIu1le90h02jD7_!!6000000004843-2-tps-18-18.png">
+										流量券消耗(PV)
+										<span>0</span>
+									</p>
+								</div>
+								<div>
+									<p>
+										<img class="card-icon"
+											src="https://gw.alicdn.com/imgextra/i2/O1CN01LuJAQx1nYJC1ScHmd_!!6000000005101-2-tps-18-18.png">
+										直播中成交金额
+										<span style="color: #b3b3b3;">较近期</span>
+									</p>
+									<p>{{ zuiGaoJiner }}
+										<span style="font-family: DINAlternate-Bold; color: rgb(204, 0, 8); font-size: 20px;">+10.1%</span>
+									</p>
+								</div>
+								<div>
+									<p>
+										<img class="card-icon"
+											src="https://gw.alicdn.com/imgextra/i1/O1CN01rXeruP1NvxddbkGSS_!!6000000001633-2-tps-17-18.png">
+										推荐PV
+										<span style="color: #b3b3b3;">较近期</span>
+									</p>
+									<p>2612
+										<span style="font-family: DINAlternate-Bold; color: #49aa19; font-size: 20px;">+10.1%</span>
+									</p>
 								</div>
 							</div>
 						</div>
@@ -631,7 +678,7 @@ const changeMessage = () => {
 .dataScreen-container .right-module {
 	width: 100%;
 	position: relative;
-	margin: 10px 0;
+	margin: 0;
 	border-radius: 20px;
 	overflow: hidden;
 	background-color: #1a1a1a;
@@ -651,7 +698,8 @@ const changeMessage = () => {
 
 .dataScreen-container .right-module:nth-child(2) {
 	background-color: #1a1a1a;
-	height: 380px;
+	height: 370px;
+	margin-bottom: 10px;
 }
 
 .dataScreen-container .goods-table {
@@ -672,7 +720,7 @@ const changeMessage = () => {
 
 .dataScreen-container .middle-down {
 	width: 100%;
-	margin: 20px 0;
+	margin: 32px 0;
 	border-radius: 20px;
 	height: 500px;
 	box-sizing: border-box;
@@ -700,11 +748,58 @@ const changeMessage = () => {
 	border-style: none;
 }
 
+.dataScreen-container .left-module-down .live-actions-show {
+	height: 400px;
+
+}
+
+.dataScreen-container .left-module-down .live-actions-show .module-header {
+	font-family: PingFangSC-Semibold;
+	font-size: 20px;
+	color: #fff;
+	padding: 10px 20px;
+	background-color: #2f2f36;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	margin-bottom: 12px;
+}
+
+.dataScreen-container .left-module-down .live-actions-show .module-content {
+	padding: 0 12px;
+	color: #fff;
+	font-size: 14px;
+}
+
+.dataScreen-container .left-module-down .live-actions-show .module-content>div {
+	padding: 11px 12px 11px 36px;
+	background: rgba(60, 60, 69, .7);
+	border-radius: 12px;
+	margin-bottom: 12px;
+	position: relative;
+}
+
+.dataScreen-container .left-module-down .live-actions-show .module-content>div img {
+	position: absolute;
+	width: 13px;
+	height: 13px;
+	left: 16px;
+	top: 14px;
+}
+
+.dataScreen-container .left-module-down .live-actions-show .module-content>div p:first-child {
+	margin-bottom: 5px;
+}
+
+.dataScreen-container .left-module-down .live-actions-show .module-content>div span {
+	float: right;
+}
+
 .dataScreen-container .middle-top {
 	width: 100%;
-	height: 428px;
+	height: 430px;
 	position: relative;
 	padding: 10px 0;
+	margin-bottom: 10px;
 }
 
 .dataScreen-container .middle-top>.top {
@@ -1119,7 +1214,15 @@ const changeMessage = () => {
 	color: #a9a9a9;
 }
 
-.dataScreen-container .left-module-up,
+.dataScreen-container .left-module-up {
+	width: 100%;
+	margin: 10px 0;
+	border-radius: 20px;
+	min-height: 430px;
+	color: #a9a9a9;
+	background-color: #1a1a1a;
+}
+
 .dataScreen-container .left-module-down {
 	width: 100%;
 	margin: 10px 0;
