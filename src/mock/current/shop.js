@@ -5,9 +5,9 @@ const shop = {
     type: '个人',
     zhifubao: '18888888888',
     address: '新疆省',
-    id: '12121212'
+    id: '451838414'
   },
-  shop_score: '98.81%', // 右侧-好评率
+  shop_score: '94.81%', // 右侧-好评率
   yyzz: { // 营业执照
     companyName: '---百货店',
     expireDate: '长期',
