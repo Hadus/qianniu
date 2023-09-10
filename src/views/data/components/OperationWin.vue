@@ -36,8 +36,7 @@
       <div class="date-select mr20">
         <div>
           <span style="padding-right: 5px; position: relative; top: 3px"
-            ><el-icon :size="14">
-              <Warning /> </el-icon
+            ><el-icon :size="14"> <Warning /> </el-icon
           ></span>
           <span class="pr10">统计时间 {{ statisticTime }}</span>
         </div>
@@ -81,15 +80,13 @@
             >自定义<i class="niceFonts-tooltip"></i
           ></el-button>
           <el-button size="small" style="margin-left: 0; padding: 0 7px"
-            ><el-icon>
-              <ArrowLeft /> </el-icon
+            ><el-icon> <ArrowLeft /> </el-icon
           ></el-button>
           <el-button
             size="small"
             :disabled="true"
             style="margin-left: 5px; padding: 0 7px"
-            ><el-icon>
-              <ArrowRight /> </el-icon
+            ><el-icon> <ArrowRight /> </el-icon
           ></el-button>
         </div>
       </div>
@@ -253,7 +250,9 @@ const totalCount = computed(() => {
   console.log(selectDate.value);
   if (dateType.value === "month") {
     const baseValue = 1756.54;
-    return `最近12个累计：${(baseValue*(1 + Math.random() * 0.1)).toFixed(2)}万`;
+    return `最近12个累计：${(baseValue * (1 + Math.random() * 0.1)).toFixed(
+      2
+    )}万`;
   } else if (dateType.value === "week") {
     return "最近12周累计：469.05万";
   } else {
@@ -261,8 +260,8 @@ const totalCount = computed(() => {
   }
 });
 const thousands = (num: string) => {
-  if (num?.includes('%')) {
-    return num
+  if (num?.includes("%")) {
+    return num;
   }
   var str = num.toString();
   var reg =
@@ -316,7 +315,14 @@ const cardDatas = computed(() => {
     .map((item) => {
       const { cur, pre, compareLast } = item[dateType.value];
       const fixedNum = Number.isInteger(cur) ? 0 : 2;
-      const dateCacheKey = `${dateType.value}-${date.toLocaleDateString()}`;
+      let dateCacheKey = `${dateType.value}-${date.toLocaleDateString()}`;
+      if (dateType.value === "month") {
+        const year = selectDate.value.getFullYear();
+        const month = selectDate.value.getMonth();
+        dateCacheKey = `${dateType.value}-${new Date(
+          `${year}-${month + 1}-1`
+        ).toLocaleDateString()}`;
+      }
       let usedCur = cur;
       if (cardCache[item.key]?.[dateCacheKey]) {
         usedCur = cardCache[item.key]?.[dateCacheKey];
@@ -325,15 +331,20 @@ const cardDatas = computed(() => {
           cardCache[item.key] = {};
         }
         cardCache[item.key][dateCacheKey] = usedCur =
-          (typeof cur === "number")
+          typeof cur === "number"
             ? ((Math.random() * 0.5 + 1) * cur).toFixed(fixedNum)
             : cur;
       }
+      console.log(pre);
       return {
         key: item.key,
         desc: item.desc,
         cur: usedCur,
-        pre,
+        pre: pre
+          ? `${(Number(pre.slice(0, -1)) * (Math.random() * 0.3 + 1)).toFixed(
+              2
+            )}%`
+          : pre,
         compareLast,
       };
     })
