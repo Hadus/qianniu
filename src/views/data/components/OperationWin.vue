@@ -149,7 +149,7 @@ import * as echarts from "echarts";
 import { ref, computed, watch, reactive, onMounted } from "vue";
 import { getYearWeek } from "@/utils/utils";
 import { Warning } from "@element-plus/icons-vue";
-import mock_home from "@/assets/data/current/sycm";
+import mock_home from "@/mock/current/sycm";
 
 const activeTab = ref("overview");
 const showActiveInfo = ref(true);

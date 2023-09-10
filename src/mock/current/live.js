@@ -1,5 +1,5 @@
 // 直播页
-const  live_table_obj = require('@/assets/data/current/tableData/live_list.json');
+const  live_table_obj = require('@/mock/current/tableData/live_list.json');
 
 const live_table_list={
   table_1: live_table_obj.table_1_2.table_1,

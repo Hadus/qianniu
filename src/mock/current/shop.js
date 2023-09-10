@@ -13,7 +13,7 @@ const shop = {
     expireDate: '长期',
     code: '99821213134',
     dailiren: '于桂芝',
-    yyzzImg: '/src/assets/data/current/img/yyzz.png',
+    yyzzImg: '/src/mock/current/img/yyzz.png',
   },
   shop_overall:{ // 店铺概况
     tiyan: {

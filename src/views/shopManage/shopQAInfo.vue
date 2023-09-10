@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts" name="shopQAInfo">
-import mock_shop from '@/assets/data/current/shop';
+import mock_shop from '@/mock/current/shop';
 
 </script>
 

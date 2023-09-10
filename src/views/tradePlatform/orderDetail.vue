@@ -182,7 +182,7 @@ const route = useRoute();
 
 import vBtnFill from '@/components/BtnFill/index.vue'
 import vOrderItem from './orderItem.vue';
-import mock_trade, { getTrade_orderList, getOrder_detail_plus } from '@/assets/data/current/trade';
+import mock_trade, { getTrade_orderList, getOrder_detail_plus } from '@/mock/current/trade';
 // data
 const { page, index, orderDetailIndex, createTimeStr } = route.query;
 const order_detail = getTrade_orderList(page)[index];
