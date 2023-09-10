@@ -231,7 +231,7 @@
 import { ref, reactive, onMounted } from "vue";
 import * as echarts from "echarts";
 
-import mock_home from '@/mock/current/sycm.js';
+import mock_home from '@/assets/data/current/sycm.js';
 
 const date = ref(new Date().toLocaleString());
 const overviewData = mock_home.overall;

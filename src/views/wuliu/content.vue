@@ -100,7 +100,7 @@
 <script setup lang="ts" name="content">
 import { useRoute } from 'vue-router';
 const route = useRoute();
-import mock_trade, { getTrade_orderList, getOrder_detail_plus } from '@/mock/current/trade';
+import mock_trade, { getTrade_orderList, getOrder_detail_plus } from '@/assets/data/current/trade';
 // data
 const { page, index, orderDetailIndex, createTimeStr, tradeId } = route.query;
 

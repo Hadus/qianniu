@@ -279,14 +279,14 @@
 import { ref, reactive } from 'vue'
 import onlinePeople from "./onlinePeople.vue";
 import dataForm from "./dataForm.vue";
-import { dealData } from "@/mock/current/dataScreen.js"
+import { dealData } from "@/assets/data/current/dataScreen.js"
 import { useRoute } from 'vue-router';
 const route = useRoute();
 const { tableIndex, modelIndex, index, liveId } = route.query;
 import { useUserStore } from '@/store/user';
 const user = useUserStore();
 // 获取数据
-import mock_live from '@/mock/current/live';
+import mock_live from '@/assets/data/current/live';
 
 const tableIndex_fix = Math.ceil(tableIndex / 2);
 

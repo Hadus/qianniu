@@ -308,7 +308,7 @@
 import vShopDataItem from './shopDataItem.vue';
 import vProcess from './process.vue';
 // data
-import mock_home from '@/mock/current/home';
+import mock_home from '@/assets/data/current/home';
 import { getDateString, getDateTimeString } from '@/utils/utils';
 const shopDataItemList = [
 	{ desc: '支付金额', num: mock_home.shop_data.zhifu, stat: mock_home.shop_data.zhifu_prev },

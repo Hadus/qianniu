@@ -221,7 +221,7 @@
 <script setup lang="ts" name="serverReport">
 import { ref, onMounted } from "vue";
 import * as echarts from 'echarts';
-import mock_shop from '@/mock/current/shop';
+import mock_shop from '@/assets/data/current/shop';
 import { getDateString } from '@/utils/utils';
 
 let activeName = ref('first');

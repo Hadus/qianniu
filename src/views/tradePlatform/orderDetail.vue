@@ -182,7 +182,7 @@ const route = useRoute();
 
 import vBtnFill from '@/components/BtnFill/index.vue'
 import vOrderItem from './orderItem.vue';
-import mock_trade, { getTrade_orderList, getOrder_detail_plus } from '@/mock/current/trade';
+import mock_trade, { getTrade_orderList, getOrder_detail_plus } from '@/assets/data/current/trade';
 // data
 const { page, index, orderDetailIndex, createTimeStr } = route.query;
 const order_detail = getTrade_orderList(page)[index];
@@ -538,17 +538,13 @@ const handleLookWuliu = function () {
   height: 28px;
 }
 
-.wrapper-order-detail .el-switch .el-switch__inner {
-  padding-top: 3px;
-}
+.wrapper-order-detail .el-switch .el-switch__inner {}
 
-.wrapper-order-detail .el-switch .el-switch__inner>span:first-child {
-  padding-top: 3px;
+.wrapper-order-detail .el-switch.is-checked .el-switch__inner>span {
   color: #fff;
 }
 
-.wrapper-order-detail .el-switch .el-switch__inner>span:last-child {
-  padding-top: 3px;
+.wrapper-order-detail .el-switch .el-switch__inner>span {
   color: rgb(153, 153, 153);
 }
 

@@ -553,7 +553,7 @@
 <script setup lang="ts" name="liveList">
 import { ref } from 'vue';
 import vPaganation from '@/components/Paganation/index.vue';
-import mock_live from '@/mock/current/live';
+import mock_live from '@/assets/data/current/live';
 
 import vH3Header from '@/components/H3Header/index.vue';
 

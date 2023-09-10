@@ -212,7 +212,7 @@ import vPaganation from '@/components/Paganation/index.vue';
 import vFilterInput from './filterInput.vue';
 import vOrderItem from './orderItem.vue';
 
-import mock_trade, { getTrade_orderList, getTrade_orderDetailIndex } from '@/mock/current/trade';
+import mock_trade, { getTrade_orderList, getTrade_orderDetailIndex } from '@/assets/data/current/trade';
 
 const activeNameAll = 'firstAll';
 const activeNameDetails = 'firstDetails'

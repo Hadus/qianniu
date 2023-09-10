@@ -86,7 +86,7 @@ import { useRouter } from 'vue-router';
 const $router = useRouter();
 import vShopQAEmpty from './showQAEmpty.vue';
 import vBtnEmpty from '@/components/BtnEmpty/index.vue';
-import mock_shop from '@/mock/current/shop';
+import mock_shop from '@/assets/data/current/shop';
 const activeName = 'first';
 const handleClickCard = function () {
   $router.push('/shop-manage/shop-qa-info?src=https%3A%2F%2Fqc-main.taobao.com%2Fquali%2Fportal%3FbizSource%3Dtaobao%26url_open_type%3Diframe%23%2FqualiInfo-center%2');

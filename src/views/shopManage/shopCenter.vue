@@ -161,8 +161,8 @@
 
 <script setup lang="ts" name="shopCenter">
 import { useRouter } from 'vue-router';
-import mock_home from '@/mock/current/home';
-import mock_shop from '@/mock/current/shop';
+import mock_home from '@/assets/data/current/home';
+import mock_shop from '@/assets/data/current/shop';
 import { useUserStore } from '@/store/user';
 const user = useUserStore();
 const $router = useRouter();

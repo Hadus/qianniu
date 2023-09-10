@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import user from '@/mock/current/user.js';
+import user from '@/assets/data/current/user.js';
 
 export const useUserStore = defineStore('user', {
   state: () => {
