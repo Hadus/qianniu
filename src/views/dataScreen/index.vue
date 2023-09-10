@@ -92,7 +92,7 @@
 					<div class="top">
 						<div class="top-left">
 							<p>天然美货 尽在臻宝</p>
-							<p><span>开播时间: {{ mock_live_detail.liveStartTime }}</span><span>直播时长: 4小时16分钟</span></p>
+							<p><span>开播时间: {{ mock_live_detail.liveStartTime }}</span><span>直播时长: 2小时16分钟</span></p>
 						</div>
 						<div class="top-right">
 							<p>

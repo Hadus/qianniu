@@ -2,6 +2,9 @@
 const getRandom = function(n = 0, m = 10){
   return Math.floor(Math.random() * (m - n)) + n;
 }
+const personNum = getRandom(10, 300);
+const moneyNum = getRandom(100, 5000);
+
 export function dealData(mock_live_detail) {
   var list = {
       liuLiangHuDong: [  //流量互动
@@ -14,7 +17,7 @@ export function dealData(mock_live_detail) {
           }, {
               img: "https://img.alicdn.com/imgextra/i3/O1CN01qkxo2W1c7mJBQKOaC_!!6000000003554-55-tps-14-14.svg",
               name1: "观看人数",
-              zhuanhualv1: parseInt(mock_live_detail.lookUv) + getRandom(1, 100),
+              zhuanhualv1: personNum,
               name2: "非粉丝观看次数占比",
               zhuanhualv2: getRandom(1, 50) + "%"
           }, {
@@ -71,8 +74,8 @@ export function dealData(mock_live_detail) {
               zhuanhualv2:  getRandom(1, 50)+"%",
           },
       ],
-      zuiGaoNum: parseInt(mock_live_detail.lookUv) +  1000,
-      zuiGaoJiner: parseInt(mock_live_detail.payAmt) + 100,
+      zuiGaoNum: personNum +  getRandom(1, 100),
+      zuiGaoJiner: moneyNum,
       fenSiZhanBi: getRandom(1, 100)+"%",
       tableData: [{
           img: mock_live_detail.itemPictUrl,
@@ -86,7 +89,7 @@ export function dealData(mock_live_detail) {
       }],
       zhiBoYu: [{
           name: "观看人数",
-          Number: parseInt(mock_live_detail.lookPv) + getRandom(1, 100),
+          Number: personNum,
       },
       {
           name: "人数占比",
@@ -98,11 +101,11 @@ export function dealData(mock_live_detail) {
       },
       {
           name: "成交金额",
-          Number: parseInt(mock_live_detail.payAmt) +  getRandom(1, 1000),
+          Number: moneyNum,
       }],
       dianpuyu: [{
           name: "观看人数",
-          Number: parseInt(mock_live_detail.lookPv) +  getRandom(1, 1000),
+          Number: personNum +  getRandom(1, 100),
       },
       {
           name: "人数占比",
@@ -114,7 +117,7 @@ export function dealData(mock_live_detail) {
       },
       {
           name: "成交金额",
-          Number: parseInt(mock_live_detail.payAmt) + getRandom(1, 1000),
+          Number: moneyNum + getRandom(1, 1000),
       }]
   }
   return list;
