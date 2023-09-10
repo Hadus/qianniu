@@ -6,6 +6,7 @@ import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import requireTransform from 'vite-plugin-require-transform';
 import path from 'path';
+import legacy from '@vitejs/plugin-legacy';
 
 export default defineConfig({
 	base: './',
@@ -28,6 +29,7 @@ export default defineConfig({
 		requireTransform({
       fileRegex: /.js$|.vue$/
     }),
+		legacy({ targets: ['defaults', 'not IE 11'] })
 	],
 	optimizeDeps: {
 		include: ['schart.js']
