@@ -211,7 +211,7 @@ const handelClicklookInfo = function () {
 };
 
 const handleLookWuliu = function () {
-  window.open(`#/wuliu?page=${page}&index=${index}&orderDetailIndex=${orderDetailIndex}&createTimeStr=${createTimeStr}&tradeId=${order_detail.id}`, '_blank');
+  window.open(`#/wuliu?spm=2850t.23742411.0.0.78bb1130VCANDY&page=${page}&index=${index}&orderDetailIndex=${orderDetailIndex}&createTimeStr=${createTimeStr}&tradeId=${order_detail.id}`, '_blank');
 
 };
 

@@ -244,7 +244,7 @@ const handelGoPage = function (page) {
 // 点击详情
 const handleClickOrder = function (index, createTimeStr, id) {
 	const orderDetailIndex = getTrade_orderDetailIndex();
-	window.open(`#/trade-platform/tp/orderDetail?page=${page}&index=${index}&orderDetailIndex=${orderDetailIndex}&createTimeStr=${createTimeStr}&OrderId=${id}`, '_blank');
+	window.open(`#/trade-platform/tp/orderDetail?spm=2850t.23742411.0.0.78bb1130VCANDY&page=${page}&index=${index}&orderDetailIndex=${orderDetailIndex}&createTimeStr=${createTimeStr}&OrderId=${id}`, '_blank');
 };
 </script>
 

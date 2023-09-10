@@ -228,7 +228,7 @@ let routes = [
       index: '',
       title: '数据',
       permiss: '11',
-      link: '/#/data'
+      link: '/#/data?spm=a21ag.27070886.0.0.1cce50a54TcxQF'
     },
     { // test
       icon: 'https://openworkbench.oss-cn-hangzhou.aliyuncs.com/5a14bc566c3b44f983cd0cc9e8b25777.png',
