@@ -22,8 +22,6 @@
 						<el-tooltip class="box-item" effect="dark"
 							content='<div ><b>观看次数：</b>本场直播累计观看次数;<br><b>非粉丝观看占比：</b>非粉丝观众累计观看次数/总观看次数;<br><b>观看人数：</b>本场直播累计观看人数（去重）;<br><b>非粉丝观看占比：</b>非粉丝观众累计观看人数（去重）/总观看人数（去重）;<br><b>平均观看时长（秒）：</b>本场实时直播中用户观看的人均时长，单位是"秒";<br><b>非粉丝观看时长（秒）：</b>本场实时直播中非粉丝观众观看的人均时长，单位是"秒";<br><b>新增粉丝数：</b>本场直播新增粉丝数量;<br><b>流量券消耗：</b>本场直播流量券消耗带来的流量（PV）<br><b>商品点击率：</b>本场直播中有过点击宝贝口袋商品行为的观众（去重）/本场累计观众（去重）;<br><b>非粉丝商品点击率：</b>本场直播中有过点击宝贝口袋商品行为的非粉丝观众（去重）/本场累计非粉丝观众（去重）;<br><b>成交人数：</b>本场直播中完成下单的累计观众数;<br><b>非粉丝成交人数占比：</b>本场直播中完成下单的累计非粉丝观众/完成下单的累计观众数;<br><b>成交转化率（成交UV/点击UV）：</b>本场直播中完成下单的观众（去重）/本场直播中有过点击宝贝口袋商品行为的观众（去重）;<br><b>非粉丝成交转化率：</b>本场直播中完成下单的非粉丝观众（去重）/本场直播中有过点击宝贝口袋商品行为的非粉丝观众（去重）;<br><b>成交件数：</b>本场直播累计成交件数;<br><b>非粉丝成交件数占比：</b>本场直播中由非粉丝观众完成下单的累计成交件数/本场直播累计成交件数;<br><b>活动激励流量：本场直播实时获取的平台活动激励流量，包括新人激励、实时赛马、潜力主播、严选商品和点淘短直联动激励（pv）</b></div>'
 							placement="bottom" raw-content>
-
-
 							<img src="https://img.alicdn.com/imgextra/i4/O1CN01WKQLU81ed2ZbubuVC_!!6000000003893-55-tps-16-16.svg"
 								style="position: relative; z-index: 10; margin-left: 10px; cursor: help;">
 						</el-tooltip>
@@ -57,7 +55,7 @@
 								</div>
 							</div>
 							<div v-else>
-								<div v-for="item in zhuanHuaChengJiao" :key="index">
+								<div v-for="(item, index) in zhuanHuaChengJiao" :key="index">
 									<div class="data-item">
 										<div class="large"><img :src="item.img">{{ item.name1 }}
 										</div>
@@ -286,19 +284,25 @@
 import { ref, reactive } from 'vue'
 import onlinePeople from "./onlinePeople.vue";
 import dataForm from "./dataForm.vue";
-import { dealData } from "@/mock/dataScreen/dataview.js"
+import { dealData } from "./dataview.js"
 import { useRoute } from 'vue-router';
 const route = useRoute();
+const { tableIndex, modelIndex, index, liveId } = route.query;
 import { useUserStore } from '@/store/user';
 const user = useUserStore();
-let pageData = dealData();
+// 获取数据
+import mock_live from '@/mock/current/live';
+
+const tableIndex_fix = Math.ceil(tableIndex / 2);
+
+const mock_live_detail_1 = mock_live.live_table_list['table_' + tableIndex_fix]['model_' + modelIndex][index];
+const mock_live_detail_2 = mock_live.live_table_list['table_' + (tableIndex_fix + 1)]['model_' + modelIndex][index];
+const mock_live_detail = { ...mock_live_detail_1, ...mock_live_detail_2 };
+
+// 处理数据
+let pageData = dealData(mock_live_detail);
 let { liuLiangHuDong, zhuanHuaChengJiao, tableData, zhiBoYu, dianpuyu } = pageData;
 
-const { tableIndex, modelIndex, index, liveId } = route.query;
-
-import mock_live from '@/mock/current/live';
-const mock_live_detail = mock_live.live_table_list['table_' + tableIndex]['model_' + modelIndex][index];
-console.log(mock_live_detail);
 
 let switch_flag = ref(false);
 // 右上角tabs
