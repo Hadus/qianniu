@@ -93,13 +93,13 @@
 					<div class="top">
 						<div class="top-left">
 							<p>天然美货 尽在臻宝</p>
-							<p><span>开播时间: 2023-09-06 18:52:38</span><span>直播时长: 4小时16分钟</span></p>
+							<p><span>开播时间: {{ mock_live_detail.liveStartTime }}</span><span>直播时长: 4小时16分钟</span></p>
 						</div>
 						<div class="top-right">
 							<p>
 								<span class="btn">场次对比</span>
 							</p>
-							<p><span>数据统计时间: 2023-09-06 23:09:36</span>
+							<p><span>数据统计时间: {{ mock_live_detail.liveStartTime.slice(0, 10) }} 23:09:36</span>
 								<span>
 									<img alt="刷新" title="刷新"
 										src="https://img.alicdn.com/imgextra/i2/O1CN0167PKlo1aObdAWQTvU_!!6000000003320-55-tps-24-20.svg">
@@ -118,14 +118,14 @@
 					<div class="content">
 						<div class="c-left position hover">
 							<p>最高在线人数</p>
-							<p>111</p>
+							<p>{{ zuiGaoNum }}</p>
 						</div>
 						<div class="c-center hover">
 							<p>直播成交金额</p>
-							<p>200021</p>
+							<p>{{ zuiGaoJiner }}</p>
 							<p>
 								<span>非粉丝成交金额占比</span>
-								<span>11</span>
+								<span>{{ fenSiZhanBi }}</span>
 							</p>
 						</div>
 						<div class="c-right position"></div>
@@ -136,7 +136,7 @@
 					<div class="goods-table">
 						<el-table :data="tableData" style="width: 100%;background-color: black;" @sort-change="sortChange">
 							<el-table-column v-for="(item, index) in heardlist" :key="index" :width="item.width"
-								:sortable="item.id != 'productInfo' ? true : false">
+								:sortable="item.id != 'productInfo' ? true : false" :align="(index && 'center')">
 								<template #header>
 									<span v-if="item.id == 'productInfo'">{{ item.name }}
 										<el-tooltip class="box-item" effect="dark" content='<div >曝光次数：本场直播截止目前，用户</br>打开宝贝口袋后单商品的曝光累计次数；</br>
@@ -144,12 +144,11 @@
 成交转化率：单商品成交人数/单商品点击人数；</br>
 在线人数：商品上架时刻的在线人数；</br>
 新增单商品的加购人数、件数、商品曝</br>光点击率和成交转化率，指标解读教学见中央公告' placement="bottom" raw-content>
-
-
 											<img style="margin-left: 3px"
 												src="https://img.alicdn.com/imgextra/i4/O1CN01WKQLU81ed2ZbubuVC_!!6000000003893-55-tps-16-16.svg" />
 										</el-tooltip>
-
+									</span>
+									<span v-else-if="item.id == 'icon'" class="icon">
 									</span>
 									<span v-else>{{ item.name }}</span>
 								</template>
@@ -157,7 +156,6 @@
 									<span v-if="item.id == 'productInfo'" style="display: flex;">
 										<div class="imageContainer">
 											<div class="tipNumImage">{{ scope.row.order }}</div>
-
 											<img :alt="scope.row.productInfo" :src="scope.row.img">
 										</div>
 										<div class="imageTipsLong">{{
@@ -165,11 +163,9 @@
 									</span>
 									<span v-else class="goods-table-column"> {{ scope.row[item.id] }} </span>
 								</template>
-
 							</el-table-column>
 						</el-table>
 					</div>
-
 				</div>
 			</div>
 			<div class="home-right">
@@ -284,7 +280,7 @@
 import { ref, reactive } from 'vue'
 import onlinePeople from "./onlinePeople.vue";
 import dataForm from "./dataForm.vue";
-import { dealData } from "./dataview.js"
+import { dealData } from "@/mock/current/dataScreen.js"
 import { useRoute } from 'vue-router';
 const route = useRoute();
 const { tableIndex, modelIndex, index, liveId } = route.query;
@@ -301,8 +297,7 @@ const mock_live_detail = { ...mock_live_detail_1, ...mock_live_detail_2 };
 
 // 处理数据
 let pageData = dealData(mock_live_detail);
-let { liuLiangHuDong, zhuanHuaChengJiao, tableData, zhiBoYu, dianpuyu } = pageData;
-
+let { liuLiangHuDong, zhuanHuaChengJiao, zuiGaoNum, zuiGaoJiner, fenSiZhanBi, tableData, zhiBoYu, dianpuyu } = pageData;
 
 let switch_flag = ref(false);
 // 右上角tabs
@@ -311,24 +306,32 @@ let active = ref("guanzong");
 const heardlist = [{
 	name: "商品明细",
 	id: "productInfo",
-	width: "20%",
+	width: "25%",
 	prop: "productInfo",
 }, {
 	name: "曝光人数",
 	id: "peopleNum",
-	width: "18%"
+	width: "15%"
+}, {
+	name: "点击人数",
+	id: "peopleClickNum",
+	width: "15%"
 }, {
 	name: "点击次数",
 	id: "clickNum",
-	width: "18%"
+	width: "15%"
 }, {
 	name: "加购人数",
 	id: "buyNum",
-	width: "18%"
+	width: "15%"
 }, {
 	name: "成交金额",
 	id: "mony",
-	width: "18%"
+	width: "15%"
+}, {
+	name: "",
+	id: "icon",
+	width: "5%"
 }];
 const sortChange = (column, prop, order) => {
 }
@@ -383,9 +386,32 @@ const changeMessage = () => {
 	background-color: #1a1a1a !important;
 	font-size: 15px;
 	color: #fff;
-
 	height: 47px;
 	line-height: 47px;
+}
+
+.dataScreen-container .goods-table .el-table th:last-child .icon {
+	display: inline-block;
+	width: 26px;
+	height: 22px;
+	background-color: #141416;
+	border: 1px solid #ff0040;
+	border-radius: 6px;
+	position: relative;
+	cursor: pointer;
+}
+
+.dataScreen-container .goods-table .el-table th:last-child .icon::before {
+	content: "";
+	border: solid #ff0040;
+	border-width: 0 2px 2px 0;
+	display: inline-block;
+	padding: 4px;
+	transform: scale(.85) rotate(45deg) translate(-3px, -3px);
+}
+
+.dataScreen-container .goods-table .el-table th:last-child .caret-wrapper {
+	display: none;
 }
 
 .dataScreen-container .goods-table .el-table td.el-table__cell,
@@ -1166,7 +1192,6 @@ const changeMessage = () => {
 	font-family: PingFangSC-Medium;
 	font-size: 18px;
 }
-
 
 .dataScreen-container .tab-item:first-child {
 	margin-right: 30px;
