@@ -162,7 +162,6 @@ const handleClickPeddingTab = () => {
 const activeTab = ref("all");
 
 watch(selectDate, (newVal, oldVal) => {
-  console.log(newVal, oldVal);
 });
 </script>
 <style scoped>
@@ -436,4 +435,5 @@ watch(selectDate, (newVal, oldVal) => {
   margin: 10px 0;
   background: url('@/assets/img/data/beer.png') no-repeat;
   background-size: 100px 100px;
-}</style>
+}
+</style>

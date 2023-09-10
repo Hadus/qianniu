@@ -232,7 +232,6 @@ const cardDatas = computed(() => {
       const fixedNum = Number.isInteger(cur) ? 0 : 2;
       const dateCacheKey = `${dateType.value}-${date.toLocaleDateString()}`;
       let usedCur = cur;
-      console.log(cardCache);
       if (cardCache[item.key]?.[dateCacheKey]) {
         usedCur = cardCache[item.key]?.[dateCacheKey];
       } else {
