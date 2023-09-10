@@ -3,7 +3,7 @@ let routes = [
       icon: 'https://openworkbench.oss-cn-hangzhou.aliyuncs.com/8bfa5513e74e46f58186f0b61482d27d.png',
       iconActive: 'https://openworkbench.oss-cn-hangzhou.aliyuncs.com/a590b212f1fd471b8bd33568072ae4b1.png',
       index: '/qnworkbenchHome',
-      title: '千家商家工作台',
+      title: '首页',
       permiss: '1',
     },
     { // test

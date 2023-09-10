@@ -19,7 +19,7 @@ const routes: RouteRecordRaw[] = [
         path: '/qnworkbenchHome',
         name: 'qnworkbenchHome',
         meta: {
-          title: '首页',
+          title: '千牛商家工作台',
           permiss: '1',
         },
         component: () => import(/* webpackChunkName: "import" */ '../views/qnworkbenchHome/index.vue'),

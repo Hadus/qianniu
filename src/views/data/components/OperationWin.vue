@@ -614,4 +614,12 @@ onMounted(() => {
   background: #2062e6;
   color: #fff;
 }
+
+.date-select :deep(.el-radio-button__original-radio:checked+.el-radio-button__inner) {
+  background-color: #fff;
+  border: 1px solid rgb(220, 223, 230);
+  border-left: none;
+  color: rgb(96, 98, 102);
+  box-shadow: none;
+}
 </style>
