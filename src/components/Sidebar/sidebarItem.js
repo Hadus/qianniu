@@ -228,6 +228,7 @@ let routes = [
       index: '',
       title: '数据',
       permiss: '11',
+      // link: 'http://www.sycm.taobao.com/#/data?spm=a21ag.27070886.0.0.1cce50a54TcxQF'
       link: '#/data?spm=a21ag.27070886.0.0.1cce50a54TcxQF'
     },
     { // test
