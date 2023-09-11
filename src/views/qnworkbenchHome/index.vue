@@ -1,5 +1,5 @@
 <template>
-	<div class="container">
+	<div class="container" v-if="flag_timeout">
 		<div class="left">
 			<div class="banner-wrapper">
 				<div>
@@ -141,7 +141,7 @@
 		<div class="right">
 			<div class="info-wapper">
 				<h3>
-					<span>惠水琥珀蜜蜡</span>
+					<span>{{ user.name }}</span>
 					<div class="h-right">
 						<i>
 							<img src="https://gw.alicdn.com/imgextra/i1/O1CN01ZijcyM1ZdtJmxinmq_!!6000000003218-2-tps-36-36.png" alt="">
@@ -305,6 +305,9 @@
 </template>
 
 <script setup lang="ts" name="qnworkbenchHome">
+import { ref, onMounted } from 'vue';
+import { useUserStore } from '@/store/user';
+const user = useUserStore();
 import vShopDataItem from './shopDataItem.vue';
 import vProcess from './process.vue';
 // data
@@ -334,6 +337,13 @@ const sliderImgs = [
 	'https://qnworkbench.alibaba.com/workbench/oss_65beb7f3-98bf-4351-b782-b55552051c48.jpg',
 	'https://qnworkbench.alibaba.com/workbench/oss_9bc6e869-a3bc-4da6-9118-0c7e32a147ab.png',
 ];
+
+const flag_timeout = ref(false);
+onMounted(() => {
+	setTimeout(() => {
+		flag_timeout.value = true;
+	}, 1000);
+});
 </script>
 
 <style scoped>
