@@ -1,18 +1,18 @@
 // 店铺
 const shop = {
   shop_info: {
-    createTime: '2013.11.12',
-    type: '个人',
-    zhifubao: '18888888888',
-    address: '新疆省',
-    id: '451838414'
+    createTime: '2016.11.12',
+    type: '企业',
+    zhifubao: '896953883@qq.com',
+    address: '江苏省连云港市东海县石榴街道石榴街道贝莎珠宝',
+    id: '450022547'
   },
   shop_score: '94.81%', // 右侧-好评率
   yyzz: { // 营业执照
-    companyName: '---百货店',
+    companyName: '东海县贝莎珠宝商行',
     expireDate: '长期',
-    code: '99821213134',
-    dailiren: '于桂芝',
+    code: '92320722MA215N3HX1',
+    dailiren: '于柏峰',
     yyzzImg: 'src/mock/current/img/yyzz.png',
   },
   shop_overall:{ // 店铺概况
