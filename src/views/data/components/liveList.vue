@@ -565,8 +565,9 @@ const { table_1, table_2, table_3, table_4 } = mock_live.live_table_list;
 
 // 点击table中直播标题
 const handleClickLiveTitle = function ({ tableIndex, modelIndex, index, liveId }) {
-	// window.open(`market.m.taobao.com/#/dataScreen?spm=a21ag.21587146.0.0.5693410c9RUBWP&tableIndex=${tableIndex}&modelIndex=${modelIndex}&index=${index}&liveId=${liveId}`);
-	window.open(`#/dataScreen?spm=a21ag.21587146.0.0.5693410c9RUBWP&tableIndex=${tableIndex}&modelIndex=${modelIndex}&index=${index}&liveId=${liveId}`);
+	// dns
+	window.open(`http://market.m.taobao.com/#/dataScreen?spm=a21ag.21587146.0.0.5693410c9RUBWP&tableIndex=${tableIndex}&modelIndex=${modelIndex}&index=${index}&liveId=${liveId}`);
+	// window.open(`#/dataScreen?spm=a21ag.21587146.0.0.5693410c9RUBWP&tableIndex=${tableIndex}&modelIndex=${modelIndex}&index=${index}&liveId=${liveId}`);
 }
 </script>
 
