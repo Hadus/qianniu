@@ -1,7 +1,7 @@
 <template>
   <div class="paganation-wrapper" :class="{ right: position == 'right' }">
-    <el-pagination class="paganation" :layout="layout" :total="total" :pageSize="pageSize" prev-text="上一页" next-text="下一页"
-      @current-change="(val) => { emits('currentChange', val) }" />
+    <el-pagination class="paganation" :layout="layout" :total="total" :pageSize="pageSize" prev-text="< 上一页"
+      next-text="下一页 >" @current-change="(val) => { emits('currentChange', val) }" />
     <p class="confirm" v-if="layout.includes('jumper')">确定</p>
   </div>
 </template>

@@ -19,7 +19,7 @@ const routes: RouteRecordRaw[] = [
         path: '/qnworkbenchHome',
         name: 'qnworkbenchHome',
         meta: {
-          title: '首页',
+          title: '千牛商家工作台',
           permiss: '1',
         },
         component: () => import(/* webpackChunkName: "import" */ '../views/qnworkbenchHome/index.vue'),
@@ -38,7 +38,7 @@ const routes: RouteRecordRaw[] = [
     path: '/data',
     name: 'data',
     meta: {
-      title: '数据',
+      title: '生意参谋，阿里巴巴生意参谋，市场行情，数据作战室，大数据分析，生意经，电商运营，零售电商',
       permiss: '7',
     },
     component: () => import(/* webpackChunkName: "import" */ '../views/data/index.vue'),
@@ -47,7 +47,7 @@ const routes: RouteRecordRaw[] = [
     path: '/dataScreen',
     name: 'dataScreen',
     meta: {
-      title: '淘宝数据大屏',
+      title: '实时数据大屏',
     },
     component: () => import(/* webpackChunkName: "charts" */ '../views/dataScreen/index.vue'),
   },
@@ -89,16 +89,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   document.title = `${to.meta.title}`;
-  const role = localStorage.getItem('ms_username');
-  const permiss = usePermissStore();
-  if (!role && to.path !== '/login') {
-    next('/login');
-  } else if (to.meta.permiss && !permiss.key.includes(to.meta.permiss)) {
-    // 如果没有权限，则进入403
-    next('/403');
-  } else {
-    next();
-  }
+  next();
 });
 
 export default router;

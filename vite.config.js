@@ -6,6 +6,7 @@ import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import requireTransform from 'vite-plugin-require-transform';
 import path from 'path';
+import legacy from '@vitejs/plugin-legacy';
 
 export default defineConfig({
 	base: './',
@@ -28,12 +29,14 @@ export default defineConfig({
 		requireTransform({
       fileRegex: /.js$|.vue$/
     }),
+		legacy({ targets: ['defaults', 'not IE 11'] })
 	],
 	optimizeDeps: {
 		include: ['schart.js']
 	},
 	server: {
-		port: 3000,
+		host: '0.0.0.0', // 配置host 才可以外网访问
+		port: 80, // 访问80端口不需要加端口号
 		open: true,
 	},
 });

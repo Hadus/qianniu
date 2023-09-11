@@ -230,7 +230,7 @@ const adviseItemList = [
 ];
 const handelClickToolItem = function (item) {
 	if (item.desc == '经营许可') {
-		$router.push('/shop-manage/shop-qa');
+		$router.push('/shop-manage/shop-qa?src=https%3A%2F%2Fqc-main.taobao.com%2Fquali%2Fportal%3FbizSource%3Dtaobao%26url_open_type%3Diframe%23%2FqualiInfo-center%2');
 	}
 }
 </script>

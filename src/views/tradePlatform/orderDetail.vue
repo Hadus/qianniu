@@ -211,7 +211,7 @@ const handelClicklookInfo = function () {
 };
 
 const handleLookWuliu = function () {
-  window.open(`#/wuliu?page=${page}&index=${index}&orderDetailIndex=${orderDetailIndex}&createTimeStr=${createTimeStr}&tradeId=${order_detail.id}`, '_blank');
+  window.open(`#/wuliu?spm=2850t.23742411.0.0.78bb1130VCANDY&page=${page}&index=${index}&orderDetailIndex=${orderDetailIndex}&createTimeStr=${createTimeStr}&tradeId=${order_detail.id}`, '_blank');
 
 };
 
@@ -538,17 +538,13 @@ const handleLookWuliu = function () {
   height: 28px;
 }
 
-.wrapper-order-detail .el-switch .el-switch__inner {
-  padding-top: 3px;
-}
+.wrapper-order-detail .el-switch .el-switch__inner {}
 
-.wrapper-order-detail .el-switch .el-switch__inner>span:first-child {
-  padding-top: 3px;
+.wrapper-order-detail .el-switch.is-checked .el-switch__inner>span {
   color: #fff;
 }
 
-.wrapper-order-detail .el-switch .el-switch__inner>span:last-child {
-  padding-top: 3px;
+.wrapper-order-detail .el-switch .el-switch__inner>span {
   color: rgb(153, 153, 153);
 }
 

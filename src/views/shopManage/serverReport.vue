@@ -143,9 +143,9 @@
 											<p><a href="javascript">诊断提升</a></p>
 										</template>
 									</el-table-column>
-									<el-table-column prop="three" label="考核指标" width="300" class-name="three">
-										<template #default>
-											首次品退率
+									<el-table-column label="考核指标" width="300" class-name="three">
+										<template #default="{ row }">
+											{{ row.three }}
 											<i class="homeFonts1-prompt"> </i>
 											<el-icon color="rgb(148, 148, 148)" class="icon-video">
 												<VideoPlay />

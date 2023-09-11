@@ -5,14 +5,12 @@
 				<div class="homeLogo"></div>
 				<div>
 					<div class="screen-switch"><button type="button" class="entry">普通版</button>
-
 					</div>
 				</div>
 			</div>
 			<div class="right">
-				<img alt="头像" class="peopleImg"
-					src="https://wwc.alicdn.com/avatar/getAvatar.do?userId=2559988253&amp;type=taobao">
-				<!-- <span>{{ user.name }}</span> -->
+				<img alt="头像" class="peopleImg" :src="user.avatarImg">
+				<span>{{ user.taobaoName }}</span>
 			</div>
 		</div>
 		<div class="main">
@@ -23,8 +21,6 @@
 						<el-tooltip class="box-item" effect="dark"
 							content='<div ><b>观看次数：</b>本场直播累计观看次数;<br><b>非粉丝观看占比：</b>非粉丝观众累计观看次数/总观看次数;<br><b>观看人数：</b>本场直播累计观看人数（去重）;<br><b>非粉丝观看占比：</b>非粉丝观众累计观看人数（去重）/总观看人数（去重）;<br><b>平均观看时长（秒）：</b>本场实时直播中用户观看的人均时长，单位是"秒";<br><b>非粉丝观看时长（秒）：</b>本场实时直播中非粉丝观众观看的人均时长，单位是"秒";<br><b>新增粉丝数：</b>本场直播新增粉丝数量;<br><b>流量券消耗：</b>本场直播流量券消耗带来的流量（PV）<br><b>商品点击率：</b>本场直播中有过点击宝贝口袋商品行为的观众（去重）/本场累计观众（去重）;<br><b>非粉丝商品点击率：</b>本场直播中有过点击宝贝口袋商品行为的非粉丝观众（去重）/本场累计非粉丝观众（去重）;<br><b>成交人数：</b>本场直播中完成下单的累计观众数;<br><b>非粉丝成交人数占比：</b>本场直播中完成下单的累计非粉丝观众/完成下单的累计观众数;<br><b>成交转化率（成交UV/点击UV）：</b>本场直播中完成下单的观众（去重）/本场直播中有过点击宝贝口袋商品行为的观众（去重）;<br><b>非粉丝成交转化率：</b>本场直播中完成下单的非粉丝观众（去重）/本场直播中有过点击宝贝口袋商品行为的非粉丝观众（去重）;<br><b>成交件数：</b>本场直播累计成交件数;<br><b>非粉丝成交件数占比：</b>本场直播中由非粉丝观众完成下单的累计成交件数/本场直播累计成交件数;<br><b>活动激励流量：本场直播实时获取的平台活动激励流量，包括新人激励、实时赛马、潜力主播、严选商品和点淘短直联动激励（pv）</b></div>'
 							placement="bottom" raw-content>
-
-
 							<img src="https://img.alicdn.com/imgextra/i4/O1CN01WKQLU81ed2ZbubuVC_!!6000000003893-55-tps-16-16.svg"
 								style="position: relative; z-index: 10; margin-left: 10px; cursor: help;">
 						</el-tooltip>
@@ -58,7 +54,7 @@
 								</div>
 							</div>
 							<div v-else>
-								<div v-for="item in zhuanHuaChengJiao" :key="index">
+								<div v-for="(item, index) in zhuanHuaChengJiao" :key="index">
 									<div class="data-item">
 										<div class="large"><img :src="item.img">{{ item.name1 }}
 										</div>
@@ -75,8 +71,8 @@
 				</div>
 				<div class="left-module-down">
 					<div>
-						<div class="live-actions"><img
-								src="https://img.alicdn.com/imgextra/i4/O1CN01fkRTHI1GahpZ5cwpB_!!6000000000639-55-tps-168-168.svg"
+						<div class="live-actions" v-if="false">
+							<img src="https://img.alicdn.com/imgextra/i4/O1CN01fkRTHI1GahpZ5cwpB_!!6000000000639-55-tps-168-168.svg"
 								alt="继续加油">
 							<div class="live-actions-text">开播时长太短啦！开播至少大于30分钟，解锁场次复盘～</div>
 							<div class="btns-group"><button type="button" class="ant-btn ant-btn-round ant-btn-primary"
@@ -87,71 +83,106 @@
 								</div>
 							</div>
 						</div>
+						<div class="live-actions-show" v-else>
+							<div class="module-header">场次复盘
+								<img src="https://img.alicdn.com/imgextra/i4/O1CN01WKQLU81ed2ZbubuVC_!!6000000003893-55-tps-16-16.svg">
+							</div>
+							<div class="module-content">
+								<div>
+									<p>
+										<img class="card-icon"
+											src="https://gw.alicdn.com/imgextra/i3/O1CN01TWm0aD1taUmPj1ZcT_!!6000000005918-2-tps-18-18.png">
+										活动流量奖励(PV)
+										<span>3219</span>
+									</p>
+									<p style="color: #b3b3b3;">注：来自广告激励等
+									</p>
+								</div>
+								<div>
+									<p>
+										<img class="card-icon"
+											src="https://gw.alicdn.com/imgextra/i4/O1CN01wuJnIu1le90h02jD7_!!6000000004843-2-tps-18-18.png">
+										流量券消耗(PV)
+										<span>0</span>
+									</p>
+								</div>
+								<div>
+									<p>
+										<img class="card-icon"
+											src="https://gw.alicdn.com/imgextra/i2/O1CN01LuJAQx1nYJC1ScHmd_!!6000000005101-2-tps-18-18.png">
+										直播中成交金额
+										<span style="color: #b3b3b3;">较近期</span>
+									</p>
+									<p>{{ zuiGaoJiner }}
+										<span style="font-family: DINAlternate-Bold; color: rgb(204, 0, 8); font-size: 20px;">+10.1%</span>
+									</p>
+								</div>
+								<div>
+									<p>
+										<img class="card-icon"
+											src="https://gw.alicdn.com/imgextra/i1/O1CN01rXeruP1NvxddbkGSS_!!6000000001633-2-tps-17-18.png">
+										推荐PV
+										<span style="color: #b3b3b3;">较近期</span>
+									</p>
+									<p>2612
+										<span style="font-family: DINAlternate-Bold; color: #49aa19; font-size: 20px;">+10.1%</span>
+									</p>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div class="home-middle">
+				<!-- start -->
 				<div class="middle-top">
-					<div class="middle-live">
-						<div class="center-big">
-							<div class="avatarName"> 正在直播中</div>
-							<div class="duibi">场次对比</div>
+					<div class="top">
+						<div class="top-left">
+							<p>天然美货 尽在臻宝</p>
+							<p><span>开播时间: {{ mock_live_detail.liveStartTime }}</span><span>直播时长: 2小时16分钟</span></p>
 						</div>
-						<div class="liveTips">
-							<div style="word-break: keep-all; white-space: nowrap;"><span>开播时间: 2023-09-02
-									13:24:19</span><span style="padding-left: 20px;">直播时长: 0小时10分钟</span></div>
-							<div title="若数据没有自动更新，可能是网络抖动，可刷新页面或稍等片刻。"
-								style="display: flex; align-items: center; justify-content: flex-end;">
-								<div>数据统计时间: 2023-09-02 13:35:17</div><img alt="刷新" title="刷新"
-									src="https://img.alicdn.com/imgextra/i2/O1CN0167PKlo1aObdAWQTvU_!!6000000003320-55-tps-24-20.svg"
-									style="margin-left: 10px; cursor: pointer;">
-							</div>
+						<div class="top-right">
+							<p>
+								<span class="btn">场次对比</span>
+							</p>
+							<p><span>数据统计时间: {{ mock_live_detail.liveStartTime.slice(0, 10) }} 23:09:36</span>
+								<span>
+									<img alt="刷新" title="刷新"
+										src="https://img.alicdn.com/imgextra/i2/O1CN0167PKlo1aObdAWQTvU_!!6000000003320-55-tps-24-20.svg">
+								</span>
+							</p>
 						</div>
 					</div>
-					<div class="zhibotips">
-
-						<el-tooltip class="box-item" effect="dark"
-							content='<div ><b>直播成交金额：</b>本场直播累计成交金额；<br><b>在线人数：</b>本场直播当前在线观看人数,<br>根据同行业实时在线人数排名划分为高级、<br>中级和初级；<br> <b>实时流量竞争力：</b>内容指数：近30分钟直播间推荐渠道进入<br>用户的停留时长指数（从低到高1-5级）交易指数：近30分钟直<br>播间推荐渠道进入用户的商品点击及成交指数<br>（从低到高D-S级）  矩阵位置越靠近右上角，推荐流量上涨概率越大；</div>'
-							placement="bottom" raw-content>
-							<img src="https://img.alicdn.com/imgextra/i4/O1CN01WKQLU81ed2ZbubuVC_!!6000000003893-55-tps-16-16.svg"
-								style="cursor: help;">
-						</el-tooltip>
-
-
+					<img src="https://gw.alicdn.com/imgextra/i3/O1CN01AckiJN1n2hhw5O5JB_!!6000000005032-54-tps-206-206.apng"
+						class="leftEye">
+					<img src="https://gw.alicdn.com/imgextra/i3/O1CN01AckiJN1n2hhw5O5JB_!!6000000005032-54-tps-206-206.apng"
+						class="rightEye">
+					<div class="tip">
+						<img src="https://img.alicdn.com/imgextra/i4/O1CN01WKQLU81ed2ZbubuVC_!!6000000003893-55-tps-16-16.svg"
+							style="cursor: help;">
 					</div>
-
-					<div class="centerContent">
-						<div class="center--left">
-							<img src="https://gw.alicdn.com/imgextra/i3/O1CN01AckiJN1n2hhw5O5JB_!!6000000005032-54-tps-206-206.apng">
-							<div class="firstImg">
-								<div>最高在线人数</div>
-								<div>{{ pageData.zuiGaoNum }}</div>
-							</div>
+					<div class="content">
+						<div class="c-left position hover">
+							<p>最高在线人数</p>
+							<p>{{ zuiGaoNum }}</p>
 						</div>
-						<div class="center--middle">
-							<div>
-								<div>直播成交金额</div>
-								<div>{{ pageData.zuiGaoJiner }}</div>
-							</div>
-							<div>
-								<div style="    display: flex;
-	justify-content: space-between;margin-top: 30px;">
-									<div>非粉丝成交金额占比</div>
-									<div>{{ pageData.fenSiZhanBi }}</div>
-								</div>
-							</div>
+						<div class="c-center hover">
+							<p>直播成交金额</p>
+							<p>{{ zuiGaoJiner }}</p>
+							<p>
+								<span>非粉丝成交金额占比</span>
+								<span>{{ fenSiZhanBi }}</span>
+							</p>
 						</div>
-						<div class="center--right">
-							<img src="https://gw.alicdn.com/imgextra/i3/O1CN01AckiJN1n2hhw5O5JB_!!6000000005032-54-tps-206-206.apng"
-								class="center--rightEye--1mseSsF">
-						</div>
+						<div class="c-right position"></div>
 					</div>
 				</div>
+				<!-- end -->
 				<div class="middle-down">
 					<div class="goods-table">
 						<el-table :data="tableData" style="width: 100%;background-color: black;" @sort-change="sortChange">
 							<el-table-column v-for="(item, index) in heardlist" :key="index" :width="item.width"
-								:sortable="item.id != 'productInfo' ? true : false">
+								:sortable="item.id != 'productInfo' ? true : false" :align="(index && 'center')">
 								<template #header>
 									<span v-if="item.id == 'productInfo'">{{ item.name }}
 										<el-tooltip class="box-item" effect="dark" content='<div >曝光次数：本场直播截止目前，用户</br>打开宝贝口袋后单商品的曝光累计次数；</br>
@@ -159,12 +190,11 @@
 成交转化率：单商品成交人数/单商品点击人数；</br>
 在线人数：商品上架时刻的在线人数；</br>
 新增单商品的加购人数、件数、商品曝</br>光点击率和成交转化率，指标解读教学见中央公告' placement="bottom" raw-content>
-
-
-											<img
+											<img style="margin-left: 3px"
 												src="https://img.alicdn.com/imgextra/i4/O1CN01WKQLU81ed2ZbubuVC_!!6000000003893-55-tps-16-16.svg" />
 										</el-tooltip>
-
+									</span>
+									<span v-else-if="item.id == 'icon'" class="icon">
 									</span>
 									<span v-else>{{ item.name }}</span>
 								</template>
@@ -172,7 +202,6 @@
 									<span v-if="item.id == 'productInfo'" style="display: flex;">
 										<div class="imageContainer">
 											<div class="tipNumImage">{{ scope.row.order }}</div>
-
 											<img :alt="scope.row.productInfo" :src="scope.row.img">
 										</div>
 										<div class="imageTipsLong">{{
@@ -180,17 +209,17 @@
 									</span>
 									<span v-else class="goods-table-column"> {{ scope.row[item.id] }} </span>
 								</template>
-
 							</el-table-column>
 						</el-table>
 					</div>
-
 				</div>
 			</div>
 			<div class="home-right">
 				<div class="right-module">
-					<div style="padding: 0px 20px;"><span style="margin-right: 10px;"> 预售</span> <el-switch v-model="value2"
-							class="ml-2" style="--el-switch-on-color: #ff0040; --el-switch-off-color: #535353" /></div>
+					<div style="padding: 0px 20px;"><span style="margin-right: 10px;"> 预售</span>
+						<el-switch v-model="switch_flag" class="ml-2"
+							style="--el-switch-on-color: #ff0040; --el-switch-off-color: #535353" />
+					</div>
 					<div> <span style="background: black;display: inline-flex;">
 							<span class="switch-item" :class="active == 'guanzong' ? 'activeclass' : ''"
 								@click="dealClick('guanzong')">观众</span>
@@ -297,44 +326,68 @@
 import { ref, reactive } from 'vue'
 import onlinePeople from "./onlinePeople.vue";
 import dataForm from "./dataForm.vue";
-import { dealData } from "@/mock/dataScreen/dataview.js"
+import { dealData } from "@/mock/current/dataScreen.js"
+import { useRoute } from 'vue-router';
+const route = useRoute();
+const { tableIndex, modelIndex, index, liveId } = route.query;
 import { useUserStore } from '@/store/user';
 const user = useUserStore();
-let pageData = dealData();
-let { liuLiangHuDong, zhuanHuaChengJiao, tableData, zhiBoYu, dianpuyu } = pageData;
+// 获取数据
+import mock_live from '@/mock/current/live';
 
-let isActive = true;
-let value2 = false;
-let active = "guanzong";
+const tableIndex_fix = Math.ceil(tableIndex / 2);
+
+const mock_live_detail_1 = mock_live.live_table_list['table_' + tableIndex_fix]['model_' + modelIndex][index];
+const mock_live_detail_2 = mock_live.live_table_list['table_' + (tableIndex_fix + 1)]['model_' + modelIndex][index];
+const mock_live_detail = { ...mock_live_detail_1, ...mock_live_detail_2 };
+
+// 处理数据
+let pageData = dealData(mock_live_detail);
+let { liuLiangHuDong, zhuanHuaChengJiao, zuiGaoNum, zuiGaoJiner, fenSiZhanBi, tableData, zhiBoYu, dianpuyu } = pageData;
+
+let switch_flag = ref(false);
+// 右上角tabs
+let active = ref("guanzong");
+// 表头
 const heardlist = [{
 	name: "商品明细",
 	id: "productInfo",
-	width: "20%",
+	width: "25%",
 	prop: "productInfo",
 }, {
 	name: "曝光人数",
 	id: "peopleNum",
-	width: "18%"
+	width: "15%"
+}, {
+	name: "点击人数",
+	id: "peopleClickNum",
+	width: "15%"
 }, {
 	name: "点击次数",
 	id: "clickNum",
-	width: "18%"
+	width: "15%"
 }, {
 	name: "加购人数",
 	id: "buyNum",
-	width: "18%"
+	width: "15%"
 }, {
 	name: "成交金额",
 	id: "mony",
-	width: "18%"
+	width: "15%"
+}, {
+	name: "",
+	id: "icon",
+	width: "5%"
 }];
 const sortChange = (column, prop, order) => {
 }
 const dealClick = (currentActive) => {
-	active = currentActive;
+	active.value = currentActive;
 };
+// 左上角tabs
+let isActive = ref(true);
 const tbaClick = () => {
-	isActive = !isActive
+	isActive.value = !isActive.value;
 };
 const changeMessage = () => {
 	const message = "Message changed!";
@@ -379,9 +432,32 @@ const changeMessage = () => {
 	background-color: #1a1a1a !important;
 	font-size: 15px;
 	color: #fff;
-
 	height: 47px;
 	line-height: 47px;
+}
+
+.dataScreen-container .goods-table .el-table th:last-child .icon {
+	display: inline-block;
+	width: 26px;
+	height: 22px;
+	background-color: #141416;
+	border: 1px solid #ff0040;
+	border-radius: 6px;
+	position: relative;
+	cursor: pointer;
+}
+
+.dataScreen-container .goods-table .el-table th:last-child .icon::before {
+	content: "";
+	border: solid #ff0040;
+	border-width: 0 2px 2px 0;
+	display: inline-block;
+	padding: 4px;
+	transform: scale(.85) rotate(45deg) translate(-3px, -3px);
+}
+
+.dataScreen-container .goods-table .el-table th:last-child .caret-wrapper {
+	display: none;
 }
 
 .dataScreen-container .goods-table .el-table td.el-table__cell,
@@ -602,7 +678,7 @@ const changeMessage = () => {
 .dataScreen-container .right-module {
 	width: 100%;
 	position: relative;
-	margin: 10px 0;
+	margin: 0;
 	border-radius: 20px;
 	overflow: hidden;
 	background-color: #1a1a1a;
@@ -622,7 +698,8 @@ const changeMessage = () => {
 
 .dataScreen-container .right-module:nth-child(2) {
 	background-color: #1a1a1a;
-	height: 380px;
+	height: 370px;
+	margin-bottom: 10px;
 }
 
 .dataScreen-container .goods-table {
@@ -643,7 +720,7 @@ const changeMessage = () => {
 
 .dataScreen-container .middle-down {
 	width: 100%;
-	margin: 20px 0;
+	margin: 32px 0;
 	border-radius: 20px;
 	height: 500px;
 	box-sizing: border-box;
@@ -651,129 +728,6 @@ const changeMessage = () => {
 	background-color: #1a1a1a;
 }
 
-.dataScreen-container .center--middle>div:first-child>div:first-child {
-	font-family: PingFangSC-Regular;
-	font-size: 18px;
-	color: #fff;
-	text-align: center;
-	line-height: 24px;
-	margin-bottom: 15px;
-}
-
-.dataScreen-container .center--middle>div:first-child>div:last-child {
-	font-size: 20px;
-	color: #fff;
-}
-
-.dataScreen-container .center--middle>div:last-child>div:last-child {
-	font-family: PingFangSC-Regular;
-	font-size: 18px;
-	color: #fff;
-	text-align: center;
-	line-height: 24px;
-	margin-bottom: 15px;
-}
-
-.dataScreen-container .firstImg {
-	position: absolute;
-	top: 60px;
-	left: 110px;
-}
-
-.dataScreen-container .firstImg>div:first-child {
-	font-size: 18px;
-	color: #fff;
-	text-align: center;
-}
-
-.dataScreen-container .firstImg>div:last-child {
-	font-size: 42px;
-	color: #fff;
-}
-
-.dataScreen-container .center--left,
-.dataScreen-container .center--middle,
-.dataScreen-container .center--middle {
-	padding: 18px 30px;
-	position: relative;
-	border: 1px solid transparent;
-	flex: 1;
-	transition: all .35s ease-in-out;
-	text-align: center;
-}
-
-.dataScreen-container .center--left {
-	margin-left: -20px;
-}
-
-.dataScreen-container .center--middle {
-	margin: 0 20px;
-}
-
-.dataScreen-container .centerContent {
-	left: 0;
-	right: 0;
-	top: 155px;
-	bottom: 50px;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	box-sizing: border-box;
-}
-
-.dataScreen-container .zhibotips {
-	width: 100%;
-	text-align: right;
-	height: 40px;
-	line-height: 40px;
-}
-
-.dataScreen-container .liveTips {
-	display: flex;
-	justify-content: space-between;
-	padding: 0px 20px;
-}
-
-.dataScreen-container .duibi {
-	height: 24px;
-	padding: 0 7px;
-	font-size: 14px;
-	border-radius: 6px;
-	color: #fff;
-	border-color: #ff0040;
-	background: #ff0040;
-}
-
-.dataScreen-container .avatarName {
-	margin-left: 10px;
-	font-size: 25px;
-	color: #fff;
-	letter-spacing: 0;
-}
-
-.dataScreen-container .center-big {
-	display: flex;
-	justify-content: space-between;
-	padding: 13px 11px;
-}
-
-.dataScreen-container .middle-top {
-	flex: 1;
-	height: 430px;
-}
-
-.dataScreen-container .middle-live {
-	z-index: 2;
-	top: 0;
-	width: 100%;
-	height: 100px;
-	border-radius: 20px;
-	background-color: rgba(60, 60, 69, .55);
-	overflow: hidden;
-	margin-top: 10px;
-
-}
 
 .dataScreen-container .left-module-down>div {
 	height: 100%;
@@ -792,6 +746,225 @@ const changeMessage = () => {
 .dataScreen-container .left-module-down>div .live-actions img {
 	vertical-align: middle;
 	border-style: none;
+}
+
+.dataScreen-container .left-module-down .live-actions-show {
+	height: 400px;
+
+}
+
+.dataScreen-container .left-module-down .live-actions-show .module-header {
+	font-family: PingFangSC-Semibold;
+	font-size: 20px;
+	color: #fff;
+	padding: 10px 20px;
+	background-color: #2f2f36;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	margin-bottom: 12px;
+}
+
+.dataScreen-container .left-module-down .live-actions-show .module-content {
+	padding: 0 12px;
+	color: #fff;
+	font-size: 14px;
+}
+
+.dataScreen-container .left-module-down .live-actions-show .module-content>div {
+	padding: 11px 12px 11px 36px;
+	background: rgba(60, 60, 69, .7);
+	border-radius: 12px;
+	margin-bottom: 12px;
+	position: relative;
+}
+
+.dataScreen-container .left-module-down .live-actions-show .module-content>div img {
+	position: absolute;
+	width: 13px;
+	height: 13px;
+	left: 16px;
+	top: 14px;
+}
+
+.dataScreen-container .left-module-down .live-actions-show .module-content>div p:first-child {
+	margin-bottom: 5px;
+}
+
+.dataScreen-container .left-module-down .live-actions-show .module-content>div span {
+	float: right;
+}
+
+.dataScreen-container .middle-top {
+	width: 100%;
+	height: 430px;
+	position: relative;
+	padding: 10px 0;
+	margin-bottom: 10px;
+}
+
+.dataScreen-container .middle-top>.top {
+	width: 100%;
+	height: 100px;
+	border-radius: 16px;
+	background-color: rgba(60, 60, 69, .55);
+	display: flex;
+	padding: 20px;
+}
+
+.dataScreen-container .middle-top>.top>div {
+	flex: 1;
+	color: #fff;
+}
+
+.dataScreen-container .middle-top>.top>div.top-left {
+	text-align: left;
+}
+
+.dataScreen-container .middle-top>.top>div p:first-child {
+	margin-right: 4px;
+	margin-bottom: 10px;
+	font-size: 25px;
+	height: 50%;
+}
+
+.dataScreen-container .middle-top>.top>div p>span {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+.dataScreen-container .middle-top>.top>div p>span img {
+	vertical-align: middle;
+}
+
+.dataScreen-container .middle-top>.top>div p>span:first-child {
+	margin-right: 20px;
+}
+
+.dataScreen-container .middle-top>.top>div .btn {
+	display: inline-block;
+	padding: 2px 7px;
+	border-radius: 4px;
+	background-color: #ff0040;
+	font-size: 14px;
+}
+
+.dataScreen-container .middle-top>.top>div.top-right {
+	text-align: right;
+}
+
+.dataScreen-container .middle-top>.tip {
+	height: 24px;
+	float: right;
+	margin-right: 5px;
+	padding-top: 5px;
+}
+
+
+.dataScreen-container .middle-top>img {
+	position: absolute;
+	bottom: 40px;
+	width: 219px;
+	height: 219px;
+}
+
+.dataScreen-container .middle-top>img.leftEye {
+	left: 80px;
+}
+
+.dataScreen-container .middle-top>img.rightEye {
+	right: 80px;
+}
+
+.dataScreen-container .middle-top>.tips {
+	width: 100%;
+	padding-right: 8px;
+}
+
+.dataScreen-container .middle-top>.content {
+	width: 100%;
+	height: 300px;
+	min-height: 0;
+	padding: 0;
+	padding-top: 50px;
+	position: relative;
+	color: #fff;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+}
+
+
+.dataScreen-container .middle-top>.content>div.c-left,
+.dataScreen-container .middle-top>.content>div.c-right {
+	position: absolute;
+	top: 20%;
+	width: 30%;
+	height: 40%;
+	transition: all .35s ease-in-out;
+	border-radius: 36px;
+	z-index: 99;
+	padding-top: 15px;
+}
+
+.dataScreen-container .middle-top>.content>div.c-left {
+	left: 60px;
+}
+
+.dataScreen-container .middle-top>.content>div.c-right {
+	right: 60px;
+}
+
+.dataScreen-container .middle-top>.content>div.c-center {
+	width: 35%;
+	height: 80%;
+	transition: all .35s ease-in-out;
+	border-radius: 36px;
+	padding: 20px 40px;
+}
+
+.dataScreen-container .middle-top>.content>div.hover:hover {
+	background: rgba(19, 20, 21, .42);
+	border: 1px solid #333;
+	transform: scale(1.5);
+	backdrop-filter: blur(10px);
+	box-shadow: 0 20px 40px rgba(0, 0, 0, .55);
+}
+
+.dataScreen-container .middle-top>.content>div>p {
+	width: 100%;
+	text-align: center;
+	font-family: PingFangSC-Regular;
+}
+
+.dataScreen-container .middle-top>.content>div>p:first-child {
+	font-size: 18px;
+	margin-bottom: 15px;
+}
+
+.dataScreen-container .middle-top>.content>div.position>p:last-child {
+	font-size: 42px;
+}
+
+.dataScreen-container .middle-top>.content>div.c-center>p:nth-child(2) {
+	font-family: DINAlternate-Bold;
+	font-size: 72px;
+	margin-bottom: 25px;
+}
+
+.dataScreen-container .middle-top>.content>div.c-center>p:last-child {
+	font-size: 14px;
+	display: flex;
+}
+
+.dataScreen-container .middle-top>.content>div.c-center>p:last-child>span {
+	text-align: left;
+	flex: 1;
+}
+
+.dataScreen-container .middle-top>.content>div.c-center>p:last-child>span:last-child {
+	font-size: 18px;
+	font-family: DINAlternate-Bold;
+	text-align: right;
 }
 
 .dataScreen-container .live-actions .btns-group {
@@ -1041,7 +1214,15 @@ const changeMessage = () => {
 	color: #a9a9a9;
 }
 
-.dataScreen-container .left-module-up,
+.dataScreen-container .left-module-up {
+	width: 100%;
+	margin: 10px 0;
+	border-radius: 20px;
+	min-height: 430px;
+	color: #a9a9a9;
+	background-color: #1a1a1a;
+}
+
 .dataScreen-container .left-module-down {
 	width: 100%;
 	margin: 10px 0;
@@ -1113,7 +1294,6 @@ const changeMessage = () => {
 	font-family: PingFangSC-Medium;
 	font-size: 18px;
 }
-
 
 .dataScreen-container .tab-item:first-child {
 	margin-right: 30px;

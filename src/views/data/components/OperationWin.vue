@@ -35,59 +35,31 @@
       </el-tabs>
       <div class="date-select mr20">
         <div>
-          <span style="padding-right: 5px; position: relative; top: 3px"
-            ><el-icon :size="14"><Warning /></el-icon
-          ></span>
+          <span style="padding-right: 5px; position: relative; top: 3px"><el-icon :size="14">
+              <Warning />
+            </el-icon></span>
           <span class="pr10">统计时间 {{ statisticTime }}</span>
         </div>
         <div style="position: relative; display: flex">
-          <el-date-picker
-            ref="datePickRef"
-            v-model="selectDate"
-            :type="dateType"
-            :format="dateType === 'week' ? '[第]ww[周]' : 'YYYY-MM-DD'"
-            :disabled-date="disabledDate"
-            size="small"
-            style="
+          <el-date-picker ref="datePickRef" v-model="selectDate" :type="dateType"
+            :format="dateType === 'week' ? '[第]ww[周]' : 'YYYY-MM-DD'" :disabled-date="disabledDate" size="small" style="
               width: 150px;
               margin-right: 10px;
               position: absolute;
               opacity: 0;
-            "
-          ></el-date-picker>
-          <el-radio-group
-            v-model="dateType"
-            size="small"
-            @change="changeDateType"
-          >
-            <el-radio-button
-              label="date"
-              @mouseenter.passive="openDatePickPanel"
-              >日</el-radio-button
-            >
-            <el-radio-button
-              label="week"
-              @mouseenter.passive="openDatePickPanel"
-              >周</el-radio-button
-            >
-            <el-radio-button
-              label="month"
-              @mouseenter.passive="openDatePickPanel"
-              >月</el-radio-button
-            >
+            "></el-date-picker>
+          <el-radio-group v-model="dateType" size="small" @change="changeDateType">
+            <el-radio-button label="date" @mouseenter.passive="openDatePickPanel">日</el-radio-button>
+            <el-radio-button label="week" @mouseenter.passive="openDatePickPanel">周</el-radio-button>
+            <el-radio-button label="month" @mouseenter.passive="openDatePickPanel">月</el-radio-button>
           </el-radio-group>
-          <el-button size="small" style="margin: 0 5px"
-            >自定义<i class="niceFonts-tooltip"></i
-          ></el-button>
-          <el-button size="small" style="margin-left: 0; padding: 0 7px"
-            ><el-icon><ArrowLeft /></el-icon
-          ></el-button>
-          <el-button
-            size="small"
-            :disabled="true"
-            style="margin-left: 5px; padding: 0 7px"
-            ><el-icon><ArrowRight /></el-icon
-          ></el-button>
+          <el-button size="small" style="margin: 0 5px">自定义<i class="niceFonts-tooltip"></i></el-button>
+          <el-button size="small" style="margin-left: 0; padding: 0 7px"><el-icon>
+              <ArrowLeft />
+            </el-icon></el-button>
+          <el-button size="small" :disabled="true" style="margin-left: 5px; padding: 0 7px"><el-icon>
+              <ArrowRight />
+            </el-icon></el-button>
         </div>
       </div>
     </el-row>
@@ -98,9 +70,7 @@
         <i class="niceFonts-whole" style="padding-right: 10px"></i>整体看板
       </div>
       <div class="header-right-box">
-        <el-checkbox size="small" v-model="showActiveInfo"
-          >显示活动信息</el-checkbox
-        >
+        <el-checkbox size="small" v-model="showActiveInfo">显示活动信息</el-checkbox>
         <el-checkbox size="small" v-model="compareOther">同行对比</el-checkbox>
         <span style="color: #2062e6">图表</span>
         <span style="margin: 0 5px">|</span>
@@ -112,78 +82,53 @@
         <i class="niceFonts-front-btn"></i>
       </div>
       <div class="card-box">
-        <div
-          v-for="(cardItem, index) in cardDatas"
-          :key="index"
-          class="card-item"
-          :class="{ 'card-item-active': selectCardItem === cardItem.key }"
-          @click="clickCardItem(cardItem.key)"
-        >
+        <div v-for="(cardItem, index) in cardDatas" :key="index" class="card-item"
+          :class="{ 'card-item-active': selectCardItem === cardItem.key }" @click="clickCardItem(cardItem.key)">
           <div>
             <div>
-              <div class="card-title">{{ cardItem.desc }}</div>
-              <div class="data-label">{{ cardItem.cur }}</div>
+              <div class="card-title">
+                {{ cardItem.desc
+                }}<i style="padding-left: 5px" class="niceFonts-tooltip"></i>
+              </div>
+              <div class="data-label">{{ thousands(cardItem.cur) }}</div>
             </div>
             <div class="change-level">
               <div class="label">{{ changeLevelOneLabel }}</div>
               <div class="trend-value">
-                <span
-                  :style="{
-                    color: parseCardTrend(cardItem.pre).isTextColorRender
-                      ? parseCardTrend(cardItem.pre).color
-                      : '',
-                  }"
-                  style="padding-right: 10px"
-                  >{{ parseCardTrend(cardItem.pre).value }}</span
-                >
-                <i
-                  class="niceFonts-trend-up"
-                  v-if="parseCardTrend(cardItem.pre).trend === 'up'"
-                  :style="{ color: parseCardTrend(cardItem.pre).color }"
-                ></i>
-                <i
-                  class="niceFonts-trend-down"
-                  v-if="parseCardTrend(cardItem.pre).trend === 'down'"
-                  :style="{ color: parseCardTrend(cardItem.pre).color }"
-                ></i>
+                <span :style="{
+                  color: parseCardTrend(cardItem.pre).isTextColorRender
+                    ? parseCardTrend(cardItem.pre).color
+                    : '',
+                }" style="padding-right: 10px">{{ parseCardTrend(cardItem.pre).value }}</span>
+                <i class="niceFonts-trend-up" v-if="parseCardTrend(cardItem.pre).trend === 'up'"
+                  :style="{ color: parseCardTrend(cardItem.pre).color }"></i>
+                <i class="niceFonts-trend-down" v-if="parseCardTrend(cardItem.pre).trend === 'down'"
+                  :style="{ color: parseCardTrend(cardItem.pre).color }"></i>
               </div>
             </div>
             <div class="change-level">
               <div class="label">{{ changeLevelTwoLabel }}</div>
               <div class="trend-value">
-                <span
-                  :style="{
-                    color: parseCardTrend(cardItem.compareLast)
-                      .isTextColorRender
-                      ? parseCardTrend(cardItem.compareLast).color
-                      : '',
-                  }"
-                  style="padding-right: 10px"
-                  >{{ parseCardTrend(cardItem.compareLast).value }}</span
-                >
-                <i
-                  class="niceFonts-trend-up"
-                  v-if="parseCardTrend(cardItem.compareLast).trend === 'up'"
-                  :style="{ color: parseCardTrend(cardItem.compareLast).color }"
-                ></i>
-                <i
-                  class="niceFonts-trend-down"
-                  v-if="parseCardTrend(cardItem.compareLast).trend === 'down'"
-                  :style="{ color: parseCardTrend(cardItem.compareLast).color }"
-                ></i>
+                <span :style="{
+                  color: parseCardTrend(cardItem.compareLast)
+                    .isTextColorRender
+                    ? parseCardTrend(cardItem.compareLast).color
+                    : '',
+                }" style="padding-right: 10px">{{ parseCardTrend(cardItem.compareLast).value }}</span>
+                <i class="niceFonts-trend-up" v-if="parseCardTrend(cardItem.compareLast).trend === 'up'"
+                  :style="{ color: parseCardTrend(cardItem.compareLast).color }"></i>
+                <i class="niceFonts-trend-down" v-if="parseCardTrend(cardItem.compareLast).trend === 'down'"
+                  :style="{ color: parseCardTrend(cardItem.compareLast).color }"></i>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div
-        class="turn-btn"
-        @click="changeCard(1)"
-        style="right: -10px; left: unset"
-      >
+      <div class="turn-btn" @click="changeCard(1)" style="right: -10px; left: unset">
         <i class="niceFonts-end-btn"></i>
       </div>
     </div>
+    <div class="total-info">{{ totalCount }}</div>
     <div id="view-board-chart" style="width: 100%; height: 350px"></div>
   </div>
   <div class="oui-floor-nav">
@@ -202,10 +147,13 @@
 </template>
 <script setup lang="ts">
 import * as echarts from "echarts";
-import { ref, computed, watch, reactive, onMounted } from "vue";
-import { viewBoardData as _viewBoardData } from "./operationWinData";
+import { ref, computed, watch, reactive, onMounted, nextTick } from "vue";
 import { getYearWeek } from "@/utils/utils";
 import { Warning } from "@element-plus/icons-vue";
+import mock_home from "@/mock/current/sycm";
+import { dataType } from "element-plus/es/components/table-v2/src/common";
+import { fi } from "element-plus/es/locale";
+import { filterFields } from "element-plus/es/components/form/src/utils";
 
 const activeTab = ref("overview");
 const showActiveInfo = ref(true);
@@ -213,7 +161,7 @@ const compareOther = ref(true);
 
 const MAX_CARD_ITEM = 7;
 const datePickRef = ref(null);
-const dateType = ref("date");
+const dateType = ref("month");
 const selectDate = ref(new Date());
 const statisticTime = computed(() => {
   const year = selectDate.value.getFullYear();
@@ -239,6 +187,28 @@ const statisticTime = computed(() => {
 
   return "";
 });
+const totalCount = computed(() => {
+  console.log(selectDate.value);
+  if (dateType.value === "month") {
+    const baseValue = 1756.54;
+    return `最近12个累计：${(baseValue * (1 + Math.random() * 0.1)).toFixed(
+      2
+    )}万`;
+  } else if (dateType.value === "week") {
+    return "最近12周累计：469.05万";
+  } else {
+    return "最近30日累计：171.32万";
+  }
+});
+const thousands = (num: string) => {
+  if (num?.includes("%")) {
+    return num;
+  }
+  var str = num.toString();
+  var reg =
+    str.indexOf(".") > -1 ? /(\d)(?=(\d{3})+\.)/g : /(\d)(?=(?:\d{3})+$)/g;
+  return str.replace(reg, "$1,");
+};
 const disabledDate = (date: Date) => {
   return date.getTime() > new Date().getTime();
 };
@@ -247,7 +217,7 @@ const changeDateType = () => {
 };
 const openDatePickPanel = () => {
   datePickRef.value.handleOpen();
-}
+};
 
 const cardPage = ref(0);
 const changeCard = (value: -1 | 1) => {
@@ -262,7 +232,7 @@ const changeCard = (value: -1 | 1) => {
   }
   cardPage.value += value;
 };
-const viewBoardData = reactive(_viewBoardData);
+const viewBoardData = reactive(mock_home.board);
 const parseCardTrend = (value: string | null) => {
   let trend = value === null ? "" : "up";
   let color = "#F04134";
@@ -279,20 +249,43 @@ const parseCardTrend = (value: string | null) => {
     isTextColorRender: Number(value?.slice(-1)) > 30,
   };
 };
+const cardCache = {};
 const cardDatas = computed(() => {
   const date = selectDate.value;
   const result = viewBoardData
     .map((item) => {
       const { cur, pre, compareLast } = item[dateType.value];
       const fixedNum = Number.isInteger(cur) ? 0 : 2;
+      let dateCacheKey = `${dateType.value}-${date.toLocaleDateString()}`;
+      if (dateType.value === "month") {
+        const year = selectDate.value.getFullYear();
+        const month = selectDate.value.getMonth();
+        dateCacheKey = `${dateType.value}-${new Date(
+          `${year}-${month + 1}-1`
+        ).toLocaleDateString()}`;
+      }
+      let usedCur = cur;
+      if (cardCache[item.key]?.[dateCacheKey]) {
+        usedCur = cardCache[item.key]?.[dateCacheKey];
+      } else {
+        if (!cardCache[item.key]) {
+          cardCache[item.key] = {};
+        }
+        cardCache[item.key][dateCacheKey] = usedCur =
+          typeof cur === "number"
+            ? ((Math.random() * 0.5 + 1) * cur).toFixed(fixedNum)
+            : cur;
+      }
+      console.log(pre);
       return {
         key: item.key,
         desc: item.desc,
-        cur:
-          typeof cur === "number"
-            ? ((Math.random() + 1) * cur).toFixed(fixedNum)
-            : cur,
-        pre,
+        cur: usedCur,
+        pre: pre
+          ? `${(Number(pre.slice(0, -1)) * (Math.random() * 0.3 + 1)).toFixed(
+            2
+          )}%`
+          : pre,
         compareLast,
       };
     })
@@ -339,9 +332,9 @@ const initPayMoneyChart = (randomData: boolean = false) => {
   );
   const {
     chartData: { my, rivalAvg, rivalTop },
-  } = _viewBoardData.find(({ key }) => key === selectCardItem.value)?.[
+  } = mock_home.board.find(({ key }) => key === selectCardItem.value)?.[
     dateType.value
-  ];
+    ];
   payMoneyChart.setOption({
     tooltip: {
       trigger: "axis",
@@ -371,9 +364,8 @@ const initPayMoneyChart = (randomData: boolean = false) => {
       {
         name: "我的",
         type: "line",
-        stack: "Total",
-        data: my.map((item: number) =>
-          randomData ? ((Math.random() + 1) * item).toFixed(2) : item
+        data: my.map((item) =>
+          randomData ? (Math.random() * 0.1 + 1) * item : item
         ),
         smooth: true,
         symbol: "none",
@@ -384,9 +376,8 @@ const initPayMoneyChart = (randomData: boolean = false) => {
       {
         name: "同行同层平均",
         type: "line",
-        stack: "Total",
-        data: rivalAvg.map((item: number) =>
-          randomData ? ((Math.random() + 1) * item).toFixed(2) : item
+        data: rivalAvg.map((item) =>
+          randomData ? (Math.random() * 0.1 + 1) * item : item
         ),
         smooth: true,
         symbol: "none",
@@ -397,9 +388,8 @@ const initPayMoneyChart = (randomData: boolean = false) => {
       {
         name: "同行同层优秀",
         type: "line",
-        stack: "Total",
-        data: rivalTop.map((item: number) =>
-          randomData ? ((Math.random() + 1) * item).toFixed(2) : item
+        data: rivalTop.map((item) =>
+          randomData ? (Math.random() * 0.1 + 1) * item : item
         ),
         smooth: true,
         symbol: "none",
@@ -441,13 +431,31 @@ const getXAiasLabel = () => {
       });
       break;
   }
-  console.log(result)
   return result.reverse();
 };
 
 watch(selectDate, () => {
   initPayMoneyChart(true);
 });
+// get 我的
+function ceateData(value, count) {
+  const fixedNum = value.toString().includes(".") ? 2 : 0;
+  return new Array(count).fill(0).map(() => {
+    const randomVal = Math.random();
+    return Number(
+      (value * (randomVal > 0.5 ? randomVal : 1 + randomVal)).toFixed(fixedNum)
+    );
+  });
+}
+
+// 同行平均 同行优秀
+function ceateDataTop(value, count) {
+  const fixedNum = value.toString().includes(".") ? 2 : 0;
+  return new Array(count).fill(0).map(() => {
+    const randomVal = Math.random() * 0.1;
+    return Number((value * (randomVal + 1)).toFixed(fixedNum));
+  });
+}
 
 onMounted(() => {
   initPayMoneyChart();
@@ -457,6 +465,13 @@ onMounted(() => {
 @media (min-width: 1600px) {
   .oui-floor-nav {
     margin-right: -770px;
+  }
+}
+
+@media (max-width: 1480px) {
+  .oui-floor-nav {
+    margin-right: 0 !important;
+    right: 0 !important;
   }
 }
 
@@ -514,18 +529,22 @@ onMounted(() => {
   display: flex;
   align-items: center;
 }
+
 .date-select :deep(.el-radio-button) {
   margin-right: 5px;
   border-left: 1px solid rgb(220, 223, 230);
 }
+
 .date-select :deep(.el-radio-button__inner) {
   border-radius: 0 !important;
   padding-left: 7px;
   padding-right: 7px;
 }
+
 .date-select :deep(.el-radio-button:first-child .el-radio-button__inner) {
   border-left: 0;
 }
+
 .show-card-group {
   position: relative;
   width: 100%;
@@ -633,5 +652,13 @@ onMounted(() => {
 .oui-floor-nav-item.item-active {
   background: #2062e6;
   color: #fff;
+}
+
+.total-info {
+  position: relative;
+  top: 10px;
+  text-align: right;
+  color: #333;
+  padding-right: 20px;
 }
 </style>

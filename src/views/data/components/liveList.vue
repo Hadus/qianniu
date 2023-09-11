@@ -88,68 +88,82 @@
 							</p>
 							<p class="btn">场次对比</p>
 						</div>
-						<el-table :data="tableData" style="width: 100%" class="live-table">
-							<el-table-column width="120" fixed prop="date" label="直播标题">
-								<template #default="scope">
-									<a href="javascript:;">{{ scope.row.date }}</a>
+						<el-table :data="table_1.model_1" style="width: 100%" class="live-table">
+							<el-table-column width="140" fixed prop="date" label="直播标题">
+								<template #default="{ row, $index }">
+									<a href="javascript:;" @click="handleClickLiveTitle({
+										tableIndex: 1,
+										modelIndex: 1,
+										index: $index,
+										liveId: row.contentId
+									})">{{ row.contentTitle }}</a>
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="name" label="场次ID" />
-							<el-table-column width="120" prop="name" label="开播时间" />
-							<el-table-column width="120" prop="address">
+							<el-table-column width="120" fixed prop="contentId" label="场次ID" />
+							<el-table-column width="160" prop="liveStartTime" label="开播时间" />
+							<el-table-column width="110" prop="lookPv">
 								<template #header>
 									观看次数#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="110" prop="lookUv">
 								<template #header>
 									观看人数#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="110" prop="address">
 								<template #header>
 									封面点击率#
 								</template>
+								<template #default="{ row }">
+									{{ (row.pctr * 100).toFixed(2) }}%
+								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="110" prop="lookPvFlowcontrol">
 								<template #header>
 									流量券消耗#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="110" prop="lookTimePu">
 								<template #header>
 									平均观看时长（秒）#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="110" prop="atnUv">
 								<template #header>
 									新增粉丝数#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="110" prop="ipvUv">
 								<template #header>
 									商品点击人数#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="110" prop="address">
 								<template #header>
 									商品点击率#
 								</template>
+								<template #default="{ row }">
+									{{ (row.ipvUvRate * 100).toFixed(2) }}%
+								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="110" prop="address">
 								<template #header>
 									引导成交转化率#
 								</template>
+								<template #default="{ row }">
+									{{ (row.payByrRate * 100).toFixed(2) }}%
+								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="110" prop="payBuyerCnt">
 								<template #header>
 									引导成交人数#
 								</template>
 							</el-table-column>
 						</el-table>
 						<div class="live-paganation">
-							<el-pagination layout="prev, pager, next" :total="2" class="order-pagination" prev-text="上一页"
-								next-text="下一页" />
+							<v-paganation layout="prev, pager, next" :total="table_1.page.totalNumber"
+								:page-size="table_4.page.pageSize" class="order-pagination" />
 						</div>
 					</div>
 				</div>
@@ -190,75 +204,79 @@
 							</div>
 							<p class="go-right">右滑查看更多</p>
 						</div>
-						<el-table :data="tableData" style="width: 100%" class="live-table">
+						<el-table :data="table_2.model_1" style="width: 100%" class="live-table">
 							<el-table-column width="300" prop="date" label="商品主图/标题" fixed>
-								<template #default="scope">
-									<div class="table-content">
+								<template #default="{ row, $index }">
+									<div class="table-content" @click="handleClickLiveTitle({
+										tableIndex: 2,
+										modelIndex: 1,
+										index: $index,
+										liveId: row.contentId
+									})">
 										<p>
-											<img src="https://img.alicdn.com/imgextra/i3/2559988253/O1CN01z2Cvah2Apvb3JYp7Z_!!2559988253.jpg"
-												alt="天然保山南红手链磨山款老型保山南红玛瑙手串云南保山南红手链">
+											<img :src="row.itemPictUrl">
 										</p>
 										<p>
 											<a href="javascript:;">
-												天然保山南红手链磨山款老型保山南红玛瑙手串云南保山南红手链
+												{{ row.itemTitle }}
 											</a>
 										</p>
 									</div>
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="name" label="商品ID" fixed />
-							<el-table-column width="120" prop="name" label="直播标题" />
-							<el-table-column width="120" prop="name" label="场次ID" />
-							<el-table-column width="120" prop="name" label="开播时间" />
-							<el-table-column width="120" prop="address">
+							<el-table-column width="120" prop="itemId" label="商品ID" fixed />
+							<el-table-column width="120" prop="contentTitle" label="直播标题" />
+							<el-table-column width="120" prop="contentId" label="场次ID" />
+							<el-table-column width="160" prop="liveStartTime" label="开播时间" />
+							<el-table-column width="110" prop="ipv">
 								<template #header>
 									商品点击次数#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="110" prop="ipvUv">
 								<template #header>
 									商品点击人数#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="110" prop="payItemQty">
 								<template #header>
 									引导成交件数#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="110" prop="payAmt">
 								<template #header>
 									引导成交金额#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="110" prop="predictAmt">
 								<template #header>
 									预售下定金金额#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="110" prop="subpayAmt">
 								<template #header>
 									预售预估总金额#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="110" prop="refundItemQty">
 								<template #header>
 									退款件数#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="110" prop="refundUv">
 								<template #header>
 									退款人数#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="110" prop="refundAmt">
 								<template #header>
 									退款金额#
 								</template>
 							</el-table-column>
 						</el-table>
 						<div class="live-paganation">
-							<el-pagination layout="prev, pager, next" :total="2" class="order-pagination" prev-text="上一页"
-								next-text="下一页" />
+							<v-paganation layout="prev, pager, next" :total="table_2.page.totalNumber"
+								:page-size="table_2.page.pageSize" class="order-pagination" />
 						</div>
 					</div>
 				</div>
@@ -270,7 +288,6 @@
 						<calendar />
 					</el-icon>
 				</template>
-
 				<div class="info-wrapper changci-wrapper">
 					<v-h3-header :hasArrow="false">
 						直播分场次效果
@@ -282,40 +299,32 @@
 						<div class="item">
 							<h4>流量</h4>
 							<p>
-								<label><input type="checkbox">观看次数</label>
-								<label><input type="checkbox">观看人数</label>
-								<label><input type="checkbox">封面图点击率</label>
-								<label><input type="checkbox">流量券消耗</label>
-							</p>
-						</div>
-						<div class="item">
-							<h4>观看</h4>
-							<p>
-								<label><input type="checkbox">平均观看时长（秒）</label>
-							</p>
-						</div>
-						<div class="item">
-							<h4>转粉</h4>
-							<p>
-								<label><input type="checkbox">新增粉丝数</label>
+								<label><input type="checkbox" checked>直播间观看次数</label>
+								<label><input type="checkbox" checked>直播间观看人数</label>
+								<label><input type="checkbox">互动率</label>
+								<label><input type="checkbox" checked>新增粉丝数</label>
+								<label><input type="checkbox" checked>转粉率</label>
 							</p>
 						</div>
 						<div class="item">
 							<h4>引导</h4>
 							<p>
-								<label><input type="checkbox">商品点击人数</label>
+								<label><input type="checkbox" checked>商品点击人数</label>
 								<label><input type="checkbox">商品点击次数</label>
-								<label><input type="checkbox">商品点击率</label>
+								<label><input type="checkbox" checked>商品点击率</label>
+								<label><input type="checkbox" checked>商品加购人数</label>
+								<label><input type="checkbox" checked>商品加购件数</label>
+								<label><input type="checkbox" checked>商品确认收货件数</label>
 							</p>
 						</div>
 						<div class="item">
 							<h4>成交</h4>
 							<p>
-								<label><input type="checkbox">引导成交转化率</label>
-								<label><input type="checkbox">引导成交人数</label>
-								<label><input type="checkbox">引导成交件数</label>
-								<label><input type="checkbox">引导成交笔数</label>
-								<label><input type="checkbox">引导成交金额</label>
+								<label><input type="checkbox" checked>成交转化率</label>
+								<label><input type="checkbox" checked>成交人数</label>
+								<label><input type="checkbox">成交件数</label>
+								<label><input type="checkbox">成交笔数</label>
+								<label><input type="checkbox" checked>成交金额</label>
 								<label><input type="checkbox">退款人数</label>
 								<label><input type="checkbox">退款金额</label>
 								<label><input type="checkbox">退款件数</label>
@@ -340,68 +349,82 @@
 							</p>
 							<p class="btn">场次对比</p>
 						</div>
-						<el-table :data="tableData" style="width: 100%" class="live-table">
-							<el-table-column width="120" fixed prop="date" label="直播标题">
-								<template #default="scope">
-									<a href="javascript:;" @click="handleClickLiveTitle">{{ scope.row.date }}</a>
+						<el-table :data="table_3.model_1" style="width: 100%" class="live-table">
+							<el-table-column width="140" fixed prop="date" label="直播标题">
+								<template #default="{ row, $index }">
+									<a href="javascript:;" @click="handleClickLiveTitle({
+										tableIndex: 3,
+										modelIndex: 1,
+										index: $index,
+										liveId: row.contentId
+									})">{{ row.contentTitle }}</a>
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="name" label="场次ID" />
-							<el-table-column width="120" prop="name" label="开播时间" />
-							<el-table-column width="120" prop="address">
+							<el-table-column width="120" prop="contentId" label="场次ID" fixed />
+							<el-table-column width="160" prop="liveStartTime" label="开播时间" />
+							<el-table-column width="110" prop="pv">
 								<template #header>
-									观看次数#
+									直播间观看次数#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="110" prop="uv">
 								<template #header>
-									观看人数#
+									直播间观看人数#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
-								<template #header>
-									封面点击率#
-								</template>
-							</el-table-column>
-							<el-table-column width="120" prop="address">
-								<template #header>
-									流量券消耗#
-								</template>
-							</el-table-column>
-							<el-table-column width="120" prop="address">
-								<template #header>
-									平均观看时长（秒）#
-								</template>
-							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="110" prop="atnUv">
 								<template #header>
 									新增粉丝数#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="110">
+								<template #header>
+									转粉率#
+								</template>
+								<template #default="{ row }">
+									{{ (row.atnUvRate * 100).toFixed(2) }}%
+								</template>
+							</el-table-column>
+							<el-table-column width="110" prop="ipvUv">
 								<template #header>
 									商品点击人数#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="110" prop="address">
 								<template #header>
 									商品点击率#
 								</template>
-							</el-table-column>
-							<el-table-column width="120" prop="address">
-								<template #header>
-									引导成交转化率#
+								<template #default="{ row }">
+									{{ (row.ipvUvRate * 100).toFixed(2) }}%
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="110" prop="address">
 								<template #header>
-									引导成交人数#
+									商品加购人数#
+								</template>
+							</el-table-column>
+							<el-table-column width="110" prop="cartUv">
+								<template #header>
+									商品加购件数#
+								</template>
+							</el-table-column>
+							<el-table-column width="110" prop="confirmItemQty">
+								<template #header>
+									商品确认收货件数#
+								</template>
+							</el-table-column>
+							<el-table-column width="110">
+								<template #header>
+									成交转化率#
+								</template>
+								<template #default="{ row }">
+									{{ (row.confirmItemRate * 100).toFixed(2) }}%
 								</template>
 							</el-table-column>
 						</el-table>
 						<div class="live-paganation">
-							<el-pagination layout="prev, pager, next" :total="2" class="order-pagination" prev-text="上一页"
-								next-text="下一页" />
+							<v-paganation layout="prev, pager, next" :total="table_3.page.totalNumber"
+								:page-size="table_3.page.pageSize" class="order-pagination" />
 						</div>
 					</div>
 				</div>
@@ -415,15 +438,19 @@
 					<div class="check-wrapper">
 						<div class="item">
 							<p>
-								<label><input type="checkbox">商品点击次数</label>
 								<label><input type="checkbox">商品点击人数</label>
+								<label><input type="checkbox">商品点击次数</label>
 								<label><input type="checkbox">引导成交件数</label>
-								<label><input type="checkbox">引导成交金额</label>
-								<label><input type="checkbox">预售下定金金额</label>
-								<label><input type="checkbox">预售预估总金额</label>
-								<label><input type="checkbox">退款件数</label>
-								<label><input type="checkbox">退款人数</label>
-								<label><input type="checkbox">退款金额</label>
+								<label><input type="checkbox">加购人数</label>
+								<label><input type="checkbox">成交人数</label>
+								<label><input type="checkbox">成交件数</label>
+								<label><input type="checkbox">成交笔数</label>
+								<label><input type="checkbox">成交金额</label>
+								<label><input type="checkbox">商品退款人数</label>
+								<label><input type="checkbox">商品退款件数</label>
+								<label><input type="checkbox">商品退款金额</label>
+								<label><input type="checkbox">商品确认收货件数</label>
+								<label><input type="checkbox">商品确认收货率</label>
 							</p>
 						</div>
 					</div>
@@ -442,75 +469,79 @@
 							</div>
 							<p class="go-right">右滑查看更多</p>
 						</div>
-						<el-table :data="tableData" style="width: 100%" class="live-table">
+						<el-table :data="table_4.model_1" style="width: 100%" class="live-table">
 							<el-table-column width="300" prop="date" label="商品主图/标题" fixed>
-								<template #default="scope">
-									<div class="table-content">
+								<template #default="{ row, $index }">
+									<div class="table-content" @click="handleClickLiveTitle({
+										tableIndex: 4,
+										modelIndex: 1,
+										index: $index,
+										liveId: row.contentId
+									})">
 										<p>
-											<img src="https://img.alicdn.com/imgextra/i3/2559988253/O1CN01z2Cvah2Apvb3JYp7Z_!!2559988253.jpg"
-												alt="天然保山南红手链磨山款老型保山南红玛瑙手串云南保山南红手链">
+											<img :src="row.itemPictUrl">
 										</p>
 										<p>
 											<a href="javascript:;">
-												天然保山南红手链磨山款老型保山南红玛瑙手串云南保山南红手链
+												{{ row.itemTitle }}
 											</a>
 										</p>
 									</div>
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="name" label="商品ID" fixed />
-							<el-table-column width="120" prop="name" label="直播标题" />
-							<el-table-column width="120" prop="name" label="场次ID" />
-							<el-table-column width="120" prop="name" label="开播时间" />
-							<el-table-column width="120" prop="address">
-								<template #header>
-									商品点击次数#
-								</template>
-							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="120" prop="contentId" label="商品ID" fixed />
+							<el-table-column width="140" prop="contentTitle" label="直播标题" />
+							<el-table-column width="120" prop="contentId" label="场次ID" />
+							<el-table-column width="160" prop="liveStartTime" label="开播时间" />
+							<el-table-column width="120" prop="ipvUv">
 								<template #header>
 									商品点击人数#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="120" prop="ipv">
 								<template #header>
-									引导成交件数#
+									商品点击次数#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="120" prop="cartItemQty">
 								<template #header>
-									引导成交金额#
+									加购商品件数#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="120" prop="cartUv">
 								<template #header>
-									预售下定金金额#
+									加购人数#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="120" prop="refundItemQty">
 								<template #header>
-									预售预估总金额#
+									成交人数#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="120" prop="payItemQty">
 								<template #header>
-									退款件数#
+									成交件数#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="120" prop="payOrderCnt">
 								<template #header>
-									退款人数#
+									成交笔数#
 								</template>
 							</el-table-column>
-							<el-table-column width="120" prop="address">
+							<el-table-column width="120" prop="payAmt">
 								<template #header>
-									退款金额#
+									成交金额#
+								</template>
+							</el-table-column>
+							<el-table-column width="120" prop="refundAmt">
+								<template #header>
+									商品退款金额#
 								</template>
 							</el-table-column>
 						</el-table>
 						<div class="live-paganation">
-							<el-pagination layout="prev, pager, next" :total="2" class="order-pagination" prev-text="上一页"
-								next-text="下一页" />
+							<v-paganation layout="prev, pager, next" :total="table_4.page.totalNumber"
+								:page-size="table_4.page.pageSize" class="order-pagination" />
 						</div>
 					</div>
 				</div>
@@ -520,25 +551,22 @@
 </template>
 
 <script setup lang="ts" name="liveList">
+import { ref } from 'vue';
+import vPaganation from '@/components/Paganation/index.vue';
+import mock_live from '@/mock/current/live';
+
 import vH3Header from '@/components/H3Header/index.vue';
 
-const activeName = 'first';
-// table
-const tableData = [
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No.',
-	},
-	{
-		date: '2016-05-02',
-		name: 'Tom',
-		address: 'No.',
-	},
-]
+const activeName = ref('first');
+
+// table-1
+const { table_1, table_2, table_3, table_4 } = mock_live.live_table_list;
+
+
 // 点击table中直播标题
-const handleClickLiveTitle = function () {
-	window.open('#/dataScreen');
+const handleClickLiveTitle = function ({ tableIndex, modelIndex, index, liveId }) {
+	// window.open(`market.m.taobao.com/#/dataScreen?spm=a21ag.21587146.0.0.5693410c9RUBWP&tableIndex=${tableIndex}&modelIndex=${modelIndex}&index=${index}&liveId=${liveId}`);
+	window.open(`#/dataScreen?spm=a21ag.21587146.0.0.5693410c9RUBWP&tableIndex=${tableIndex}&modelIndex=${modelIndex}&index=${index}&liveId=${liveId}`);
 }
 </script>
 
@@ -666,7 +694,7 @@ const handleClickLiveTitle = function () {
 .live-list-container .shop-wrapper .live-table .table-content p:first-child {
 	width: 45px;
 	height: 45px;
-	margin-right: 10px;
+	margin-right: 14px;
 }
 
 .live-list-container .shop-wrapper .live-table .table-content p:first-child img {

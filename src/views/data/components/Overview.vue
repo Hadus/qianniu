@@ -6,7 +6,10 @@
           <template #header>
             <div class="card-header">
               <div>实时概况</div>
-              <div class="extra-info">更新时间：{{ date }}</div>
+              <div class="extra-info">
+                <span>更新时间：{{ date }}</span>
+                <span class="real-time-link">实时概况 > </span>
+              </div>
             </div>
           </template>
           <div class="card-container">
@@ -228,7 +231,7 @@
 import { ref, reactive, onMounted } from "vue";
 import * as echarts from "echarts";
 
-import { home as mock_home } from '@/mock/current/sycm';
+import mock_home from '@/mock/current/sycm.js';
 
 const date = ref(new Date().toLocaleString());
 const overviewData = mock_home.overall;
@@ -265,7 +268,13 @@ const initPayMoneyChart = () => {
       type: "value",
       axisLabel: {
         formatter: function (value: number, index: number) {
-          return index % 2 === 0 ? value : "";
+          if (value.toString().length === 5) {
+            return `${value.toString().slice(0, 1)}万`
+          }
+          if (value.toString().length === 4) {
+            return `${value.toString().slice(0, 1)}千`
+          }
+          return index % 3 === 0 ? value : "";
         },
       },
       axisTick: {
@@ -279,8 +288,7 @@ const initPayMoneyChart = () => {
       {
         name: "今日",
         type: "line",
-        stack: "Total",
-        data: [0, 0, 0, 210, 90, 83, 9, 89, 103, 0],
+        data: [0, 0, 0, 0, 13978, 21001, 39013, 58612, 67912],
         symbol: "none",
         smooth: true,
         itemStyle: {
@@ -293,8 +301,7 @@ const initPayMoneyChart = () => {
       {
         name: "昨日",
         type: "line",
-        stack: "Total",
-        data: [0, 0, 0, 130, 212, 15, 91, 26, 0, 0],
+        data: [0, 0, 0, 0, 10012, 29876, 41604, 64312, 77657],
         symbol: "none",
         smooth: true,
         itemStyle: {
@@ -402,11 +409,17 @@ onMounted(() => {
   cursor: pointer;
   transition: color 0.3s;
 }
+
 .slick-item {
   display: inline-block;
   width: 16px;
   height: 3px;
   background-color: rgb(236, 236, 236);
   margin: 0 2px;
+}
+
+.real-time-link {
+  color: #2062e6;
+  margin-left: 20px;
 }
 </style>

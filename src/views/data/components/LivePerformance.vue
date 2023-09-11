@@ -4,30 +4,18 @@
       <div class="header">
         <div class="title">直播间大盘</div>
         <div>
-          <el-date-picker
-            v-model="broadcastDate"
-            type="date"
-            :disabled-date="disabledDate"
-            style="width: 150px; margin-right: 5px"
-          ></el-date-picker>
+          <el-date-picker v-model="broadcastDate" type="date" :disabled-date="disabledDate"
+            style="width: 150px; margin-right: 5px"></el-date-picker>
         </div>
       </div>
       <div>
         <div class="next-slick">
           <div class="next-slick-list">
             <div class="next-slick-track" style="transform: translateX(-480px)">
-              <div
-                class="next-slick-slide"
-                v-for="(item, index) in slickList"
-                :key="index"
-                @click="selectSlick(item)"
-              >
-                <div
-                  class="series-field-wrapper"
-                  :class="{
-                    'series-field-selected': selectSlickKey === item.key,
-                  }"
-                >
+              <div class="next-slick-slide" v-for="(item, index) in slickList" :key="index" @click="selectSlick(item)">
+                <div class="series-field-wrapper" :class="{
+                  'series-field-selected': selectSlickKey === item.key,
+                }">
                   <div class="series-field-top">
                     <div class="series-field-title">{{ item.desc }}</div>
                   </div>
@@ -38,18 +26,10 @@
               </div>
             </div>
           </div>
-          <button
-            type="button"
-            class="next-slick-arrow pre-btn"
-            @click="handleSlick(1)"
-          >
+          <button type="button" class="next-slick-arrow pre-btn" @click="handleSlick(1)">
             <i class="next-icon-arrow-right niceFonts-front-btn"></i>
           </button>
-          <button
-            type="button"
-            class="next-slick-arrow post-btn"
-            @click="handleSlick(-1)"
-          >
+          <button type="button" class="next-slick-arrow post-btn" @click="handleSlick(-1)">
             <i class="next-icon-arrow-right niceFonts-end-btn"></i>
           </button>
         </div>
@@ -63,21 +43,12 @@
               <el-radio-button label="15">15天</el-radio-button>
               <el-radio-button label="30">30天</el-radio-button>
             </el-radio-group>
-            <el-date-picker
-              class="ml10"
-              v-model="slickDate"
-              :disabled-date="disabledDate"
-              type="daterange"
-              range-separator="-"
-              style="width: 260px"
-            />
+            <el-date-picker class="ml10" v-model="slickDate" :disabled-date="disabledDate" type="daterange"
+              range-separator="-" style="width: 260px" />
           </div>
         </div>
         <div class="chart-wrapper">
-          <div
-            style="padding: 0 20px; height: 350px; width: 100%"
-            id="slickChart"
-          ></div>
+          <div style="padding: 0 20px; height: 350px; width: 100%" id="slickChart"></div>
         </div>
       </div>
     </div>
@@ -85,34 +56,17 @@
       <div class="detail-header">
         <div class="detail-title">直播订单明细</div>
         <div style="display: flex">
-          <el-input
-            v-model="detailFilter.search"
-            placeholder="请输入商品标题/ID"
-            :suffix-icon="Search"
-            style="width: 150px; margin-right: 10px"
-          />
+          <el-input v-model="detailFilter.search" placeholder="请输入商品标题/ID" :suffix-icon="Search"
+            style="width: 150px; margin-right: 10px" />
           <el-select v-model="detailFilter.select" class="mr10">
-            <el-option
-              key="payTime"
-              value="payTime"
-              label="支付时间"
-            ></el-option>
-            <el-option
-              key="receiptTime"
-              value="receiptTime"
-              label="收货时间"
-            ></el-option>
+            <el-option key="payTime" value="payTime" label="支付时间"></el-option>
+            <el-option key="receiptTime" value="receiptTime" label="收货时间"></el-option>
           </el-select>
-          <el-date-picker
-            v-model="detailFilter.dateTime"
-            :disabled-date="disabledDate"
-            type="datetimerange"
-            range-separator="-"
-            start-placeholder="开始时间"
-            end-placeholder="结束时间"
-            style="width: 350px"
-          />
-          <el-button class="ml10" type=""><el-icon><Download /></el-icon>下载</el-button>
+          <el-date-picker v-model="detailFilter.dateTime" :disabled-date="disabledDate" type="datetimerange"
+            range-separator="-" start-placeholder="开始时间" end-placeholder="结束时间" style="width: 350px" />
+          <el-button class="ml10" type=""><el-icon>
+              <Download />
+            </el-icon>下载</el-button>
         </div>
       </div>
       <div class="detail-table-header">
@@ -120,54 +74,28 @@
         <div>右滑查看更多</div>
       </div>
       <div class="defail-table-wrapper">
-        <el-table
-          :data="tableData"
-          style="width: 100%"
-          v-loading="detailTableLoading"
-        >
-          <el-table-column
-            fixed
-            prop="contentTitle"
-            label="直播标题"
-            width="150"
-          />
-          <el-table-column
-            fixed
-            prop="liveStartTime"
-            label="开播时间"
-            width="120"
-          />
+        <el-table :data="tableData" style="width: 100%" v-loading="detailTableLoading">
+          <el-table-column fixed prop="contentTitle" label="直播标题" width="150" />
+          <el-table-column fixed prop="liveStartTime" label="开播时间" width="120" />
           <el-table-column prop="orderId" label="场次ID" width="120" />
           <el-table-column prop="daiboName" label="代播主播名称" width="150" />
           <el-table-column prop="address" label="会员名" />
           <el-table-column prop="fansType" label="直播粉丝层级" width="150" />
           <el-table-column prop="contentId" label="商品ID" />
           <el-table-column prop="itemTitle" label="商品标题" width="260" />
-          <el-table-column
-            prop="cateLevel1Name"
-            label="商品一级类目"
-            width="150"
-          />
+          <el-table-column prop="cateLevel1Name" label="商品一级类目" width="150" />
           <el-table-column prop="cateLevel1Id" label="父订单" />
           <el-table-column prop="itemId" label="子订单" />
           <el-table-column prop="createTime" label="下单时间" />
           <el-table-column prop="payTime" label="支付时间" />
           <el-table-column prop="divPayAmt" label="支付金额" />
-          <el-table-column
-            prop="confirmPaidTime"
-            label="确认收货时间"
-            width="150"
-          />
+          <el-table-column prop="confirmPaidTime" label="确认收货时间" width="150" />
           <el-table-column prop="refundAmt" label="确认收货金额" width="150" />
           <el-table-column prop="daiboId" label="代播ID" />
         </el-table>
         <div class="pagination-box">
-          <el-pagination
-            v-model:current-page="detailFilter.curPage"
-            :small="small"
-            layout="prev, pager, next, jumper"
-            :total="621"
-          />
+          <el-pagination v-model:current-page="detailFilter.curPage" :small="small" layout="prev, pager, next, jumper"
+            :total="621" />
         </div>
       </div>
     </div>
@@ -176,15 +104,11 @@
         <div class="detail-title">直播间预售数据</div>
         <div style="display: flex; align-items: center">
           <div class="mr10 font12" style="color: #999">统计日期</div>
-          <el-date-picker
-            class="ml10"
-            v-model="preorderDate"
-            :disabled-date="disabledDate"
-            type="daterange"
-            range-separator="-"
-            style="width: 260px"
-          />
-          <el-button class="ml10" type=""><el-icon><Download /></el-icon>下载</el-button>
+          <el-date-picker class="ml10" v-model="preorderDate" :disabled-date="disabledDate" type="daterange"
+            range-separator="-" style="width: 260px" />
+          <el-button class="ml10" type=""><el-icon>
+              <Download />
+            </el-icon>下载</el-button>
         </div>
       </div>
       <div class="detail-table-header">
@@ -192,44 +116,23 @@
         <div>右滑查看更多</div>
       </div>
       <div class="defail-table-wrapper">
-        <el-table
-          :data="orderFrontTable"
-          style="width: 100%"
-          v-loading="preorderTableLoading"
-        >
-          <el-table-column
-            fixed
-            prop="statisticsTime"
-            label="统计日期"
-            width="150"
-          />
-          <el-table-column
-            prop="payPersonCount"
-            label="当日预售支付定金人数"
-            width="120"
-          />
+        <el-table :data="orderFrontTable" style="width: 100%" v-loading="preorderTableLoading">
+          <el-table-column fixed prop="statisticsTime" label="统计日期" width="150" />
+          <el-table-column prop="payPersonCount" label="当日预售支付定金人数" width="120" />
           <el-table-column prop="payFrontCount" label="当日预售支付定金笔数" width="120" />
           <el-table-column prop="payFrontMonry" label="当日预售支付定金金额" width="150" />
           <el-table-column prop="payTailPerson" label="当日预售支付尾款人数（不含定金）" width="150" />
           <el-table-column prop="payTailCount" label="当日预售支付尾款笔数（不含定金）" width="150" />
-          <el-table-column prop="payTailMoney" label="当日预售支付尾款金额（不含定金）"  width="150"/>
-          <el-table-column
-            prop="confirmReceiptPerson"
-            label="当日预售确认收货人数"
-            width="150"
-          />
+          <el-table-column prop="payTailMoney" label="当日预售支付尾款金额（不含定金）" width="150" />
+          <el-table-column prop="confirmReceiptPerson" label="当日预售确认收货人数" width="150" />
           <el-table-column prop="confirmReceiptCount" label="当日预售确认收货笔数" width="150" />
           <el-table-column prop="confirmReceiptMoney" label="当日预售确认收货金额" width="150" />
           <el-table-column prop="totalMoney" label="当日实际预售支付总金额（定金 + 尾款）" width="180" />
           <el-table-column prop="toatlTailMoney" label="预估最终支付尾款金额（不含定金）" width="180" />
         </el-table>
         <div class="pagination-box">
-          <el-pagination
-            v-model:current-page="detailFilter.curPage"
-            :small="small"
-            layout="prev, pager, next, jumper"
-            :total="621"
-          />
+          <el-pagination v-model:current-page="detailFilter.curPage" :small="small" layout="prev, pager, next, jumper"
+            :total="621" />
         </div>
       </div>
     </div>
@@ -349,7 +252,7 @@ watch(
 );
 const tableData = reactive(orderDetails);
 
-const orderFrontTable  = reactive(orderFront)
+const orderFrontTable = reactive(orderFront)
 
 const preorderTableLoading = ref(false);
 const preorderDate = ref([
@@ -368,9 +271,8 @@ watch(
 );
 
 onMounted(() => {
-  document.getElementsByClassName("next-slick-track")[0].style.width = `${
-    slickList.length * 242
-  }px`;
+  document.getElementsByClassName("next-slick-track")[0].style.width = `${slickList.length * 242
+    }px`;
   chartIns = echarts.init(document.getElementById("slickChart"));
   initSlickCharts();
 });
@@ -379,23 +281,27 @@ onMounted(() => {
 .live-performance-section {
   background-color: #fff;
 }
+
 .header {
   padding: 20px 30px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .title {
   font-family: PingFangSC-Medium;
   font-size: 14px;
   color: rgba(51, 51, 51, 1);
   line-height: 24px;
 }
+
 .next-slick {
   padding: 0 24px;
   position: relative;
   user-select: none;
 }
+
 .next-slick-list {
   position: relative;
   overflow: hidden;
@@ -404,6 +310,7 @@ onMounted(() => {
   padding: 0;
   transform: translateZ(0);
 }
+
 .next-slick-track {
   position: relative;
   top: 0;
@@ -411,6 +318,7 @@ onMounted(() => {
   display: block;
   transition: transform 600ms ease 0s;
 }
+
 .next-slick-slide {
   width: 240px;
   float: left;
@@ -419,6 +327,7 @@ onMounted(() => {
   outline: 0;
   transition: all 0.1s linear;
 }
+
 .series-field-wrapper {
   background-color: #f9f9f9;
   cursor: pointer;
@@ -427,13 +336,16 @@ onMounted(() => {
   height: 95px;
   border: 1px solid #f9f9f9;
 }
+
 .series-field-selected {
   border-color: rgba(32, 98, 230, 1);
 }
+
 .series-field-top {
   display: flex;
   align-items: center;
 }
+
 .series-field-title {
   font-family: PingFangSC-Regular;
   font-size: 14px;
@@ -445,6 +357,7 @@ onMounted(() => {
   text-overflow: ellipsis;
   line-height: 15px;
 }
+
 .series-field-data {
   margin-top: 10px;
   font-family: DINCondensed-Bold;
@@ -454,6 +367,7 @@ onMounted(() => {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
 .next-slick-arrow {
   position: absolute;
   top: calc(50% - 28px);
@@ -467,12 +381,15 @@ onMounted(() => {
   width: 28px;
   line-height: 56px;
 }
+
 .pre-btn {
   left: 3px;
 }
+
 .post-btn {
   right: 3px;
 }
+
 .next-icon-arrow-right {
   color: rgba(51, 51, 51, 1) !important;
   border-radius: 50px;
@@ -481,37 +398,44 @@ onMounted(() => {
   font-size: 24px;
   cursor: pointer;
 }
+
 .chart-header {
   padding: 20px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .chart-header .title {
   font-size: 14px;
   color: rgba(102, 102, 102, 1);
 }
+
 .chart-wrapper {
   margin-top: 10px;
   min-height: 100px;
 }
+
 .live-order-detail-section {
   box-shadow: 0 2px 6px 0 rgb(0 0 0 / 8%);
   background-color: #fff;
   margin: 20px 0;
   border-radius: 6px;
 }
+
 .detail-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 30px 10px;
 }
+
 .detail-title {
   font-size: 14px;
   color: rgba(51, 51, 51, 1);
   line-height: 24px;
 }
+
 .detail-table-header {
   display: flex;
   font-family: PingFangSC-Regular;
@@ -522,27 +446,33 @@ onMounted(() => {
   justify-content: space-between;
   align-items: center;
 }
+
 .defail-table-wrapper {
   margin: 0 30px 30px;
 }
+
 .defail-table-wrapper :deep(.el-table__header .cell) {
   text-align: left;
   color: #333333;
   font-size: 12px;
   font-weight: 500;
 }
+
 .defail-table-wrapper :deep(.el-table__body .cell) {
   text-align: left;
   color: #333333;
   font-size: 12px;
   font-weight: 500;
 }
+
 .pagination-box {
   padding: 10px 0 20px 0;
 }
+
 .pagination-box :deep(.el-pagination) {
   justify-content: end;
 }
+
 .preorder-section {
   box-shadow: 0 2px 6px 0 rgb(0 0 0 / 8%);
   background-color: #fff;

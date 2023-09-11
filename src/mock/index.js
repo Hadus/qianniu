@@ -15,6 +15,9 @@ const wuliu = {};
 // 数据(生意参谋)
 const sycm = {};
 
+// 直播列表
+const live = {};
+
 // 数据大屏
 const dataScreen = {};
 

@@ -215,22 +215,22 @@
 					<p class="info-1">最近有 <i>{{ mock_home.follow.fans }}</i> 个活跃店铺粉丝，正在期待您发布优质内容</p>
 					<div class="info-2">
 						<div>
-							<img src="http://img.alicdn.com/sns_logo/i2/0/TB2U_Grj3vD8KJjSsplXXaIEFXa_!!0-mytaobao.jpg">
+							<img src="http://img.alicdn.com/sns_logo/i3/TB1yeWeIFXXXXX5XFXXuAZJYXXX-210-210.png">
 							<br />
-							<span>婆娑月光</span>
+							<span>月光</span>
 						</div>
 						<div>
 							<div>
-								<img src="http://img.alicdn.com/sns_logo/i2/0/TB2U_Grj3vD8KJjSsplXXaIEFXa_!!0-mytaobao.jpg">
+								<img src="http://img.alicdn.com/sns_logo/TB1e4rMt8Bh1e4jSZFhXXcC9VXa-240-240.png">
 								<br />
-								<span>婆娑月光</span>
+								<span>毛毛猫</span>
 							</div>
 						</div>
 						<div>
 							<div>
 								<img src="http://img.alicdn.com/sns_logo/i2/0/TB2U_Grj3vD8KJjSsplXXaIEFXa_!!0-mytaobao.jpg">
 								<br />
-								<span>婆娑月光</span>
+								<span>米果思米</span>
 							</div>
 						</div>
 						<div class="post">

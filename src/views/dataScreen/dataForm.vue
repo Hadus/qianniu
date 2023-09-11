@@ -9,17 +9,20 @@ import * as echarts from 'echarts'
 export default {
 	data() {
 		return {
-
 		}
 	},
 	created() {
-		console.log(echarts);
 		setTimeout(() => {
 			this.dealEchart()
 		}, 1000);
 	},
 	methods: {
 		dealEchart() {
+			const data = [];
+			for (let i = 0; i < 3; i++) {
+				const random = Math.floor(Math.random() * (500 - 100)) + 10;
+				data.push(random);
+			}
 			var myChart = echarts.init(document.getElementById('dataFromEchart'));
 			let option = {
 				grid: {
@@ -48,16 +51,7 @@ export default {
 					axisLine: {
 						show: true
 					},
-					axisLabel: {
-						show: true
-					},
-
 					type: "value",
-					splitLine: {
-						//保留网格线
-						show: false
-
-					},
 					axisLabel: {
 						margin: 10,
 						textStyle: {
@@ -68,7 +62,6 @@ export default {
 					splitLine: {
 						show: false,
 					},
-
 				},
 				series: [
 					{
@@ -94,8 +87,7 @@ export default {
 								},
 							]),
 						},
-
-						data: [0, 2, 3]
+						data
 					}
 				]
 			};
@@ -103,7 +95,6 @@ export default {
 			myChart.setOption(option);
 		}
 	},
-
 }
 </script>
 <style scoped>
