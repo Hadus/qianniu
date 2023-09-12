@@ -554,6 +554,7 @@
 import { ref } from 'vue';
 import vPaganation from '@/components/Paganation/index.vue';
 import mock_live from '@/mock/current/live';
+import { dataScreenLink } from '@/api/link.js'
 
 import vH3Header from '@/components/H3Header/index.vue';
 
@@ -566,7 +567,7 @@ const { table_1, table_2, table_3, table_4 } = mock_live.live_table_list;
 // 点击table中直播标题
 const handleClickLiveTitle = function ({ tableIndex, modelIndex, index, liveId }) {
 	// dns
-	window.open(`http://market.m.taobao.com/#/dataScreen?spm=a21ag.21587146.0.0.5693410c9RUBWP&tableIndex=${tableIndex}&modelIndex=${modelIndex}&index=${index}&liveId=${liveId}`);
+	window.open(`${dataScreenLink}#/dataScreen?spm=a21ag.21587146.0.0.5693410c9RUBWP&tableIndex=${tableIndex}&modelIndex=${modelIndex}&index=${index}&liveId=${liveId}`);
 	// window.open(`#/dataScreen?spm=a21ag.21587146.0.0.5693410c9RUBWP&tableIndex=${tableIndex}&modelIndex=${modelIndex}&index=${index}&liveId=${liveId}`);
 }
 </script>

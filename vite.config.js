@@ -6,7 +6,8 @@ import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import requireTransform from 'vite-plugin-require-transform';
 import path from 'path';
-import legacy from '@vitejs/plugin-legacy';
+import legacy from '@vitejs/plugin-legacy'; // 处理打包module问题，可以file协议可以打开
+import copyPlugin from 'rollup-plugin-copy'; // 打包中文件复制
 
 export default defineConfig({
 	base: './dist/',
@@ -39,4 +40,21 @@ export default defineConfig({
 		port: 80, // 访问80端口不需要加端口号
 		open: true,
 	},
+	build: {
+    terserOptions: {
+      compress: {
+        drop_console: true, // 生产环境移除console
+      },
+    },
+    emptyOutDir: false, // 将此配置项设为false即可
+    rollupOptions: {
+      plugins: [
+        copyPlugin({
+          targets: [{ src: './src/mock/current/img/*', dest: 'dist/src/mock/current/img' }],
+        }),
+      ],
+    },
+    outDir: 'dist',
+    assetsDir: 'assets',
+  },
 });

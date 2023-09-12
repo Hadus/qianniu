@@ -1,3 +1,5 @@
+import { sycmLink } from '@/api/link.js'
+
 let routes = [
     {
       icon: 'https://openworkbench.oss-cn-hangzhou.aliyuncs.com/8bfa5513e74e46f58186f0b61482d27d.png',
@@ -228,7 +230,7 @@ let routes = [
       index: '',
       title: '数据',
       permiss: '11',
-      link: 'http://www.sycm.taobao.com/#/data?spm=a21ag.27070886.0.0.1cce50a54TcxQF' //dns
+      link: sycmLink + '#/data?spm=a21ag.27070886.0.0.1cce50a54TcxQF' //dns
       // link: '#/data?spm=a21ag.27070886.0.0.1cce50a54TcxQF'
     },
     { // test
