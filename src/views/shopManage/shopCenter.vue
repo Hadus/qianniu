@@ -77,7 +77,8 @@
 					<p>
 						<span class="key">店铺信用等级</span>
 						<span class="value">
-							<img src="//gtms01.alicdn.com/tps/i1/TB1D9j.HpXXXXbNXpXX97kJ_XXX-105-24.png" class="item-icon">
+							<img v-for="(item, index) in user.xinyonglevel" :key="index"
+								src="//gtms03.alicdn.com/tps/i3/TB1c9z_HpXXXXcQXpXXCBGNFFXX-24-24.png" alt="" width="14" height="14">
 						</span>
 					</p>
 				</div>

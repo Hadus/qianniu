@@ -218,6 +218,9 @@ onMounted(() => {
   width: 100%;
   background: #2062e6;
   display: flex;
+  font-family: Microsoft YaHei, SimHei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+  font-size: 16px;
+  ;
 }
 
 .sub-header-box {

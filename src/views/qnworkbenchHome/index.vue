@@ -185,7 +185,8 @@
 					<div class="info-4">
 						<p class="top">信用等级</p>
 						<p class="bot">
-							<img src="//gtms03.alicdn.com/tps/i3/TB1c9z_HpXXXXcQXpXXCBGNFFXX-24-24.png" alt="" width="14" height="14">
+							<img v-for="(item, index) in user.xinyonglevel" :key="index"
+								src="//gtms03.alicdn.com/tps/i3/TB1c9z_HpXXXXcQXpXXCBGNFFXX-24-24.png" alt="" width="14" height="14">
 						</p>
 					</div>
 					<div class="type-2 info-5">
