@@ -34,9 +34,11 @@ export const getOrder_detail_plus = function (createTimeStr) {
   }
 }
 
+export const trade_orderNumber = 0;
+
 const trade = {
-  orderNumber: 29,
-  orderTimeoutNumber: 1,
+  orderNumber: trade_orderNumber,
+  orderTimeoutNumber: 0,
   page: {...trade_orderList_obj.page}
 };
 export default trade;
