@@ -3,7 +3,7 @@
 		<div class="left">
 			<div class="block-wrapper introduce-wrapper">
 				<div class="wrapper-left">
-					<img src="https://img.alicdn.com/imgextra/i2/1115350887/O1CN01B2LRQR1IQIBDVMEob_!!1115350887-0-shopmanager.jpg">
+					<img :src="user.avatarImg">
 				</div>
 				<div class="wrapper-right">
 					<v-h3-block :hasArrow="false">
