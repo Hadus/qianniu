@@ -1,8 +1,9 @@
 // 首页
+import {trade_orderNumber} from './trade.js';
 const home = {
     left_banner: { // 左边-banner
       fukuan: 21, 
-      fahuo: 48, 
+      fahuo: trade_orderNumber, 
       shouhou: 311,
       pingjia: 172, 
       tousu: 0, 

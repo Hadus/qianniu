@@ -52,7 +52,8 @@
         </div>
       </div>
     </div>
-    <div class="live-order-detail-section">
+    <div style="height: 40px; background-color: #fff;"></div>
+    <!-- <div class="live-order-detail-section">
       <div class="detail-header">
         <div class="detail-title">直播订单明细</div>
         <div style="display: flex">
@@ -135,7 +136,7 @@
             :total="621" />
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 <script lang="ts" setup>

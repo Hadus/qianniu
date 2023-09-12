@@ -1,7 +1,8 @@
 // user
 const user = {
-  name:'惠水琥珀', // 店铺名称
+  name:'贝莎珠宝', // 店铺名称
   avatarImg: 'src/mock/current/img/shop.jpg', // 头像照片
-  taobaoName: '珠宝一品', // 淘宝账号名
+  taobaoName: 'tb154847218995', // 淘宝账号名
+  xinyonglevel: 2 // 信用等级
 };
 export default user;

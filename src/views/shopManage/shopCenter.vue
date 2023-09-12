@@ -3,7 +3,7 @@
 		<div class="left">
 			<div class="block-wrapper introduce-wrapper">
 				<div class="wrapper-left">
-					<img src="https://img.alicdn.com/imgextra/i2/1115350887/O1CN01B2LRQR1IQIBDVMEob_!!1115350887-0-shopmanager.jpg">
+					<img :src="user.avatarImg">
 				</div>
 				<div class="wrapper-right">
 					<v-h3-block :hasArrow="false">
@@ -77,7 +77,8 @@
 					<p>
 						<span class="key">店铺信用等级</span>
 						<span class="value">
-							<img src="//gtms01.alicdn.com/tps/i1/TB1D9j.HpXXXXbNXpXX97kJ_XXX-105-24.png" class="item-icon">
+							<img v-for="(item, index) in user.xinyonglevel" :key="index"
+								src="//gtms03.alicdn.com/tps/i3/TB1c9z_HpXXXXcQXpXXCBGNFFXX-24-24.png" alt="" width="14" height="14">
 						</span>
 					</p>
 				</div>

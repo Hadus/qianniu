@@ -1,3 +1,5 @@
+import { sycmLink } from '@/api/link.js'
+
 let routes = [
     {
       icon: 'https://openworkbench.oss-cn-hangzhou.aliyuncs.com/8bfa5513e74e46f58186f0b61482d27d.png',
@@ -221,27 +223,27 @@ let routes = [
       icon: 'https://openworkbench.oss-cn-hangzhou.aliyuncs.com/ff8a14cf1da845ee86bdda2f37823ac9.png',
       index: '',
       title: '财务',
-      permiss: '10',
+      permiss: '1',
     },
     {
       icon: 'https://openworkbench.oss-cn-hangzhou.aliyuncs.com/d90d70c6abef4db8bbbee49aca355f8a.png',
       index: '',
       title: '数据',
       permiss: '11',
-      // link: 'http://www.sycm.taobao.com/#/data?spm=a21ag.27070886.0.0.1cce50a54TcxQF'
-      link: '#/data?spm=a21ag.27070886.0.0.1cce50a54TcxQF'
+      link: sycmLink + '#/data?spm=a21ag.27070886.0.0.1cce50a54TcxQF' //dns
+      // link: '#/data?spm=a21ag.27070886.0.0.1cce50a54TcxQF'
     },
     { // test
       icon: 'https://openworkbench.oss-cn-hangzhou.aliyuncs.com/5a14bc566c3b44f983cd0cc9e8b25777.png',
       index: '',
       title: '服务',
-      permiss: '12',
+      permiss: '1',
     },
     { // test
       icon: 'https://openworkbench.oss-cn-hangzhou.aliyuncs.com/fa3473822f274ccea2225674cab0b72a.png',
       index: '',
       title: '应用',
-      permiss: '13',
+      permiss: '1',
     },
 ];
 

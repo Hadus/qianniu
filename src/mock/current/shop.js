@@ -1,18 +1,18 @@
 // 店铺
 const shop = {
   shop_info: {
-    createTime: '2013.11.12',
-    type: '个人',
-    zhifubao: '18888888888',
-    address: '新疆省',
-    id: '451838414'
+    createTime: '2016.11.12',
+    type: '企业',
+    zhifubao: '896953883@qq.com',
+    address: '江苏省连云港市东海县石榴街道石榴街道贝莎珠宝',
+    id: '450022547'
   },
   shop_score: '94.81%', // 右侧-好评率
   yyzz: { // 营业执照
-    companyName: '---百货店',
+    companyName: '东海县贝莎珠宝商行',
     expireDate: '长期',
-    code: '99821213134',
-    dailiren: '于桂芝',
+    code: '92320722MA215N3HX1',
+    dailiren: '于柏峰',
     yyzzImg: 'src/mock/current/img/yyzz.png',
   },
   shop_overall:{ // 店铺概况
@@ -33,12 +33,12 @@ const shop = {
     {
       one: '商品体验',
       two: {
-        score: '5.0',
+        score: '4.88',
         toPrevDay: 1.00,
 
       },
       three: '首次品退率',
-      four: '5.0',
+      four: '4.88',
       five: {
         performance: '0.00%',
         chartData:{}
@@ -49,12 +49,12 @@ const shop = {
     {
       one: '商品体验2',
       two: {
-        score: '5.0',
+        score: '4.92',
         toPrevDay: 1.00,
 
       },
       three: '商品DSR差评率',
-      four: '5.0',
+      four: '4.88',
       five: {
         performance: '0.00%',
         chartData:{}
@@ -65,12 +65,12 @@ const shop = {
     {
       one: '物流体验',
       two: {
-        score: '5.0',
+        score: '4.92',
         toPrevDay: 1.00,
 
       },
       three: '揽收及时率',
-      four: '5.0',
+      four: '4.96',
       five: {
         performance: '0.00%',
         chartData:{}
@@ -81,12 +81,12 @@ const shop = {
     {
       one: '物流体验2',
       two: {
-        score: '5.0',
+        score: '4.92',
         toPrevDay: 1.00,
 
       },
       three: '物流到货时长',
-      four: '5.0',
+      four: '4.90',
       five: {
         performance: '0.00%',
         chartData:{}
@@ -97,12 +97,12 @@ const shop = {
     {
       one: '咨询体验',
       two: {
-        score: '5.0',
+        score: '4.90',
         toPrevDay: 1.00,
 
       },
       three: '旺旺人工响应时长',
-      four: '5.0',
+      four: '4.98',
       five: {
         performance: '43.20秒',
         chartData:{}
@@ -113,12 +113,12 @@ const shop = {
     {
       one: '咨询体验2',
       two: {
-        score: '5.0',
+        score: '4.98',
         toPrevDay: 1.00,
 
       },
       three: '旺旺满意度',
-      four: '5.0',
+      four: '4.89',
       five: {
         performance: '0.00%',
         chartData:{}
@@ -129,12 +129,12 @@ const shop = {
     {
       one: '售后体验',
       two: {
-        score: '5.0',
+        score: '4.91',
         toPrevDay: 1.00,
 
       },
       three: '退款处理时长',
-      four: '5.0',
+      four: '4.91',
       five: {
         performance: '43.20秒',
         chartData:{}
@@ -145,12 +145,12 @@ const shop = {
     {
       one: '售后体验2',
       two: {
-        score: '5.0',
+        score: '4.91',
         toPrevDay: 1.00,
 
       },
       three: '平台售后任务处理时长',
-      four: '5.0',
+      four: '4.91',
       five: {
         performance: '43.20秒',
         chartData:{}
@@ -161,12 +161,12 @@ const shop = {
     {
       one: '纠纷体验',
       two: {
-        score: '4.9',
+        score: '5.0',
         toPrevDay: 1.00,
 
       },
       three: '平台求助率',
-      four: '4.8',
+      four: '4.80',
       five: {
         performance: '0.00%',
         chartData:{}
@@ -177,12 +177,12 @@ const shop = {
     {
       one: '纠纷体验2',
       two: {
-        score: '4.9',
+        score: '5.0',
         toPrevDay: 1.00,
 
       },
       three: '平台判责率',
-      four: '4.9',
+      four: '4.90',
       five: {
         performance: '0.00%',
         chartData:{}
