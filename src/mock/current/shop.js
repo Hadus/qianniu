@@ -129,7 +129,7 @@ const shop = {
     {
       one: '售后体验',
       two: {
-        score: '5.0',
+        score: '4.91',
         toPrevDay: 1.00,
 
       },
@@ -166,7 +166,7 @@ const shop = {
 
       },
       three: '平台求助率',
-      four: '4.8',
+      four: '4.80',
       five: {
         performance: '0.00%',
         chartData:{}
@@ -182,7 +182,7 @@ const shop = {
 
       },
       three: '平台判责率',
-      four: '4.9',
+      four: '4.90',
       five: {
         performance: '0.00%',
         chartData:{}
