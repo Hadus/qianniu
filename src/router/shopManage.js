@@ -6,7 +6,7 @@ export default [
       title: '店铺信息',
       permiss: '1',
     },
-    component: () => import(/* webpackChunkName: "import" */ '../views/shopManage/shopCenter.vue'),
+    component: () => import('../views/shopManage/shopCenter.vue'),
   },
   {
     path: '/shop-manage/shop-qa',
@@ -15,7 +15,7 @@ export default [
       title: '店铺资质管理',
       permiss: '1',
     },
-    component: () => import(/* webpackChunkName: "import" */ '../views/shopManage/shopQA.vue'),
+    component: () => import('../views/shopManage/shopQA.vue'),
   },
   {
     path: '/shop-manage/shop-qa-info',
@@ -24,7 +24,7 @@ export default [
       title: '营业执照',
       permiss: '1',
     },
-    component: () => import(/* webpackChunkName: "import" */ '../views/shopManage/shopQAInfo.vue'),
+    component: () => import('../views/shopManage/shopQAInfo.vue'),
   },
   {
     path: '/shop-manage/serverReport',
@@ -33,6 +33,6 @@ export default [
       title: '综合体验分',
       permiss: '1',
     },
-    component: () => import(/* webpackChunkName: "import" */ '../views/shopManage/serverReport.vue'),
+    component: () => import('../views/shopManage/serverReport.vue'),
   },
 ]

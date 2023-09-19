@@ -22,7 +22,7 @@ const routes: RouteRecordRaw[] = [
           title: '千牛商家工作台',
           permiss: '1',
         },
-        component: () => import(/* webpackChunkName: "import" */ '../views/qnworkbenchHome/index.vue'),
+        component: () => import('../views/qnworkbenchHome/index.vue'),
       },
     ],
   },
@@ -32,7 +32,7 @@ const routes: RouteRecordRaw[] = [
     meta: {
       title: '物流',
     },
-    component: () => import(/* webpackChunkName: "403" */ '../views/wuliu/index.vue'),
+    component: () => import('../views/wuliu/index.vue'),
   },
   {
     path: '/data',
@@ -41,7 +41,7 @@ const routes: RouteRecordRaw[] = [
       title: '生意参谋，阿里巴巴生意参谋，市场行情，数据作战室，大数据分析，生意经，电商运营，零售电商',
       permiss: '7',
     },
-    component: () => import(/* webpackChunkName: "import" */ '../views/data/index.vue'),
+    component: () => import('../views/data/index.vue'),
   },
   {
     path: '/dataScreen',
@@ -49,7 +49,7 @@ const routes: RouteRecordRaw[] = [
     meta: {
       title: '实时数据大屏',
     },
-    component: () => import(/* webpackChunkName: "charts" */ '../views/dataScreen/index.vue'),
+    component: () => import('../views/dataScreen/index.vue'),
   },
   {
     path: '/login',
@@ -57,7 +57,7 @@ const routes: RouteRecordRaw[] = [
     meta: {
       title: '登录',
     },
-    component: () => import(/* webpackChunkName: "login" */ '../views/login.vue'),
+    component: () => import('../views/login.vue'),
   },
   {
     path: '/403',
@@ -65,7 +65,7 @@ const routes: RouteRecordRaw[] = [
     meta: {
       title: '没有权限',
     },
-    component: () => import(/* webpackChunkName: "403" */ '../views/403.vue'),
+    component: () => import('../views/403.vue'),
   },
   {
     path: '/test',
@@ -73,7 +73,7 @@ const routes: RouteRecordRaw[] = [
     meta: {
       title: 'test',
     },
-    component: () => import(/* webpackChunkName: "403" */ '../views/test/index.vue'),
+    component: () => import('../views/test/index.vue'),
   },
 ];
 
